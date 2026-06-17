@@ -4,6 +4,9 @@ import { useEffect, useRef } from "react";
  * Adds click-and-drag scrolling to an overflow-x container.
  * Also lets vertical wheel events translate into horizontal scroll
  * while the cursor is over the shelf.
+ *
+ * Mouse / pen: drag anywhere on the shelf (including cards) to scroll.
+ * Touch: left untouched so native swipe scrolling stays smooth.
  */
 export function useDragScroll<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
@@ -18,9 +21,9 @@ export function useDragScroll<T extends HTMLElement>() {
     let moved = false;
 
     const onPointerDown = (e: PointerEvent) => {
-      // ignore drags that begin on interactive elements
-      const target = e.target as HTMLElement;
-      if (target.closest("a, button")) return;
+      // leave touch to the browser's native swipe
+      if (e.pointerType === "touch") return;
+
       isDown = true;
       moved = false;
       startX = e.clientX;
@@ -28,12 +31,14 @@ export function useDragScroll<T extends HTMLElement>() {
       el.setPointerCapture(e.pointerId);
       el.classList.add("is-dragging");
     };
+
     const onPointerMove = (e: PointerEvent) => {
       if (!isDown) return;
       const dx = e.clientX - startX;
       if (Math.abs(dx) > 4) moved = true;
       el.scrollLeft = startScroll - dx;
     };
+
     const onPointerUp = (e: PointerEvent) => {
       isDown = false;
       el.classList.remove("is-dragging");
@@ -43,7 +48,7 @@ export function useDragScroll<T extends HTMLElement>() {
         /* noop */
       }
       if (moved) {
-        // swallow the click that follows a drag
+        // swallow the click that follows a drag so cards stay clickable on tap
         const swallow = (ev: MouseEvent) => {
           ev.preventDefault();
           ev.stopPropagation();
@@ -52,6 +57,7 @@ export function useDragScroll<T extends HTMLElement>() {
         el.addEventListener("click", swallow, true);
       }
     };
+
     const onWheel = (e: WheelEvent) => {
       // translate dominant vertical wheel to horizontal
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
@@ -65,6 +71,7 @@ export function useDragScroll<T extends HTMLElement>() {
     el.addEventListener("pointerup", onPointerUp);
     el.addEventListener("pointercancel", onPointerUp);
     el.addEventListener("wheel", onWheel, { passive: false });
+
     return () => {
       el.removeEventListener("pointerdown", onPointerDown);
       el.removeEventListener("pointermove", onPointerMove);
