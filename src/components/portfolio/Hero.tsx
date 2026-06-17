@@ -128,16 +128,6 @@ export function Hero() {
                 />
               </div>
             </div>
-            {/* floating tags */}
-            <span className="absolute left-0 top-12 z-20 rounded-full border border-[color:var(--color-ink)]/15 bg-[color:var(--color-paper)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/80 shadow-sm">
-              // designer
-            </span>
-            <span className="absolute right-0 top-1/3 z-20 rounded-full border border-[color:var(--color-blueprint)]/30 bg-[color:var(--color-paper)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-blueprint)] shadow-sm">
-              // agent-builder
-            </span>
-            <span className="absolute bottom-8 left-4 z-20 rounded-full border border-[color:var(--color-ink)]/15 bg-[color:var(--color-paper)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/80 shadow-sm">
-              // 0→1
-            </span>
           </div>
         </div>
       </div>
