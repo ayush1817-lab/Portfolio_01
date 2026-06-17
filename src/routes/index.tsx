@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/portfolio/Hero";
+import { TopNav } from "@/components/portfolio/TopNav";
 import { About } from "@/components/portfolio/About";
 import { TechStrip } from "@/components/portfolio/TechStrip";
 import { ProjectsShelf } from "@/components/portfolio/ProjectsShelf";
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="min-h-screen bg-[color:var(--color-paper)] font-sans text-[color:var(--color-ink)] antialiased">
+      <TopNav />
       <Hero />
       <About />
       <TechStrip />
