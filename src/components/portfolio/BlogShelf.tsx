@@ -29,9 +29,9 @@ export function BlogShelf() {
             href={b.link}
             target="_blank"
             rel="noreferrer noopener"
-            className="group relative flex w-[82vw] max-w-[360px] shrink-0 snap-start flex-col gap-4 rounded-[28px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] p-6 shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:shadow-[var(--shadow-card-hover)] sm:w-[360px] md:w-[380px]"
+            className="group relative flex w-[72vw] max-w-[260px] shrink-0 snap-start flex-col gap-3 rounded-[22px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] p-5 shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:shadow-[var(--shadow-card-hover)] sm:w-[250px] md:w-[260px]"
             style={{
-              marginLeft: i === 0 ? 0 : "-110px",
+              marginLeft: i === 0 ? 0 : "-70px",
               zIndex: blogs.length - i,
               transform: `rotate(${i % 2 === 0 ? -0.3 : 0.3}deg)`,
             }}
@@ -40,11 +40,11 @@ export function BlogShelf() {
               <span>{b.date}</span>
               <span>{b.readingTime} read</span>
             </div>
-            <h3 className="font-display text-3xl leading-[1.05] text-[color:var(--color-ink)]">
+            <h3 className="font-display text-xl leading-[1.05] text-[color:var(--color-ink)]">
               {b.title}
             </h3>
-            <p className="text-sm leading-relaxed text-[color:var(--color-ink)]/70">{b.excerpt}</p>
-            <div className="mt-4 flex items-center justify-between border-t border-[color:var(--color-ink)]/10 pt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/70">
+            <p className="line-clamp-3 text-xs leading-relaxed text-[color:var(--color-ink)]/70">{b.excerpt}</p>
+            <div className="mt-auto flex items-center justify-between border-t border-[color:var(--color-ink)]/10 pt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/70">
               read on medium
               <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </div>

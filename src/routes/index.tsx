@@ -7,7 +7,7 @@ import { UxShelf } from "@/components/portfolio/UxShelf";
 import { BlogShelf } from "@/components/portfolio/BlogShelf";
 import { ConnectBanner } from "@/components/portfolio/ConnectBanner";
 import { Footer } from "@/components/portfolio/Footer";
-import { projects, saas } from "@/content/portfolio";
+import { projects } from "@/content/portfolio";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,14 +33,6 @@ function Index() {
         title="Selected projects."
         caption="A folder of recent work — drag, scroll, or click an arrow to flip through."
         items={projects}
-      />
-      <ProjectsShelf
-        id="saas"
-        index="PRODUCTS / 02"
-        title="SaaS I built."
-        caption="Small, opinionated tools I designed, built, and shipped myself."
-        items={saas}
-        badge="// product"
       />
       <UxShelf />
       <BlogShelf />
