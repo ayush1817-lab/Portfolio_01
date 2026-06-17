@@ -21,9 +21,6 @@ export function UxShelf() {
             />
             <div className="hidden md:block">
               <ShelfControls onPrev={() => scrollBy(-330)} onNext={() => scrollBy(330)} />
-              <div className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
-                // drag · scroll · {previewCases.length} reads
-              </div>
             </div>
           </div>
 
@@ -31,14 +28,18 @@ export function UxShelf() {
           <div className="relative min-w-0 flex-1 pr-6 sm:pr-10 md:pr-0">
             <div
               ref={ref}
-              className="shelf-track flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6 pr-6 sm:gap-6 sm:pr-10 [perspective:1600px]"
+              className="shelf-track flex snap-x snap-mandatory overflow-x-auto pb-6 pr-6 pt-2 sm:pr-10 [perspective:1600px]"
             >
               {previewCases.map((c, i) => (
                 <a
                   key={c.id}
                   href={c.link}
-                  className="group relative flex h-[180px] w-[78vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[20px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:-translate-y-1 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:h-[200px] sm:w-[300px]"
-                  style={{ transform: `rotate(${i % 2 === 0 ? -0.5 : 0.5}deg)` }}
+                  className="group relative flex h-[180px] w-[78vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[20px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:h-[200px] sm:w-[300px]"
+                  style={{
+                    marginLeft: i === 0 ? 0 : "-90px",
+                    zIndex: previewCases.length - i,
+                    transform: `rotate(${i % 2 === 0 ? -0.5 : 0.5}deg)`,
+                  }}
                 >
                   {/* book spine / left cover */}
                   <div
@@ -88,10 +89,7 @@ export function UxShelf() {
             </div>
 
             {/* mobile controls */}
-            <div className="mt-2 flex items-center justify-between pr-6 md:hidden">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
-                // drag · scroll
-              </span>
+            <div className="mt-2 flex items-center justify-end pr-6 md:hidden">
               <ShelfControls onPrev={() => scrollBy(-300)} onNext={() => scrollBy(300)} />
             </div>
           </div>
