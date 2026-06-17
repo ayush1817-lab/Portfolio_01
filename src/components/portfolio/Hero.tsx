@@ -1,5 +1,5 @@
 import { ArrowDown, Mail } from "lucide-react";
-import portrait from "@/assets/hero-portrait.png";
+import photoAsset from "@/assets/ayush-photo.jpeg.asset.json";
 import { profile } from "@/content/portfolio";
 
 function scrollTo(id: string) {
@@ -134,13 +134,15 @@ export function Hero() {
                 strokeWidth="1"
               />
             </svg>
-            <img
-              src={portrait}
-              alt="Stylized 3D portrait of Ayush Ramawat"
-              width={896}
-              height={1024}
-              className="relative z-10 mx-auto h-full w-full object-contain drop-shadow-[0_30px_40px_rgba(13,13,13,0.18)]"
-            />
+            <div className="relative z-10 mx-auto flex h-full w-full items-center justify-center p-8 md:p-10">
+              <div className="relative aspect-square h-full max-h-[300px] overflow-hidden rounded-full border-[6px] border-[color:var(--color-paper)] shadow-[0_24px_60px_rgba(13,13,13,0.22)] md:max-h-[360px]">
+                <img
+                  src={photoAsset.url}
+                  alt="Ayush Ramawat"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
             {/* floating tags */}
             <span className="absolute left-0 top-12 z-20 rounded-full border border-[color:var(--color-ink)]/15 bg-[color:var(--color-paper)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/80 shadow-sm">
               // designer
