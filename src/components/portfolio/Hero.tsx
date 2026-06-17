@@ -79,20 +79,6 @@ export function Hero() {
             </a>
           </div>
 
-          <dl className="grid max-w-md grid-cols-3 gap-4 pt-6 font-mono text-xs uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)]">
-            <div>
-              <dt className="text-[color:var(--color-ink)]/45">// role</dt>
-              <dd className="mt-1 text-[color:var(--color-ink)]">Product Designer</dd>
-            </div>
-            <div>
-              <dt className="text-[color:var(--color-ink)]/45">// focus</dt>
-              <dd className="mt-1 text-[color:var(--color-ink)]">Agentic AI</dd>
-            </div>
-            <div>
-              <dt className="text-[color:var(--color-ink)]/45">// based</dt>
-              <dd className="mt-1 text-[color:var(--color-ink)]">Remote · IN</dd>
-            </div>
-          </dl>
         </div>
 
         {/* portrait */}
