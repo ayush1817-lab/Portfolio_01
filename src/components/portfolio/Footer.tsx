@@ -12,6 +12,8 @@ export function Footer() {
           <a href={`mailto:${profile.email}`} className="hover:text-[color:var(--color-ink)]">email</a>
           <a href={profile.linkedin} target="_blank" rel="noreferrer noopener" className="hover:text-[color:var(--color-ink)]">linkedin</a>
           <a href={profile.medium} target="_blank" rel="noreferrer noopener" className="hover:text-[color:var(--color-ink)]">medium</a>
+          <a href={profile.github} target="_blank" rel="noreferrer noopener" className="hover:text-[color:var(--color-ink)]">github</a>
+          <a href={profile.x} target="_blank" rel="noreferrer noopener" className="hover:text-[color:var(--color-ink)]">x</a>
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

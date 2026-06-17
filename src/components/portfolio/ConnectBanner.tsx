@@ -1,4 +1,4 @@
-import { Linkedin, Mail, BookOpen } from "lucide-react";
+import { Linkedin, Mail, BookOpen, Github, X } from "lucide-react";
 import { profile } from "@/content/portfolio";
 
 export function ConnectBanner() {
@@ -58,6 +58,24 @@ export function ConnectBanner() {
             >
               <BookOpen className="h-4 w-4" />
               Medium
+            </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-paper)]/30 px-5 py-3 text-sm font-medium text-[color:var(--color-paper)] transition hover:border-[color:var(--color-paper)]"
+            >
+              <Github className="h-4 w-4" />
+              GitHub
+            </a>
+            <a
+              href={profile.x}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-paper)]/30 px-5 py-3 text-sm font-medium text-[color:var(--color-paper)] transition hover:border-[color:var(--color-paper)]"
+            >
+              <X className="h-4 w-4" />
+              X
             </a>
           </div>
         </div>

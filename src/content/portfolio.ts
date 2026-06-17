@@ -7,6 +7,8 @@ export const profile = {
   email: "ayushramawat29@gmail.com",
   linkedin: "https://www.linkedin.com/in/ayush-ramawat-71880927b/",
   medium: "https://medium.com/@ayushramawat29",
+  github: "#", // replace with your GitHub URL
+  x: "#", // replace with your X/Twitter URL
 };
 
 export const experience = [
