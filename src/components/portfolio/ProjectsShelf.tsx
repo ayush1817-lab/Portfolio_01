@@ -16,9 +16,9 @@ type Props = {
 export function ProjectsShelf({ id, index, title, caption, items, badge }: Props) {
   const { ref, scrollBy } = useDragScroll<HTMLDivElement>();
   return (
-    <section id={id} aria-label={title} className="border-b border-[color:var(--color-ink)]/10 py-20">
-      <div className="mx-auto max-w-7xl pl-6 sm:pl-10">
-        <div className="flex flex-col gap-10 md:flex-row md:items-stretch md:gap-12">
+    <section id={id} aria-label={title} className="border-b border-[color:var(--color-ink)]/10 py-14 sm:py-20">
+      <div className="mx-auto max-w-7xl pl-4 sm:pl-10">
+        <div className="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-12">
           {/* Title column — sits beside the shelf so cards take the rest of the width */}
           <div className="flex flex-col justify-between gap-8 md:w-72 md:shrink-0 md:py-2">
             <SectionTitle index={index} title={title} caption={caption} />
@@ -39,9 +39,9 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
                   href={p.link}
                   target={p.link.startsWith("http") ? "_blank" : undefined}
                   rel="noreferrer noopener"
-                  className="group relative flex h-[240px] w-[78vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-[24px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:w-[280px] md:w-[300px]"
+                  className="group relative flex h-[220px] w-[80vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-[24px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:h-[240px] sm:w-[280px] md:w-[300px]"
                   style={{
-                    marginLeft: i === 0 ? 0 : "-80px",
+                    marginLeft: i === 0 ? 0 : "clamp(-80px, -14vw, -40px)",
                     zIndex: items.length - i,
                     transform: `rotate(${i % 2 === 0 ? -0.3 : 0.3}deg)`,
                   }}

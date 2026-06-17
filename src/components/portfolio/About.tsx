@@ -7,17 +7,17 @@ export function About() {
       aria-label="About"
       className="border-b border-[color:var(--color-ink)]/10"
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-24 sm:px-10 md:grid-cols-[1fr_1.4fr]">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 sm:gap-12 sm:px-10 sm:py-24 md:grid-cols-[1fr_1.4fr]">
         <div className="flex flex-col gap-3">
           <div className="font-mono text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
             // about
           </div>
-          <h2 className="font-display text-5xl leading-[0.95] tracking-tight text-[color:var(--color-ink)] sm:text-6xl">
+          <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-[color:var(--color-ink)] sm:text-5xl md:text-6xl">
             A designer<br />running on agents.
           </h2>
         </div>
         <div className="flex flex-col gap-12">
-          <p className="max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink)]/80">
+          <p className="max-w-2xl text-base leading-relaxed text-[color:var(--color-ink)]/80 sm:text-lg">
             I'm {profile.name.split(" ")[0]}. I design products that think, plan, and act —
             agentic SaaS, internal automations, and the small tools I needed for my own work.
             I care about craft, observability, and giving humans the right amount of control.

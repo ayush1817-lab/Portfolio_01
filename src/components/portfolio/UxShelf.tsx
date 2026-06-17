@@ -9,9 +9,9 @@ const previewCases = cases.slice(0, 3);
 export function UxShelf() {
   const { ref, scrollBy } = useDragScroll<HTMLDivElement>();
   return (
-    <section id="ux" aria-label="UX case studies" className="border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-20">
-      <div className="mx-auto max-w-7xl pl-6 sm:pl-10">
-        <div className="flex flex-col gap-10 md:flex-row md:items-stretch md:gap-12">
+    <section id="ux" aria-label="UX case studies" className="border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-14 sm:py-20">
+      <div className="mx-auto max-w-7xl pl-4 sm:pl-10">
+        <div className="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-12">
           {/* Title column */}
           <div className="flex flex-col justify-between gap-8 md:w-72 md:shrink-0 md:py-2">
             <SectionTitle
@@ -34,9 +34,9 @@ export function UxShelf() {
                 <a
                   key={c.id}
                   href={c.link}
-                  className="group relative flex h-[180px] w-[78vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[20px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:h-[200px] sm:w-[300px]"
+                  className="group relative flex h-[180px] w-[80vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[20px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:h-[200px] sm:w-[300px]"
                   style={{
-                    marginLeft: i === 0 ? 0 : "-90px",
+                    marginLeft: i === 0 ? 0 : "clamp(-90px, -16vw, -50px)",
                     zIndex: previewCases.length - i,
                     transform: `rotate(${i % 2 === 0 ? -0.5 : 0.5}deg)`,
                   }}
