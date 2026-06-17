@@ -157,3 +157,18 @@
     color: var(--color-foreground);
   }
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility shelf-track {
+  cursor: grab;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; }
+  &.is-dragging { cursor: grabbing; }
+  &.is-dragging * { cursor: grabbing !important; user-select: none; }
+}
