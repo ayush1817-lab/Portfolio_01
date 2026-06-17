@@ -34,19 +34,13 @@ export const experience = [
 
 export const stack = [
   "Figma",
-  "Framer",
   "n8n",
-  "LangGraph",
   "OpenAI",
   "Claude",
   "Cursor",
   "Supabase",
   "Vercel",
   "Notion",
-  "Linear",
-  "Webflow",
-  "After Effects",
-  "Spline",
 ];
 
 export type Project = {

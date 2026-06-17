@@ -28,7 +28,6 @@ function Index() {
       <TopNav />
       <Hero />
       <About />
-      <TechStrip />
       <ProjectsShelf
         id="projects"
         index="WORK / 01"
@@ -38,6 +37,7 @@ function Index() {
       />
       <UxShelf />
       <BlogShelf />
+      <TechStrip />
       <ConnectBanner />
       <Footer />
     </main>
