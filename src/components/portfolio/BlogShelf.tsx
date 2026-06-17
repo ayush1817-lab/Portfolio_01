@@ -34,6 +34,7 @@ export function BlogShelf() {
                     href={b.link}
                     target="_blank"
                     rel="noreferrer noopener"
+                    draggable={false}
                     className="group relative flex h-[220px] w-[80vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-[24px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:h-[240px] sm:w-[280px] md:w-[300px]"
                     style={{
                       marginLeft: i === 0 ? 0 : "clamp(-80px, -14vw, -40px)",

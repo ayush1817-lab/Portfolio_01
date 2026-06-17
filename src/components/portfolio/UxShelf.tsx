@@ -30,6 +30,7 @@ export function UxShelf() {
                 <a
                   key={c.id}
                   href={c.link}
+                  draggable={false}
                   className="group relative flex h-[180px] w-[80vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[20px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:h-[200px] sm:w-[300px]"
                   style={{
                     marginLeft: i === 0 ? 0 : "clamp(-90px, -16vw, -50px)",
