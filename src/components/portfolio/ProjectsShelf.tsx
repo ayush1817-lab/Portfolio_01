@@ -15,19 +15,17 @@ type Props = {
 export function ProjectsShelf({ id, index, title, caption, items, badge }: Props) {
   const { ref } = useDragScroll<HTMLDivElement>();
   return (
-    <section id={id} aria-label={title} className="border-b border-[color:var(--color-ink)]/10 py-14 sm:py-20">
+    <section id={id} aria-label={title} className="border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper)] py-16 sm:py-24">
       <div className="mx-auto max-w-7xl pl-4 sm:pl-10">
-        <div className="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-12">
-          {/* Title column — sits beside the shelf so cards take the rest of the width */}
-          <div className="flex flex-col gap-8 md:w-72 md:shrink-0 md:py-2">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-14">
+          <div className="md:sticky md:top-24 md:w-80 md:shrink-0">
             <SectionTitle index={index} title={title} caption={caption} />
           </div>
 
-          {/* Horizontal shelf — landscape rectangle cards */}
-          <div className="relative min-w-0 flex-1 pr-6 sm:pr-10 md:pr-0">
+          <div className="relative min-w-0 flex-1 pr-4 sm:pr-10 md:pr-0">
             <div
               ref={ref}
-              className="shelf-track flex snap-x snap-mandatory overflow-x-auto pb-6 pr-6 pt-2 sm:pr-10 [perspective:1600px]"
+              className="shelf-track flex gap-4 overflow-x-auto pb-6 pr-6 pt-2 sm:gap-6 sm:pr-10"
             >
               {items.map((p, i) => (
                 <a
@@ -36,70 +34,72 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
                   target={p.link.startsWith("http") ? "_blank" : undefined}
                   rel="noreferrer noopener"
                   draggable={false}
-                  className="group relative flex h-[220px] w-[80vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-[24px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:h-[240px] sm:w-[280px] md:w-[300px]"
-                  style={{
-                    marginLeft: i === 0 ? 0 : "clamp(-80px, -14vw, -40px)",
-                    zIndex: items.length - i,
-                    transform: `rotate(${i % 2 === 0 ? -0.3 : 0.3}deg)`,
-                  }}
+                  className="group relative flex h-[420px] w-[78vw] max-w-[340px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:w-[320px]"
                 >
-                  {/* left — abstract artwork panel */}
-                  <div
-                    className="relative h-full w-[38%] shrink-0 overflow-hidden"
-                    style={{
-                      background: `linear-gradient(135deg, ${p.accent}22 0%, ${p.accent}66 100%)`,
-                    }}
-                  >
+                  <header className="flex items-center justify-between border-b border-[color:var(--color-ink)] px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
+                    <span>№ {String(i + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>
+                    <span>{p.year}</span>
+                  </header>
+
+                  {/* Editorial plate — large numeral + accent rule */}
+                  <div className="relative flex h-[140px] items-end overflow-hidden border-b border-[color:var(--color-ink)] bg-[color:var(--color-paper-2)] px-4">
                     <div
                       aria-hidden
-                      className="absolute inset-0 opacity-60"
+                      className="pointer-events-none absolute inset-0 opacity-[0.18]"
                       style={{
                         backgroundImage:
-                          "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.55), transparent 40%), radial-gradient(circle at 80% 70%, rgba(13,13,13,0.18), transparent 50%)",
+                          "repeating-linear-gradient(0deg, var(--color-ink) 0 1px, transparent 1px 6px)",
                       }}
                     />
-                    <svg aria-hidden viewBox="0 0 240 280" className="absolute inset-0 h-full w-full">
-                      <g stroke={p.accent} strokeWidth="1" opacity="0.55" fill="none">
-                        <circle cx="50" cy="70" r="4" fill={p.accent} />
-                        <circle cx="160" cy="120" r="4" fill={p.accent} />
-                        <circle cx="90" cy="200" r="4" fill={p.accent} />
-                        <circle cx="200" cy="220" r="4" fill={p.accent} />
-                        <path d="M50 70 L160 120 L90 200 L200 220" strokeDasharray="3 5" />
-                      </g>
-                    </svg>
+                    <span
+                      aria-hidden
+                      className="font-display font-bold uppercase leading-none tracking-tighter text-transparent"
+                      style={{
+                        fontSize: "9rem",
+                        WebkitTextStroke: "1.5px var(--color-ink)",
+                        marginBottom: "-1.5rem",
+                      }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      aria-hidden
+                      className="absolute right-4 top-4 h-3 w-3 rounded-full"
+                      style={{ background: p.accent }}
+                    />
                     {badge ? (
-                      <span className="absolute left-4 top-4 rounded-full border border-[color:var(--color-ink)]/15 bg-[color:var(--color-paper)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/80">
+                      <span className="absolute left-4 top-4 border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
                         {badge}
                       </span>
                     ) : null}
-                    <span className="absolute bottom-4 left-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/55">
-                      // {p.id}
-                    </span>
                   </div>
 
-                  {/* right — content */}
-                  <div className="flex flex-1 flex-col gap-2 p-4">
-                    <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
-                      <span>{p.year}</span>
-                      <ArrowUpRight className="h-4 w-4 text-[color:var(--color-ink)]/60 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[color:var(--color-ink)]" />
-                    </div>
-                    <h3 className="font-display text-lg leading-[1.1] text-[color:var(--color-ink)]">
+                  <div className="flex flex-1 flex-col gap-3 p-5">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/55">
+                      // {p.id}
+                    </span>
+                    <h3 className="font-display text-2xl font-bold uppercase leading-[0.95] tracking-tight text-[color:var(--color-ink)]">
                       {p.title}
                     </h3>
-                    <p className="line-clamp-3 text-xs leading-relaxed text-[color:var(--color-ink)]/70">
+                    <p className="text-sm leading-snug text-[color:var(--color-ink)]/75">
                       {p.blurb}
                     </p>
-                    <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
+                    <div className="mt-auto flex flex-wrap gap-1.5 border-t border-[color:var(--color-ink)]/15 pt-3">
                       {p.tags.map((t) => (
                         <span
                           key={t}
-                          className="rounded-full border border-[color:var(--color-ink)]/15 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.18em] text-[color:var(--color-ink)]/70"
+                          className="border border-[color:var(--color-ink)]/40 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.18em] text-[color:var(--color-ink)]/80"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
                   </div>
+
+                  <footer className="flex items-center justify-between border-t border-[color:var(--color-ink)] bg-[color:var(--color-ink)] px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-paper)]">
+                    <span>Open dossier</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </footer>
                 </a>
               ))}
               <div className="w-2 shrink-0" />
