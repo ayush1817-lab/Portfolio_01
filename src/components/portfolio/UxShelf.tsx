@@ -1,27 +1,23 @@
 import { ArrowUpRight } from "lucide-react";
 import { useDragScroll } from "./use-drag-scroll";
 import { SectionTitle } from "./SectionTitle";
-import { ShelfControls } from "./ShelfControls";
 import { cases } from "@/content/portfolio";
 
 const previewCases = cases.slice(0, 3);
 
 export function UxShelf() {
-  const { ref, scrollBy } = useDragScroll<HTMLDivElement>();
+  const { ref } = useDragScroll<HTMLDivElement>();
   return (
     <section id="ux" aria-label="UX case studies" className="border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-14 sm:py-20">
       <div className="mx-auto max-w-7xl pl-4 sm:pl-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-12">
           {/* Title column */}
-          <div className="flex flex-col justify-between gap-8 md:w-72 md:shrink-0 md:py-2">
+          <div className="flex flex-col gap-8 md:w-72 md:shrink-0 md:py-2">
             <SectionTitle
               index="UX / 03"
               title="Case studies."
-              caption="Pulled from the shelf. Three compact reads — drag or click to browse."
+              caption="Pulled from the shelf. Three compact reads — swipe to browse."
             />
-            <div className="hidden md:block">
-              <ShelfControls onPrev={() => scrollBy(-330)} onNext={() => scrollBy(330)} />
-            </div>
           </div>
 
           {/* Horizontal shelf — compact book cards */}
@@ -86,11 +82,6 @@ export function UxShelf() {
                 </a>
               ))}
               <div className="w-2 shrink-0" />
-            </div>
-
-            {/* mobile controls */}
-            <div className="mt-2 flex items-center justify-end pr-6 md:hidden">
-              <ShelfControls onPrev={() => scrollBy(-300)} onNext={() => scrollBy(300)} />
             </div>
           </div>
         </div>

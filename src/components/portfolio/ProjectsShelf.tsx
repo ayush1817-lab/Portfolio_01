@@ -1,7 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { useDragScroll } from "./use-drag-scroll";
 import { SectionTitle } from "./SectionTitle";
-import { ShelfControls } from "./ShelfControls";
 import type { Project } from "@/content/portfolio";
 
 type Props = {
@@ -14,17 +13,14 @@ type Props = {
 };
 
 export function ProjectsShelf({ id, index, title, caption, items, badge }: Props) {
-  const { ref, scrollBy } = useDragScroll<HTMLDivElement>();
+  const { ref } = useDragScroll<HTMLDivElement>();
   return (
     <section id={id} aria-label={title} className="border-b border-[color:var(--color-ink)]/10 py-14 sm:py-20">
       <div className="mx-auto max-w-7xl pl-4 sm:pl-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-12">
           {/* Title column — sits beside the shelf so cards take the rest of the width */}
-          <div className="flex flex-col justify-between gap-8 md:w-72 md:shrink-0 md:py-2">
+          <div className="flex flex-col gap-8 md:w-72 md:shrink-0 md:py-2">
             <SectionTitle index={index} title={title} caption={caption} />
-            <div className="hidden md:block">
-              <ShelfControls onPrev={() => scrollBy(-560)} onNext={() => scrollBy(560)} />
-            </div>
           </div>
 
           {/* Horizontal shelf — landscape rectangle cards */}
@@ -106,11 +102,6 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
                 </a>
               ))}
               <div className="w-2 shrink-0" />
-            </div>
-
-            {/* mobile controls */}
-            <div className="mt-2 flex items-center justify-end pr-6 md:hidden">
-              <ShelfControls onPrev={() => scrollBy(-360)} onNext={() => scrollBy(360)} />
             </div>
           </div>
         </div>

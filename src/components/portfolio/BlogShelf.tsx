@@ -1,21 +1,19 @@
 import { ArrowUpRight } from "lucide-react";
 import { useDragScroll } from "./use-drag-scroll";
 import { SectionTitle } from "./SectionTitle";
-import { ShelfControls } from "./ShelfControls";
 import { blogs } from "@/content/portfolio";
 
 export function BlogShelf() {
-  const { ref, scrollBy } = useDragScroll<HTMLDivElement>();
+  const { ref } = useDragScroll<HTMLDivElement>();
   return (
     <section id="blog" aria-label="Writing" className="border-b border-[color:var(--color-ink)]/10 py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-10">
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-8">
           <SectionTitle
             index="WRITING / 04"
             title="Field notes."
             caption="Half thinking out loud, half documentation. Published on Medium."
           />
-          <ShelfControls onPrev={() => scrollBy(-360)} onNext={() => scrollBy(360)} />
         </div>
       </div>
 
