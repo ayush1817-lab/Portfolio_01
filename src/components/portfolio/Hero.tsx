@@ -89,10 +89,10 @@ export function Hero() {
 
             {/* Right: portrait */}
             <div className="group relative col-span-12 h-[360px] overflow-hidden bg-[color:var(--color-paper-3)] lg:col-span-5 lg:h-auto">
-              <img
+            <img
                 src={photoAsset.url}
                 alt="Ayush Ramawat"
-                className="h-full w-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full scale-[1.18] object-cover object-center grayscale transition-transform duration-700 group-hover:scale-[1.26]"
               />
               <div className="absolute inset-x-6 bottom-6">
                 <div className="mb-2 inline-block bg-[color:var(--color-ink)] px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-paper)]">
