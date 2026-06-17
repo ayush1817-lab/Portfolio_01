@@ -1,86 +1,101 @@
+import { ArrowUpRight } from "lucide-react";
 import { useDragScroll } from "./use-drag-scroll";
 import { SectionTitle } from "./SectionTitle";
 import { ShelfControls } from "./ShelfControls";
 import { cases } from "@/content/portfolio";
 
+const previewCases = cases.slice(0, 3);
+
 export function UxShelf() {
   const { ref, scrollBy } = useDragScroll<HTMLDivElement>();
   return (
     <section id="ux" aria-label="UX case studies" className="border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-20">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10">
-        <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
-          <SectionTitle
-            index="UX / 03"
-            title="Case studies."
-            caption="Pulled from the shelf. Drag through, hover a spine to open the cover."
-          />
-          <ShelfControls onPrev={() => scrollBy(-260)} onNext={() => scrollBy(260)} />
-        </div>
-      </div>
+      <div className="mx-auto max-w-7xl pl-6 sm:pl-10">
+        <div className="flex flex-col gap-10 md:flex-row md:items-stretch md:gap-12">
+          {/* Title column */}
+          <div className="flex flex-col justify-between gap-8 md:w-72 md:shrink-0 md:py-2">
+            <SectionTitle
+              index="UX / 03"
+              title="Case studies."
+              caption="Pulled from the shelf. Three compact reads — drag or click to browse."
+            />
+            <div className="hidden md:block">
+              <ShelfControls onPrev={() => scrollBy(-330)} onNext={() => scrollBy(330)} />
+              <div className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
+                // drag · scroll · {previewCases.length} reads
+              </div>
+            </div>
+          </div>
 
-      {/* shelf board */}
-      <div className="relative mt-10">
-        <div
-          ref={ref}
-          className="shelf-track flex snap-x snap-mandatory items-end gap-4 overflow-x-auto px-6 pb-10 sm:px-10 [perspective:1800px]"
-        >
-          {cases.map((c, i) => (
-            <a
-              key={c.id}
-              href={c.link}
-              className="group relative h-[420px] w-[160px] shrink-0 snap-start [transform-style:preserve-3d]"
-              style={{ transform: `translateZ(0) rotate(${(i % 3) - 1}deg)` }}
+          {/* Horizontal shelf — compact book cards */}
+          <div className="relative min-w-0 flex-1 pr-6 sm:pr-10 md:pr-0">
+            <div
+              ref={ref}
+              className="shelf-track flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6 pr-6 sm:gap-6 sm:pr-10 [perspective:1600px]"
             >
-              {/* book back / pages */}
-              <div
-                aria-hidden
-                className="absolute inset-0 rounded-[10px] rounded-r-[14px] border border-[color:var(--color-ink)]/15 bg-[color:var(--color-paper)] shadow-[var(--shadow-card)]"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(90deg, rgba(13,13,13,0.06) 0 1px, transparent 1px 4px)",
-                }}
-              />
-              {/* cover */}
-              <div
-                className="absolute inset-0 origin-left rounded-[10px] rounded-r-[14px] transition-transform duration-700 ease-out [transform-style:preserve-3d] group-hover:[transform:rotateY(-32deg)]"
-                style={{
-                  background: `linear-gradient(180deg, ${c.spineColor} 0%, ${c.spineColor}cc 100%)`,
-                  boxShadow:
-                    "inset 12px 0 0 rgba(13,13,13,0.18), inset 14px 0 0 rgba(255,255,255,0.08), 0 12px 24px -10px rgba(13,13,13,0.35)",
-                }}
-              >
-                <div className="flex h-full flex-col justify-between p-4 pl-7 text-[color:var(--color-paper)]">
-                  <div className="font-mono text-[9px] uppercase tracking-[0.22em] opacity-80">
-                    // case · {c.year}
-                  </div>
-                  <div>
-                    <div className="font-display text-[22px] leading-[1.05] tracking-tight">
-                      {c.title}
-                    </div>
-                    <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] opacity-80">
+              {previewCases.map((c, i) => (
+                <a
+                  key={c.id}
+                  href={c.link}
+                  className="group relative flex h-[180px] w-[78vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-[20px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:-translate-y-1 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:h-[200px] sm:w-[300px]"
+                  style={{ transform: `rotate(${i % 2 === 0 ? -0.5 : 0.5}deg)` }}
+                >
+                  {/* book spine / left cover */}
+                  <div
+                    className="relative h-full w-[52px] shrink-0"
+                    style={{
+                      background: `linear-gradient(180deg, ${c.spineColor} 0%, ${c.spineColor}dd 100%)`,
+                      boxShadow: "inset -4px 0 0 rgba(0,0,0,0.12), inset 6px 0 0 rgba(255,255,255,0.12)",
+                    }}
+                  >
+                    <div className="absolute top-4 left-1/2 -translate-x-1/2 rotate-180 font-mono text-[9px] uppercase tracking-[0.18em] text-white/90 [writing-mode:vertical-rl]">
                       {c.client}
                     </div>
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-[0.18em] text-white/70 [writing-mode:vertical-rl]">
+                      {c.year}
+                    </div>
                   </div>
-                </div>
-              </div>
-              {/* revealed inside summary */}
-              <div className="absolute inset-0 -z-10 translate-x-3 rounded-[10px] border border-[color:var(--color-ink)]/15 bg-[color:var(--color-paper)] p-4 shadow-[var(--shadow-card)] opacity-0 transition group-hover:translate-x-6 group-hover:opacity-100">
-                <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
-                  // summary
-                </div>
-                <p className="mt-3 text-[13px] leading-relaxed text-[color:var(--color-ink)]/80">
-                  {c.summary}
-                </p>
-                <div className="absolute bottom-3 right-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-blueprint)]">
-                  read →
-                </div>
-              </div>
-            </a>
-          ))}
-          <div className="w-4 shrink-0" />
+
+                  {/* pages edge */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute right-0 top-0 h-full w-3"
+                    style={{
+                      background:
+                        "repeating-linear-gradient(0deg, rgba(13,13,13,0.06) 0 1px, transparent 1px 3px)",
+                    }}
+                  />
+
+                  {/* right — content */}
+                  <div className="flex flex-1 flex-col gap-2 p-5">
+                    <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
+                      <span>// case · {c.id.replace("ux-", "0")}</span>
+                      <ArrowUpRight className="h-4 w-4 text-[color:var(--color-ink)]/60 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[color:var(--color-ink)]" />
+                    </div>
+                    <h3 className="font-display text-xl leading-[1.1] text-[color:var(--color-ink)] sm:text-2xl">
+                      {c.title}
+                    </h3>
+                    <p className="line-clamp-3 text-xs leading-relaxed text-[color:var(--color-ink)]/70 sm:line-clamp-4 sm:text-sm">
+                      {c.summary}
+                    </p>
+                    <div className="mt-auto font-mono text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-blueprint)]">
+                      read →
+                    </div>
+                  </div>
+                </a>
+              ))}
+              <div className="w-2 shrink-0" />
+            </div>
+
+            {/* mobile controls */}
+            <div className="mt-2 flex items-center justify-between pr-6 md:hidden">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
+                // drag · scroll
+              </span>
+              <ShelfControls onPrev={() => scrollBy(-300)} onNext={() => scrollBy(300)} />
+            </div>
+          </div>
         </div>
-        {/* shelf board line */}
-        <div className="pointer-events-none mx-6 mt-[-8px] h-3 rounded-full bg-[color:var(--color-ink)]/10 sm:mx-10" />
       </div>
     </section>
   );
