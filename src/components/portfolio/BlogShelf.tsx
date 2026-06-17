@@ -21,7 +21,7 @@ export function BlogShelf() {
 
       <div
         ref={ref}
-        className="shelf-track mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-6 sm:px-10"
+        className="shelf-track mt-10 flex snap-x snap-mandatory overflow-x-auto px-6 pb-6 pt-2 sm:px-10"
       >
         {blogs.map((b, i) => (
           <a
@@ -29,8 +29,12 @@ export function BlogShelf() {
             href={b.link}
             target="_blank"
             rel="noreferrer noopener"
-            className="group relative flex w-[82vw] max-w-[360px] shrink-0 snap-start flex-col gap-4 rounded-[28px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] p-6 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] sm:w-[360px] md:w-[380px]"
-            style={{ transform: `rotate(${i % 2 === 0 ? -0.3 : 0.3}deg)` }}
+            className="group relative flex w-[82vw] max-w-[360px] shrink-0 snap-start flex-col gap-4 rounded-[28px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] p-6 shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:shadow-[var(--shadow-card-hover)] sm:w-[360px] md:w-[380px]"
+            style={{
+              marginLeft: i === 0 ? 0 : "-110px",
+              zIndex: blogs.length - i,
+              transform: `rotate(${i % 2 === 0 ? -0.3 : 0.3}deg)`,
+            }}
           >
             <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
               <span>{b.date}</span>

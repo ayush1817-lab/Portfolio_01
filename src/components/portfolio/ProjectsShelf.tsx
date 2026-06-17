@@ -24,9 +24,6 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
             <SectionTitle index={index} title={title} caption={caption} />
             <div className="hidden md:block">
               <ShelfControls onPrev={() => scrollBy(-560)} onNext={() => scrollBy(560)} />
-              <div className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
-                // drag · scroll · {items.length} cards
-              </div>
             </div>
           </div>
 
@@ -34,7 +31,7 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
           <div className="relative min-w-0 flex-1 pr-6 sm:pr-10 md:pr-0">
             <div
               ref={ref}
-              className="shelf-track flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 pr-6 sm:pr-10 [perspective:1600px]"
+              className="shelf-track flex snap-x snap-mandatory overflow-x-auto pb-6 pr-6 pt-2 sm:pr-10 [perspective:1600px]"
             >
               {items.map((p, i) => (
                 <a
@@ -42,8 +39,12 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
                   href={p.link}
                   target={p.link.startsWith("http") ? "_blank" : undefined}
                   rel="noreferrer noopener"
-                  className="group relative flex h-[280px] w-[88vw] max-w-[560px] shrink-0 snap-start overflow-hidden rounded-[28px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:-translate-y-1 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:w-[520px] md:w-[560px]"
-                  style={{ transform: `rotate(${i % 2 === 0 ? -0.3 : 0.3}deg)` }}
+                  className="group relative flex h-[280px] w-[88vw] max-w-[560px] shrink-0 snap-start overflow-hidden rounded-[28px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:w-[520px] md:w-[560px]"
+                  style={{
+                    marginLeft: i === 0 ? 0 : "-140px",
+                    zIndex: items.length - i,
+                    transform: `rotate(${i % 2 === 0 ? -0.3 : 0.3}deg)`,
+                  }}
                 >
                   {/* left — abstract artwork panel */}
                   <div
@@ -108,10 +109,7 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
             </div>
 
             {/* mobile controls */}
-            <div className="mt-2 flex items-center justify-between pr-6 md:hidden">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
-                // drag · scroll
-              </span>
+            <div className="mt-2 flex items-center justify-end pr-6 md:hidden">
               <ShelfControls onPrev={() => scrollBy(-360)} onNext={() => scrollBy(360)} />
             </div>
           </div>
