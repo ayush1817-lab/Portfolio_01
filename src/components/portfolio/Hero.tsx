@@ -9,8 +9,6 @@ function scrollTo(id: string) {
   };
 }
 
-const ink = "color:var(--color-ink)";
-
 export function Hero() {
   const [first, ...rest] = profile.name.split(" ");
   const last = rest.join(" ");
