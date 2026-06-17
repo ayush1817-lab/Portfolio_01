@@ -34,13 +34,6 @@ export function Hero() {
           <a href="#blog" onClick={scrollTo("blog")} className="hover:text-[color:var(--color-ink)]">Blog</a>
           <a href="#connect" onClick={scrollTo("connect")} className="hover:text-[color:var(--color-ink)]">Connect</a>
         </div>
-        <span className="hidden items-center gap-2 md:flex">
-          <span className="relative grid h-2 w-2 place-items-center">
-            <span className="absolute inset-0 animate-ping rounded-full bg-[color:var(--color-blueprint)]/60" />
-            <span className="relative h-2 w-2 rounded-full bg-[color:var(--color-blueprint)]" />
-          </span>
-          available · 2026
-        </span>
       </nav>
 
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-16 pb-24 sm:px-10 md:grid-cols-[1.2fr_1fr] md:gap-8 md:pt-24 md:pb-32">
