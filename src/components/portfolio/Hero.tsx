@@ -27,8 +27,7 @@ export function Hero() {
         }}
       />
       {/* top nav */}
-      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 pt-6 font-mono text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink)]/70 sm:px-10">
-        <span>// ayush.r</span>
+      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-end px-6 pt-6 font-mono text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink)]/70 sm:px-10">
         <div className="hidden gap-6 sm:flex">
           <a href="#projects" onClick={scrollTo("projects")} className="hover:text-[color:var(--color-ink)]">Projects</a>
           <a href="#ux" onClick={scrollTo("ux")} className="hover:text-[color:var(--color-ink)]">UX</a>
