@@ -3,11 +3,17 @@ import { profile } from "@/content/portfolio";
 
 export function ConnectBanner() {
   return (
-    <section id="connect" aria-label="Connect" className="px-4 py-14 sm:px-10 sm:py-20">
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[28px] border border-[color:var(--color-ink)]/15 bg-[color:var(--color-ink)] p-6 text-[color:var(--color-paper)] shadow-[var(--shadow-card)] sm:rounded-[36px] sm:p-10 md:p-16">
+    <section id="connect" aria-label="Connect" className="px-4 py-16 sm:px-10 sm:py-24">
+      <div className="relative mx-auto max-w-7xl overflow-hidden border border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
+        <div className="flex items-center justify-between border-b border-[color:var(--color-paper)]/20 px-6 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[color:var(--color-paper)] sm:px-10">
+          <span>Connect · 05</span>
+          <span className="hidden sm:inline text-[color:var(--color-paper)]/60">End of issue</span>
+          <span>Reply ↩</span>
+        </div>
+        <div className="relative p-6 sm:p-10 md:p-16">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.25]"
+          className="pointer-events-none absolute inset-0 opacity-[0.18]"
           style={{
             backgroundImage:
               "linear-gradient(to right, rgba(245,243,238,0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,243,238,0.15) 1px, transparent 1px)",
@@ -23,9 +29,9 @@ export function ConnectBanner() {
               </span>
               // {profile.status}
             </div>
-            <h2 className="font-display text-4xl leading-[0.95] tracking-tight sm:text-5xl md:text-7xl">
+            <h2 className="font-display text-4xl font-bold uppercase leading-[0.9] tracking-tight sm:text-5xl md:text-7xl">
               Let's build<br />
-              <span className="italic text-[color:var(--color-blueprint-soft)]">something agentic.</span>
+              <span className="italic text-transparent" style={{ WebkitTextStroke: "1.5px var(--color-paper)" }}>something agentic.</span>
             </h2>
             <p className="max-w-lg text-sm leading-relaxed text-[color:var(--color-paper)]/70 sm:text-base">
               Whether it's a 0→1 product, an internal automation, or just a sharp opinion on
@@ -36,7 +42,7 @@ export function ConnectBanner() {
           <div className="flex flex-wrap gap-2 sm:gap-3">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex max-w-full items-center gap-2 rounded-full bg-[color:var(--color-paper)] px-4 py-2.5 text-xs font-medium text-[color:var(--color-ink)] transition hover:-translate-y-0.5 sm:px-5 sm:py-3 sm:text-sm"
+              className="inline-flex max-w-full items-center gap-2 bg-[color:var(--color-paper)] px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-ink)] transition hover:-translate-y-0.5 sm:px-5 sm:py-3"
             >
               <Mail className="h-4 w-4 shrink-0" />
               <span className="truncate">{profile.email}</span>
@@ -45,7 +51,7 @@ export function ConnectBanner() {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-paper)]/30 px-4 py-2.5 text-xs font-medium text-[color:var(--color-paper)] transition hover:border-[color:var(--color-paper)] sm:px-5 sm:py-3 sm:text-sm"
+              className="inline-flex items-center gap-2 border border-[color:var(--color-paper)]/40 px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-paper)] transition hover:bg-[color:var(--color-paper)] hover:text-[color:var(--color-ink)] sm:px-5 sm:py-3"
             >
               <Linkedin className="h-4 w-4" />
               LinkedIn
@@ -54,7 +60,7 @@ export function ConnectBanner() {
               href={profile.medium}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-paper)]/30 px-4 py-2.5 text-xs font-medium text-[color:var(--color-paper)] transition hover:border-[color:var(--color-paper)] sm:px-5 sm:py-3 sm:text-sm"
+              className="inline-flex items-center gap-2 border border-[color:var(--color-paper)]/40 px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-paper)] transition hover:bg-[color:var(--color-paper)] hover:text-[color:var(--color-ink)] sm:px-5 sm:py-3"
             >
               <BookOpen className="h-4 w-4" />
               Medium
@@ -63,7 +69,7 @@ export function ConnectBanner() {
               href={profile.github}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-paper)]/30 px-4 py-2.5 text-xs font-medium text-[color:var(--color-paper)] transition hover:border-[color:var(--color-paper)] sm:px-5 sm:py-3 sm:text-sm"
+              className="inline-flex items-center gap-2 border border-[color:var(--color-paper)]/40 px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-paper)] transition hover:bg-[color:var(--color-paper)] hover:text-[color:var(--color-ink)] sm:px-5 sm:py-3"
             >
               <Github className="h-4 w-4" />
               GitHub
@@ -72,12 +78,13 @@ export function ConnectBanner() {
               href={profile.x}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-paper)]/30 px-4 py-2.5 text-xs font-medium text-[color:var(--color-paper)] transition hover:border-[color:var(--color-paper)] sm:px-5 sm:py-3 sm:text-sm"
+              className="inline-flex items-center gap-2 border border-[color:var(--color-paper)]/40 px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-paper)] transition hover:bg-[color:var(--color-paper)] hover:text-[color:var(--color-ink)] sm:px-5 sm:py-3"
             >
               <X className="h-4 w-4" />
               X
             </a>
           </div>
+        </div>
         </div>
       </div>
     </section>
