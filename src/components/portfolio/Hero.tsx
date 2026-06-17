@@ -19,17 +19,7 @@ export function Hero() {
       aria-label="Introduction"
       className="relative overflow-hidden bg-[color:var(--color-paper)]"
     >
-      {/* top nav */}
-      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-end px-6 pt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-ink)]/70 sm:px-10 sm:text-xs sm:tracking-[0.2em]">
-        <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-1 sm:gap-6">
-          <a href="#projects" onClick={scrollTo("projects")} className="hover:text-[color:var(--color-ink)]">Projects</a>
-          <a href="#ux" onClick={scrollTo("ux")} className="hover:text-[color:var(--color-ink)]">UX</a>
-          <a href="#blog" onClick={scrollTo("blog")} className="hover:text-[color:var(--color-ink)]">Blog</a>
-          <a href="#connect" onClick={scrollTo("connect")} className="hover:text-[color:var(--color-ink)]">Connect</a>
-        </div>
-      </nav>
-
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pt-6 pb-12 sm:px-10 sm:pt-10 sm:pb-20">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pt-24 pb-12 sm:px-10 sm:pt-28 sm:pb-20">
         <div className="relative overflow-hidden border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
 
           {/* Masthead meta */}
