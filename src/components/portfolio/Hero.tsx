@@ -27,8 +27,8 @@ export function Hero() {
         }}
       />
       {/* top nav */}
-      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-end px-6 pt-6 font-mono text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink)]/70 sm:px-10">
-        <div className="hidden gap-6 sm:flex">
+      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-end px-6 pt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-ink)]/70 sm:px-10 sm:text-xs sm:tracking-[0.2em]">
+        <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-1 sm:gap-6">
           <a href="#projects" onClick={scrollTo("projects")} className="hover:text-[color:var(--color-ink)]">Projects</a>
           <a href="#ux" onClick={scrollTo("ux")} className="hover:text-[color:var(--color-ink)]">UX</a>
           <a href="#blog" onClick={scrollTo("blog")} className="hover:text-[color:var(--color-ink)]">Blog</a>
@@ -36,20 +36,20 @@ export function Hero() {
         </div>
       </nav>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-16 pb-24 sm:px-10 md:grid-cols-[1.2fr_1fr] md:gap-8 md:pt-24 md:pb-32">
-        <div className="flex flex-col gap-8">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 pt-10 pb-16 sm:gap-12 sm:px-10 sm:pt-16 sm:pb-24 md:grid-cols-[1.2fr_1fr] md:gap-8 md:pt-24 md:pb-32">
+        <div className="flex flex-col gap-6 sm:gap-8">
           <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
             <span className="inline-block h-px w-8 bg-[color:var(--color-ink)]/40" />
             // {profile.status}
           </div>
 
-          <h1 className="font-display text-[clamp(3rem,9vw,7rem)] leading-[0.92] tracking-tight text-[color:var(--color-ink)]">
+          <h1 className="font-display text-[clamp(2.75rem,11vw,7rem)] leading-[0.92] tracking-tight text-[color:var(--color-ink)]">
             {profile.name.split(" ")[0]}
             <br />
             <span className="italic text-[color:var(--color-blueprint)]">{profile.name.split(" ").slice(1).join(" ")}</span>
           </h1>
 
-          <p className="max-w-xl text-lg leading-relaxed text-[color:var(--color-ink)]/80 sm:text-xl">
+          <p className="max-w-xl text-base leading-relaxed text-[color:var(--color-ink)]/80 sm:text-lg md:text-xl">
             {profile.tagline}
           </p>
 
@@ -57,7 +57,7 @@ export function Hero() {
             <a
               href="#projects"
               onClick={scrollTo("projects")}
-              className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--color-ink)] px-6 py-3 text-sm font-medium text-[color:var(--color-paper)] transition hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--color-ink)] px-5 py-2.5 text-sm font-medium text-[color:var(--color-paper)] transition hover:-translate-y-0.5 sm:px-6 sm:py-3"
             >
               View work
               <ArrowDown className="h-4 w-4 transition group-hover:translate-y-0.5" />
@@ -65,7 +65,7 @@ export function Hero() {
             <a
               href="#connect"
               onClick={scrollTo("connect")}
-              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-ink)]/20 px-6 py-3 text-sm font-medium text-[color:var(--color-ink)] transition hover:border-[color:var(--color-ink)]/60"
+              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-ink)]/20 px-5 py-2.5 text-sm font-medium text-[color:var(--color-ink)] transition hover:border-[color:var(--color-ink)]/60 sm:px-6 sm:py-3"
             >
               <Mail className="h-4 w-4" />
               Get in touch
@@ -75,12 +75,12 @@ export function Hero() {
         </div>
 
         {/* portrait */}
-        <div className="relative mx-auto w-full max-w-md md:max-w-none">
+        <div className="relative mx-auto w-full max-w-xs sm:max-w-md md:max-w-none">
           <div className="relative aspect-square">
             {/* paper backing card */}
             <div
               aria-hidden
-              className="absolute inset-6 rounded-[36px] border border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-3)] shadow-[var(--shadow-card)]"
+              className="absolute inset-3 rounded-[28px] border border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-3)] shadow-[var(--shadow-card)] sm:inset-6 sm:rounded-[36px]"
             />
             {/* dotted graph */}
             <svg
