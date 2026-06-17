@@ -1,29 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/portfolio/Hero";
+import { About } from "@/components/portfolio/About";
+import { TechStrip } from "@/components/portfolio/TechStrip";
+import { ProjectsShelf } from "@/components/portfolio/ProjectsShelf";
+import { UxShelf } from "@/components/portfolio/UxShelf";
+import { BlogShelf } from "@/components/portfolio/BlogShelf";
+import { ConnectBanner } from "@/components/portfolio/ConnectBanner";
+import { Footer } from "@/components/portfolio/Footer";
+import { projects, saas } from "@/content/portfolio";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Ayush Ramawat — Product Designer · Agentic AI" },
+      { name: "description", content: "Portfolio of Ayush Ramawat — a product designer shipping agentic-AI products, automations, and SaaS tools." },
+      { property: "og:title", content: "Ayush Ramawat — Product Designer · Agentic AI" },
+      { property: "og:description", content: "Selected work, case studies, and writing on designing for agents." },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
+    <main className="min-h-screen bg-[color:var(--color-paper)] font-sans text-[color:var(--color-ink)] antialiased">
+      <Hero />
+      <About />
+      <TechStrip />
+      <ProjectsShelf
+        id="projects"
+        index="WORK / 01"
+        title="Selected projects."
+        caption="A folder of recent work — drag, scroll, or click an arrow to flip through."
+        items={projects}
       />
-    </div>
+      <ProjectsShelf
+        id="saas"
+        index="PRODUCTS / 02"
+        title="SaaS I built."
+        caption="Small, opinionated tools I designed, built, and shipped myself."
+        items={saas}
+        badge="// product"
+      />
+      <UxShelf />
+      <BlogShelf />
+      <ConnectBanner />
+      <Footer />
+    </main>
   );
 }
