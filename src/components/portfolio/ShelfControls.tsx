@@ -7,7 +7,7 @@ type Props = {
 
 export function ShelfControls({ onPrev, onNext }: Props) {
   return (
-    <div className="hidden items-center gap-2 md:flex">
+    <div className="flex items-center gap-2">
       <button
         type="button"
         aria-label="Scroll left"
