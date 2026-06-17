@@ -39,16 +39,16 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
                   href={p.link}
                   target={p.link.startsWith("http") ? "_blank" : undefined}
                   rel="noreferrer noopener"
-                  className="group relative flex h-[280px] w-[88vw] max-w-[560px] shrink-0 snap-start overflow-hidden rounded-[28px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:w-[520px] md:w-[560px]"
+                  className="group relative flex h-[240px] w-[78vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-[24px] border border-[color:var(--color-ink)]/12 bg-[color:var(--color-paper-2)] shadow-[var(--shadow-card)] transition duration-500 will-change-transform hover:z-20 hover:-translate-y-2 hover:rotate-[-0.4deg] hover:shadow-[var(--shadow-card-hover)] sm:w-[280px] md:w-[300px]"
                   style={{
-                    marginLeft: i === 0 ? 0 : "-140px",
+                    marginLeft: i === 0 ? 0 : "-80px",
                     zIndex: items.length - i,
                     transform: `rotate(${i % 2 === 0 ? -0.3 : 0.3}deg)`,
                   }}
                 >
                   {/* left — abstract artwork panel */}
                   <div
-                    className="relative h-full w-[44%] shrink-0 overflow-hidden"
+                    className="relative h-full w-[38%] shrink-0 overflow-hidden"
                     style={{
                       background: `linear-gradient(135deg, ${p.accent}22 0%, ${p.accent}66 100%)`,
                     }}
@@ -81,15 +81,15 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
                   </div>
 
                   {/* right — content */}
-                  <div className="flex flex-1 flex-col gap-3 p-6">
+                  <div className="flex flex-1 flex-col gap-2 p-4">
                     <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
                       <span>{p.year}</span>
                       <ArrowUpRight className="h-4 w-4 text-[color:var(--color-ink)]/60 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[color:var(--color-ink)]" />
                     </div>
-                    <h3 className="font-display text-2xl leading-[1.1] text-[color:var(--color-ink)]">
+                    <h3 className="font-display text-lg leading-[1.1] text-[color:var(--color-ink)]">
                       {p.title}
                     </h3>
-                    <p className="line-clamp-3 text-sm leading-relaxed text-[color:var(--color-ink)]/70">
+                    <p className="line-clamp-3 text-xs leading-relaxed text-[color:var(--color-ink)]/70">
                       {p.blurb}
                     </p>
                     <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
