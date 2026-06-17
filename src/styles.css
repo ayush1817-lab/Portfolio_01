@@ -4,6 +4,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  --color-paper: #f5f3ee;
+  --color-paper-2: #efece5;
+  --color-paper-3: #e8e4dd;
+  --color-ink: #0d0d0d;
+  --color-ink-muted: #6b6862;
+  --color-blueprint: #3b6fa0;
+  --color-blueprint-soft: #c7d6e6;
+  --shadow-card: 0 1px 0 rgba(13,13,13,0.06), 0 10px 20px -12px rgba(13,13,13,0.18), 0 30px 60px -30px rgba(13,13,13,0.18);
+  --shadow-card-hover: 0 1px 0 rgba(13,13,13,0.08), 0 20px 40px -16px rgba(13,13,13,0.28), 0 40px 80px -32px rgba(13,13,13,0.22);
+}
+
 /*
  * Design system definition.
  *
