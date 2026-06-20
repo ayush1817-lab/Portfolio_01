@@ -9,19 +9,19 @@ export function About() {
       aria-label="About"
       className="snap-start border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper)]"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 sm:gap-20 sm:px-10 sm:py-24">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 lg:gap-20 lg:px-10 lg:py-24">
         {/* Section header */}
-        <header className="grid grid-cols-1 items-start gap-4 md:grid-cols-12 md:gap-8">
-          <div className="flex flex-col gap-4 md:col-span-6">
+        <header className="grid grid-cols-1 items-start gap-4 lg:grid-cols-12 lg:gap-8">
+          <div className="flex flex-col gap-4 lg:col-span-6">
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/60">
               // about
             </span>
-            <h2 className="font-display text-2xl font-bold uppercase leading-[0.9] tracking-tight text-[color:var(--color-ink)] sm:text-5xl md:text-6xl">
+            <h2 className="font-display text-2xl font-bold uppercase leading-[0.9] tracking-tight text-[color:var(--color-ink)] lg:text-5xl lg:text-6xl">
               A designer running on agents.
             </h2>
           </div>
-          <div className="md:col-span-6 md:col-start-7 md:pt-4">
-            <p className="text-sm leading-relaxed text-[color:var(--color-ink)]/80 sm:text-xl">
+          <div className="lg:col-span-6 lg:col-start-7 lg:pt-4">
+            <p className="text-sm leading-relaxed text-[color:var(--color-ink)]/80 lg:text-xl">
               I'm {profile.name.split(" ")[0]}. I design products that think, plan, and act —
               agentic SaaS, internal automations, and the small tools I needed for my own work.
               I care about craft, observability, and giving humans the right amount of control.
@@ -36,13 +36,13 @@ export function About() {
             return (
               <article
                 key={e.year}
-                className={`grid grid-cols-1 gap-3 border-b border-[color:var(--color-ink)] py-4 md:grid-cols-12 md:gap-4 md:py-14 ${
+                className={`grid grid-cols-1 gap-3 border-b border-[color:var(--color-ink)] py-4 lg:grid-cols-12 lg:gap-4 lg:py-14 ${
                   tinted ? "bg-[color:var(--color-paper-3)]/40" : ""
                 }`}
               >
                 <div
-                  className={`flex flex-col gap-1 md:col-span-3 ${
-                    tinted ? "border-l-4 border-[color:var(--color-ink)] pl-4 md:ml-2" : ""
+                  className={`flex flex-col gap-1 lg:col-span-3 ${
+                    tinted ? "border-l-4 border-[color:var(--color-ink)] pl-4 lg:ml-2" : ""
                   }`}
                 >
                   <span className="font-mono text-xs uppercase tracking-[0.18em] text-[color:var(--color-ink)]">
@@ -56,16 +56,16 @@ export function About() {
                     {e.year}
                   </span>
                 </div>
-                <div className="md:col-span-5">
-                  <h3 className="font-display text-lg font-bold leading-tight tracking-tight text-[color:var(--color-ink)] sm:text-3xl">
+                <div className="lg:col-span-5">
+                  <h3 className="font-display text-lg font-bold leading-tight tracking-tight text-[color:var(--color-ink)] lg:text-3xl">
                     {e.role}
                   </h3>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-wide text-[color:var(--color-ink)]/60 sm:text-sm">
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-wide text-[color:var(--color-ink)]/60 lg:text-sm">
                     {e.org}
                   </p>
                 </div>
-                <div className="flex md:col-span-4 md:items-end">
-                  <p className="text-sm leading-snug text-[color:var(--color-ink)]/80 sm:text-lg">
+                <div className="flex lg:col-span-4 lg:items-end">
+                  <p className="text-sm leading-snug text-[color:var(--color-ink)]/80 lg:text-lg">
                     {e.note}
                   </p>
                 </div>
