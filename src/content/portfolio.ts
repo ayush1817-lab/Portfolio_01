@@ -14,13 +14,13 @@ export const experience = [
   {
     year: "2025 — 2026",
     role: "AI Product Designer",
-    org: "BPM Clinic Limited",
+    org: "BPM Clinic Limited, Dublin",
     note: "Designed and shipped automation workflows for the clinic and built internal SaaS tools.",
   },
   {
     year: "2024 — 2025",
     role: "Product Designer",
-    org: "Oaks",
+    org: "OAKS, Hyderabad",
     note: "Designed tech games and internal SaaS tools, plus a bit of 3D animation.",
   },
 ];
