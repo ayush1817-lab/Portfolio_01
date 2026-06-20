@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="min-h-screen snap-y snap-mandatory bg-[color:var(--color-paper)] font-sans text-[color:var(--color-ink)] antialiased [&>section]:snap-start">
+    <main className="min-h-screen snap-y snap-proximity bg-[color:var(--color-paper)] font-sans text-[color:var(--color-ink)] antialiased">
       <TopNav />
       <Hero />
       <About />
