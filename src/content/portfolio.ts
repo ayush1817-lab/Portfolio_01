@@ -1,8 +1,7 @@
 export const profile = {
   name: "Ayush Ramawat",
   role: "Product Designer • Agentic AI",
-  tagline:
-    "I design and ship agentic-AI products, automations, and the SaaS tools I needed but couldn't find.",
+  tagline: "I design and ship agentic-AI products, Workflows, and the SaaS tools I needed but couldn't find.",
   status: "agent online — open to collaborations",
   email: "ayushramawat29@gmail.com",
   linkedin: "https://www.linkedin.com/in/ayush-ramawat-71880927b/",
@@ -32,16 +31,7 @@ export const experience = [
   },
 ];
 
-export const stack = [
-  "Figma",
-  "n8n",
-  "OpenAI",
-  "Claude",
-  "Cursor",
-  "Supabase",
-  "Vercel",
-  "Notion",
-];
+export const stack = ["Figma", "n8n", "OpenAI", "Claude", "Cursor", "Supabase", "Vercel", "Notion"];
 
 export type Project = {
   id: string;
@@ -57,8 +47,7 @@ export const projects: Project[] = [
   {
     id: "proj-01",
     title: "Atlas — Multi-agent research workspace",
-    blurb:
-      "An agentic workspace where research agents plan, branch, and cite — designed end-to-end.",
+    blurb: "An agentic workspace where research agents plan, branch, and cite — designed end-to-end.",
     tags: ["Agentic AI", "Product Design", "0→1"],
     year: "2025",
     link: "#",
@@ -67,8 +56,7 @@ export const projects: Project[] = [
   {
     id: "proj-02",
     title: "Loop — Background automation for ops teams",
-    blurb:
-      "A canvas to compose, observe, and debug long-running agent workflows.",
+    blurb: "A canvas to compose, observe, and debug long-running agent workflows.",
     tags: ["UX", "Automation", "n8n"],
     year: "2024",
     link: "#",
@@ -77,8 +65,7 @@ export const projects: Project[] = [
   {
     id: "proj-03",
     title: "Quill — AI editor for product writers",
-    blurb:
-      "Inline agents that critique, restructure, and polish without taking the pen.",
+    blurb: "Inline agents that critique, restructure, and polish without taking the pen.",
     tags: ["AI", "Editor", "Design Systems"],
     year: "2024",
     link: "#",
@@ -170,8 +157,7 @@ export const cases: CaseStudy[] = [
     title: "Voice-first onboarding that survives interruptions",
     client: "Nimbus",
     year: "2023",
-    summary:
-      "Patterns for voice agents that gracefully resume, escalate, and hand off to a person.",
+    summary: "Patterns for voice agents that gracefully resume, escalate, and hand off to a person.",
     link: "#",
     spineColor: "#4a7c59",
   },
@@ -180,8 +166,7 @@ export const cases: CaseStudy[] = [
     title: "A design system for agent UIs",
     client: "Internal",
     year: "2024",
-    summary:
-      "Tokens, primitives, and patterns for chat, plans, traces, and tool calls — reusable across products.",
+    summary: "Tokens, primitives, and patterns for chat, plans, traces, and tool calls — reusable across products.",
     link: "#",
     spineColor: "#6b4a8a",
   },
@@ -190,8 +175,7 @@ export const cases: CaseStudy[] = [
     title: "Pricing an unpredictable product",
     client: "Mesh",
     year: "2024",
-    summary:
-      "Designing a usage-based pricing UI when cost varies per request and finance still needs predictability.",
+    summary: "Designing a usage-based pricing UI when cost varies per request and finance still needs predictability.",
     link: "#",
     spineColor: "#b5562e",
   },
@@ -212,8 +196,7 @@ export const blogs: Blog[] = [
     title: "Designing for agents, not for screens",
     date: "May 2025",
     readingTime: "6 min",
-    excerpt:
-      "What changes when the user isn't a person anymore — and what stays exactly the same.",
+    excerpt: "What changes when the user isn't a person anymore — and what stays exactly the same.",
     link: "https://medium.com/@ayushramawat29",
   },
   {
@@ -221,8 +204,7 @@ export const blogs: Blog[] = [
     title: "The quiet death of the empty state",
     date: "Mar 2025",
     readingTime: "4 min",
-    excerpt:
-      "Agentic products don't have empty states. They have first turns. A small UX shift with big implications.",
+    excerpt: "Agentic products don't have empty states. They have first turns. A small UX shift with big implications.",
     link: "https://medium.com/@ayushramawat29",
   },
   {
@@ -230,8 +212,7 @@ export const blogs: Blog[] = [
     title: "Shipping a SaaS in 14 days, the boring way",
     date: "Jan 2025",
     readingTime: "7 min",
-    excerpt:
-      "How I built and shipped Clipper as a one-person team — scope, tools, and the cuts I made.",
+    excerpt: "How I built and shipped Clipper as a one-person team — scope, tools, and the cuts I made.",
     link: "https://medium.com/@ayushramawat29",
   },
   {
@@ -239,8 +220,7 @@ export const blogs: Blog[] = [
     title: "A field guide to agent traces",
     date: "Nov 2024",
     readingTime: "5 min",
-    excerpt:
-      "How to read, design, and instrument the trace UI that every agent product will eventually need.",
+    excerpt: "How to read, design, and instrument the trace UI that every agent product will eventually need.",
     link: "https://medium.com/@ayushramawat29",
   },
 ];
