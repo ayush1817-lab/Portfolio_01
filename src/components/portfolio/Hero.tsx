@@ -15,7 +15,7 @@ export function Hero() {
 
   return (
     <section id="hero" aria-label="Introduction" className="relative flex items-start overflow-hidden bg-[color:var(--color-paper)] lg:min-h-[100svh] lg:items-center">
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-3 pt-14 pb-4 lg:px-10 lg:pt-28 lg:pb-20">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-3 pt-14 pb-8 lg:px-10 lg:pt-28 lg:pb-20">
         <div className="relative overflow-hidden border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
           {/* Masthead meta */}
           <div className="grid grid-cols-2 items-end gap-3 border-b border-[color:var(--color-ink)] p-2.5 lg:flex lg:justify-between lg:px-8 lg:py-6">
