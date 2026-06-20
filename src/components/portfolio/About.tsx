@@ -9,7 +9,7 @@ export function About() {
       aria-label="About"
       className="snap-start border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper)]"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 lg:gap-20 lg:px-10 lg:py-24">
+      <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-4 md:gap-7 md:py-6 lg:gap-20 lg:px-10 lg:py-24">
         {/* Section header */}
         <header className="grid grid-cols-1 items-start gap-4 lg:grid-cols-12 lg:gap-8">
           <div className="flex flex-col gap-4 lg:col-span-6">
