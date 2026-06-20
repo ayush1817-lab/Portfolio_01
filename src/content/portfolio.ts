@@ -12,22 +12,16 @@ export const profile = {
 
 export const experience = [
   {
-    year: "2024 — Now",
-    role: "Independent Product Designer & Agentic-AI Builder",
-    org: "Self-directed",
-    note: "Designing & shipping agent-driven products and internal SaaS tools.",
+    year: "2025 — 2026",
+    role: "AI Product Designer",
+    org: "BMF Clinic Limited",
+    note: "Designed and shipped automation workflows for the clinic and built internal SaaS tools.",
   },
   {
-    year: "2022 — 2024",
-    role: "Senior Product Designer",
-    org: "Placeholder Studio",
-    note: "Led design on B2B SaaS, design systems, end-to-end UX research.",
-  },
-  {
-    year: "2020 — 2022",
+    year: "2024 — 2025",
     role: "Product Designer",
-    org: "Placeholder Agency",
-    note: "Shipped consumer apps for fintech and health clients.",
+    org: "Oaks",
+    note: "Designed tech games and internal SaaS tools, plus a bit of 3D animation.",
   },
 ];
 
