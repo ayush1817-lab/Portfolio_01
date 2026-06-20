@@ -5,7 +5,6 @@ import { About } from "@/components/portfolio/About";
 import { TechStrip } from "@/components/portfolio/TechStrip";
 import { ProjectsShelf } from "@/components/portfolio/ProjectsShelf";
 import { UxShelf } from "@/components/portfolio/UxShelf";
-import { BlogShelf } from "@/components/portfolio/BlogShelf";
 import { ConnectBanner } from "@/components/portfolio/ConnectBanner";
 import { Footer } from "@/components/portfolio/Footer";
 import { projects } from "@/content/portfolio";
@@ -33,10 +32,9 @@ function Index() {
         index="WORK / 01"
         title="Selected projects."
         caption="A folder of recent work — drag, scroll, or click an arrow to flip through."
-        items={projects}
+        items={projects.slice(0, 3)}
       />
       <UxShelf />
-      <BlogShelf />
       <TechStrip />
       <ConnectBanner />
       <Footer />
