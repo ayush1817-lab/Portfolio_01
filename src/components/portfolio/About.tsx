@@ -1,4 +1,4 @@
-import { experience, profile } from "@/content/portfolio";
+import { experience } from "@/content/portfolio";
 
 const chapterLabel = (i: number) => `Chapter ${String(i + 1).padStart(2, "0")}`;
 
