@@ -14,7 +14,7 @@ export const experience = [
   {
     year: "2025 — 2026",
     role: "AI Product Designer",
-    org: "BMF Clinic Limited",
+    org: "BPM Clinic Limited",
     note: "Designed and shipped automation workflows for the clinic and built internal SaaS tools.",
   },
   {
