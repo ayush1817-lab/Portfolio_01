@@ -17,14 +17,15 @@ export function About() {
               // about
             </span>
             <h2 className="font-display text-2xl font-bold uppercase leading-[0.9] tracking-tight text-[color:var(--color-ink)] lg:text-5xl lg:text-6xl">
-              A designer running on agents.
+              About
             </h2>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 lg:pt-4">
+          <div className="flex flex-col gap-3 lg:col-span-6 lg:col-start-7 lg:pt-4">
             <p className="text-sm leading-relaxed text-[color:var(--color-ink)]/80 lg:text-xl">
-              I'm {profile.name.split(" ")[0]}. I design products that think, plan, and act —
-              agentic SaaS, internal automations, and the small tools I needed for my own work.
-              I care about craft, observability, and giving humans the right amount of control.
+              I'm an HCI master's student at University College Dublin, currently building agentic-AI products independently. My path here is non-linear: a maths degree, then several years as an animator, then HCI and AI products.
+            </p>
+            <p className="text-sm leading-relaxed text-[color:var(--color-ink)]/80 lg:text-xl">
+              I build the tools I wish existed. OptiApply came out of my own job search. FontPaste came out of my own design work. I ship intensely, learn from real use, and care more about whether something works for someone than whether it looks good in a deck.
             </p>
           </div>
         </header>
