@@ -29,7 +29,7 @@ export function BlogShelf() {
                   target="_blank"
                   rel="noreferrer noopener"
                   draggable={false}
-                  className="group relative flex h-[420px] w-[78vw] max-w-[340px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:w-[320px]"
+                  className="group relative flex h-[340px] w-[62vw] max-w-[260px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:h-[420px] sm:w-[320px] sm:max-w-[340px]"
                 >
                   <header className="flex items-center justify-between border-b border-[color:var(--color-ink)] px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
                     <span>Essay · {String(i + 1).padStart(2, "0")}</span>

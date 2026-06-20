@@ -29,7 +29,7 @@ export function UxShelf() {
                   key={c.id}
                   href={c.link}
                   draggable={false}
-                  className="group relative flex h-[420px] w-[78vw] max-w-[360px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:w-[340px]"
+                  className="group relative flex h-[340px] w-[62vw] max-w-[280px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:h-[420px] sm:w-[340px] sm:max-w-[360px]"
                 >
                   <header className="flex items-center justify-between border-b border-[color:var(--color-ink)] px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
                     <span>Case · {String(i + 1).padStart(2, "0")}</span>
