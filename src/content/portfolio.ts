@@ -1,13 +1,13 @@
 export const profile = {
   name: "Ayush Ramawat",
-  role: "Product Designer • Agentic AI",
+  role: "Product Designer",
   tagline: "I design and ship agentic-AI products, Workflows, and the SaaS tools I needed but couldn't find.",
   status: "agent online — open to collaborations",
   email: "ayushramawat29@gmail.com",
   linkedin: "https://www.linkedin.com/in/ayush-ramawat-71880927b/",
   medium: "https://medium.com/@ayushramawat29",
   github: "#", // replace with your GitHub URL
-  x: "#", // replace with your X/Twitter URL
+  x: "https://x.com/AyushRamawat18", // replace with your X/Twitter URL
 };
 
 export const experience = [
@@ -21,11 +21,11 @@ export const experience = [
     year: "2024 — 2025",
     role: "Product Designer",
     org: "OAKS, Hyderabad",
-    note: "Designed tech games and internal SaaS tools, plus a bit of 3D animation.",
+    note: "Designed Edtech games and Workflows, and bit of 3D animation.",
   },
 ];
 
-export const stack = ["Figma", "n8n", "OpenAI", "Claude", "Cursor", "Supabase", "Vercel", "Notion"];
+export const stack = ["Figma", "n8n", "Codex", "Claude", "Cursor", "Supabase", "Vercel", "Notion"];
 
 export type Project = {
   id: string;
@@ -40,11 +40,12 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "proj-01",
-    title: "Atlas — Multi-agent research workspace",
-    blurb: "An agentic workspace where research agents plan, branch, and cite — designed end-to-end.",
+    title: "Optiapply",
+    blurb:
+      "An agentic job hunting tool, finds jobs relevant to the profile, and handles the complete job hunting process, from find to apply. ",
     tags: ["Agentic AI", "Product Design", "0→1"],
-    year: "2025",
-    link: "#",
+    year: "2026",
+    link: "Howtosolve.online",
     accent: "#3b6fa0",
   },
   {
