@@ -11,7 +11,7 @@ export function SectionTitle({ index, title, caption }: Props) {
         <span>{index}</span>
         <span className="text-[color:var(--color-ink)]/50">section</span>
       </div>
-      <h2 className="font-display text-4xl font-bold uppercase leading-[0.9] tracking-tight text-[color:var(--color-ink)] sm:text-5xl md:text-6xl">
+      <h2 className="font-display text-2xl font-bold uppercase leading-[0.9] tracking-tight text-[color:var(--color-ink)] sm:text-5xl md:text-6xl">
         {title}
       </h2>
       {caption ? (
