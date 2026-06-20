@@ -6,9 +6,9 @@ import { blogs } from "@/content/portfolio";
 export function BlogShelf() {
   const { ref } = useDragScroll<HTMLDivElement>();
   return (
-    <section id="blog" aria-label="Writing" className="border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper)] py-16 sm:py-24">
+    <section id="blog" aria-label="Writing" className="snap-start border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper)] py-6 sm:py-24">
       <div className="mx-auto max-w-7xl pl-4 sm:pl-10">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-14">
+        <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-14">
           <div className="md:sticky md:top-24 md:w-80 md:shrink-0">
             <SectionTitle
               index="WRITING / 04"
@@ -29,7 +29,7 @@ export function BlogShelf() {
                   target="_blank"
                   rel="noreferrer noopener"
                   draggable={false}
-                  className="group relative flex h-[340px] w-[62vw] max-w-[260px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:h-[420px] sm:w-[320px] sm:max-w-[340px]"
+                  className="group relative flex h-[240px] w-[62vw] max-w-[220px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:h-[420px] sm:w-[320px] sm:max-w-[340px]"
                 >
                   <header className="flex items-center justify-between border-b border-[color:var(--color-ink)] px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
                     <span>Essay · {String(i + 1).padStart(2, "0")}</span>

@@ -3,7 +3,7 @@ import { profile } from "@/content/portfolio";
 
 export function ConnectBanner() {
   return (
-    <section id="connect" aria-label="Connect" className="px-4 py-16 sm:px-10 sm:py-24">
+    <section id="connect" aria-label="Connect" className="snap-start px-4 py-6 sm:px-10 sm:py-24">
       <div className="relative mx-auto max-w-7xl overflow-hidden border border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
         <div className="flex items-center justify-between border-b border-[color:var(--color-paper)]/20 px-6 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[color:var(--color-paper)] sm:px-10">
           <span>Connect · 05</span>

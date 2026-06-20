@@ -8,9 +8,9 @@ const previewCases = cases.slice(0, 3);
 export function UxShelf() {
   const { ref } = useDragScroll<HTMLDivElement>();
   return (
-    <section id="ux" aria-label="UX case studies" className="border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-16 sm:py-24">
+    <section id="ux" aria-label="UX case studies" className="snap-start border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-6 sm:py-24">
       <div className="mx-auto max-w-7xl pl-4 sm:pl-10">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-14">
+        <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-14">
           <div className="md:sticky md:top-24 md:w-80 md:shrink-0">
             <SectionTitle
               index="UX / 03"
@@ -29,7 +29,7 @@ export function UxShelf() {
                   key={c.id}
                   href={c.link}
                   draggable={false}
-                  className="group relative flex h-[340px] w-[62vw] max-w-[280px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:h-[420px] sm:w-[340px] sm:max-w-[360px]"
+                  className="group relative flex h-[240px] w-[62vw] max-w-[240px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:h-[420px] sm:w-[340px] sm:max-w-[360px]"
                 >
                   <header className="flex items-center justify-between border-b border-[color:var(--color-ink)] px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
                     <span>Case · {String(i + 1).padStart(2, "0")}</span>
