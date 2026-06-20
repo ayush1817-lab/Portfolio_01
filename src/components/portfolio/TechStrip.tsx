@@ -5,7 +5,7 @@ export function TechStrip() {
   return (
     <section
       aria-label="Tools and stack"
-      className="overflow-hidden border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-6"
+      className="snap-start overflow-hidden border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-6"
     >
       <div className="group flex w-full">
         <div className="flex shrink-0 animate-[marquee_38s_linear_infinite] items-center gap-3 pl-6 group-hover:[animation-play-state:paused]">

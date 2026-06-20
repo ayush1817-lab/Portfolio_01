@@ -8,9 +8,9 @@ const previewCases = cases.slice(0, 3);
 export function UxShelf() {
   const { ref } = useDragScroll<HTMLDivElement>();
   return (
-    <section id="ux" aria-label="UX case studies" className="border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-16 sm:py-24">
+    <section id="ux" aria-label="UX case studies" className="snap-start border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-6 sm:py-24">
       <div className="mx-auto max-w-7xl pl-4 sm:pl-10">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-14">
+        <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-14">
           <div className="md:sticky md:top-24 md:w-80 md:shrink-0">
             <SectionTitle
               index="UX / 03"
@@ -29,7 +29,7 @@ export function UxShelf() {
                   key={c.id}
                   href={c.link}
                   draggable={false}
-                  className="group relative flex h-[340px] w-[62vw] max-w-[280px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:h-[420px] sm:w-[340px] sm:max-w-[360px]"
+                  className="group relative flex h-[240px] w-[62vw] max-w-[240px] shrink-0 flex-col border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] transition-transform duration-300 hover:-translate-y-1 sm:h-[420px] sm:w-[340px] sm:max-w-[360px]"
                 >
                   <header className="flex items-center justify-between border-b border-[color:var(--color-ink)] px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
                     <span>Case · {String(i + 1).padStart(2, "0")}</span>
@@ -38,7 +38,7 @@ export function UxShelf() {
 
                   {/* Cover plate */}
                   <div
-                    className="relative flex h-[150px] flex-col justify-between overflow-hidden border-b border-[color:var(--color-ink)] p-4"
+                    className="relative flex h-[80px] flex-col justify-between overflow-hidden border-b border-[color:var(--color-ink)] p-3 sm:h-[150px] sm:p-4"
                     style={{ background: c.spineColor }}
                   >
                     <div
@@ -50,11 +50,11 @@ export function UxShelf() {
                         backgroundSize: "24px 24px",
                       }}
                     />
-                    <div className="relative flex items-center justify-between font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[color:var(--color-paper)]">
+                    <div className="relative flex items-center justify-between font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-[color:var(--color-paper)] sm:text-[10px]">
                       <span>{c.client}</span>
-                      <span>UX dossier</span>
+                      <span className="hidden sm:inline">UX dossier</span>
                     </div>
-                    <div className="relative">
+                    <div className="relative hidden sm:block">
                       <span
                         aria-hidden
                         className="font-display font-bold leading-none tracking-tighter text-[color:var(--color-paper)]/30"
@@ -65,14 +65,14 @@ export function UxShelf() {
                     </div>
                   </div>
 
-                  <div className="flex flex-1 flex-col gap-3 p-5">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/55">
+                  <div className="flex flex-1 flex-col gap-2 p-3 sm:gap-3 sm:p-5">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/55 sm:text-[10px]">
                       // {c.id}
                     </span>
-                    <h3 className="font-display text-2xl font-bold uppercase leading-[0.95] tracking-tight text-[color:var(--color-ink)]">
+                    <h3 className="font-display text-base font-bold uppercase leading-[0.95] tracking-tight text-[color:var(--color-ink)] sm:text-2xl">
                       {c.title}
                     </h3>
-                    <p className="text-sm leading-snug text-[color:var(--color-ink)]/75">
+                    <p className="hidden text-sm leading-snug text-[color:var(--color-ink)]/75 sm:block">
                       {c.summary}
                     </p>
                   </div>
