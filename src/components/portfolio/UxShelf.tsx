@@ -8,7 +8,7 @@ const previewCases = cases.slice(0, 3);
 export function UxShelf() {
   const { ref } = useDragScroll<HTMLDivElement>();
   return (
-    <section id="ux" aria-label="UX case studies" className="snap-start border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-4 md:py-6 lg:py-24">
+    <section id="ux" aria-label="UX case studies" className="snap-start border-b border-[color:var(--color-ink)]/10 bg-[color:var(--color-paper-2)] py-6 md:py-10 lg:py-24">
       <div className="mx-auto max-w-7xl pl-4 lg:pl-10">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-14">
           <div className="lg:sticky lg:top-24 lg:w-80 lg:shrink-0">
