@@ -14,34 +14,41 @@ export function Hero() {
   const last = rest.join(" ");
 
   return (
-    <section
-      id="hero"
-      aria-label="Introduction"
-      className="relative overflow-hidden bg-[color:var(--color-paper)]"
-    >
+    <section id="hero" aria-label="Introduction" className="relative overflow-hidden bg-[color:var(--color-paper)]">
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pt-24 pb-12 sm:px-10 sm:pt-28 sm:pb-20">
         <div className="relative overflow-hidden border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
-
           {/* Masthead meta */}
           <div className="grid grid-cols-2 items-end gap-4 border-b border-[color:var(--color-ink)] p-4 md:flex md:justify-between md:px-8 md:py-6">
             <div className="flex min-w-0 flex-col">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">Portfolio Issue 01</span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/60">Design & Engineering</span>
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
+                Portfolio Issue 01
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/60">
+                Design & Engineering
+              </span>
             </div>
             <div className="hidden items-center gap-3 md:flex">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[color:var(--color-ink)]" />
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">{profile.status}</span>
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
+                {profile.status}
+              </span>
             </div>
             <div className="flex min-w-0 flex-col text-right">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">Est. 2024</span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/60">Bengaluru, IN</span>
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
+                Est. 2024
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/60">
+                Dublin, IRE
+              </span>
             </div>
           </div>
 
           {/* Mobile-only status (replaces hidden center pill) */}
           <div className="flex items-center gap-2 border-b border-[color:var(--color-ink)] px-4 py-3 md:hidden">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[color:var(--color-ink)]" />
-            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-ink)]">{profile.status}</span>
+            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[color:var(--color-ink)]">
+              {profile.status}
+            </span>
           </div>
 
           {/* Main grid */}
@@ -54,10 +61,7 @@ export function Hero() {
               >
                 {first}
                 <br />
-                <span
-                  className="inline-block text-transparent"
-                  style={{ WebkitTextStroke: "1.5px var(--color-ink)" }}
-                >
+                <span className="inline-block text-transparent" style={{ WebkitTextStroke: "1.5px var(--color-ink)" }}>
                   {last}
                 </span>
               </h1>
@@ -122,9 +126,7 @@ export function Hero() {
                 <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-[color:var(--color-ink)]/40">
                   {label}
                 </span>
-                <span className="font-mono text-xs font-bold uppercase text-[color:var(--color-ink)]">
-                  {value}
-                </span>
+                <span className="font-mono text-xs font-bold uppercase text-[color:var(--color-ink)]">{value}</span>
               </div>
             ))}
           </div>
