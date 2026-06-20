@@ -38,7 +38,7 @@ export function UxShelf() {
 
                   {/* Cover plate */}
                   <div
-                    className="relative flex h-[150px] flex-col justify-between overflow-hidden border-b border-[color:var(--color-ink)] p-4"
+                    className="relative flex h-[80px] flex-col justify-between overflow-hidden border-b border-[color:var(--color-ink)] p-3 sm:h-[150px] sm:p-4"
                     style={{ background: c.spineColor }}
                   >
                     <div
@@ -50,11 +50,11 @@ export function UxShelf() {
                         backgroundSize: "24px 24px",
                       }}
                     />
-                    <div className="relative flex items-center justify-between font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[color:var(--color-paper)]">
+                    <div className="relative flex items-center justify-between font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-[color:var(--color-paper)] sm:text-[10px]">
                       <span>{c.client}</span>
-                      <span>UX dossier</span>
+                      <span className="hidden sm:inline">UX dossier</span>
                     </div>
-                    <div className="relative">
+                    <div className="relative hidden sm:block">
                       <span
                         aria-hidden
                         className="font-display font-bold leading-none tracking-tighter text-[color:var(--color-paper)]/30"
@@ -65,14 +65,14 @@ export function UxShelf() {
                     </div>
                   </div>
 
-                  <div className="flex flex-1 flex-col gap-3 p-5">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/55">
+                  <div className="flex flex-1 flex-col gap-2 p-3 sm:gap-3 sm:p-5">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/55 sm:text-[10px]">
                       // {c.id}
                     </span>
-                    <h3 className="font-display text-2xl font-bold uppercase leading-[0.95] tracking-tight text-[color:var(--color-ink)]">
+                    <h3 className="font-display text-base font-bold uppercase leading-[0.95] tracking-tight text-[color:var(--color-ink)] sm:text-2xl">
                       {c.title}
                     </h3>
-                    <p className="text-sm leading-snug text-[color:var(--color-ink)]/75">
+                    <p className="hidden text-sm leading-snug text-[color:var(--color-ink)]/75 sm:block">
                       {c.summary}
                     </p>
                   </div>

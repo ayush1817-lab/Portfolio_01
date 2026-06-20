@@ -42,7 +42,7 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
                   </header>
 
                   {/* Editorial plate — large numeral + accent rule */}
-                  <div className="relative flex h-[140px] items-end overflow-hidden border-b border-[color:var(--color-ink)] bg-[color:var(--color-paper-2)] px-4">
+                  <div className="relative flex h-[80px] items-end overflow-hidden border-b border-[color:var(--color-ink)] bg-[color:var(--color-paper-2)] px-3 sm:h-[140px] sm:px-4">
                     <div
                       aria-hidden
                       className="pointer-events-none absolute inset-0 opacity-[0.18]"
@@ -53,7 +53,7 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
                     />
                     <span
                       aria-hidden
-                      className="font-display font-bold uppercase leading-none tracking-tighter text-transparent"
+                      className="hidden font-display font-bold uppercase leading-none tracking-tighter text-transparent sm:inline"
                       style={{
                         fontSize: "9rem",
                         WebkitTextStroke: "1.5px var(--color-ink)",
@@ -64,31 +64,31 @@ export function ProjectsShelf({ id, index, title, caption, items, badge }: Props
                     </span>
                     <span
                       aria-hidden
-                      className="absolute right-4 top-4 h-3 w-3 rounded-full"
+                      className="absolute right-3 top-3 h-2.5 w-2.5 rounded-full sm:right-4 sm:top-4 sm:h-3 sm:w-3"
                       style={{ background: p.accent }}
                     />
                     {badge ? (
-                      <span className="absolute left-4 top-4 border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)]">
+                      <span className="absolute left-3 top-3 border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] px-1.5 py-0.5 font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink)] sm:left-4 sm:px-2 sm:text-[9px]">
                         {badge}
                       </span>
                     ) : null}
                   </div>
 
-                  <div className="flex flex-1 flex-col gap-3 p-5">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/55">
+                  <div className="flex flex-1 flex-col gap-2 p-3 sm:gap-3 sm:p-5">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/55 sm:text-[10px]">
                       // {p.id}
                     </span>
-                    <h3 className="font-display text-2xl font-bold uppercase leading-[0.95] tracking-tight text-[color:var(--color-ink)]">
+                    <h3 className="font-display text-base font-bold uppercase leading-[0.95] tracking-tight text-[color:var(--color-ink)] sm:text-2xl">
                       {p.title}
                     </h3>
-                    <p className="text-sm leading-snug text-[color:var(--color-ink)]/75">
+                    <p className="hidden text-sm leading-snug text-[color:var(--color-ink)]/75 sm:block">
                       {p.blurb}
                     </p>
-                    <div className="mt-auto flex flex-wrap gap-1.5 border-t border-[color:var(--color-ink)]/15 pt-3">
-                      {p.tags.map((t) => (
+                    <div className="mt-auto flex flex-wrap gap-1 border-t border-[color:var(--color-ink)]/15 pt-2 sm:gap-1.5 sm:pt-3">
+                      {p.tags.slice(0, 2).map((t) => (
                         <span
                           key={t}
-                          className="border border-[color:var(--color-ink)]/40 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.18em] text-[color:var(--color-ink)]/80"
+                          className="border border-[color:var(--color-ink)]/40 px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.18em] text-[color:var(--color-ink)]/80 sm:px-2 sm:text-[9px]"
                         >
                           {t}
                         </span>

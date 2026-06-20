@@ -37,22 +37,22 @@ export function BlogShelf() {
                   </header>
 
                   {/* Dateline / pull quote */}
-                  <div className="relative flex flex-1 flex-col gap-4 p-5">
-                    <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/60">
+                  <div className="relative flex flex-1 flex-col gap-2 p-3 sm:gap-4 sm:p-5">
+                    <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/60 sm:gap-3 sm:text-[10px]">
                       <span>{b.date}</span>
                       <span className="inline-block h-px flex-1 bg-[color:var(--color-ink)]/30" />
                       <span>// {b.id}</span>
                     </div>
 
-                    <h3 className="font-display text-2xl font-bold uppercase leading-[0.95] tracking-tight text-[color:var(--color-ink)]">
+                    <h3 className="font-display text-base font-bold uppercase leading-[0.95] tracking-tight text-[color:var(--color-ink)] sm:text-2xl">
                       {b.title}
                     </h3>
 
-                    <p className="text-sm leading-snug text-[color:var(--color-ink)]/75">
+                    <p className="hidden text-sm leading-snug text-[color:var(--color-ink)]/75 sm:block">
                       {b.excerpt}
                     </p>
 
-                    <div className="mt-auto border-l-2 border-[color:var(--color-ink)] pl-3 font-display text-sm italic leading-snug text-[color:var(--color-ink)]/70">
+                    <div className="mt-auto hidden border-l-2 border-[color:var(--color-ink)] pl-3 font-display text-sm italic leading-snug text-[color:var(--color-ink)]/70 sm:block">
                       {`"`}{b.excerpt.split(" ").slice(0, 9).join(" ")}…{`"`}
                     </div>
                   </div>
