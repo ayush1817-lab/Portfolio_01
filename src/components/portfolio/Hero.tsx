@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import photoAsset from "@/assets/ayush-photo.jpeg.asset.json";
+import photoAsset from "@/assets/ayush-photo.jpeg.png";
 import { profile } from "@/content/portfolio";
 
 function scrollTo(id: string) {
@@ -94,7 +94,7 @@ export function Hero() {
             {/* Right: portrait */}
             <div className="group relative col-span-12 h-[180px] overflow-hidden bg-[color:var(--color-paper-3)] lg:h-[360px] lg:col-span-5 lg:h-auto">
               <img
-                src={photoAsset.url}
+                src={photoAsset}
                 alt="Ayush Ramawat"
                 className="h-full w-full scale-[1.18] object-cover object-center grayscale transition-transform duration-700 group-hover:scale-[1.26]"
               />
