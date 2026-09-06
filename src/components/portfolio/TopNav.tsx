@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { profile } from "@/content/portfolio";
 
 function scrollTo(id: string) {
   return (e: React.MouseEvent) => {
@@ -8,10 +9,10 @@ function scrollTo(id: string) {
 }
 
 const links = [
-  { id: "projects", label: "Projects" },
-  { id: "ux", label: "UX" },
-  { id: "blog", label: "Blog" },
-  { id: "about", label: "About" },
+  { href: "#projects", label: "Projects" },
+  { href: "#ux", label: "Case Studies" },
+  { href: profile.medium, label: "Writing" },
+  { href: "#about", label: "About" },
 ];
 
 export function TopNav() {
@@ -24,7 +25,7 @@ export function TopNav() {
         <a
           href="#hero"
           onClick={scrollTo("hero")}
-          className="flex items-center gap-2 pl-2 font-display text-sm font-bold uppercase tracking-tight text-[color:var(--color-ink)]"
+          className="flex shrink-0 items-center gap-2 pl-2 font-display text-xs font-bold uppercase tracking-tight text-[color:var(--color-ink)] sm:text-sm"
         >
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--color-ink)]" />
           Ayush&nbsp;Ramawat
@@ -33,10 +34,12 @@ export function TopNav() {
         <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
             <a
-              key={l.id}
-              href={`#${l.id}`}
-              onClick={scrollTo(l.id)}
-              className="rounded-full px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-ink)]/75 transition-colors hover:bg-[color:var(--color-ink)]/5 hover:text-[color:var(--color-ink)]"
+              key={l.href}
+              href={l.href}
+              onClick={l.href.startsWith("#") ? scrollTo(l.href.slice(1)) : undefined}
+              target={l.href.startsWith("https://") ? "_blank" : undefined}
+              rel={l.href.startsWith("https://") ? "noopener noreferrer" : undefined}
+              className="whitespace-nowrap rounded-full px-2 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-[color:var(--color-ink)]/75 transition-colors hover:bg-[color:var(--color-ink)]/5 hover:text-[color:var(--color-ink)] lg:px-3 lg:text-[11px] lg:tracking-[0.18em]"
             >
               {l.label}
             </a>
@@ -46,9 +49,9 @@ export function TopNav() {
         <a
           href="#connect"
           onClick={scrollTo("connect")}
-          className="group inline-flex items-center gap-1.5 rounded-full bg-[color:var(--color-ink)] px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-paper)] transition-colors hover:bg-[#2d2d2d] sm:px-5 sm:py-2.5"
+          className="group inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-[color:var(--color-ink)] px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-paper)] transition-colors hover:bg-[#2d2d2d] sm:px-4 sm:py-2.5 sm:text-[11px] lg:px-5"
         >
-          Connect
+          Get in touch
           <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-px group-hover:translate-x-px" />
         </a>
       </div>

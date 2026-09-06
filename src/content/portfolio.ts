@@ -1,12 +1,13 @@
 export const profile = {
   name: "Ayush Ramawat",
   role: "Product Designer",
-  tagline: "I design and ship agentic-AI products, Workflows, and the SaaS tools I needed but couldn't find.",
+  tagline:
+    "I design and ship agentic-AI products, Workflows, and the SaaS tools I needed but couldn't find.",
   status: "agent online — open to collaborations",
   email: "ayushramawat29@gmail.com",
   linkedin: "https://www.linkedin.com/in/ayush-ramawat-71880927b/",
   medium: "https://medium.com/@ayushramawat29",
-  github: "#", // replace with your GitHub URL
+  github: "https://github.com/ayush1817-lab",
   x: "https://x.com/AyushRamawat18", // replace with your X/Twitter URL
 };
 
@@ -15,13 +16,13 @@ export const experience = [
     year: "2025 — 2026",
     role: "AI Product Designer",
     org: "BPM Clinic Limited, Dublin",
-    note: "Designed and shipped automation workflows for the clinic and built internal SaaS tools.",
+    note: "Designed and shipped automation workflows and internal software tools for clinic operations.",
   },
   {
     year: "2024 — 2025",
     role: "Product Designer",
     org: "OAKS, Hyderabad",
-    note: "Designed Edtech games and Workflows, and bit of 3D animation.",
+    note: "Designed educational games and workflows, with additional contributions to 3D animation.",
   },
 ];
 
@@ -33,7 +34,7 @@ export type Project = {
   blurb: string;
   tags: string[];
   year: string;
-  link: string;
+  link: string | null;
   accent: string; // css color
 };
 
@@ -45,7 +46,7 @@ export const projects: Project[] = [
       "An agentic job hunting tool that finds jobs relevant to the profile, and handles the complete job hunting process, from find to apply. ",
     tags: ["Agentic AI", "Product Design"],
     year: "2026",
-    link: "Howtosolve.online",
+    link: "https://howtosolve.online",
     accent: "#3b6fa0",
   },
   {
@@ -63,7 +64,7 @@ export const projects: Project[] = [
     blurb: "Inline agents that critique, restructure, and polish without taking the pen.",
     tags: ["AI", "Editor", "Design Systems"],
     year: "2024",
-    link: "#",
+    link: null,
     accent: "#4a7c59",
   },
   {
@@ -72,7 +73,7 @@ export const projects: Project[] = [
     blurb: "Cost, traces, evals — one console for product & platform teams.",
     tags: ["B2B", "Dashboard", "DX"],
     year: "2024",
-    link: "#",
+    link: null,
     accent: "#6b4a8a",
   },
   {
@@ -81,7 +82,7 @@ export const projects: Project[] = [
     blurb: "Conversational scaffolding that hands off cleanly to humans.",
     tags: ["Voice", "Conversational", "Research"],
     year: "2023",
-    link: "#",
+    link: null,
     accent: "#b5562e",
   },
 ];
@@ -93,7 +94,7 @@ export const saas: Project[] = [
     blurb: "Drop a contract → get invoices, reminders, and reconciliation.",
     tags: ["Live", "Solo SaaS"],
     year: "2025",
-    link: "#",
+    link: null,
     accent: "#3b6fa0",
   },
   {
@@ -102,7 +103,7 @@ export const saas: Project[] = [
     blurb: "An agent that watches your call and writes the PRD with you.",
     tags: ["Beta", "PM tools"],
     year: "2024",
-    link: "#",
+    link: null,
     accent: "#4a7c59",
   },
   {
@@ -111,7 +112,7 @@ export const saas: Project[] = [
     blurb: "A quiet writing surface with an agent that asks the right questions.",
     tags: ["Live", "Consumer"],
     year: "2024",
-    link: "#",
+    link: null,
     accent: "#9a6b3f",
   },
 ];
@@ -122,7 +123,7 @@ export type CaseStudy = {
   client: string;
   year: string;
   summary: string;
-  link: string;
+  link: string | null;
   spineColor: string;
 };
 
@@ -134,7 +135,7 @@ export const cases: CaseStudy[] = [
     year: "2025",
     summary:
       "How we shaped citations, branching, and human-in-the-loop checkpoints to make an autonomous research agent feel safe to trust.",
-    link: "#",
+    link: null,
     spineColor: "#3b6fa0",
   },
   {
@@ -144,7 +145,7 @@ export const cases: CaseStudy[] = [
     year: "2024",
     summary:
       "Restructured a tangled automation product into a single canvas with traces, retries, and live observability.",
-    link: "#",
+    link: null,
     spineColor: "#9a6b3f",
   },
   {
@@ -152,8 +153,9 @@ export const cases: CaseStudy[] = [
     title: "Voice-first onboarding that survives interruptions",
     client: "Nimbus",
     year: "2023",
-    summary: "Patterns for voice agents that gracefully resume, escalate, and hand off to a person.",
-    link: "#",
+    summary:
+      "Patterns for voice agents that gracefully resume, escalate, and hand off to a person.",
+    link: null,
     spineColor: "#4a7c59",
   },
   {
@@ -161,8 +163,9 @@ export const cases: CaseStudy[] = [
     title: "A design system for agent UIs",
     client: "Internal",
     year: "2024",
-    summary: "Tokens, primitives, and patterns for chat, plans, traces, and tool calls — reusable across products.",
-    link: "#",
+    summary:
+      "Tokens, primitives, and patterns for chat, plans, traces, and tool calls — reusable across products.",
+    link: null,
     spineColor: "#6b4a8a",
   },
   {
@@ -170,8 +173,9 @@ export const cases: CaseStudy[] = [
     title: "Pricing an unpredictable product",
     client: "Mesh",
     year: "2024",
-    summary: "Designing a usage-based pricing UI when cost varies per request and finance still needs predictability.",
-    link: "#",
+    summary:
+      "Designing a usage-based pricing UI when cost varies per request and finance still needs predictability.",
+    link: null,
     spineColor: "#b5562e",
   },
 ];
@@ -199,7 +203,8 @@ export const blogs: Blog[] = [
     title: "The quiet death of the empty state",
     date: "Mar 2025",
     readingTime: "4 min",
-    excerpt: "Agentic products don't have empty states. They have first turns. A small UX shift with big implications.",
+    excerpt:
+      "Agentic products don't have empty states. They have first turns. A small UX shift with big implications.",
     link: "https://medium.com/@ayushramawat29",
   },
   {
@@ -207,7 +212,8 @@ export const blogs: Blog[] = [
     title: "Shipping a SaaS in 14 days, the boring way",
     date: "Jan 2025",
     readingTime: "7 min",
-    excerpt: "How I built and shipped Clipper as a one-person team — scope, tools, and the cuts I made.",
+    excerpt:
+      "How I built and shipped Clipper as a one-person team — scope, tools, and the cuts I made.",
     link: "https://medium.com/@ayushramawat29",
   },
   {
@@ -215,7 +221,8 @@ export const blogs: Blog[] = [
     title: "A field guide to agent traces",
     date: "Nov 2024",
     readingTime: "5 min",
-    excerpt: "How to read, design, and instrument the trace UI that every agent product will eventually need.",
+    excerpt:
+      "How to read, design, and instrument the trace UI that every agent product will eventually need.",
     link: "https://medium.com/@ayushramawat29",
   },
 ];

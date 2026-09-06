@@ -1,6 +1,6 @@
 import { experience } from "@/content/portfolio";
 
-const chapterLabel = (i: number) => `Chapter ${String(i + 1).padStart(2, "0")}`;
+const experienceLabel = (i: number) => `Experience ${String(i + 1).padStart(2, "0")}`;
 
 export function About() {
   return (
@@ -17,15 +17,25 @@ export function About() {
               // about
             </span>
             <h2 className="font-display text-2xl font-bold uppercase leading-[0.9] tracking-tight text-[color:var(--color-ink)] lg:text-5xl lg:text-6xl">
-              About
+              A designer who builds.
             </h2>
           </div>
           <div className="flex flex-col gap-3 lg:col-span-6 lg:col-start-7 lg:pt-4">
             <p className="text-sm leading-relaxed text-[color:var(--color-ink)]/80 lg:text-xl">
-              I'm an HCI master's student at University College Dublin, currently building agentic-AI products independently. My path here is non-linear: a maths degree, then several years as an animator, then HCI and AI products.
+              I’m Ayush, a master’s student in Human–Computer Interaction at University College
+              Dublin. I design and build AI products, with a particular interest in how people
+              understand, guide, and stay in control of automated systems.
             </p>
             <p className="text-sm leading-relaxed text-[color:var(--color-ink)]/80 lg:text-xl">
-              I build the tools I wish existed. OptiApply came out of my own job search. FontPaste came out of my own design work. I ship intensely, learn from real use, and care more about whether something works for someone than whether it looks good in a deck.
+              My path into product design started with mathematics, moved through animation, and led
+              me to HCI. That background shapes how I approach a product: thinking through its
+              logic, paying attention to interaction, and making ideas tangible through working
+              prototypes.
+            </p>
+            <p className="text-sm leading-relaxed text-[color:var(--color-ink)]/80 lg:text-xl">
+              Many of my projects begin with something I’ve struggled with myself. My job search led
+              to OptiApply; my design work led to FontPaste. I build, put ideas into use, and learn
+              where the experience needs to change.
             </p>
           </div>
         </header>
@@ -47,7 +57,7 @@ export function About() {
                   }`}
                 >
                   <span className="font-mono text-xs uppercase tracking-[0.18em] text-[color:var(--color-ink)]">
-                    {chapterLabel(i)}
+                    {experienceLabel(i)}
                   </span>
                   <span
                     className={`font-display text-xl font-bold tracking-tight text-[color:var(--color-ink)]/40 ${
@@ -78,8 +88,8 @@ export function About() {
         {/* Footer meta */}
         <footer className="flex items-center gap-6">
           <div className="h-px flex-grow bg-[color:var(--color-ink)]" />
-          <span className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/40">
-            End of record • Est. 2020
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink)]/40">
+            Mathematics → Animation → Product Design
           </span>
         </footer>
       </div>

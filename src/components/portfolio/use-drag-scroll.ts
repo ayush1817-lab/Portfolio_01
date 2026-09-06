@@ -21,21 +21,25 @@ export function useDragScroll<T extends HTMLElement>() {
     let moved = false;
 
     const onPointerDown = (e: PointerEvent) => {
+      moved = false;
       // leave touch to the browser's native swipe
-      if (e.pointerType === "touch") return;
+      if (e.pointerType === "touch" || e.button !== 0) return;
 
       isDown = true;
-      moved = false;
       startX = e.clientX;
       startScroll = el.scrollLeft;
-      el.setPointerCapture(e.pointerId);
-      el.classList.add("is-dragging");
     };
 
     const onPointerMove = (e: PointerEvent) => {
       if (!isDown) return;
       const dx = e.clientX - startX;
-      if (Math.abs(dx) > 4) moved = true;
+      if (!moved && Math.abs(dx) <= 4) return;
+      if (!moved) {
+        moved = true;
+        // Capture only actual drags so a normal click still reaches its link.
+        el.setPointerCapture(e.pointerId);
+        el.classList.add("is-dragging");
+      }
       el.scrollLeft = startScroll - dx;
     };
 
@@ -47,15 +51,22 @@ export function useDragScroll<T extends HTMLElement>() {
       } catch {
         /* noop */
       }
-      if (moved) {
-        // swallow the click that follows a drag so cards stay clickable on tap
-        const swallow = (ev: MouseEvent) => {
-          ev.preventDefault();
-          ev.stopPropagation();
-          el.removeEventListener("click", swallow, true);
-        };
-        el.addEventListener("click", swallow, true);
-      }
+    };
+
+    const onClick = (e: MouseEvent) => {
+      if (!moved || e.detail === 0) return;
+      e.preventDefault();
+      e.stopPropagation();
+      moved = false;
+    };
+
+    const onPointerCancel = (e: PointerEvent) => {
+      onPointerUp(e);
+      moved = false;
+    };
+
+    const onPointerLeave = () => {
+      if (!moved) isDown = false;
     };
 
     const onWheel = (e: WheelEvent) => {
@@ -69,14 +80,18 @@ export function useDragScroll<T extends HTMLElement>() {
     el.addEventListener("pointerdown", onPointerDown);
     el.addEventListener("pointermove", onPointerMove);
     el.addEventListener("pointerup", onPointerUp);
-    el.addEventListener("pointercancel", onPointerUp);
+    el.addEventListener("pointercancel", onPointerCancel);
+    el.addEventListener("pointerleave", onPointerLeave);
+    el.addEventListener("click", onClick, true);
     el.addEventListener("wheel", onWheel, { passive: false });
 
     return () => {
       el.removeEventListener("pointerdown", onPointerDown);
       el.removeEventListener("pointermove", onPointerMove);
       el.removeEventListener("pointerup", onPointerUp);
-      el.removeEventListener("pointercancel", onPointerUp);
+      el.removeEventListener("pointercancel", onPointerCancel);
+      el.removeEventListener("pointerleave", onPointerLeave);
+      el.removeEventListener("click", onClick, true);
       el.removeEventListener("wheel", onWheel);
     };
   }, []);
