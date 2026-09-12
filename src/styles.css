@@ -4,35 +4,53 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * ─────────────────────────────────────────────────────────────
+ *  "Nocturne" — portfolio design system
+ *  Deep ink canvas · warm cream type · ember/amber accent
+ *  aurora glow · glass surfaces · grain
+ * ─────────────────────────────────────────────────────────────
+ */
 @theme {
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
   --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
-  --color-paper: #f5f3ee;
-  --color-paper-2: #efece5;
-  --color-paper-3: #e8e4dd;
-  --color-ink: #0d0d0d;
-  --color-ink-muted: #6b6862;
-  --color-blueprint: #3b6fa0;
-  --color-blueprint-soft: #c7d6e6;
-  --shadow-card: 0 1px 0 rgba(13,13,13,0.06), 0 10px 20px -12px rgba(13,13,13,0.18), 0 30px 60px -30px rgba(13,13,13,0.18);
-  --shadow-card-hover: 0 1px 0 rgba(13,13,13,0.08), 0 20px 40px -16px rgba(13,13,13,0.28), 0 40px 80px -32px rgba(13,13,13,0.22);
+
+  --color-night: #09090d;
+  --color-night-2: #0e0e14;
+  --color-night-3: #15151d;
+  --color-night-4: #1d1d27;
+  --color-cream: #f4f1ea;
+  --color-mist: #a3a0ab;
+  --color-line: rgba(244, 241, 234, 0.08);
+  --color-line-strong: rgba(244, 241, 234, 0.18);
+  --color-ember: #ff7a59;
+  --color-amber: #ffc857;
+  --color-iris: #8b7dff;
+  --color-mint: #4fd1c5;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --shadow-glow: 0 0 0 1px rgba(244, 241, 234, 0.06), 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+  --shadow-ember: 0 10px 40px -10px rgba(255, 122, 89, 0.45);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 46s linear infinite;
+  --animate-spin-slow: spin 22s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-drift-a: drift-a 18s ease-in-out infinite alternate;
+  --animate-drift-b: drift-b 22s ease-in-out infinite alternate;
+  --animate-drift-c: drift-c 26s ease-in-out infinite alternate;
+  --animate-ping-soft: ping-soft 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-scroll-cue: scroll-cue 2.2s var(--ease-expo) infinite;
 }
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * shadcn semantic tokens (used by src/components/ui). Mapped to the
+ * Nocturne palette so any UI primitive dropped in matches the page.
  */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -76,99 +94,317 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-:root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
-}
-
+:root,
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --radius: 1rem;
+  --background: oklch(0.13 0.008 285);
+  --foreground: oklch(0.96 0.008 85);
+  --card: oklch(0.16 0.009 285);
+  --card-foreground: oklch(0.96 0.008 85);
+  --popover: oklch(0.16 0.009 285);
+  --popover-foreground: oklch(0.96 0.008 85);
+  --primary: oklch(0.74 0.17 38);
+  --primary-foreground: oklch(0.13 0.008 285);
+  --secondary: oklch(0.22 0.01 285);
+  --secondary-foreground: oklch(0.96 0.008 85);
+  --muted: oklch(0.22 0.01 285);
+  --muted-foreground: oklch(0.7 0.012 285);
+  --accent: oklch(0.22 0.01 285);
+  --accent-foreground: oklch(0.96 0.008 85);
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.96 0.008 85);
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.74 0.17 38);
+  --chart-1: oklch(0.74 0.17 38);
+  --chart-2: oklch(0.85 0.16 85);
+  --chart-3: oklch(0.65 0.18 290);
+  --chart-4: oklch(0.8 0.12 175);
+  --chart-5: oklch(0.7 0.012 285);
+  --sidebar: oklch(0.16 0.009 285);
+  --sidebar-foreground: oklch(0.96 0.008 85);
+  --sidebar-primary: oklch(0.74 0.17 38);
+  --sidebar-primary-foreground: oklch(0.13 0.008 285);
+  --sidebar-accent: oklch(0.22 0.01 285);
+  --sidebar-accent-foreground: oklch(0.96 0.008 85);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar-ring: oklch(0.74 0.17 38);
 }
 
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: var(--color-line);
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--color-night);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-ember);
+    color: var(--color-night);
+  }
+
+  /* Custom cursor is active — hide the native one on precise pointers. */
+  @media (pointer: fine) {
+    html.has-cursor,
+    html.has-cursor * {
+      cursor: none !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
   }
 }
 
+/* ── keyframes ─────────────────────────────────────────────── */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes drift-a {
+  0% {
+    transform: translate3d(-10%, -6%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(14%, 10%, 0) scale(1.18);
+  }
+}
+@keyframes drift-b {
+  0% {
+    transform: translate3d(12%, 8%, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(-14%, -10%, 0) scale(0.92);
+  }
+}
+@keyframes drift-c {
+  0% {
+    transform: translate3d(0, 12%, 0) scale(0.95);
+  }
+  100% {
+    transform: translate3d(-8%, -14%, 0) scale(1.2);
+  }
+}
+@keyframes ping-soft {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  80%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+@keyframes scroll-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+@keyframes shimmer {
+  from {
+    background-position: 200% center;
+  }
+  to {
+    background-position: -200% center;
+  }
 }
 
+/* ── utilities ─────────────────────────────────────────────── */
+
+/* Film grain overlay. Applied once on <main>. */
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.045;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 240px 240px;
+  }
+}
+
+/* Frosted surface. */
+@utility glass {
+  background: linear-gradient(180deg, rgba(244, 241, 234, 0.05), rgba(244, 241, 234, 0.025));
+  border: 1px solid var(--color-line);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+/* Warm gradient text. */
+@utility text-ember-gradient {
+  background: linear-gradient(92deg, var(--color-ember) 0%, var(--color-amber) 60%, #ffe3a3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Cool gradient text. */
+@utility text-iris-gradient {
+  background: linear-gradient(92deg, var(--color-iris) 0%, var(--color-mint) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated shimmer across text (used sparingly). */
+@utility text-shimmer {
+  background: linear-gradient(
+    100deg,
+    var(--color-cream) 0%,
+    var(--color-cream) 40%,
+    var(--color-amber) 50%,
+    var(--color-cream) 60%,
+    var(--color-cream) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* Hairline grid backdrop, fades toward bottom. */
+@utility grid-fade {
+  background-image:
+    linear-gradient(to right, rgba(244, 241, 234, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 241, 234, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, black 20%, transparent 75%);
+}
+
+/* Horizontal edge fade for marquees and shelves. */
+@utility mask-x {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* Drag-scroll track. */
 @utility shelf-track {
-  cursor: grab;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  &::-webkit-scrollbar { display: none; }
-  &.is-dragging { cursor: grabbing; }
-  &.is-dragging * { cursor: grabbing !important; user-select: none; }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &.is-dragging {
+    scroll-behavior: auto;
+  }
+  &.is-dragging * {
+    user-select: none;
+  }
+}
+
+/* Shelf gutter: aligns the first card with the page's content column. */
+@utility shelf-gutter {
+  /* scroll-padding matches padding so snap points align with the gutter. */
+  padding-inline: 1.25rem;
+  scroll-padding-inline: 1.25rem;
+  @media (min-width: 40rem) {
+    padding-inline: 2rem;
+    scroll-padding-inline: 2rem;
+  }
+  @media (min-width: 64rem) {
+    padding-inline: max(2.5rem, calc((100vw - 72rem) / 2 + 2.5rem));
+    scroll-padding-inline: max(2.5rem, calc((100vw - 72rem) / 2 + 2.5rem));
+  }
+}
+
+/* Gradient border via mask trick. */
+@utility ring-gradient {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 122, 89, 0.7),
+      rgba(255, 200, 87, 0.25) 40%,
+      rgba(139, 125, 255, 0.35) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/* Focus ring, keyboard only. */
+@utility focus-glow {
+  &:focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 4px;
+  }
 }
