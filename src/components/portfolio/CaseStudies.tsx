@@ -51,7 +51,7 @@ export function CaseStudies() {
     <section
       id="ux"
       aria-label="UX case studies"
-      className="relative overflow-hidden py-24 lg:py-40"
+      className="relative overflow-hidden py-20 sm:py-24 lg:py-40"
     >
       <div
         aria-hidden
@@ -65,7 +65,7 @@ export function CaseStudies() {
             label="Case studies"
             title="Notes from the"
             italic="process."
-            caption="Three UX project overviews. Drag the shelf, use the wheel, or the arrows."
+            caption="Three UX project overviews. Swipe or drag the shelf to browse."
           />
           <Reveal delay={0.3} className="hidden lg:block">
             <ShelfControls

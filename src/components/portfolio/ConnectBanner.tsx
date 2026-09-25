@@ -35,7 +35,7 @@ export function ConnectBanner() {
     <section
       id="connect"
       aria-label="Connect"
-      className="relative px-5 py-24 sm:px-8 lg:px-10 lg:py-40"
+      className="relative px-4 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-40"
     >
       <Reveal y={40} amount={0.2} blur={false}>
         <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-line bg-night-2 shadow-glow">
@@ -55,7 +55,7 @@ export function ConnectBanner() {
             />
           </div>
 
-          <div className="relative flex flex-col gap-12 p-8 sm:p-12 lg:p-20">
+          <div className="relative flex flex-col gap-10 p-6 sm:gap-12 sm:p-12 lg:p-20">
             <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em] text-mist">
               <span>
                 <span className="text-ember">05</span> &nbsp;·&nbsp; Contact
@@ -100,7 +100,10 @@ export function ConnectBanner() {
                         className="focus-glow flex min-w-0 items-center gap-3 px-5 py-4 font-sans text-sm font-semibold tracking-tight transition-colors hover:bg-amber sm:px-6"
                       >
                         <Mail className="h-4 w-4 shrink-0" />
-                        <span className="truncate">{profile.email}</span>
+                        <span className="truncate">
+                          <span className="sm:hidden">Email me</span>
+                          <span className="hidden sm:inline">{profile.email}</span>
+                        </span>
                       </a>
                     </Magnetic>
                     <button
@@ -113,18 +116,21 @@ export function ConnectBanner() {
                       {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                     </button>
                   </div>
+                  <p className="mt-3 select-all break-all text-center font-mono text-[11px] tracking-[0.08em] text-mist sm:hidden">
+                    {profile.email}
+                  </p>
                 </Reveal>
 
-                <Reveal delay={0.4}>
-                  <div className="flex flex-wrap gap-2 lg:justify-end">
+                <Reveal delay={0.4} className="w-full lg:w-auto">
+                  <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap lg:justify-end">
                     {socials.map(({ href, label, Icon }) => (
-                      <Magnetic key={label} strength={0.25}>
+                      <Magnetic key={label} strength={0.25} className="w-full sm:w-auto">
                         <a
                           href={href}
                           target="_blank"
                           rel="noreferrer noopener"
                           data-cursor="Open"
-                          className="focus-glow inline-flex items-center gap-2 rounded-full glass px-4 py-2.5 font-sans text-[13px] font-medium tracking-tight text-cream/85 transition-all duration-300 hover:border-cream/40 hover:text-cream"
+                          className="focus-glow flex w-full items-center justify-center gap-2 rounded-full glass px-4 py-3 sm:inline-flex sm:w-auto sm:py-2.5 font-sans text-[13px] font-medium tracking-tight text-cream/85 transition-all duration-300 hover:border-cream/40 hover:text-cream"
                         >
                           <Icon className="h-3.5 w-3.5" />
                           {label}

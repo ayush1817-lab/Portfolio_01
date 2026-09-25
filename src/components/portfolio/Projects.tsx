@@ -20,15 +20,15 @@ export function Projects({ id, items }: Props) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   return (
-    <section id={id} aria-label="Selected projects" className="relative py-24 lg:py-40">
+    <section id={id} aria-label="Selected projects" className="relative py-20 sm:py-24 lg:py-40">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div className="mb-16 flex flex-col gap-8 lg:mb-24 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-12 flex flex-col gap-6 sm:mb-16 sm:gap-8 lg:mb-24 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             index="02"
             label="Selected work"
             title="Things I've"
             italic="shipped."
-            caption="Products that started as problems I ran into myself. Scroll through the stack."
+            caption="Products that started as problems I ran into myself."
           />
           <Reveal delay={0.3}>
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-mist">
@@ -97,7 +97,7 @@ function ProjectCard({
 
             <div className="grid grid-cols-1 lg:min-h-[68vh] lg:grid-cols-12">
               {/* ── text ──────────────────────────────────── */}
-              <div className="relative z-10 flex flex-col p-7 sm:p-10 lg:col-span-6 lg:p-14">
+              <div className="relative z-10 flex flex-col p-6 sm:p-10 lg:col-span-6 lg:p-14">
                 <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.22em] text-mist">
                   <span className="flex items-center gap-3">
                     <span className="text-cream">{String(i + 1).padStart(2, "0")}</span>
@@ -107,7 +107,7 @@ function ProjectCard({
                   <span className="hidden sm:inline">// {p.id}</span>
                 </div>
 
-                <h3 className="mt-10 font-display text-4xl font-semibold leading-[0.95] tracking-[-0.03em] text-cream sm:text-5xl lg:mt-14 lg:text-6xl">
+                <h3 className="mt-8 font-display text-[2rem] font-semibold leading-[0.95] tracking-[-0.03em] text-cream sm:text-5xl lg:mt-14 lg:text-6xl">
                   {p.title}
                 </h3>
                 <p className="mt-6 max-w-md text-base leading-relaxed text-mist sm:text-lg">
@@ -145,7 +145,7 @@ function ProjectCard({
               </div>
 
               {/* ── visual plate ──────────────────────────── */}
-              <div className="relative min-h-[260px] overflow-hidden lg:col-span-6 lg:min-h-0">
+              <div className="relative min-h-[190px] overflow-hidden sm:min-h-[260px] lg:col-span-6 lg:min-h-0">
                 <div
                   aria-hidden
                   className="absolute inset-0"
@@ -160,7 +160,7 @@ function ProjectCard({
                 />
                 <span
                   aria-hidden
-                  className="absolute bottom-6 right-8 select-none font-display text-[7rem] font-semibold leading-none tracking-[-0.06em] text-cream/[0.06] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3 lg:text-[11rem]"
+                  className="absolute bottom-6 right-8 select-none font-display text-[5.5rem] font-semibold sm:text-[7rem] leading-none tracking-[-0.06em] text-cream/[0.06] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3 lg:text-[11rem]"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
