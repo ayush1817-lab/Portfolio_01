@@ -53,17 +53,17 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 sm:gap-x-5">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
               target={l.href.startsWith("http") ? "_blank" : undefined}
               rel={l.href.startsWith("http") ? "noreferrer noopener" : undefined}
-              className="focus-glow group relative font-mono text-[11px] uppercase tracking-[0.2em] text-mist transition-colors hover:text-cream"
+              className="focus-glow group relative inline-flex min-w-11 items-center justify-center py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-mist transition-colors hover:text-cream"
             >
               {l.label}
-              <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
+              <span className="absolute bottom-2 left-0 h-px w-full origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
             </a>
           ))}
           <Magnetic>

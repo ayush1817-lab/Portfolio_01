@@ -40,7 +40,7 @@ export function Hero() {
       ref={ref}
       id="hero"
       aria-label="Introduction"
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16 lg:pt-32"
+      className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-32"
     >
       {/* ── backdrop: aurora + grid ─────────────────────────── */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -51,7 +51,7 @@ export function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-b from-transparent to-night" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-8 lg:px-10">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-5 sm:gap-14 sm:px-8 lg:grid-cols-12 lg:gap-8 lg:px-10">
         {/* ── copy ──────────────────────────────────────────── */}
         <motion.div style={{ y: yText, opacity: fade }} className="relative z-10 lg:col-span-7">
           <motion.div
@@ -87,29 +87,29 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            className="mt-10 flex flex-wrap items-center gap-3"
+            className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center"
             initial={reduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 2.05 }}
           >
-            <Magnetic>
+            <Magnetic className="w-full sm:w-auto">
               <a
                 href="#projects"
                 onClick={scrollTo("projects")}
                 data-cursor="View"
-                className="focus-glow group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-cream px-6 py-3.5 font-sans text-sm font-semibold tracking-tight text-night shadow-ember transition-transform"
+                className="focus-glow group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-cream px-6 py-4 sm:inline-flex sm:w-auto sm:py-3.5 font-sans text-sm font-semibold tracking-tight text-night shadow-ember transition-transform"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-ember to-amber opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <span className="relative">See the work</span>
                 <ArrowDown className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
               </a>
             </Magnetic>
-            <Magnetic>
+            <Magnetic className="w-full sm:w-auto">
               <a
                 href="#connect"
                 onClick={scrollTo("connect")}
                 data-cursor="Say hi"
-                className="focus-glow group inline-flex items-center gap-2 rounded-full glass px-6 py-3.5 font-sans text-sm font-semibold tracking-tight text-cream transition-colors duration-300 hover:border-cream/40"
+                className="focus-glow group flex w-full items-center justify-center gap-2 rounded-full glass px-6 py-4 sm:inline-flex sm:w-auto sm:py-3.5 font-sans text-sm font-semibold tracking-tight text-cream transition-colors duration-300 hover:border-cream/40"
               >
                 Get in touch
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -118,7 +118,7 @@ export function Hero() {
           </motion.div>
 
           <motion.dl
-            className="mt-12 grid max-w-lg grid-cols-3 gap-4 border-t border-line pt-6"
+            className="mt-10 grid max-w-lg grid-cols-3 gap-3 border-t border-line pt-6 sm:mt-12 sm:gap-4"
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 2.3 }}
@@ -128,7 +128,9 @@ export function Hero() {
                 <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-mist">
                   {f.k}
                 </dt>
-                <dd className="font-sans text-sm font-medium text-cream/90">{f.v}</dd>
+                <dd className="font-sans text-[13px] font-medium leading-snug text-cream/90 sm:text-sm">
+                  {f.v}
+                </dd>
               </div>
             ))}
           </motion.dl>
@@ -137,7 +139,7 @@ export function Hero() {
         {/* ── portrait ──────────────────────────────────────── */}
         <motion.div
           style={{ y: yPhoto }}
-          className="relative mx-auto w-full max-w-[380px] lg:col-span-5 lg:max-w-none"
+          className="relative mx-auto w-full max-w-[320px] sm:max-w-[380px] lg:col-span-5 lg:max-w-none"
           initial={reduce ? false : { opacity: 0, scale: 0.92, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.4, ease: EASE, delay: 1.5 }}
@@ -168,7 +170,7 @@ export function Hero() {
 
             {/* rotating badge */}
             <div
-              className="absolute -bottom-8 -right-4 h-28 w-28 sm:-right-8 sm:h-32 sm:w-32"
+              className="absolute -bottom-8 -right-2 h-28 w-28 sm:-right-8 sm:h-32 sm:w-32"
               style={{ transform: "translateZ(40px)" }}
             >
               <div className="absolute inset-0 rounded-full bg-night/80 backdrop-blur-md ring-1 ring-line-strong" />

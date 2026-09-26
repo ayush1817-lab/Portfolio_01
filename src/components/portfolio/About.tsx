@@ -15,7 +15,11 @@ const paragraphs = [
 export function About() {
   const reduce = useReducedMotion();
   return (
-    <section id="about" aria-label="About" className="relative py-24 lg:py-40">
+    <section
+      id="about"
+      aria-label="About"
+      className="relative overflow-x-clip py-20 sm:py-24 lg:py-40"
+    >
       <div
         aria-hidden
         className="pointer-events-none absolute right-[-20%] top-1/3 -z-10 h-[50vmax] w-[50vmax] rounded-full bg-iris/10 blur-[160px]"
@@ -28,11 +32,31 @@ export function About() {
             <div className="lg:sticky lg:top-32">
               <SectionHeading index="01" label="About" title="A designer who" italic="builds." />
 
-              <Reveal delay={0.3} className="mt-12">
+              <Reveal delay={0.3} className="mt-10 lg:mt-12">
                 <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.24em] text-mist">
                   The path so far
                 </p>
-                <ol className="relative flex flex-col gap-0">
+                {/* compact path for small screens */}
+                <ol className="flex flex-wrap items-center gap-x-2 gap-y-2 lg:hidden">
+                  {journey.map((step, i) => {
+                    const last = i === journey.length - 1;
+                    return (
+                      <li key={step} className="flex items-center gap-2">
+                        <span
+                          className={`rounded-full px-3 py-1.5 font-sans text-[13px] font-medium ${
+                            last
+                              ? "bg-ember/15 text-cream ring-1 ring-ember/50"
+                              : "glass text-cream/75"
+                          }`}
+                        >
+                          {step}
+                        </span>
+                        {!last ? <ArrowRight aria-hidden className="h-3 w-3 text-mist" /> : null}
+                      </li>
+                    );
+                  })}
+                </ol>
+                <ol className="relative hidden flex-col gap-0 lg:flex">
                   {journey.map((step, i) => {
                     const last = i === journey.length - 1;
                     return (
@@ -75,16 +99,16 @@ export function About() {
           </div>
 
           {/* ── bio + experience ─────────────────────────────── */}
-          <div className="flex flex-col gap-16 lg:col-span-7 lg:pt-3">
+          <div className="flex flex-col gap-12 lg:col-span-7 lg:gap-16 lg:pt-3">
             <div className="flex flex-col gap-6">
               {paragraphs.map((p, i) => (
                 <Reveal key={i} delay={0.1 * i}>
                   <p
-                    className={`leading-relaxed ${
+                    className={
                       i === 0
-                        ? "font-display text-2xl font-normal tracking-[-0.015em] text-cream sm:text-[1.7rem] sm:leading-snug"
-                        : "text-base text-mist sm:text-lg"
-                    }`}
+                        ? "font-display text-xl font-normal leading-snug tracking-[-0.015em] text-cream sm:text-[1.7rem]"
+                        : "text-[15px] leading-relaxed text-mist sm:text-lg"
+                    }
                   >
                     {p}
                   </p>
@@ -106,7 +130,7 @@ export function About() {
               <ul className="flex flex-col gap-4">
                 {experience.map((e, i) => (
                   <Reveal key={e.year} delay={0.12 * i} y={20}>
-                    <li className="group relative overflow-hidden rounded-3xl glass p-6 transition-all duration-500 hover:-translate-y-0.5 hover:border-cream/25 sm:p-7">
+                    <li className="group relative overflow-hidden rounded-3xl glass p-5 transition-all duration-500 hover:-translate-y-0.5 hover:border-cream/25 sm:p-7">
                       <div
                         aria-hidden
                         className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-ember/20 opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-100"
@@ -118,7 +142,7 @@ export function About() {
                           </span>
                         </div>
                         <div className="sm:col-span-9">
-                          <h3 className="font-display text-2xl font-semibold tracking-tight text-cream">
+                          <h3 className="pr-6 font-display text-xl font-semibold tracking-tight text-cream sm:text-2xl">
                             {e.role}
                           </h3>
                           <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-mist">

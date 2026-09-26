@@ -71,7 +71,7 @@ export function TopNav() {
       />
 
       <motion.header
-        className="fixed inset-x-0 top-0 z-[65] px-4 pt-4 sm:px-6 sm:pt-5"
+        className="fixed inset-x-0 top-0 z-[65] px-4 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-6 sm:pt-5"
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1 }}
         transition={{ duration: 0.6, ease: EASE, delay: hidden ? 0 : 0.05 }}
@@ -86,7 +86,7 @@ export function TopNav() {
             href="#hero"
             onClick={scrollTo("hero")}
             data-cursor="Top"
-            className="focus-glow group flex shrink-0 items-center gap-2.5 rounded-full py-1.5 pl-3 pr-3"
+            className="focus-glow group flex shrink-0 items-center gap-2.5 rounded-full py-2.5 pl-3 pr-3"
           >
             <span className="relative grid h-2 w-2 place-items-center">
               <span className="absolute inset-0 rounded-full bg-ember animate-ping-soft" />
@@ -107,7 +107,7 @@ export function TopNav() {
                   href={`#${l.id}`}
                   onClick={scrollTo(l.id)}
                   className={cn(
-                    "focus-glow relative rounded-full px-3.5 py-2 font-sans text-[13px] font-medium tracking-tight transition-colors",
+                    "focus-glow relative rounded-full px-3.5 py-2.5 font-sans text-[13px] font-medium tracking-tight transition-colors",
                     isActive ? "text-cream" : "text-mist hover:text-cream",
                   )}
                 >
@@ -154,7 +154,7 @@ export function TopNav() {
         {open ? (
           <motion.div
             key="menu"
-            className="fixed inset-0 z-[64] flex flex-col bg-night/95 px-6 pb-10 pt-28 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-[64] flex flex-col bg-night/95 px-6 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-28 backdrop-blur-xl md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
