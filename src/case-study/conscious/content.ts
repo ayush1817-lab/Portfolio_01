@@ -462,6 +462,8 @@ export const ideation = {
         "An immersive XR community space where users can anonymously share personal stories, ask questions, and connect with others in a safe virtual environment.",
     },
   ] as Idea[],
+  boxNote:
+    "Community Box wasn't one of the 12. It emerged later, when we looked for something unique that brought these ideas together.",
   decision:
     "Instead of asking which interface to build, we asked what combination of experiences best supports the journey into community.",
 };
@@ -475,7 +477,7 @@ export const box = {
     "The Community Box is a physical, supportive introduction to LGBTQ+ knowledge, resources, and connection. It helps people find, understand, and connect with existing communities without requiring immediate participation.",
   ],
   moreTitle: "More than a box",
-  more: "The team combined elements from the magazine, newsletter, resource hub, Buddy Programme, event map, and shared-experience platform into one connected service. The box makes the first step smaller, more private, and more approachable; it does not replace existing communities.",
+  more: "The team combined elements from the magazine, newsletter, resource hub, Buddy Programme, and event map into one connected service. The box makes the first step smaller, more private, and more approachable; it does not replace existing communities.",
   /** Hotspot positions are % of the image; adjust once the real photo is in. */
   parts: [
     {

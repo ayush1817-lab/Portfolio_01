@@ -508,6 +508,7 @@ export function Ideation() {
       <div className="mt-14">
         <IdeationRail />
       </div>
+      <p className="mt-10 max-w-read text-read text-cc-forest">{d.boxNote}</p>
       <Figure assetKey="ideationBoard" className="mt-12 max-w-[980px]" />
       <OwnershipCallout label="DECISION" className="mt-14">
         {d.decision}
