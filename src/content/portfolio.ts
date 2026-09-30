@@ -1,3 +1,5 @@
+import optiapplyCover from "@/assets/optiapply-cover.webp";
+
 export const profile = {
   name: "Ayush Ramawat",
   role: "Product Designer",
@@ -36,6 +38,8 @@ export type Project = {
   year: string;
   link: string | null;
   accent: string; // css color
+  /** Optional cover image for the Selected Work card (replaces the generated plate). */
+  cover?: { src: string; alt: string };
 };
 
 export const projects: Project[] = [
@@ -48,6 +52,10 @@ export const projects: Project[] = [
     year: "2026",
     // In-site case study; the live product is linked from inside it.
     link: `${import.meta.env.BASE_URL}work/optiapply/`,
+    cover: {
+      src: optiapplyCover,
+      alt: "OptiApply, from insight to action: the Resume Analysis Summary labelled Analyze, the Hunt Mode profile labelled Discover, and the final resume verification labelled Review.",
+    },
     accent: "#3b6fa0",
   },
   {
