@@ -10,7 +10,7 @@ type Props = {
 
 export function ShelfControls({ onPrev, onNext, canPrev = true, canNext = true }: Props) {
   const base =
-    "focus-glow grid h-12 w-12 place-items-center rounded-full glass text-cream transition-all duration-300 hover:border-cream/40 hover:bg-cream hover:text-night disabled:pointer-events-none disabled:opacity-30";
+    "focus-glow grid h-12 w-12 place-items-center rounded-full surface text-ink transition-all duration-300 hover:border-ink/40 hover:bg-ink hover:text-paper disabled:pointer-events-none disabled:opacity-30";
   return (
     <div className="flex items-center gap-2">
       <Magnetic>

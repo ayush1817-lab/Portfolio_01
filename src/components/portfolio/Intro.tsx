@@ -31,7 +31,7 @@ export function Intro() {
         <motion.div
           key="intro"
           aria-hidden
-          className="fixed inset-0 z-[90] grid place-items-center bg-night"
+          className="fixed inset-0 z-[90] grid place-items-center bg-paper"
           initial={{ clipPath: "inset(0 0 0 0)" }}
           exit={{ clipPath: "inset(0 0 100% 0)" }}
           transition={{ duration: 1, ease: EASE }}
@@ -39,14 +39,14 @@ export function Intro() {
           <div className="flex flex-col items-center gap-4">
             <div className="overflow-hidden">
               <motion.div
-                className="font-display text-4xl font-semibold tracking-[-0.03em] text-cream sm:text-6xl"
+                className="font-display text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-6xl"
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "-110%", opacity: 0 }}
                 transition={{ duration: 0.9, ease: EASE }}
               >
                 {profile.name.split(" ")[0]}
-                <span className="font-serif italic text-ember-gradient">
+                <span className="font-serif italic highlight">
                   {" "}
                   {profile.name.split(" ").slice(1).join(" ")}
                 </span>
@@ -59,7 +59,7 @@ export function Intro() {
               transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
             />
             <motion.span
-              className="font-mono text-[10px] uppercase tracking-[0.3em] text-mist"
+              className="font-mono text-[10px] uppercase tracking-[0.3em] text-ink-soft"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}

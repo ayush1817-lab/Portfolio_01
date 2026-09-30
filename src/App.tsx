@@ -12,7 +12,7 @@ import { projects } from "@/content/portfolio";
 
 export default function App() {
   return (
-    <main className="grain min-h-screen bg-night font-sans text-cream antialiased">
+    <main className="min-h-screen bg-paper font-sans text-ink antialiased">
       <Intro />
       <Cursor />
       <TopNav />

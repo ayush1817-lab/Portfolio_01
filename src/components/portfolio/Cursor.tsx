@@ -61,7 +61,7 @@ export function Cursor() {
       {/* dot */}
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[100] h-1.5 w-1.5 rounded-full bg-cream mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-[100] h-1.5 w-1.5 rounded-full bg-cobalt"
         style={{ x, y, translateX: "-50%", translateY: "-50%" }}
         animate={{ opacity: hidden || big ? 0 : 1, scale: pressed ? 0.6 : 1 }}
         transition={{ duration: 0.2 }}
@@ -69,19 +69,19 @@ export function Cursor() {
       {/* ring */}
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[100] grid place-items-center rounded-full border border-cream/70"
+        className="pointer-events-none fixed left-0 top-0 z-[100] grid place-items-center rounded-full border border-cobalt/60"
         style={{ x: rx, y: ry, translateX: "-50%", translateY: "-50%" }}
         animate={{
           width: big ? 84 : pressed ? 22 : 34,
           height: big ? 84 : pressed ? 22 : 34,
           opacity: hidden ? 0 : 1,
-          backgroundColor: big ? "rgba(244,241,234,0.92)" : "rgba(244,241,234,0)",
-          borderColor: big ? "rgba(244,241,234,0)" : "rgba(244,241,234,0.7)",
+          backgroundColor: big ? "rgba(29,78,216,0.95)" : "rgba(29,78,216,0)",
+          borderColor: big ? "rgba(29,78,216,0)" : "rgba(29,78,216,0.55)",
         }}
         transition={{ type: "spring", stiffness: 300, damping: 24 }}
       >
         <motion.span
-          className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-night"
+          className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-paper"
           animate={{ opacity: big ? 1 : 0, scale: big ? 1 : 0.6 }}
           transition={{ duration: 0.18 }}
         >

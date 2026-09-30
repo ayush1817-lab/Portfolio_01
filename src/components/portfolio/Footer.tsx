@@ -35,19 +35,19 @@ export function Footer() {
     <footer className="relative border-t border-line px-5 py-10 sm:px-8 lg:px-10">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-2">
-          <p className="font-display text-lg font-semibold tracking-tight text-cream">
+          <p className="font-display text-lg font-semibold tracking-tight text-ink">
             {profile.name.split(" ")[0]}
-            <span className="font-serif italic text-ember-gradient">
+            <span className="font-serif italic highlight">
               {" "}
               {profile.name.split(" ").slice(1).join(" ")}
             </span>
           </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-mist">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
             © {new Date().getFullYear()} · Designed & built in Dublin
             {time ? (
               <>
                 {" "}
-                · <span className="tabular-nums text-cream/70">{time}</span> IST
+                · <span className="tabular-nums text-ink/70">{time}</span> IST
               </>
             ) : null}
           </p>
@@ -60,10 +60,10 @@ export function Footer() {
               href={l.href}
               target={l.href.startsWith("http") ? "_blank" : undefined}
               rel={l.href.startsWith("http") ? "noreferrer noopener" : undefined}
-              className="focus-glow group relative inline-flex min-w-11 items-center justify-center py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-mist transition-colors hover:text-cream"
+              className="focus-glow group relative inline-flex min-w-11 items-center justify-center py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink"
             >
               {l.label}
-              <span className="absolute bottom-2 left-0 h-px w-full origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
+              <span className="absolute bottom-2 left-0 h-px w-full origin-left scale-x-0 bg-sun transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
             </a>
           ))}
           <Magnetic>
@@ -72,7 +72,7 @@ export function Footer() {
               aria-label="Back to top"
               data-cursor="Top"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="focus-glow grid h-11 w-11 place-items-center rounded-full glass text-cream transition-colors duration-300 hover:bg-cream hover:text-night"
+              className="focus-glow grid h-11 w-11 place-items-center rounded-full surface text-ink transition-colors duration-300 hover:bg-ink hover:text-paper"
             >
               <ArrowUp className="h-4 w-4" />
             </button>

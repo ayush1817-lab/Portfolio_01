@@ -31,7 +31,7 @@ export function Projects({ id, items }: Props) {
             caption="Products that started as problems I ran into myself."
           />
           <Reveal delay={0.3}>
-            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-mist">
+            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-ink-soft">
               {String(items.length).padStart(2, "0")} projects · 2025 → 2026
             </p>
           </Reveal>
@@ -68,7 +68,7 @@ function ProjectCard({
   const start = i / total;
   const scale = useTransform(progress, [start, 1], [1, reduce ? 1 : 1 - (total - i - 1) * 0.05]);
   const dim = useTransform(progress, [start, 1], [0, reduce ? 0 : (total - i - 1) * 0.22]);
-  const overlay = useTransform(dim, (v) => `rgba(9,9,13,${v})`);
+  const overlay = useTransform(dim, (v) => `rgba(247,248,251,${v})`);
 
   const Tag = p.link ? "a" : "article";
   const external = p.link?.startsWith("http");
@@ -83,10 +83,10 @@ function ProjectCard({
             rel={external ? "noreferrer noopener" : undefined}
             data-cursor={p.link ? "Open" : undefined}
             className={cn(
-              "group relative block overflow-hidden rounded-[2rem] border border-line bg-night-2 shadow-glow",
+              "group relative block overflow-hidden rounded-[2rem] border border-line bg-paper shadow-soft",
               "lg:min-h-[68vh]",
             )}
-            style={{ "--accent": p.accent } as React.CSSProperties}
+            style={{ "--accent": plates[i % plates.length].stroke } as React.CSSProperties}
           >
             {/* dimming overlay as the next card slides over */}
             <motion.div
@@ -98,19 +98,19 @@ function ProjectCard({
             <div className="grid grid-cols-1 lg:min-h-[68vh] lg:grid-cols-12">
               {/* ── text ──────────────────────────────────── */}
               <div className="relative z-10 flex flex-col p-6 sm:p-10 lg:col-span-6 lg:p-14">
-                <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.22em] text-mist">
+                <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft">
                   <span className="flex items-center gap-3">
-                    <span className="text-cream">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="text-ink">{String(i + 1).padStart(2, "0")}</span>
                     <span className="h-px w-6 bg-line-strong" />
                     <span>{p.year}</span>
                   </span>
                   <span className="hidden sm:inline">// {p.id}</span>
                 </div>
 
-                <h3 className="mt-8 font-display text-[2rem] font-semibold leading-[0.95] tracking-[-0.03em] text-cream sm:text-5xl lg:mt-14 lg:text-6xl">
+                <h3 className="mt-8 font-display text-[2rem] font-semibold leading-[0.95] tracking-[-0.03em] text-ink sm:text-5xl lg:mt-14 lg:text-6xl">
                   {p.title}
                 </h3>
-                <p className="mt-6 max-w-md text-base leading-relaxed text-mist sm:text-lg">
+                <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
                   {p.blurb}
                 </p>
 
@@ -118,7 +118,7 @@ function ProjectCard({
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-line-strong px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-cream/75"
+                      className="rounded-full border border-line-strong px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/75"
                     >
                       {t}
                     </span>
@@ -131,11 +131,15 @@ function ProjectCard({
                       className={cn(
                         "inline-flex items-center gap-2 rounded-full px-5 py-3 font-sans text-sm font-semibold tracking-tight transition-all duration-500",
                         p.link
-                          ? "bg-cream text-night group-hover:bg-[var(--accent)] group-hover:text-cream"
-                          : "glass text-mist",
+                          ? "bg-ink text-paper group-hover:bg-cobalt"
+                          : "surface text-ink-soft",
                       )}
                     >
-                      {p.link ? "Open project" : "Overview only"}
+                      {p.link
+                        ? external
+                          ? "Open project"
+                          : "Read the case study"
+                        : "Overview only"}
                       {p.link ? (
                         <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                       ) : null}
@@ -149,18 +153,12 @@ function ProjectCard({
                 <div
                   aria-hidden
                   className="absolute inset-0"
-                  style={{
-                    background: `radial-gradient(120% 90% at 100% 0%, color-mix(in oklab, var(--accent) 55%, transparent) 0%, transparent 60%), radial-gradient(90% 80% at 0% 100%, color-mix(in oklab, var(--accent) 30%, transparent) 0%, transparent 60%), var(--color-night-3)`,
-                  }}
+                  style={{ background: plates[i % plates.length].bg }}
                 />
                 <Plate variant={i % 3} />
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-r from-night-2 via-transparent to-transparent lg:w-1/3"
-                />
                 <span
                   aria-hidden
-                  className="absolute bottom-6 right-8 select-none font-display text-[5.5rem] font-semibold sm:text-[7rem] leading-none tracking-[-0.06em] text-cream/[0.06] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3 lg:text-[11rem]"
+                  className="absolute bottom-6 right-8 select-none font-display text-[5.5rem] font-semibold sm:text-[7rem] leading-none tracking-[-0.06em] text-ink/[0.06] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3 lg:text-[11rem]"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -172,6 +170,13 @@ function ProjectCard({
     </div>
   );
 }
+
+/** Plate colours cycle through the site palette so every card sits in the theme. */
+const plates = [
+  { bg: "var(--color-cobalt-soft)", stroke: "var(--color-cobalt)" },
+  { bg: "var(--color-sun-soft)", stroke: "var(--color-sun-deep)" },
+  { bg: "var(--color-paper-3)", stroke: "var(--color-cobalt)" },
+];
 
 /** Abstract generative plates — one shape language per card. */
 function Plate({ variant }: { variant: number }) {
@@ -256,7 +261,7 @@ function Plate({ variant }: { variant: number }) {
               cx={x}
               cy={y}
               r="14"
-              fill="var(--color-night-2)"
+              fill="var(--color-paper-2)"
               stroke="var(--accent)"
               strokeOpacity="0.7"
             />
