@@ -20,9 +20,9 @@ export function Projects({ id, items }: Props) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   return (
-    <section id={id} aria-label="Selected projects" className="relative py-20 sm:py-24 lg:py-40">
+    <section id={id} aria-label="Selected projects" className="relative py-14 sm:py-24 lg:py-40">
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
-        <div className="mb-12 flex flex-col gap-6 sm:mb-16 sm:gap-8 lg:mb-24 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-8 flex flex-col gap-4 sm:mb-16 sm:gap-8 lg:mb-24 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             index="02"
             label="Selected work"
@@ -37,7 +37,7 @@ export function Projects({ id, items }: Props) {
           </Reveal>
         </div>
 
-        <div ref={ref} className="relative flex flex-col gap-6 lg:gap-0">
+        <div ref={ref} className="relative flex flex-col gap-4 sm:gap-6 lg:gap-0">
           {items.map((p, i) => (
             <ProjectCard
               key={p.id}
@@ -97,7 +97,7 @@ function ProjectCard({
 
             <div className="grid grid-cols-1 lg:min-h-[68vh] lg:grid-cols-12">
               {/* ── text ──────────────────────────────────── */}
-              <div className="relative z-10 flex flex-col p-6 sm:p-10 lg:col-span-6 lg:p-14">
+              <div className="relative z-10 flex flex-col p-5 sm:p-10 lg:col-span-6 lg:p-14">
                 <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft">
                   <span className="flex items-center gap-3">
                     <span className="text-ink">{String(i + 1).padStart(2, "0")}</span>
@@ -111,19 +111,19 @@ function ProjectCard({
                   <span className="hidden sm:inline">// {p.id}</span>
                 </div>
 
-                <h3 className="mt-8 font-display text-[2rem] font-semibold leading-[0.95] tracking-[-0.03em] text-ink sm:text-5xl lg:mt-14 lg:text-6xl">
+                <h3 className="mt-4 font-display text-[1.75rem] font-semibold leading-[0.95] tracking-[-0.03em] text-ink sm:mt-8 sm:text-5xl lg:mt-14 lg:text-6xl">
                   {p.title}
                 </h3>
                 {p.subtitle ? (
-                  <p className="mt-4 max-w-md font-display text-[1.35rem] font-medium leading-[1.2] tracking-[-0.02em] text-ink sm:text-[1.6rem]">
+                  <p className="mt-2 max-w-md font-display text-[1.1rem] font-medium leading-[1.2] tracking-[-0.02em] text-ink sm:mt-4 sm:text-[1.6rem]">
                     {p.subtitle}
                   </p>
                 ) : null}
-                <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
+                <p className="mt-3 line-clamp-3 max-w-md text-[15px] leading-relaxed text-ink-soft sm:mt-6 sm:line-clamp-none sm:text-lg">
                   {p.blurb}
                 </p>
 
-                <div className="mt-8 flex flex-wrap gap-2">
+                <div className="mt-4 hidden flex-wrap gap-2 sm:mt-8 sm:flex">
                   {p.tags.map((t) => (
                     <span
                       key={t}
@@ -134,7 +134,7 @@ function ProjectCard({
                   ))}
                 </div>
 
-                <div className="mt-auto pt-10">
+                <div className="mt-auto pt-5 sm:pt-10">
                   <Magnetic>
                     <span
                       className={cn(
@@ -160,16 +160,17 @@ function ProjectCard({
               {/* ── visual plate ──────────────────────────── */}
               <div
                 className={cn(
-                  "relative overflow-hidden lg:col-span-6 lg:min-h-0",
+                  "relative order-first overflow-hidden sm:order-none lg:col-span-6 lg:min-h-0",
                   // A cover keeps its own shape on small screens so nothing is cut off.
                   p.cover
-                    ? "aspect-[var(--cover-ar)] lg:aspect-auto"
-                    : "min-h-[190px] sm:min-h-[260px]",
+                    ? "aspect-[16/9] sm:aspect-[var(--cover-ar)] lg:aspect-auto"
+                    : "aspect-[16/9] sm:aspect-auto sm:min-h-[260px]",
                 )}
                 style={
                   p.cover
                     ? ({
                         "--cover-ar": `${p.cover.width} / ${p.cover.height}`,
+                        "--cover-focus": p.cover.mobileFocus ?? "50% 0%",
                       } as React.CSSProperties)
                     : undefined
                 }
@@ -190,7 +191,9 @@ function ProjectCard({
                     draggable={false}
                     className={cn(
                       "absolute inset-0 h-full w-full transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]",
-                      p.cover.fit === "cover" ? "object-cover object-top" : "object-contain",
+                      p.cover.fit === "cover"
+                        ? "object-cover object-[var(--cover-focus)] sm:object-top"
+                        : "object-contain",
                     )}
                   />
                 ) : p.coverPlaceholder ? (

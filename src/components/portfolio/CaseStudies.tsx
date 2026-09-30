@@ -68,7 +68,7 @@ export function CaseStudies() {
     <section
       id="ux"
       aria-label="UX case studies"
-      className="relative overflow-hidden py-20 sm:py-24 lg:py-40"
+      className="relative overflow-hidden py-14 sm:py-24 lg:py-40"
     >
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -90,7 +90,7 @@ export function CaseStudies() {
         </div>
       </div>
 
-      <Reveal delay={0.2} y={40} blur={false} className="mt-14">
+      <Reveal delay={0.2} y={40} blur={false} className="mt-8 sm:mt-14">
         <div
           ref={ref}
           data-cursor="Drag"
@@ -107,7 +107,7 @@ export function CaseStudies() {
                 rel={c.link ? "noreferrer noopener" : undefined}
                 draggable={false}
                 className={cn(
-                  "group relative flex aspect-[3/4] w-[78vw] max-w-[380px] shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-line bg-paper-2 shadow-soft transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 sm:w-[360px]",
+                  "group relative flex aspect-[4/5] w-[66vw] max-w-[380px] sm:aspect-[3/4] sm:w-[78vw] shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-line bg-paper-2 shadow-soft transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 sm:w-[360px]",
                 )}
                 style={{ "--accent": c.spineColor } as React.CSSProperties}
               >
@@ -143,14 +143,16 @@ export function CaseStudies() {
                 </div>
 
                 {/* body */}
-                <div className="relative flex flex-col gap-3 bg-paper p-6">
+                <div className="relative flex flex-col gap-2 bg-paper p-4 sm:gap-3 sm:p-6">
                   <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
                     Case · {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-display text-xl font-semibold leading-tight tracking-[-0.02em] text-ink sm:text-2xl">
+                  <h3 className="font-display text-lg font-semibold leading-tight tracking-[-0.02em] text-ink sm:text-2xl">
                     {c.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-ink-soft line-clamp-3">{c.summary}</p>
+                  <p className="text-[13px] leading-relaxed text-ink-soft line-clamp-2 sm:text-sm sm:line-clamp-3">
+                    {c.summary}
+                  </p>
                   <div className="mt-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-ink/70">
                     <span>{c.link ? "Read case" : "Overview only"}</span>
                     {c.link ? (
