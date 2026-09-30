@@ -5,9 +5,8 @@ import ccCover from "@/assets/cc-cover.webp";
 export const profile = {
   name: "Ayush Ramawat",
   role: "Product Designer",
-  tagline:
-    "I design and ship agentic-AI products, Workflows, and the SaaS tools I needed but couldn't find.",
-  status: "agent online — open to collaborations",
+  tagline: "I design AI products, workflows, and the SaaS tools I needed but couldn't find.",
+  status: "Open to product design roles",
   email: "ayushramawat29@gmail.com",
   linkedin: "https://www.linkedin.com/in/ayush-ramawat-71880927b/",
   medium: "https://medium.com/@ayushramawat29",
@@ -52,6 +51,8 @@ export type Project = {
     bg: string;
     /** "cover" fills the plate (portrait art); "contain" shows all of it (landscape art). */
     fit: "cover" | "contain";
+    /** Focal point for the short image band on phones (CSS object-position). */
+    mobileFocus?: string;
   };
   /** Shown as a clearly labelled placeholder plate until a real cover exists. */
   coverPlaceholder?: string;
@@ -62,8 +63,8 @@ export const projects: Project[] = [
     id: "proj-01",
     title: "Optiapply",
     blurb:
-      "An agentic job hunting tool that finds jobs relevant to the profile, and handles the complete job hunting process, from find to apply. ",
-    tags: ["Agentic AI", "Product Design", "Case study"],
+      "An AI job-hunting tool that finds jobs relevant to the profile, and handles the complete job hunting process, from find to apply. ",
+    tags: ["AI product", "Product Design", "Case study"],
     year: "2026",
     // In-site case study; the live product is linked from inside it.
     link: `${import.meta.env.BASE_URL}work/optiapply/`,
@@ -93,6 +94,7 @@ export const projects: Project[] = [
       height: 1448,
       bg: "#fef8f1",
       fit: "cover",
+      mobileFocus: "50% 40%",
     },
     accent: "#9a6b3f",
   },
@@ -112,6 +114,7 @@ export const projects: Project[] = [
       height: 1375,
       bg: "#e9dfcf",
       fit: "cover",
+      mobileFocus: "50% 55%",
     },
     accent: "#3d6450",
   },

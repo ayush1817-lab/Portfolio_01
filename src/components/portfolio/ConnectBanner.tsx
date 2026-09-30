@@ -35,7 +35,7 @@ export function ConnectBanner() {
     <section
       id="connect"
       aria-label="Connect"
-      className="relative px-4 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-40"
+      className="relative px-4 py-14 sm:px-8 sm:py-24 lg:px-10 lg:py-40"
     >
       <Reveal y={40} amount={0.2} blur={false}>
         <div className="relative mx-auto max-w-page overflow-hidden rounded-[2.5rem] bg-cobalt text-paper shadow-soft">
@@ -48,7 +48,7 @@ export function ConnectBanner() {
           <div className="relative flex flex-col gap-10 p-6 sm:gap-12 sm:p-12 lg:p-20">
             <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em] text-paper/80">
               <span>
-                <span className="text-sun">05</span> &nbsp;·&nbsp; Contact
+                <span className="text-sun">04</span> &nbsp;·&nbsp; Contact
               </span>
               <span className="relative flex items-center gap-2 rounded-full bg-cobalt-deep px-3 py-1.5">
                 <span className="relative grid h-2 w-2 place-items-center">
@@ -56,7 +56,7 @@ export function ConnectBanner() {
                   <span className="relative h-2 w-2 rounded-full bg-sun" />
                 </span>
                 <span className="hidden sm:inline">{profile.status}</span>
-                <span className="sm:hidden">online</span>
+                <span className="sm:hidden">open to roles</span>
               </span>
             </div>
 
@@ -66,7 +66,7 @@ export function ConnectBanner() {
                   <SplitText text="Let's build" inView />
                   <br />
                   <SplitText
-                    text="something agentic."
+                    text="something together."
                     inView
                     delay={0.15}
                     wordClassName="font-serif font-normal italic tracking-normal text-sun pr-[0.05em]"
@@ -74,8 +74,8 @@ export function ConnectBanner() {
                 </h2>
                 <Reveal delay={0.4}>
                   <p className="mt-8 max-w-lg text-base leading-relaxed text-paper/80 sm:text-lg">
-                    Whether it's a 0 → 1 product, an internal automation, or a sharp opinion on what
-                    your agent UX is missing, my inbox is open.
+                    Whether it's a product design role, a 0 → 1 AI product, or a second opinion on a
+                    tricky flow, my inbox is open.
                   </p>
                 </Reveal>
               </div>

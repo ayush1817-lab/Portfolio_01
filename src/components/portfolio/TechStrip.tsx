@@ -1,49 +1,29 @@
 import { stack } from "@/content/portfolio";
-import { Reveal } from "./motion";
 
 const palette = ["bg-cobalt", "bg-sun", "bg-cobalt", "bg-cobalt"];
 
-function Row({ reverse = false }: { reverse?: boolean }) {
-  const items = [...stack, ...stack, ...stack];
-  return (
-    <div className="group flex w-full mask-x">
-      <div
-        className={`flex shrink-0 items-center gap-3 pr-3 group-hover:[animation-play-state:paused] ${
-          reverse ? "animate-marquee-reverse" : "animate-marquee"
-        }`}
-      >
-        {items.map((t, i) => (
-          <span
-            key={`${t}-${i}`}
-            className="flex items-center gap-2.5 whitespace-nowrap rounded-full surface px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-ink/80 transition-colors duration-300 hover:border-ink/30 hover:text-ink"
-          >
-            <span className={`h-1.5 w-1.5 rounded-full ${palette[i % palette.length]}`} />
-            {t}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
+/**
+ * One row of tools drifting left to right, straight after the hero.
+ * Six copies keep the loop seamless on very wide screens; the -50% → 0
+ * animation moves exactly three copies before it repeats.
+ */
 export function TechStrip() {
+  const items = Array.from({ length: 6 }, () => stack).flat();
   return (
-    <section aria-label="Tools and stack" className="relative overflow-hidden py-16 lg:py-24">
-      <div className="mx-auto mb-8 flex max-w-page items-center justify-between px-5 sm:px-8 lg:px-10">
-        <Reveal>
-          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-soft">
-            <span className="text-cobalt">04</span> &nbsp;·&nbsp; Tools I reach for
-          </p>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <p className="hidden font-mono text-[10px] uppercase tracking-[0.24em] text-ink-soft sm:block">
-            Hover to pause
-          </p>
-        </Reveal>
-      </div>
-      <div className="flex flex-col gap-3">
-        <Row />
-        <Row reverse />
+    <section aria-label="Tools I work with" className="relative overflow-hidden py-6 sm:py-10">
+      <p className="sr-only">Tools I work with: {stack.join(", ")}.</p>
+      <div aria-hidden className="group flex w-full mask-x">
+        <div className="flex shrink-0 items-center gap-3 pr-3 animate-marquee-reverse group-hover:[animation-play-state:paused]">
+          {items.map((t, i) => (
+            <span
+              key={`${t}-${i}`}
+              className="flex items-center gap-2.5 whitespace-nowrap rounded-full surface px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink/80 sm:px-5 sm:py-2.5"
+            >
+              <span className={`h-1.5 w-1.5 rounded-full ${palette[i % palette.length]}`} />
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );

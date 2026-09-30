@@ -18,7 +18,7 @@ export function About() {
     <section
       id="about"
       aria-label="About"
-      className="relative overflow-x-clip py-20 sm:py-24 lg:py-40"
+      className="relative overflow-x-clip py-14 sm:py-24 lg:py-40"
     >
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-10">
