@@ -151,8 +151,8 @@ export const shots: Record<ShotId, Shot> = {
     width: 615,
     height: 772,
     title: "Screen 06 · Metrics checkpoint",
-    alt: "A 'Boost Your ATS Score with Metrics' panel asking three project-specific questions, each with an empty example input, a 'Finalize My Resume' button and a 'Skip — optimize without metrics' link.",
-    caption: "The optimizer asks for facts it cannot know. Skipping is a first-class path.",
+    alt: "A 'Boost Your ATS Score with Metrics' panel asking three project-specific questions, each with an empty example input, a 'Finalise My Resume' button and a 'Skip optimise without metrics' link.",
+    caption: "The optimiser asks for facts it cannot know. Skipping is a first-class path.",
     annotations: [
       { n: 1, x: 6, y: 51, side: "left", label: "Direct, project-specific questions." },
       {
@@ -190,7 +190,7 @@ export const shots: Record<ShotId, Shot> = {
     width: 447,
     height: 373,
     title: "Screen 08 · Five-step processing state",
-    alt: "An 'Optimizing your resume' state listing five steps: analysing job requirements, generating targeted additions, analysing achievement quality, quality-checking every edit and calculating the new score.",
+    alt: "An 'Optimising your resume' state listing five steps: analysing job requirements, generating targeted additions, analysing achievement quality, quality-checking every edit and calculating the new score.",
     caption: "Five named stages instead of a spinner.",
   },
   verification: {
@@ -198,7 +198,7 @@ export const shots: Record<ShotId, Shot> = {
     width: 600,
     height: 533,
     title: "Screen 09 · Final verification",
-    alt: "The optimized resume with a warning that AI-generated additions may contain inaccuracies, a review checklist, a confirmation checkbox and a disabled Export action.",
+    alt: "The optimised resume with a warning that AI-generated additions may contain inaccuracies, a review checklist, a confirmation checkbox and a disabled Export action.",
     caption: "Export stays disabled until the candidate confirms they have reviewed the changes.",
     annotations: [
       {
@@ -250,12 +250,12 @@ export const shots: Record<ShotId, Shot> = {
   dashboard: {
     file: "Dashboard.png",
     title: "Dashboard · the connected product",
-    alt: "The OptiApply dashboard with Top Matches, an Applications tracker with Interested, Applied, Interviewing and Decided states, and Recent Optimizations with before and after scores.",
-    caption: "Where the workflows reconnect: matches, applications and optimization history.",
+    alt: "The OptiApply dashboard with Top Matches, an Applications tracker with Interested, Applied, Interviewing and Decided states, and Recent Optimisations with before and after scores.",
+    caption: "Where the workflows reconnect: matches, applications and optimisation history.",
     annotations: [
       { n: 1, label: "Top Matches: opportunities worth considering." },
       { n: 2, label: "Applications: Interested, Applied, Interviewing, Decided." },
-      { n: 3, label: "Recent Optimizations: before and after, per resume." },
+      { n: 3, label: "Recent Optimisations: before and after, per resume." },
     ],
   },
 };
@@ -308,13 +308,13 @@ export type Lens = "Problem" | "Decision" | "Why" | "Result" | "What I'd change"
 export const meta = {
   title: "OptiApply: automation should remove effort, not agency",
   description:
-    "A product-design case study: how a resume analyzer evolved into a job-search workflow that keeps consequential decisions with the candidate.",
+    "A product-design case study: how a resume analyser evolved into a job-search workflow that keeps consequential decisions with the candidate.",
   liveUrl: "https://howtosolve.online",
 };
 
 export const hero = {
   eyebrow: "OptiApply / Product design / AI",
-  title: ["I started with a resume analyzer.", "It became a job-search workflow."],
+  title: ["I started with a resume analyser.", "It became a job-search workflow."],
   lede: "OptiApply helps candidates discover relevant opportunities, evaluate their fit, tailor resumes and track applications, while keeping consequential decisions with the candidate.",
   facts: [
     { k: "Role", v: "Product Designer / Builder" },
@@ -349,7 +349,7 @@ export const analyzer = {
   eyebrow: "V1 · Resume Analyzer",
   title: "Make the mismatch visible.",
   body: [
-    "The first workflow was deliberately simple: paste a job description, add a resume and understand how well the two aligned.",
+    "The first workflow was deliberately simple: paste a job description, add a resume and understand how well the two align.",
   ],
   flow: [
     { k: "Job description", v: "Paste role" },
@@ -678,6 +678,6 @@ export const reflection = {
   eyebrow: "What OptiApply taught me",
   closing: [
     "I started by asking how AI could improve someone's resume.",
-    "I ended up asking which parts of job searching should AI handle—and which decisions should remain human?",
+    "I ended up asking which parts of job searching should AI handle and which decisions should remain human?",
   ],
 };
