@@ -29,7 +29,7 @@ function Row({ reverse = false }: { reverse?: boolean }) {
 export function TechStrip() {
   return (
     <section aria-label="Tools and stack" className="relative overflow-hidden py-16 lg:py-24">
-      <div className="mx-auto mb-8 flex max-w-6xl items-center justify-between px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto mb-8 flex max-w-page items-center justify-between px-5 sm:px-8 lg:px-10">
         <Reveal>
           <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-soft">
             <span className="text-cobalt">04</span> &nbsp;·&nbsp; Tools I reach for

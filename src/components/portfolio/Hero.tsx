@@ -49,7 +49,7 @@ export function Hero() {
         <div className="absolute -left-[14vmax] bottom-[-18vmax] h-[36vmax] w-[36vmax] rounded-full border border-cobalt/15" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-5 sm:gap-14 sm:px-8 lg:grid-cols-12 lg:gap-8 lg:px-10">
+      <div className="mx-auto grid w-full max-w-page grid-cols-1 items-center gap-12 px-5 sm:gap-14 sm:px-8 lg:grid-cols-12 lg:gap-8 lg:px-10">
         {/* ── copy ──────────────────────────────────────────── */}
         <motion.div style={{ y: yText, opacity: fade }} className="relative z-10 lg:col-span-7">
           <motion.div
@@ -66,16 +66,16 @@ export function Hero() {
           </motion.div>
 
           <h1 className="font-display font-semibold leading-[0.9] tracking-[-0.04em] text-ink">
-            <span className="block text-[clamp(3.4rem,10vw,7.4rem)]">
+            <span className="block text-[clamp(3.4rem,2rem+6.4vw,9.5rem)]">
               <SplitText text={first} delay={1.45} />
             </span>
-            <span className="block text-[clamp(3.4rem,10vw,7.4rem)]">
+            <span className="block text-[clamp(3.4rem,2rem+6.4vw,9.5rem)]">
               <SplitText text={last} delay={1.55} wordClassName="text-cobalt" />
             </span>
           </h1>
 
           <motion.p
-            className="mt-8 max-w-xl font-display text-2xl font-normal leading-[1.15] tracking-[-0.02em] text-ink/90 sm:text-3xl"
+            className="mt-8 max-w-[18em] lg:max-w-[16em] xl:max-w-[18em] font-display text-2xl font-normal leading-[1.15] tracking-[-0.02em] text-ink/90 sm:text-3xl xl:text-[clamp(1.875rem,0.6rem+1.6vw,2.4rem)]"
             initial={reduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 1.85 }}
@@ -116,7 +116,7 @@ export function Hero() {
           </motion.div>
 
           <motion.dl
-            className="mt-10 grid max-w-lg grid-cols-3 gap-3 border-t border-line pt-6 sm:mt-12 sm:gap-4"
+            className="mt-10 grid max-w-lg grid-cols-3 gap-3 border-t border-line pt-6 sm:mt-12 sm:gap-4 xl:max-w-xl"
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 2.3 }}
@@ -137,7 +137,7 @@ export function Hero() {
         {/* ── portrait ──────────────────────────────────────── */}
         <motion.div
           style={{ y: yPhoto }}
-          className="relative mx-auto w-full max-w-[320px] sm:max-w-[380px] lg:col-span-5 lg:max-w-none"
+          className="relative mx-auto w-full max-w-[320px] sm:max-w-[380px] lg:col-span-5 lg:max-w-none lg:pr-8"
           initial={reduce ? false : { opacity: 0, scale: 0.92, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.4, ease: EASE, delay: 1.5 }}

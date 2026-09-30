@@ -77,14 +77,14 @@ export function TopNav() {
       />
 
       <motion.header
-        className="fixed inset-x-0 top-0 z-[65] px-4 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-6 sm:pt-5"
+        className="fixed inset-x-0 top-0 z-[65] px-4 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-6 sm:pt-5 lg:px-8"
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1 }}
         transition={{ duration: 0.6, ease: EASE, delay: hidden ? 0 : 0.05 }}
       >
         <div
           className={cn(
-            "mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full px-2 py-2 transition-all duration-500",
+            "mx-auto flex max-w-page items-center justify-between gap-3 rounded-full px-2 py-2 transition-all duration-500",
             scrolled
               ? "border border-line bg-paper/90 shadow-soft backdrop-blur-md"
               : "border border-transparent",

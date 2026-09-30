@@ -38,7 +38,7 @@ export function ConnectBanner() {
       className="relative px-4 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-40"
     >
       <Reveal y={40} amount={0.2} blur={false}>
-        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] bg-cobalt text-paper shadow-soft">
+        <div className="relative mx-auto max-w-page overflow-hidden rounded-[2.5rem] bg-cobalt text-paper shadow-soft">
           {/* two crisp shapes — no glow */}
           <div aria-hidden className="pointer-events-none absolute inset-0">
             <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-sun sm:h-96 sm:w-96" />
