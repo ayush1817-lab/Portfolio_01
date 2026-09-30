@@ -13,7 +13,7 @@ import { ArtFigure, JourneyViewer, ScreenCrop } from "./components";
 import * as C from "./content";
 
 const BASE = import.meta.env.BASE_URL;
-const nextProject = projects.find((p) => p.id === "proj-01");
+const nextProject = projects.find((p) => p.id === "proj-03");
 
 /** Accent classes: lavender on light sections, amber on charcoal. */
 const LAV = "text-reel-lavender-deep";

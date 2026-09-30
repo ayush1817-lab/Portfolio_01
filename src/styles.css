@@ -46,6 +46,20 @@
   --color-reel-lavender: #b3a6ea;
   --color-reel-lavender-deep: #5b4bb5; /* text-safe lavender, 6.9:1 on white */
   --color-reel-lavender-soft: #efecfb;
+  /* Conscious Connections case study: warm editorial palette (text-safe variants noted) */
+  --color-cc-forest: #1d3a31; /* 11:1 on cream */
+  --color-cc-forest-soft: #4a5a52; /* body text, 6.5:1 on cream */
+  --color-cc-cream: #f7f2e8;
+  --color-cc-cream-2: #efe7d8;
+  --color-cc-sage: #9db8a6; /* decorative; 5.8:1 as text on forest */
+  --color-cc-sage-deep: #3d6450; /* 6.0:1 on cream */
+  --color-cc-sage-soft: #e3ece4;
+  --color-cc-coral: #e07a5f; /* decorative / large text only */
+  --color-cc-coral-deep: #a3452e; /* 5.5:1 on cream */
+  --color-cc-coral-soft: #fbe6df;
+  --color-cc-lilac: #c3b3df; /* decorative; 6.4:1 as text on forest */
+  --color-cc-lilac-deep: #5e4a8c; /* 6.6:1 on cream */
+  --color-cc-lilac-soft: #efe9f7;
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);

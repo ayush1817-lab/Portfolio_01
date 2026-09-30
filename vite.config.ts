@@ -15,6 +15,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         optiapply: resolve(__dirname, "work/optiapply/index.html"),
         reelpick: resolve(__dirname, "work/reelpick/index.html"),
+        consciousConnections: resolve(__dirname, "work/conscious-connections/index.html"),
       },
     },
   },

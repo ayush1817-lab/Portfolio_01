@@ -50,6 +50,8 @@ export type Project = {
     /** "cover" fills the plate (portrait art); "contain" shows all of it (landscape art). */
     fit: "cover" | "contain";
   };
+  /** Shown as a clearly labelled placeholder plate until a real cover exists. */
+  coverPlaceholder?: string;
 };
 
 export const projects: Project[] = [
@@ -92,12 +94,15 @@ export const projects: Project[] = [
   },
   {
     id: "proj-03",
-    title: "Quill — AI editor for product writers",
-    blurb: "Inline agents that critique, restructure, and polish without taking the pen.",
-    tags: ["AI", "Editor", "Design Systems"],
-    year: "2024",
-    link: null,
-    accent: "#4a7c59",
+    title: "Conscious Connections",
+    blurb:
+      "A hybrid physical and digital service concept helping LGBTQ+ women and non-binary people in rural Ireland discover resources, build confidence, and connect with community at their own pace.",
+    tags: ["Service design", "Research", "Academic concept", "Case study"],
+    // No year until confirmed.
+    year: "",
+    link: `${import.meta.env.BASE_URL}work/conscious-connections/`,
+    accent: "#3d6450",
+    coverPlaceholder: "Community Box, website and Buddy Connect",
   },
   {
     id: "proj-04",
