@@ -149,19 +149,40 @@ function ProjectCard({
               </div>
 
               {/* ── visual plate ──────────────────────────── */}
-              <div className="relative min-h-[190px] overflow-hidden sm:min-h-[260px] lg:col-span-6 lg:min-h-0">
+              <div
+                className={cn(
+                  "relative overflow-hidden lg:col-span-6 lg:min-h-0",
+                  // A cover keeps its own portrait shape on small screens so nothing is cut off.
+                  p.cover ? "aspect-[6/7] lg:aspect-auto" : "min-h-[190px] sm:min-h-[260px]",
+                )}
+              >
                 <div
                   aria-hidden
                   className="absolute inset-0"
-                  style={{ background: plates[i % plates.length].bg }}
+                  style={{ background: p.cover ? "#e3ebfd" : plates[i % plates.length].bg }}
                 />
-                <Plate variant={i % 3} />
-                <span
-                  aria-hidden
-                  className="absolute bottom-6 right-8 select-none font-display text-[5.5rem] font-semibold sm:text-[7rem] leading-none tracking-[-0.06em] text-ink/[0.06] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3 lg:text-[11rem]"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+                {p.cover ? (
+                  <img
+                    src={p.cover.src}
+                    alt={p.cover.alt}
+                    width={1200}
+                    height={1400}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                    className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <Plate variant={i % 3} />
+                )}
+                {p.cover ? null : (
+                  <span
+                    aria-hidden
+                    className="absolute bottom-6 right-8 select-none font-display text-[5.5rem] font-semibold sm:text-[7rem] leading-none tracking-[-0.06em] text-ink/[0.06] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3 lg:text-[11rem]"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                )}
               </div>
             </div>
           </Tag>
