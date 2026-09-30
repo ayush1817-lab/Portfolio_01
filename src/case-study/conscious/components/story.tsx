@@ -42,7 +42,7 @@ export function Hero() {
       id="top"
       className="bg-cc-cream px-5 pb-16 pt-28 text-cc-forest sm:px-8 sm:pt-36 lg:px-10 lg:pb-24"
     >
-      <div className="mx-auto max-w-[1320px]">
+      <div className="mx-auto max-w-page">
         <a
           href={`${BASE}#projects`}
           className="-ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 font-mono text-[11px] uppercase tracking-[0.16em] text-cc-forest-soft transition-colors hover:text-cc-forest focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cc-lilac-deep"
@@ -61,13 +61,11 @@ export function Hero() {
             <span className="block font-mono text-[13px] uppercase tracking-[0.2em] text-cc-sage-deep">
               {d.title}
             </span>
-            <span className="mt-4 block max-w-[20ch] font-serif text-[clamp(2.6rem,6.2vw,5.75rem)] font-normal leading-[1.02] tracking-[-0.015em] text-balance">
+            <span className="mt-4 block max-w-lead font-display text-[clamp(2.4rem,5.4vw,6.25rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-balance">
               {d.headline}
             </span>
           </h1>
-          <p className="mt-7 max-w-[40rem] text-[clamp(1.05rem,0.5vw+0.95rem,1.25rem)] leading-[1.6] text-cc-forest-soft">
-            {d.intro}
-          </p>
+          <p className="mt-7 max-w-read text-lead text-cc-forest-soft">{d.intro}</p>
         </MotionReveal>
 
         {/* Composition: desktop website, Community Box, mobile / Buddy Connect */}
@@ -125,7 +123,7 @@ export function AtAGlance() {
             <dt className="font-mono text-[12px] uppercase tracking-[0.16em] text-cc-sage-deep">
               {g.k}
             </dt>
-            <dd className="mt-3 font-serif text-[clamp(1.25rem,1.6vw,1.5rem)] leading-[1.3] text-cc-forest">
+            <dd className="mt-3 font-display font-semibold tracking-[-0.02em] text-[clamp(1.2rem,0.8rem+0.8vw,1.6rem)] leading-[1.3] text-cc-forest">
               {g.v}
             </dd>
           </MotionReveal>
@@ -143,7 +141,7 @@ export function ResearchTensions() {
     <SectionShell id="research" label="Context and research">
       <ChapterEyebrow n={1} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
-        <StoryHeading className="max-w-[18ch]">{d.title}</StoryHeading>
+        <StoryHeading>{d.title}</StoryHeading>
       </MotionReveal>
       <ReadingColumn className="mt-7 text-cc-forest-soft">
         {d.body.map((p) => (
@@ -167,7 +165,9 @@ export function ResearchTensions() {
             <p className="font-mono text-[12px] text-cc-sage-deep">
               {String(i + 1).padStart(2, "0")}
             </p>
-            <p className="mt-3 font-serif text-[1.55rem] leading-tight text-cc-forest">{t.want}</p>
+            <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-[1.45rem] leading-tight text-cc-forest">
+              {t.want}
+            </p>
             <p className="mt-2 text-[1.02rem] leading-relaxed text-cc-forest-soft">{t.but}</p>
           </MotionReveal>
         ))}
@@ -178,7 +178,7 @@ export function ResearchTensions() {
       </OwnershipCallout>
 
       <div className="mt-16">
-        <h3 className="font-serif text-[clamp(1.5rem,2.4vw,2rem)] leading-tight">
+        <h3 className="font-display font-semibold tracking-[-0.02em] text-h3">
           {d.readinessTitle}
         </h3>
         <ol className="mt-6 flex flex-wrap gap-2" aria-label="Readiness questions, in order">
@@ -266,7 +266,7 @@ function Chain({
             <motion.li key={s} variants={item} className="flex flex-col items-start">
               <span
                 className={cn(
-                  "font-serif text-[clamp(1.6rem,3vw,2.4rem)] leading-tight",
+                  "font-display font-semibold tracking-[-0.02em] text-[clamp(1.5rem,0.9rem+1.6vw,2.6rem)] leading-tight",
                   !reframed && last && "line-through decoration-cc-coral decoration-2",
                 )}
               >
@@ -296,7 +296,7 @@ export function PrivacyTurningPoint() {
     <SectionShell id="turning-point" label="The privacy turning point" tone="forest" pause>
       <ChapterEyebrow n={2} name={d.eyebrow} labels={[d.label]} onDark />
       <MotionReveal className="mt-6">
-        <StoryHeading className="max-w-[18ch]">{d.title}</StoryHeading>
+        <StoryHeading>{d.title}</StoryHeading>
       </MotionReveal>
       <ReadingColumn className="mt-7 text-cc-cream/85">
         {d.body.map((p) => (
@@ -307,7 +307,7 @@ export function PrivacyTurningPoint() {
       <Figure assetKey="earlyConcepts" className="mt-12 max-w-[980px]" onDark />
 
       <MotionReveal className="mt-20">
-        <p className="max-w-[24ch] font-serif text-[clamp(2rem,4.4vw,3.75rem)] leading-[1.1] text-balance text-cc-cream">
+        <p className="max-w-[24ch] font-display text-[clamp(2rem,4.4vw,5rem)] font-semibold leading-[1.06] tracking-[-0.035em] text-balance text-cc-cream">
           {d.question}
         </p>
       </MotionReveal>
@@ -352,7 +352,9 @@ export function DesignPrinciples() {
             <p className="font-mono text-[12px] text-cc-sage-deep">
               {String(i + 1).padStart(2, "0")}
             </p>
-            <h3 className="mt-3 font-serif text-[1.6rem] leading-tight">{p.k}</h3>
+            <h3 className="mt-3 font-display font-semibold tracking-[-0.02em] text-[1.5rem] leading-tight">
+              {p.k}
+            </h3>
             <p className="mt-2 text-[1.02rem] leading-relaxed text-cc-forest-soft">{p.v}</p>
           </MotionReveal>
         ))}
@@ -401,10 +403,8 @@ export function IdeationRail() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h3 className="font-serif text-[clamp(1.5rem,2.4vw,2rem)] leading-tight">
-            {d.railTitle}
-          </h3>
-          <p className="mt-2 max-w-[38rem] text-[14px] leading-relaxed text-cc-forest-soft">
+          <h3 className="font-display font-semibold tracking-[-0.02em] text-h3">{d.railTitle}</h3>
+          <p className="mt-2 max-w-read text-[15px] leading-relaxed text-cc-forest-soft">
             {d.railNote}
           </p>
         </div>
@@ -440,7 +440,7 @@ export function IdeationRail() {
             </span>
             <span
               className={cn(
-                "mt-2 font-serif text-[1.35rem] leading-tight",
+                "mt-2 font-display font-semibold tracking-[-0.02em] text-[1.25rem] leading-tight",
                 idea.name ? "text-cc-forest" : "text-cc-forest-soft",
               )}
             >
@@ -479,7 +479,7 @@ export function Ideation() {
         <DesignPrinciples />
       </div>
       <MotionReveal className="mt-20">
-        <StoryHeading className="max-w-[18ch]">{d.title}</StoryHeading>
+        <StoryHeading>{d.title}</StoryHeading>
       </MotionReveal>
       <OwnershipCallout label="MY ROLE" className="mt-8">
         {d.myRole}

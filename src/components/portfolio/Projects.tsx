@@ -114,6 +114,11 @@ function ProjectCard({
                 <h3 className="mt-8 font-display text-[2rem] font-semibold leading-[0.95] tracking-[-0.03em] text-ink sm:text-5xl lg:mt-14 lg:text-6xl">
                   {p.title}
                 </h3>
+                {p.subtitle ? (
+                  <p className="mt-4 max-w-md font-display text-[1.35rem] font-medium leading-[1.2] tracking-[-0.02em] text-ink sm:text-[1.6rem]">
+                    {p.subtitle}
+                  </p>
+                ) : null}
                 <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
                   {p.blurb}
                 </p>
@@ -193,7 +198,7 @@ function ProjectCard({
                     <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#3d6450]">
                       Cover image to be added
                     </span>
-                    <span className="max-w-[18rem] font-serif text-[1.35rem] leading-tight text-[#1d3a31]">
+                    <span className="max-w-[18rem] font-display text-[1.35rem] font-semibold leading-tight tracking-[-0.02em] text-[#1d3a31]">
                       {p.coverPlaceholder}
                     </span>
                   </div>

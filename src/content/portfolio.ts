@@ -1,5 +1,5 @@
 import optiapplyCover from "@/assets/optiapply-cover.webp";
-import reelpickCover from "@/assets/reelpick/reelpick-hero.webp";
+import reelpickCover from "@/assets/reelpick-cover.webp";
 
 export const profile = {
   name: "Ayush Ramawat",
@@ -34,6 +34,8 @@ export const stack = ["Figma", "n8n", "Codex", "Claude", "Cursor", "Supabase", "
 export type Project = {
   id: string;
   title: string;
+  /** Optional line under the card title. */
+  subtitle?: string;
   blurb: string;
   tags: string[];
   year: string;
@@ -76,7 +78,8 @@ export const projects: Project[] = [
   },
   {
     id: "proj-02",
-    title: "ReelPick: A Friday night Product",
+    title: "ReelPick",
+    subtitle: "What if choosing a movie together didn't take 30 minutes?",
     blurb: "The product that can help in reducing the social cost of making a decision ",
     tags: ["UX", "Railway", "Expo", "Supabase", "Case study"],
     year: "2025",
@@ -84,11 +87,11 @@ export const projects: Project[] = [
     link: `${import.meta.env.BASE_URL}work/reelpick/`,
     cover: {
       src: reelpickCover,
-      alt: "ReelPick hero artwork: the ReelPick wordmark and the line 'Nobody could pick a movie. So I built a way to vote on one.', beside phones showing movie cards with like and pass buttons.",
-      width: 720,
-      height: 405,
-      bg: "#f8f4ee",
-      fit: "contain",
+      alt: "ReelPick on a phone: a group of five picking together, the Dune: Part Two card in focus with pass and like buttons, and more movie cards fanned out behind it.",
+      width: 1086,
+      height: 1448,
+      bg: "#fef8f1",
+      fit: "cover",
     },
     accent: "#9a6b3f",
   },

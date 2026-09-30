@@ -61,6 +61,24 @@
   --color-cc-lilac-deep: #5e4a8c; /* 6.6:1 on cream */
   --color-cc-lilac-soft: #efe9f7;
 
+  /* Case-study type scale: measures and sizes grow with the viewport so copy
+     fills wide screens instead of stopping at a fixed column. */
+  --container-page: 88rem; /* content frame */
+  --container-lead: clamp(44rem, 76vw, 84rem); /* headings */
+  --container-read: clamp(40rem, 56vw, 62rem); /* body copy */
+  --text-h1: clamp(2.6rem, 6.4vw, 7.5rem);
+  --text-h1--line-height: 0.98;
+  --text-h2: clamp(2.1rem, 1.1rem + 3.7vw, 5.75rem);
+  --text-h2--line-height: 1.02;
+  --text-h3: clamp(1.6rem, 1rem + 1.7vw, 3rem);
+  --text-h3--line-height: 1.08;
+  --text-pull: clamp(1.5rem, 0.9rem + 1.8vw, 2.9rem);
+  --text-pull--line-height: 1.18;
+  --text-lead: clamp(1.2rem, 0.95rem + 0.6vw, 1.65rem);
+  --text-lead--line-height: 1.55;
+  --text-read: clamp(1.125rem, 0.85rem + 0.5vw, 1.45rem);
+  --text-read--line-height: 1.65;
+
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
 

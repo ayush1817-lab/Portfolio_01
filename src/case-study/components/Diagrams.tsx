@@ -225,7 +225,7 @@ export function PrincipleBand({ line, sub }: { line: string[]; sub: string }) {
       aria-label="Design principle"
       className="bg-sun px-5 py-20 sm:px-8 sm:py-28 lg:px-10 lg:py-36"
     >
-      <div className="mx-auto max-w-[1280px]">
+      <div className="mx-auto max-w-page">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/70">
           The principle
         </p>
@@ -234,7 +234,7 @@ export function PrincipleBand({ line, sub }: { line: string[]; sub: string }) {
           <br />
           <span className="font-serif font-normal italic tracking-[-0.01em]">{line[1]}</span>
         </p>
-        <p className="mt-6 max-w-[40rem] text-[1.15rem] leading-relaxed text-ink/80">{sub}</p>
+        <p className="mt-6 max-w-read text-read text-ink/80">{sub}</p>
       </div>
     </section>
   );

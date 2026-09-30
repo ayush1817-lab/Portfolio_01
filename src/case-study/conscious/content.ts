@@ -9,8 +9,9 @@
  *   partner statements or implementation status beyond what the brief states.
  * - The academic website is a concept/design proposal; the architecture is
  *   proposed, not shipped.
- * - The website redesign is an INDEPENDENT EXTENSION completed after the
- *   academic project, never a team academic deliverable.
+ * - The later website redesign is an INDEPENDENT EXTENSION, never a team
+ *   academic deliverable. It is left out until the site exists; the label is
+ *   kept so that section can be added back under it.
  * - Team outcomes are never presented as Ayush's sole work.
  */
 
@@ -172,7 +173,7 @@ export const assets = {
     ownership: "MY ROLE",
     status: "Academic workshop artifact",
     aspectRatio: 16 / 9,
-    brief: "Ideation board, grouped by contributor, 16:9",
+    brief: "Ideation board from the internal workshop, 16:9",
   },
   boxHero: {
     id: "box-hero",
@@ -197,66 +198,6 @@ export const assets = {
     status: "Academic concept / design proposal",
     aspectRatio: 16 / 9,
     brief: "Existing concept screens and information structure, 16:9",
-  },
-  redesignConcept: {
-    id: "redesign-concept",
-    slot: "A08a",
-    file: "redesign-existing-concept.jpg",
-    title: "Existing concept and service requirements",
-    alt: "The existing website concept and the service requirements for the redesign.",
-    caption: "Starting point: the existing concept and service requirements.",
-    ownership: "INDEPENDENT EXTENSION",
-    status: "In progress, added when produced",
-    aspectRatio: 16 / 10,
-    brief: "Existing concept + requirements, 16:10",
-  },
-  redesignIA: {
-    id: "redesign-ia",
-    slot: "A08b",
-    file: "redesign-information-architecture.jpg",
-    title: "Information architecture",
-    alt: "Information architecture for the website redesign.",
-    caption: "Information architecture.",
-    ownership: "INDEPENDENT EXTENSION",
-    status: "In progress, added when produced",
-    aspectRatio: 16 / 10,
-    brief: "IA diagram, 16:10",
-  },
-  redesignWireframes: {
-    id: "redesign-wireframes",
-    slot: "A08c",
-    file: "redesign-wireframes.jpg",
-    title: "Wireframes and key UX decisions",
-    alt: "Wireframes for the website redesign, annotated with key UX decisions.",
-    caption: "Wireframes and key UX decisions.",
-    ownership: "INDEPENDENT EXTENSION",
-    status: "In progress, added when produced",
-    aspectRatio: 16 / 10,
-    brief: "Wireframes, 16:10",
-  },
-  redesignVisual: {
-    id: "redesign-visual",
-    slot: "A08d",
-    file: "redesign-visual-direction.jpg",
-    title: "Visual direction and accessibility choices",
-    alt: "Visual system and accessibility choices for the website redesign.",
-    caption: "Visual system and accessibility choices.",
-    ownership: "INDEPENDENT EXTENSION",
-    status: "In progress, added when produced",
-    aspectRatio: 16 / 10,
-    brief: "Visual system, 16:10",
-  },
-  redesignScreens: {
-    id: "redesign-screens",
-    slot: "A08e",
-    file: "redesign-responsive-screens.jpg",
-    title: "Final responsive screens",
-    alt: "Final responsive screens of the website redesign.",
-    caption: "Final responsive screens.",
-    ownership: "INDEPENDENT EXTENSION",
-    status: "In progress, added when produced",
-    aspectRatio: 16 / 10,
-    brief: "Desktop + mobile screens, 16:10",
   },
   ecosystem: {
     id: "ecosystem",
@@ -512,12 +453,6 @@ export const website = {
     { k: "Request", v: "Understand and request the Community Box when ready." },
     { k: "Connect", v: "Choose Buddy Connect and share only agreed preferences." },
   ],
-  extension: {
-    label: "INDEPENDENT EXTENSION" as Ownership,
-    title: "INDEPENDENT EXTENSION - WEBSITE REDESIGN",
-    body: "After the academic project, Ayush continued exploring the public-facing website. This redesign is an independent extension, not a team deliverable completed during the academic project.",
-    note: "Artifacts appear here only as they are produced.",
-  },
 };
 
 export const ecosystem = {
