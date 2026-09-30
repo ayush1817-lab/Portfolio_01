@@ -38,6 +38,14 @@
   /* case-study semantic states (screens supply most colour) */
   --color-warn: #c2410c;
   --color-warn-soft: #fff1e8;
+  /* ReelPick case study: colours sampled from the product UI and hero artwork */
+  --color-reel-charcoal: #141311;
+  --color-reel-charcoal-2: #1f1d1a;
+  --color-reel-amber: #eaaa3c; /* 9.6:1 on charcoal */
+  --color-reel-cream: #f8f4ee;
+  --color-reel-lavender: #b3a6ea;
+  --color-reel-lavender-deep: #5b4bb5; /* text-safe lavender, 6.9:1 on white */
+  --color-reel-lavender-soft: #efecfb;
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);

@@ -1,4 +1,5 @@
 import optiapplyCover from "@/assets/optiapply-cover.webp";
+import reelpickCover from "@/assets/reelpick/reelpick-hero.webp";
 
 export const profile = {
   name: "Ayush Ramawat",
@@ -39,7 +40,16 @@ export type Project = {
   link: string | null;
   accent: string; // css color
   /** Optional cover image for the Selected Work card (replaces the generated plate). */
-  cover?: { src: string; alt: string };
+  cover?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    /** Plate colour behind the image, matched to the artwork's own background. */
+    bg: string;
+    /** "cover" fills the plate (portrait art); "contain" shows all of it (landscape art). */
+    fit: "cover" | "contain";
+  };
 };
 
 export const projects: Project[] = [
@@ -55,6 +65,10 @@ export const projects: Project[] = [
     cover: {
       src: optiapplyCover,
       alt: "OptiApply, from insight to action: the Resume Analysis Summary labelled Analyze, the Hunt Mode profile labelled Discover, and the final resume verification labelled Review.",
+      width: 1200,
+      height: 1400,
+      bg: "#e3ebfd",
+      fit: "cover",
     },
     accent: "#3b6fa0",
   },
@@ -62,9 +76,18 @@ export const projects: Project[] = [
     id: "proj-02",
     title: "ReelPick: A Friday night Product",
     blurb: "The product that can help in reducing the social cost of making a decision ",
-    tags: ["UX", "Railway", "Expo", "Supabase"],
+    tags: ["UX", "Railway", "Expo", "Supabase", "Case study"],
     year: "2025",
-    link: "https://medium.com/@ayushramawat29/reelpick-product-idea-case-study-ac8ee684b3bc",
+    // In-site case study; the original Medium article is linked from inside it.
+    link: `${import.meta.env.BASE_URL}work/reelpick/`,
+    cover: {
+      src: reelpickCover,
+      alt: "ReelPick hero artwork: the ReelPick wordmark and the line 'Nobody could pick a movie. So I built a way to vote on one.', beside phones showing movie cards with like and pass buttons.",
+      width: 720,
+      height: 405,
+      bg: "#f8f4ee",
+      fit: "contain",
+    },
     accent: "#9a6b3f",
   },
   {
