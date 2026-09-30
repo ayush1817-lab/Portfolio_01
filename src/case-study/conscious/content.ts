@@ -428,6 +428,8 @@ export const ideation = {
       name: "Care circle",
       sketch: "care-circle",
       alt: "Sketch of a screen titled 'Find your care circle', listing circles such as reading and yoga, with an organiser's profile below.",
+      summary:
+        "A room where people from across the community can drop in to have conversations, relax, work, and spend time.",
     },
     {
       name: "Community living room",
