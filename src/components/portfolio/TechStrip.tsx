@@ -1,7 +1,7 @@
 import { stack } from "@/content/portfolio";
 import { Reveal } from "./motion";
 
-const palette = ["bg-ember", "bg-amber", "bg-iris", "bg-mint"];
+const palette = ["bg-cobalt", "bg-sun", "bg-cobalt", "bg-cobalt"];
 
 function Row({ reverse = false }: { reverse?: boolean }) {
   const items = [...stack, ...stack, ...stack];
@@ -15,7 +15,7 @@ function Row({ reverse = false }: { reverse?: boolean }) {
         {items.map((t, i) => (
           <span
             key={`${t}-${i}`}
-            className="flex items-center gap-2.5 whitespace-nowrap rounded-full glass px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-cream/80 transition-colors duration-300 hover:border-cream/30 hover:text-cream"
+            className="flex items-center gap-2.5 whitespace-nowrap rounded-full surface px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-ink/80 transition-colors duration-300 hover:border-ink/30 hover:text-ink"
           >
             <span className={`h-1.5 w-1.5 rounded-full ${palette[i % palette.length]}`} />
             {t}
@@ -31,12 +31,12 @@ export function TechStrip() {
     <section aria-label="Tools and stack" className="relative overflow-hidden py-16 lg:py-24">
       <div className="mx-auto mb-8 flex max-w-6xl items-center justify-between px-5 sm:px-8 lg:px-10">
         <Reveal>
-          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-mist">
-            <span className="text-ember">04</span> &nbsp;·&nbsp; Tools I reach for
+          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-soft">
+            <span className="text-cobalt">04</span> &nbsp;·&nbsp; Tools I reach for
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="hidden font-mono text-[10px] uppercase tracking-[0.24em] text-mist sm:block">
+          <p className="hidden font-mono text-[10px] uppercase tracking-[0.24em] text-ink-soft sm:block">
             Hover to pause
           </p>
         </Reveal>

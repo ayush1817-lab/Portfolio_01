@@ -33,13 +33,13 @@ export function SectionHeading({
       )}
     >
       <Reveal>
-        <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-mist">
-          <span className="text-ember">{index}</span>
+        <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-ink-soft">
+          <span className="text-cobalt">{index}</span>
           <span className="h-px w-8 bg-line-strong" />
           <span>{label}</span>
         </div>
       </Reveal>
-      <h2 className="font-display text-[2.6rem] font-semibold leading-[0.95] tracking-[-0.03em] text-cream sm:text-6xl lg:text-7xl">
+      <h2 className="font-display text-[2.6rem] font-semibold leading-[0.95] tracking-[-0.03em] text-ink sm:text-6xl lg:text-7xl">
         <SplitText text={title} inView stagger={0.05} />
         {italic ? (
           <>
@@ -49,14 +49,14 @@ export function SectionHeading({
               inView
               delay={0.2}
               stagger={0.05}
-              wordClassName="font-serif font-normal italic tracking-normal text-ember-gradient pr-[0.06em]"
+              wordClassName="font-serif font-normal italic tracking-normal highlight pr-[0.06em]"
             />
           </>
         ) : null}
       </h2>
       {caption ? (
         <Reveal delay={0.25}>
-          <p className="max-w-md text-base leading-relaxed text-mist lg:text-lg">{caption}</p>
+          <p className="max-w-md text-base leading-relaxed text-ink-soft lg:text-lg">{caption}</p>
         </Reveal>
       ) : null}
     </div>

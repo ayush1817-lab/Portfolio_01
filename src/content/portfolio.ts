@@ -44,9 +44,10 @@ export const projects: Project[] = [
     title: "Optiapply",
     blurb:
       "An agentic job hunting tool that finds jobs relevant to the profile, and handles the complete job hunting process, from find to apply. ",
-    tags: ["Agentic AI", "Product Design"],
+    tags: ["Agentic AI", "Product Design", "Case study"],
     year: "2026",
-    link: "https://howtosolve.online",
+    // In-site case study; the live product is linked from inside it.
+    link: `${import.meta.env.BASE_URL}work/optiapply/`,
     accent: "#3b6fa0",
   },
   {

@@ -10,6 +10,23 @@ import { cn } from "@/lib/utils";
 
 const items = cases.slice(0, 3);
 
+/** Cover treatments cycle through the site palette: cobalt, sun, soft grey. */
+const covers = [
+  {
+    bg: "var(--color-cobalt)",
+    fg: "text-paper",
+    num: "text-paper/25",
+    grid: "rgba(255,255,255,0.14)",
+  },
+  { bg: "var(--color-sun)", fg: "text-ink", num: "text-ink/15", grid: "rgba(15,20,36,0.08)" },
+  {
+    bg: "var(--color-paper-3)",
+    fg: "text-ink",
+    num: "text-cobalt/20",
+    grid: "rgba(29,78,216,0.1)",
+  },
+];
+
 /**
  * Case studies: a horizontal, drag-to-scroll shelf of tall cover cards.
  * The section title sits left and stays put while the shelf slides.
@@ -53,11 +70,6 @@ export function CaseStudies() {
       aria-label="UX case studies"
       className="relative overflow-hidden py-20 sm:py-24 lg:py-40"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-[-15%] top-0 -z-10 h-[50vmax] w-[50vmax] rounded-full bg-ember/10 blur-[160px]"
-      />
-
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -95,7 +107,7 @@ export function CaseStudies() {
                 rel={c.link ? "noreferrer noopener" : undefined}
                 draggable={false}
                 className={cn(
-                  "group relative flex aspect-[3/4] w-[78vw] max-w-[380px] shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-line bg-night-2 shadow-glow transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 sm:w-[360px]",
+                  "group relative flex aspect-[3/4] w-[78vw] max-w-[380px] shrink-0 snap-start flex-col overflow-hidden rounded-[1.75rem] border border-line bg-paper-2 shadow-soft transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 sm:w-[360px]",
                 )}
                 style={{ "--accent": c.spineColor } as React.CSSProperties}
               >
@@ -104,43 +116,42 @@ export function CaseStudies() {
                   <div
                     aria-hidden
                     className="absolute inset-0 transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                    style={{
-                      background: `linear-gradient(160deg, color-mix(in oklab, var(--accent) 80%, black) 0%, color-mix(in oklab, var(--accent) 45%, var(--color-night)) 55%, var(--color-night-2) 100%)`,
-                    }}
+                    style={{ background: covers[i % covers.length].bg }}
                   />
                   <div
                     aria-hidden
-                    className="absolute inset-0 opacity-30"
+                    className="absolute inset-0"
                     style={{
-                      backgroundImage:
-                        "linear-gradient(to right, rgba(244,241,234,0.25) 1px, transparent 1px), linear-gradient(to bottom, rgba(244,241,234,0.25) 1px, transparent 1px)",
+                      backgroundImage: `linear-gradient(to right, ${covers[i % covers.length].grid} 1px, transparent 1px), linear-gradient(to bottom, ${covers[i % covers.length].grid} 1px, transparent 1px)`,
                       backgroundSize: "28px 28px",
                       maskImage: "radial-gradient(circle at 30% 20%, black, transparent 70%)",
                       WebkitMaskImage: "radial-gradient(circle at 30% 20%, black, transparent 70%)",
                     }}
                   />
-                  <div className="relative flex items-center justify-between p-5 font-mono text-[10px] uppercase tracking-[0.22em] text-cream/85">
+                  <div
+                    className={`relative flex items-center justify-between p-5 font-mono text-[10px] uppercase tracking-[0.22em] ${covers[i % covers.length].fg}`}
+                  >
                     <span>{c.client}</span>
                     <span>{c.year}</span>
                   </div>
                   <span
                     aria-hidden
-                    className="absolute -bottom-6 -left-2 select-none font-display text-[9rem] font-semibold leading-none tracking-[-0.06em] text-cream/15"
+                    className={`absolute -bottom-6 -left-2 select-none font-display text-[9rem] font-semibold leading-none tracking-[-0.06em] ${covers[i % covers.length].num}`}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
 
                 {/* body */}
-                <div className="relative flex flex-col gap-3 bg-night-2 p-6">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-mist">
+                <div className="relative flex flex-col gap-3 bg-paper p-6">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
                     Case · {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-display text-xl font-semibold leading-tight tracking-[-0.02em] text-cream sm:text-2xl">
+                  <h3 className="font-display text-xl font-semibold leading-tight tracking-[-0.02em] text-ink sm:text-2xl">
                     {c.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-mist line-clamp-3">{c.summary}</p>
-                  <div className="mt-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-cream/70">
+                  <p className="text-sm leading-relaxed text-ink-soft line-clamp-3">{c.summary}</p>
+                  <div className="mt-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-ink/70">
                     <span>{c.link ? "Read case" : "Overview only"}</span>
                     {c.link ? (
                       <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -161,12 +172,12 @@ export function CaseStudies() {
         <div className="flex items-center justify-between gap-6">
           <div className="relative h-px flex-1 bg-line-strong">
             <motion.div
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-ember to-amber"
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-cobalt to-sun"
               animate={{ width: `${Math.max(12, progress * 100)}%` }}
               transition={{ duration: 0.4, ease: EASE }}
             />
           </div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-mist">
+          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-soft">
             {String(Math.min(items.length, Math.round(progress * (items.length - 1)) + 1)).padStart(
               2,
               "0",
