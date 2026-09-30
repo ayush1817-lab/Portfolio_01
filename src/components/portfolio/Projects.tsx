@@ -101,8 +101,12 @@ function ProjectCard({
                 <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft">
                   <span className="flex items-center gap-3">
                     <span className="text-ink">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="h-px w-6 bg-line-strong" />
-                    <span>{p.year}</span>
+                    {p.year ? (
+                      <>
+                        <span className="h-px w-6 bg-line-strong" />
+                        <span>{p.year}</span>
+                      </>
+                    ) : null}
                   </span>
                   <span className="hidden sm:inline">// {p.id}</span>
                 </div>
@@ -184,10 +188,19 @@ function ProjectCard({
                       p.cover.fit === "cover" ? "object-cover object-top" : "object-contain",
                     )}
                   />
+                ) : p.coverPlaceholder ? (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[repeating-linear-gradient(135deg,#e3ece4_0_16px,#f7f2e8_16px_32px)] p-6 text-center">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#3d6450]">
+                      Cover image to be added
+                    </span>
+                    <span className="max-w-[18rem] font-serif text-[1.35rem] leading-tight text-[#1d3a31]">
+                      {p.coverPlaceholder}
+                    </span>
+                  </div>
                 ) : (
                   <Plate variant={i % 3} />
                 )}
-                {p.cover ? null : (
+                {p.cover || p.coverPlaceholder ? null : (
                   <span
                     aria-hidden
                     className="absolute bottom-6 right-8 select-none font-display text-[5.5rem] font-semibold sm:text-[7rem] leading-none tracking-[-0.06em] text-ink/[0.06] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3 lg:text-[11rem]"
