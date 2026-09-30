@@ -68,7 +68,7 @@ function Hero() {
   return (
     <header className="relative overflow-hidden px-5 pb-16 pt-28 sm:px-8 sm:pt-36 lg:px-10 lg:pb-24">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 grid-fade" />
-      <div className="mx-auto max-w-[1280px]">
+      <div className="mx-auto max-w-page">
         <a
           href={`${BASE}#projects`}
           className="focus-glow -ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft transition-colors hover:text-cobalt"
@@ -80,13 +80,11 @@ function Hero() {
           <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-cobalt">
             {C.hero.eyebrow}
           </p>
-          <h1 className="mt-5 max-w-[16ch] font-display text-[clamp(2.6rem,6.4vw,6.25rem)] font-semibold leading-[0.96] tracking-[-0.04em] text-balance sm:max-w-none">
+          <h1 className="mt-5 max-w-[16ch] font-display text-h1 font-semibold tracking-[-0.04em] text-balance sm:max-w-none">
             <span className="block">{C.hero.title[0]}</span>
             <span className="block text-cobalt">{C.hero.title[1]}</span>
           </h1>
-          <p className="mt-7 max-w-[44rem] text-[1.15rem] leading-[1.65] text-ink-soft sm:text-[1.25rem]">
-            {C.hero.lede}
-          </p>
+          <p className="mt-7 max-w-read text-lead text-ink-soft">{C.hero.lede}</p>
         </Reveal>
 
         {/* layered composition on large screens; single full screenshot below that */}
@@ -163,9 +161,7 @@ function Problem() {
       <Intro n={1} eyebrow={d.eyebrow} lens={d.lens} title={d.title} body={d.body} />
       <Flow nodes={d.loop} label="The repeated job-search loop" className="mt-14" />
       <Reveal y={12} blur={false} className="mt-16">
-        <p className="max-w-[46rem] text-[1.15rem] leading-relaxed text-ink-soft">
-          {d.question.lead}
-        </p>
+        <p className="max-w-read text-read text-ink-soft">{d.question.lead}</p>
         <Pull className="mt-5">{d.question.q}</Pull>
       </Reveal>
     </Section>
@@ -226,13 +222,13 @@ function Friction() {
         <Eyebrow n={3} lens={d.lens}>
           {d.eyebrow}
         </Eyebrow>
-        <h2 className="mt-6 max-w-[22ch] font-display text-[clamp(2.2rem,5vw,4.75rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-balance">
+        <h2 className="mt-6 max-w-[22ch] font-display text-h2 font-semibold tracking-[-0.035em] text-balance">
           {d.title[0]} <span className="text-ink-faint">{d.title[1]}</span>
         </h2>
       </Reveal>
       <Flow nodes={d.loop} label="The analyze-and-fix loop" className="mt-14" />
       <Reveal y={12} blur={false} className="mt-14">
-        <p className="max-w-[46rem] text-[1.15rem] leading-relaxed text-ink-soft">{d.close[0]}</p>
+        <p className="max-w-read text-read text-ink-soft">{d.close[0]}</p>
         <Pull className="mt-5">{d.close[1]}</Pull>
       </Reveal>
     </Section>
@@ -562,7 +558,7 @@ function Experiment() {
         <Eyebrow n={16} lens={d.lens}>
           {d.eyebrow}
         </Eyebrow>
-        <h2 className="mt-6 max-w-[22ch] font-display text-[clamp(2.2rem,5vw,4.75rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-balance">
+        <h2 className="mt-6 max-w-[22ch] font-display text-h2 font-semibold tracking-[-0.035em] text-balance">
           {d.title[0]} <span className="text-ink-faint">{d.title[1]}</span>
         </h2>
       </Reveal>
@@ -705,11 +701,11 @@ function Today() {
       <p className="mt-4 text-[13px] text-ink-faint">{d.factsNote}</p>
 
       <Reveal y={12} blur={false} className="mt-16">
-        <div className="max-w-[46rem] border-l-[3px] border-cobalt pl-6">
+        <div className="max-w-read border-l-[3px] border-cobalt pl-6">
           <p className="font-display text-[1.6rem] font-semibold tracking-[-0.02em]">
             {d.unknown.title}
           </p>
-          <div className="mt-4 space-y-4 text-[1.1rem] leading-[1.68] text-ink-soft">
+          <div className="mt-4 space-y-4 text-read text-ink-soft">
             {d.unknown.body.map((p) => (
               <p key={p}>{p}</p>
             ))}
@@ -750,7 +746,7 @@ function Reflection() {
     <Section id="reflection" label="Final reflection" pause>
       <Reveal y={16} blur={false}>
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-cobalt">{d.eyebrow}</p>
-        <blockquote className="mt-8 max-w-[24ch] font-display text-[clamp(2rem,4.8vw,4.5rem)] font-semibold leading-[1.06] tracking-[-0.035em] text-balance">
+        <blockquote className="mt-8 max-w-[24ch] font-display text-[clamp(2rem,4.8vw,5.75rem)] font-semibold leading-[1.06] tracking-[-0.035em] text-balance">
           <p className="text-ink-faint">{d.closing[0]}</p>
           <p className="mt-4 text-ink">{d.closing[1]}</p>
         </blockquote>

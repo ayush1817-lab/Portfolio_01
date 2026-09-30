@@ -5,7 +5,7 @@ import type { Lens } from "../content";
 
 type Tone = "plain" | "tint" | "dark" | "charcoal" | "cream";
 
-/** A narrative section. Media may run to 1280px; prose stays ~740px. */
+/** A narrative section. The frame and the text measures scale with the viewport. */
 export function Section({
   id,
   tone = "plain",
@@ -33,7 +33,7 @@ export function Section({
         tone === "cream" && "bg-reel-cream",
       )}
     >
-      <div className="mx-auto w-full max-w-[1280px]">{children}</div>
+      <div className="mx-auto w-full max-w-page">{children}</div>
     </section>
   );
 }
@@ -98,10 +98,10 @@ export function Heading({
       className={cn(
         "mt-5 font-display font-semibold tracking-[-0.03em] text-balance",
         Tag === "h3"
-          ? "text-[clamp(1.6rem,2.8vw,2.5rem)] leading-[1.08]"
+          ? "text-h3"
           : compact
-            ? "text-[clamp(2.1rem,3.3vw,3.25rem)] leading-[1.04]"
-            : "text-[clamp(2.1rem,4.4vw,4.25rem)] leading-[1.02]",
+            ? "text-[clamp(2.1rem,1.2rem+2.4vw,4.25rem)] leading-[1.04]"
+            : "text-h2",
         className,
       )}
     >
@@ -114,18 +114,9 @@ export function Heading({
   );
 }
 
-/** Reading column (~740px). */
+/** Reading column: widens and grows with the screen, ~75–85 characters a line. */
 export function Prose({ children, className }: { children: ReactNode; className?: string }) {
-  return (
-    <div
-      className={cn(
-        "max-w-[46rem] space-y-5 text-[1.125rem] leading-[1.68] sm:text-[1.2rem]",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
+  return <div className={cn("max-w-read space-y-5 text-read", className)}>{children}</div>;
 }
 
 /** Heading + intro copy block that reveals once on scroll. */
@@ -152,7 +143,7 @@ export function Intro({
 }) {
   return (
     <Reveal y={16} blur={false}>
-      <div className="max-w-[52rem]">
+      <div className="max-w-lead">
         <Eyebrow n={n} lens={lens} dark={dark} accent={accent}>
           {eyebrow}
         </Eyebrow>
@@ -175,7 +166,7 @@ export function Pull({ children, className }: { children: ReactNode; className?:
   return (
     <p
       className={cn(
-        "max-w-[46rem] border-l-[3px] border-sun pl-5 font-display text-[clamp(1.5rem,2.6vw,2.25rem)] font-medium leading-[1.2] tracking-[-0.02em] text-ink",
+        "max-w-read border-l-[3px] border-sun pl-5 font-display text-pull font-medium tracking-[-0.02em] text-ink",
         className,
       )}
     >

@@ -93,7 +93,7 @@ export function SectionShell({
         className,
       )}
     >
-      <div className="mx-auto w-full max-w-[1320px]">{children}</div>
+      <div className="mx-auto w-full max-w-page">{children}</div>
     </section>
   );
 }
@@ -182,7 +182,7 @@ export function ChapterEyebrow({
   );
 }
 
-/** Editorial serif heading. */
+/** Section heading: the same display face and scale as the other case studies. */
 export function StoryHeading({
   children,
   as: Tag = "h2",
@@ -197,10 +197,10 @@ export function StoryHeading({
   return (
     <Tag
       className={cn(
-        "font-serif font-normal tracking-[-0.015em] text-balance",
-        size === "xl" && "text-[clamp(2.6rem,6.2vw,5.75rem)] leading-[1.02]",
-        size === "lg" && "text-[clamp(2.2rem,4.6vw,4.25rem)] leading-[1.05]",
-        size === "md" && "text-[clamp(1.6rem,2.8vw,2.4rem)] leading-[1.12]",
+        "max-w-lead font-display font-semibold tracking-[-0.03em] text-balance",
+        size === "xl" && "text-h1",
+        size === "lg" && "text-h2",
+        size === "md" && "text-h3",
         className,
       )}
     >
@@ -209,7 +209,7 @@ export function StoryHeading({
   );
 }
 
-/** Reading column: ~62–70 characters per line. */
+/** Reading column: widens and grows with the screen, ~75–85 characters a line. */
 export function ReadingColumn({
   children,
   className,
@@ -217,16 +217,7 @@ export function ReadingColumn({
   children: ReactNode;
   className?: string;
 }) {
-  return (
-    <div
-      className={cn(
-        "max-w-[40rem] space-y-5 text-[clamp(1rem,0.35vw+0.95rem,1.15rem)] leading-[1.65]",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
+  return <div className={cn("max-w-read space-y-5 text-read", className)}>{children}</div>;
 }
 
 /** A first-person ownership callout (MY ROLE, DECISION…). */
@@ -250,14 +241,9 @@ export function OwnershipCallout({
     CONTEXT: "border-cc-forest-soft",
   };
   return (
-    <MotionReveal className={cn("max-w-[40rem] border-l-[3px] pl-5", bar[label], className)}>
+    <MotionReveal className={cn("max-w-read border-l-[3px] pl-5", bar[label], className)}>
       <OwnershipLabel label={label} onDark={onDark} />
-      <p
-        className={cn(
-          "mt-3 text-[1.08rem] leading-[1.65]",
-          onDark ? "text-cc-cream/90" : "text-cc-forest",
-        )}
-      >
+      <p className={cn("mt-3 text-read", onDark ? "text-cc-cream/90" : "text-cc-forest")}>
         {children}
       </p>
     </MotionReveal>
@@ -315,7 +301,7 @@ export function Placeholder({
       </span>
       <span
         className={cn(
-          "mt-1 font-serif leading-tight text-cc-forest",
+          "mt-1 font-display font-semibold leading-tight tracking-[-0.02em] text-cc-forest",
           compact ? "text-[1.05rem]" : "text-[1.25rem]",
         )}
       >

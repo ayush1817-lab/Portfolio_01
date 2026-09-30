@@ -76,7 +76,7 @@ function Hero() {
   const d = C.hero;
   return (
     <header className="bg-reel-cream px-5 pb-16 pt-28 sm:px-8 sm:pt-36 lg:px-10 lg:pb-24">
-      <div className="mx-auto max-w-[1280px]">
+      <div className="mx-auto max-w-page">
         <a
           href={`${BASE}#projects`}
           className="focus-glow -ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft transition-colors hover:text-ink"
@@ -92,13 +92,11 @@ function Hero() {
             <span className="block text-[clamp(1.1rem,1.6vw,1.35rem)] tracking-[-0.01em] text-ink-soft">
               {d.name}
             </span>
-            <span className="mt-3 block text-[clamp(2.5rem,6.2vw,6rem)] leading-[0.98] text-balance">
+            <span className="mt-3 block text-h1 text-balance">
               {d.title[0]} <span className={LAV}>{d.title[1]}</span>
             </span>
           </h1>
-          <p className="mt-7 max-w-[40rem] text-[1.2rem] leading-[1.6] text-ink-soft sm:text-[1.3rem]">
-            {d.sub}
-          </p>
+          <p className="mt-7 max-w-read text-lead text-ink-soft">{d.sub}</p>
         </Reveal>
 
         <Reveal y={24} blur={false} delay={0.1} className="mt-12 lg:mt-16">
@@ -142,9 +140,7 @@ function Problem() {
         ))}
       </ul>
       <Reveal y={12} blur={false} className="mt-16">
-        <p className="max-w-[46rem] text-[1.15rem] leading-relaxed text-ink-soft">
-          {d.reframe.lead}
-        </p>
+        <p className="max-w-read text-read text-ink-soft">{d.reframe.lead}</p>
         <Pull className="mt-5 border-reel-lavender">{d.reframe.q}</Pull>
       </Reveal>
     </Section>
@@ -183,13 +179,13 @@ function Journey() {
       aria-label="Product journey"
       className="bg-reel-cream px-5 py-[4.5rem] sm:px-8 sm:py-24 lg:px-10 lg:py-32"
     >
-      <div className="mx-auto max-w-[1280px]">
+      <div className="mx-auto max-w-page">
         <Intro n={3} eyebrow={d.eyebrow} lens={d.lens} title={d.title} body={d.body} accent={LAV} />
       </div>
-      <div className="mx-auto mt-12 max-w-[1400px] lg:mt-16">
+      <div className="mx-auto mt-12 max-w-page lg:mt-16">
         <JourneyViewer img={JOURNEY_IMG} steps={d.steps} />
       </div>
-      <div className="mx-auto mt-10 max-w-[1280px]">
+      <div className="mx-auto mt-10 max-w-page">
         <p className="text-[15px] text-ink-soft">{d.image.caption}</p>
         <ol className="mt-6 grid gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-7">
           {d.steps.map((s) => (
@@ -363,7 +359,7 @@ function Decision() {
       aria-label="The product decision"
       className="bg-reel-charcoal px-5 py-28 text-paper sm:px-8 sm:py-36 lg:px-10 lg:py-52"
     >
-      <div className="mx-auto max-w-[1280px]">
+      <div className="mx-auto max-w-page">
         <Reveal y={20} blur={false}>
           <p className={cn("font-mono text-[11px] uppercase tracking-[0.18em]", AMB)}>
             07 · {d.eyebrow}
@@ -373,7 +369,7 @@ function Decision() {
             <span className={cn("block", AMB)}>{d.title[1]}</span>
           </h2>
         </Reveal>
-        <div className="mt-12 max-w-[46rem] space-y-5 text-[1.15rem] leading-[1.7] text-paper/85 sm:text-[1.25rem]">
+        <div className="mt-12 max-w-read space-y-5 text-read text-paper/85">
           {d.body.map((p) => (
             <p key={p}>{p}</p>
           ))}
@@ -403,7 +399,7 @@ function Practice() {
       </ol>
 
       <Reveal y={16} blur={false} className="mt-24 lg:mt-32">
-        <p className="max-w-[22ch] font-display text-[clamp(2rem,4.6vw,4.25rem)] font-semibold leading-[1.06] tracking-[-0.035em] text-balance">
+        <p className="max-w-[22ch] font-display text-[clamp(2rem,4.6vw,5.5rem)] font-semibold leading-[1.06] tracking-[-0.035em] text-balance">
           {d.closing}
         </p>
       </Reveal>

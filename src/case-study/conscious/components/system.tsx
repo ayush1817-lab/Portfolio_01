@@ -27,7 +27,7 @@ export function CommunityBoxReveal() {
       <ChapterEyebrow n={4} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
         <StoryHeading size="xl">{d.title}</StoryHeading>
-        <p className="mt-4 font-serif text-[clamp(1.4rem,2.4vw,2rem)] italic leading-snug text-cc-coral-deep">
+        <p className="mt-4 font-display text-pull font-medium tracking-[-0.02em] text-cc-coral-deep">
           {d.sub}
         </p>
       </MotionReveal>
@@ -69,7 +69,9 @@ export function CommunityBoxReveal() {
             <p className="font-mono text-[12px] text-cc-coral-deep">
               {String(active + 1).padStart(2, "0")} / {String(d.parts.length).padStart(2, "0")}
             </p>
-            <h3 className="mt-2 font-serif text-[1.8rem] leading-tight">{part.k}</h3>
+            <h3 className="mt-2 font-display font-semibold tracking-[-0.02em] text-[1.7rem] leading-tight">
+              {part.k}
+            </h3>
             <p className="mt-2 text-[1.05rem] leading-relaxed text-cc-forest-soft">{part.v}</p>
             <p className="mt-6 text-[13px] text-cc-forest-soft">
               Select a numbered marker on the image, or use Tab to move between them.
@@ -104,16 +106,18 @@ export function CommunityBoxReveal() {
               <p className="font-mono text-[12px] text-cc-coral-deep">
                 {String(i + 1).padStart(2, "0")}
               </p>
-              <h3 className="mt-1 font-serif text-[1.4rem] leading-tight">{p.k}</h3>
+              <h3 className="mt-1 font-display font-semibold tracking-[-0.02em] text-[1.35rem] leading-tight">
+                {p.k}
+              </h3>
               <p className="mt-1.5 text-[15px] leading-relaxed text-cc-forest-soft">{p.v}</p>
             </li>
           ))}
         </ol>
       </div>
 
-      <div className="mt-16 max-w-[40rem]">
-        <h3 className="font-serif text-[clamp(1.5rem,2.4vw,2rem)] leading-tight">{d.moreTitle}</h3>
-        <p className="mt-3 text-[1.08rem] leading-[1.65] text-cc-forest-soft">{d.more}</p>
+      <div className="mt-16 max-w-read">
+        <h3 className="font-display font-semibold tracking-[-0.02em] text-h3">{d.moreTitle}</h3>
+        <p className="mt-3 text-read text-cc-forest-soft">{d.more}</p>
       </div>
     </SectionShell>
   );
@@ -127,10 +131,10 @@ export function PhysicalConstraintScene() {
     <SectionShell id="critique" label="Critique of the physical-only solution">
       <ChapterEyebrow n={5} name={d.eyebrow} labels={d.labels} />
       <MotionReveal className="mt-6">
-        <StoryHeading className="max-w-[18ch]">{d.title}</StoryHeading>
+        <StoryHeading>{d.title}</StoryHeading>
       </MotionReveal>
       <MotionReveal className="mt-8">
-        <p className="max-w-[28ch] font-serif text-[clamp(1.6rem,3vw,2.6rem)] italic leading-[1.2] text-cc-coral-deep">
+        <p className="max-w-[30ch] font-display text-pull font-medium tracking-[-0.02em] text-balance text-cc-coral-deep">
           {d.question}
         </p>
       </MotionReveal>
@@ -183,7 +187,7 @@ export function PhysicalConstraintScene() {
                 <Globe className="h-6 w-6" aria-hidden />
               </span>
             </div>
-            <p className="mt-6 font-serif text-[1.6rem] leading-tight">
+            <p className="mt-6 font-display font-semibold tracking-[-0.02em] text-[1.5rem] leading-tight">
               Box or website: either way in.
             </p>
           </div>
@@ -206,49 +210,13 @@ export function PhysicalConstraintScene() {
 
 /* ─────────────────────── Website entry points ─────────────────────── */
 
-export function IndependentExtensionBanner() {
-  const d = C.website.extension;
-  return (
-    <section
-      aria-labelledby="extension-title"
-      className="rounded-[28px] border-4 border-cc-forest bg-cc-cream p-6 sm:p-10"
-    >
-      <OwnershipLabel label={d.label} />
-      <h3
-        id="extension-title"
-        className="mt-5 font-mono text-[clamp(1rem,1.6vw,1.35rem)] font-medium uppercase tracking-[0.1em] text-cc-forest"
-      >
-        {d.title}
-      </h3>
-      <p className="mt-4 max-w-[40rem] text-[1.08rem] leading-[1.65] text-cc-forest">{d.body}</p>
-      <p className="mt-2 text-[14px] text-cc-forest-soft">{d.note}</p>
-      <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-label="Redesign artifacts">
-        {(
-          [
-            "redesignConcept",
-            "redesignIA",
-            "redesignWireframes",
-            "redesignVisual",
-            "redesignScreens",
-          ] as const
-        ).map((k, i) => (
-          <li key={k}>
-            <p className="mb-2 font-mono text-[12px] text-cc-forest-soft">Step {i + 1}</p>
-            <Figure assetKey={k} compact />
-          </li>
-        ))}
-      </ol>
-    </section>
-  );
-}
-
 export function WebsiteEntryPoints() {
   const d = C.website;
   return (
     <SectionShell id="website" label="Website as an alternative entry point" tone="lilac">
       <ChapterEyebrow n={6} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
-        <StoryHeading className="max-w-[18ch]">{d.title}</StoryHeading>
+        <StoryHeading>{d.title}</StoryHeading>
       </MotionReveal>
       <ReadingColumn className="mt-7 text-cc-forest-soft">
         {d.body.map((p) => (
@@ -265,17 +233,15 @@ export function WebsiteEntryPoints() {
             <p className="font-mono text-[12px] text-cc-lilac-deep">
               {String(i + 1).padStart(2, "0")}
             </p>
-            <h3 className="mt-2 font-serif text-[1.7rem] leading-tight">{r.k}</h3>
+            <h3 className="mt-2 font-display font-semibold tracking-[-0.02em] text-[1.5rem] leading-tight">
+              {r.k}
+            </h3>
             <p className="mt-2 text-[15px] leading-relaxed text-cc-forest-soft">{r.v}</p>
           </MotionReveal>
         ))}
       </ol>
 
       <Figure assetKey="academicWebsite" className="mt-14 max-w-[980px]" />
-
-      <div className="mt-16">
-        <IndependentExtensionBanner />
-      </div>
     </SectionShell>
   );
 }
@@ -288,7 +254,7 @@ export function ServiceEcosystem() {
     <SectionShell id="ecosystem" label="Service ecosystem">
       <ChapterEyebrow n={7} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
-        <StoryHeading className="max-w-[22ch]">
+        <StoryHeading>
           {d.title[0]} <span className="text-cc-sage-deep">{d.title[1]}</span>
         </StoryHeading>
       </MotionReveal>
@@ -315,7 +281,9 @@ export function ServiceEcosystem() {
               )}
             >
               <p className="font-mono text-[12px] text-cc-sage-deep">Stage {i + 1}</p>
-              <h3 className="mt-1 font-serif text-[1.55rem] leading-tight">{s.k}</h3>
+              <h3 className="mt-1 font-display font-semibold tracking-[-0.02em] text-[1.35rem] leading-tight">
+                {s.k}
+              </h3>
               <ul className="mt-3 flex flex-wrap gap-1.5" aria-label={`${s.k} touchpoints`}>
                 {s.touch.map((t) => (
                   <li
@@ -347,8 +315,8 @@ export function ServiceEcosystem() {
         </div>
       </div>
 
-      <MotionReveal className="mt-14 max-w-[40rem]">
-        <p className="font-serif text-[clamp(1.4rem,2.4vw,2rem)] leading-[1.25]">{d.bridge}</p>
+      <MotionReveal className="mt-14 max-w-read">
+        <p className="font-display text-pull font-semibold tracking-[-0.02em]">{d.bridge}</p>
       </MotionReveal>
 
       <div className="mt-12">
@@ -375,7 +343,7 @@ export function BuddyMatchingLogic() {
     <SectionShell id="buddy-connect" label="Buddy Connect" tone="sage">
       <ChapterEyebrow n={8} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
-        <StoryHeading className="max-w-[18ch]">{d.title}</StoryHeading>
+        <StoryHeading>{d.title}</StoryHeading>
       </MotionReveal>
       <ReadingColumn className="mt-7 text-cc-forest-soft">
         {d.body.map((p) => (
@@ -396,7 +364,7 @@ export function BuddyMatchingLogic() {
             Reset example
           </button>
         </div>
-        <p className="mt-3 max-w-[44rem] text-[14px] leading-relaxed text-cc-forest-soft">
+        <p className="mt-3 max-w-read text-[15px] leading-relaxed text-cc-forest-soft">
           {d.demoNote}
         </p>
 
@@ -496,8 +464,10 @@ export function BuddyMatchingLogic() {
 
       <Figure assetKey="buddyFlow" className="mt-12 max-w-[980px]" />
 
-      <MotionReveal className="mt-14 max-w-[36rem]">
-        <p className="font-serif text-[clamp(1.6rem,3vw,2.6rem)] leading-[1.15]">{d.keyLine}</p>
+      <MotionReveal className="mt-14 max-w-read">
+        <p className="font-display text-pull font-semibold tracking-[-0.02em] text-balance">
+          {d.keyLine}
+        </p>
       </MotionReveal>
     </SectionShell>
   );
@@ -511,8 +481,8 @@ export function ArchitectureLayers() {
     <SectionShell id="architecture" label="System architecture">
       <ChapterEyebrow n={9} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
-        <StoryHeading className="max-w-[18ch]">{d.title}</StoryHeading>
-        <p className="mt-4 font-serif text-[clamp(1.3rem,2vw,1.7rem)] italic leading-snug text-cc-sage-deep">
+        <StoryHeading>{d.title}</StoryHeading>
+        <p className="mt-4 font-display text-pull font-medium tracking-[-0.02em] text-cc-sage-deep">
           {d.sub}
         </p>
       </MotionReveal>
