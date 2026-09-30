@@ -14,6 +14,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         optiapply: resolve(__dirname, "work/optiapply/index.html"),
+        reelpick: resolve(__dirname, "work/reelpick/index.html"),
       },
     },
   },

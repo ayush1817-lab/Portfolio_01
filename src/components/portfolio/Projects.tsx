@@ -152,25 +152,37 @@ function ProjectCard({
               <div
                 className={cn(
                   "relative overflow-hidden lg:col-span-6 lg:min-h-0",
-                  // A cover keeps its own portrait shape on small screens so nothing is cut off.
-                  p.cover ? "aspect-[6/7] lg:aspect-auto" : "min-h-[190px] sm:min-h-[260px]",
+                  // A cover keeps its own shape on small screens so nothing is cut off.
+                  p.cover
+                    ? "aspect-[var(--cover-ar)] lg:aspect-auto"
+                    : "min-h-[190px] sm:min-h-[260px]",
                 )}
+                style={
+                  p.cover
+                    ? ({
+                        "--cover-ar": `${p.cover.width} / ${p.cover.height}`,
+                      } as React.CSSProperties)
+                    : undefined
+                }
               >
                 <div
                   aria-hidden
                   className="absolute inset-0"
-                  style={{ background: p.cover ? "#e3ebfd" : plates[i % plates.length].bg }}
+                  style={{ background: p.cover ? p.cover.bg : plates[i % plates.length].bg }}
                 />
                 {p.cover ? (
                   <img
                     src={p.cover.src}
                     alt={p.cover.alt}
-                    width={1200}
-                    height={1400}
+                    width={p.cover.width}
+                    height={p.cover.height}
                     loading="lazy"
                     decoding="async"
                     draggable={false}
-                    className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                    className={cn(
+                      "absolute inset-0 h-full w-full transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]",
+                      p.cover.fit === "cover" ? "object-cover object-top" : "object-contain",
+                    )}
                   />
                 ) : (
                   <Plate variant={i % 3} />

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/portfolio/motion";
 import type { Lens } from "../content";
 
-type Tone = "plain" | "tint" | "dark";
+type Tone = "plain" | "tint" | "dark" | "charcoal" | "cream";
 
 /** A narrative section. Media may run to 1280px; prose stays ~740px. */
 export function Section({
@@ -29,6 +29,8 @@ export function Section({
         pause ? "py-24 sm:py-32 lg:py-48" : "py-[4.5rem] sm:py-24 lg:py-32",
         tone === "tint" && "bg-paper-2",
         tone === "dark" && "bg-ink text-paper",
+        tone === "charcoal" && "bg-reel-charcoal text-paper",
+        tone === "cream" && "bg-reel-cream",
       )}
     >
       <div className="mx-auto w-full max-w-[1280px]">{children}</div>
@@ -42,11 +44,14 @@ export function Eyebrow({
   children,
   lens,
   dark,
+  accent,
 }: {
   n: number;
   children: ReactNode;
   lens?: Lens;
   dark?: boolean;
+  /** Colour class for the running number (defaults to the site accent). */
+  accent?: string;
 }) {
   return (
     <div
@@ -55,7 +60,9 @@ export function Eyebrow({
         dark ? "text-paper/70" : "text-ink-soft",
       )}
     >
-      <span className={dark ? "text-sun" : "text-cobalt"}>{String(n).padStart(2, "0")}</span>
+      <span className={accent ?? (dark ? "text-sun" : "text-cobalt")}>
+        {String(n).padStart(2, "0")}
+      </span>
       <span aria-hidden className={cn("h-px w-6", dark ? "bg-paper/30" : "bg-line-strong")} />
       <span>{children}</span>
       {lens ? (
@@ -130,6 +137,7 @@ export function Intro({
   body,
   dark,
   compact,
+  accent,
   children,
 }: {
   n: number;
@@ -139,12 +147,13 @@ export function Intro({
   body?: string[];
   dark?: boolean;
   compact?: boolean;
+  accent?: string;
   children?: ReactNode;
 }) {
   return (
     <Reveal y={16} blur={false}>
       <div className="max-w-[52rem]">
-        <Eyebrow n={n} lens={lens} dark={dark}>
+        <Eyebrow n={n} lens={lens} dark={dark} accent={accent}>
           {eyebrow}
         </Eyebrow>
         <Heading compact={compact}>{title}</Heading>
