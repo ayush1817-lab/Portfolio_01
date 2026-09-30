@@ -70,7 +70,7 @@ export function CaseStudies() {
       aria-label="UX case studies"
       className="relative overflow-hidden py-20 sm:py-24 lg:py-40"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             index="03"
@@ -168,7 +168,7 @@ export function CaseStudies() {
       </Reveal>
 
       {/* progress */}
-      <div className="mx-auto mt-2 max-w-6xl px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto mt-2 max-w-page px-5 sm:px-8 lg:px-10">
         <div className="flex items-center justify-between gap-6">
           <div className="relative h-px flex-1 bg-line-strong">
             <motion.div

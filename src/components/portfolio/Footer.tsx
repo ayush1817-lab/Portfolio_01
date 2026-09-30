@@ -33,7 +33,7 @@ export function Footer() {
 
   return (
     <footer className="relative border-t border-line px-5 py-10 sm:px-8 lg:px-10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex max-w-page flex-col gap-8 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-2">
           <p className="font-display text-lg font-semibold tracking-tight text-ink">
             {profile.name.split(" ")[0]}

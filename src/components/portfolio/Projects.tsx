@@ -21,7 +21,7 @@ export function Projects({ id, items }: Props) {
 
   return (
     <section id={id} aria-label="Selected projects" className="relative py-20 sm:py-24 lg:py-40">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <div className="mb-12 flex flex-col gap-6 sm:mb-16 sm:gap-8 lg:mb-24 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             index="02"
