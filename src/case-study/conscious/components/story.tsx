@@ -18,6 +18,22 @@ import {
 
 const BASE = import.meta.env.BASE_URL;
 
+/** Hand-drawn idea sketches, keyed by file stem. */
+const sketches = Object.fromEntries(
+  Object.entries(
+    import.meta.glob("../../../assets/conscious/ideas/*.webp", {
+      eager: true,
+      import: "default",
+    }) as Record<string, string>,
+  ).map(([path, url]) => [
+    path
+      .split("/")
+      .pop()!
+      .replace(/\.webp$/, ""),
+    url,
+  ]),
+);
+
 /* ───────────────────────────── Hero ───────────────────────────── */
 
 export function ProjectMeta() {
@@ -422,47 +438,52 @@ export function IdeationRail() {
       <ol
         ref={track}
         tabIndex={0}
-        aria-label="Ideas from the internal ideation workshop. On larger screens this list scrolls horizontally; use the arrow keys or the previous and next buttons."
-        className="mt-6 grid gap-3 sm:grid-cols-2 md:flex md:snap-x md:snap-mandatory md:gap-4 md:overflow-x-auto md:pb-4 md:[scrollbar-width:thin] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cc-lilac-deep"
+        aria-label="The team's 12 ideas. This list scrolls horizontally: swipe, use the arrow keys, or use the previous and next buttons."
+        className="mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 [scrollbar-width:thin] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cc-lilac-deep md:gap-4"
       >
         {d.ideas.map((idea, i) => (
           <li
-            key={i}
-            className={cn(
-              "flex min-h-[9.5rem] flex-col rounded-2xl p-5 md:w-[15.5rem] md:shrink-0 md:snap-start",
-              idea.name
-                ? "bg-paper ring-1 ring-cc-forest/15"
-                : "border border-dashed border-cc-forest/30",
-            )}
+            key={idea.name}
+            className="flex w-[min(78vw,18rem)] shrink-0 snap-start flex-col overflow-hidden rounded-2xl bg-paper ring-1 ring-cc-forest/15 md:w-[18rem]"
           >
-            <span className="font-mono text-[12px] text-cc-sage-deep">
-              Idea {String(i + 1).padStart(2, "0")}
-            </span>
-            <span
-              className={cn(
-                "mt-2 font-display font-semibold tracking-[-0.02em] text-[1.25rem] leading-tight",
-                idea.name ? "text-cc-forest" : "text-cc-forest-soft",
-              )}
-            >
-              {idea.name ?? "To be added from the workshop output"}
-            </span>
-            {idea.fate ? (
-              <span
-                className={cn(
-                  "mt-auto inline-flex w-fit rounded-full px-2.5 py-1 pt-1 text-[12px] font-medium",
-                  idea.fate === "Became the core concept" && "bg-cc-forest text-cc-cream",
-                  idea.fate === "Combined into the final service" &&
-                    "bg-cc-sage-soft text-cc-sage-deep",
-                  idea.fate === "Early privacy concept" && "bg-cc-lilac-soft text-cc-lilac-deep",
-                )}
-              >
-                {idea.fate}
+            {/* Hand-drawn sketch from the team's ideation write-up. */}
+            <img
+              src={sketches[idea.sketch]}
+              alt={idea.alt}
+              width={709}
+              height={451}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[709/451] w-full bg-[#ebf5f2] object-cover"
+            />
+            <div className="flex flex-1 flex-col p-5">
+              <span className="font-mono text-[12px] text-cc-sage-deep">
+                Idea {String(i + 1).padStart(2, "0")}
               </span>
-            ) : (
-              <span className="mt-auto font-mono text-[11px] uppercase tracking-[0.12em] text-cc-forest-soft">
-                Placeholder
-              </span>
-            )}
+              <h4 className="mt-2 font-display text-[1.25rem] font-semibold leading-tight tracking-[-0.02em] text-cc-forest">
+                {idea.name}
+              </h4>
+              {idea.summary ? (
+                <p className="mt-2 text-[14px] leading-relaxed text-cc-forest-soft">
+                  {idea.summary}
+                </p>
+              ) : null}
+              {idea.fate ? (
+                <p className="mt-auto pt-4">
+                  <span
+                    className={cn(
+                      "inline-flex rounded-full px-2.5 py-1 text-[12px] font-medium",
+                      idea.fate === "Combined into the final service" &&
+                        "bg-cc-sage-soft text-cc-sage-deep",
+                      idea.fate === "Early privacy concept" &&
+                        "bg-cc-lilac-soft text-cc-lilac-deep",
+                    )}
+                  >
+                    {idea.fate}
+                  </span>
+                </p>
+              ) : null}
+            </div>
           </li>
         ))}
       </ol>

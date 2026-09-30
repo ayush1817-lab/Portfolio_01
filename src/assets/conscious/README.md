@@ -32,6 +32,11 @@ the listed shape: images fill a fixed-shape frame, so extra edges get trimmed.
 The homepage cover is not read from this folder: send it over and it gets
 wired into `src/content/portfolio.ts`, as the OptiApply and ReelPick covers were.
 
+## Already added
+
+- `ideas/`: the 12 hand-drawn idea sketches for the ideation rail, cropped
+  from the team's Week 7 ideation write-up (pages 35–38).
+
 ## After adding images
 
 - **A06:** check the four numbered markers line up with the real photo. Their
