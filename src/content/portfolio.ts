@@ -1,5 +1,6 @@
 import optiapplyCover from "@/assets/optiapply-cover.webp";
 import reelpickCover from "@/assets/reelpick-cover.webp";
+import ccCover from "@/assets/cc-cover.webp";
 
 export const profile = {
   name: "Ayush Ramawat",
@@ -104,8 +105,15 @@ export const projects: Project[] = [
     // No year until confirmed.
     year: "",
     link: `${import.meta.env.BASE_URL}work/conscious-connections/`,
+    cover: {
+      src: ccCover,
+      alt: "The Community Box prototype: two white display stands filled with colourful support cards, affirmation stickers and seed packets.",
+      width: 1200,
+      height: 1375,
+      bg: "#e9dfcf",
+      fit: "cover",
+    },
     accent: "#3d6450",
-    coverPlaceholder: "Community Box, website and Buddy Connect",
   },
   {
     id: "proj-04",

@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useState } from "react";
 import { ArrowRight, Check, Globe, Package, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import * as C from "../content";
@@ -14,14 +14,26 @@ import {
   StoryHeading,
 } from "./primitives";
 
+/** Cut-out images of the prototype's components, keyed by file stem. */
+const components = Object.fromEntries(
+  Object.entries(
+    import.meta.glob("../../../assets/conscious/box/*.webp", {
+      eager: true,
+      import: "default",
+    }) as Record<string, string>,
+  ).map(([path, url]) => [
+    path
+      .split("/")
+      .pop()!
+      .replace(/\.webp$/, ""),
+    url,
+  ]),
+);
+
 /* ─────────────────────── Community in a Box ─────────────────────── */
 
 export function CommunityBoxReveal() {
   const d = C.box;
-  const [active, setActive] = useState(0);
-  const panelId = useId();
-  const part = d.parts[active];
-
   return (
     <SectionShell id="community-box" label="Community in a Box" tone="warm" pause>
       <ChapterEyebrow n={4} name={d.eyebrow} labels={[d.label]} />
@@ -37,82 +49,41 @@ export function CommunityBoxReveal() {
         ))}
       </ReadingColumn>
 
-      <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:items-start">
-        <Figure assetKey="boxHero" className="lg:col-span-8">
-          {/* Hotspots: buttons, so they work with click, touch, keyboard and focus. */}
-          {d.parts.map((p, i) => (
-            <button
-              key={p.k}
-              type="button"
-              aria-pressed={active === i}
-              aria-controls={panelId}
-              onClick={() => setActive(i)}
-              onFocus={() => setActive(i)}
-              style={{ left: `${p.x}%`, top: `${p.y}%` }}
-              className={cn(
-                "absolute hidden h-11 w-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 font-mono text-[13px] font-medium shadow-soft transition-colors lg:grid",
-                "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cc-lilac-deep",
-                active === i
-                  ? "border-cc-forest bg-cc-forest text-cc-cream"
-                  : "border-cc-forest bg-paper text-cc-forest hover:bg-cc-cream",
-              )}
+      {/* The prototype: front view, with a smaller side view beside it. */}
+      <div className="mt-12 grid max-w-[1000px] gap-4 sm:grid-cols-12 sm:items-end">
+        <Figure assetKey="boxHero" className="sm:col-span-7" />
+        <Figure assetKey="boxSide" caption={false} className="hidden sm:col-span-5 sm:block" />
+      </div>
+
+      <div className="mt-16">
+        <h3 className="font-display text-h3 font-semibold tracking-[-0.02em]">{d.insideTitle}</h3>
+        <p className="mt-2 text-[15px] text-cc-forest-soft">{d.insideNote}</p>
+        <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-label={d.insideTitle}>
+          {d.components.map((c, i) => (
+            <MotionReveal
+              as="li"
+              key={c.k}
+              delay={(i % 4) * 0.06}
+              className="flex flex-col overflow-hidden rounded-2xl bg-paper"
             >
-              {i + 1}
-              <span className="sr-only">: {p.k}</span>
-            </button>
+              <div className="grid aspect-[4/3] place-items-center bg-cc-cream p-5">
+                <img
+                  src={components[c.image]}
+                  alt={c.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="max-h-full max-w-full object-contain drop-shadow-sm"
+                />
+              </div>
+              <div className="p-5">
+                <h4 className="font-display text-[1.2rem] font-semibold leading-tight tracking-[-0.02em]">
+                  {c.k}
+                </h4>
+                <p className="mt-1.5 text-[14px] leading-relaxed text-cc-forest-soft">{c.v}</p>
+              </div>
+            </MotionReveal>
           ))}
-        </Figure>
-
-        {/* Desktop: detail for the selected hotspot. */}
-        <div className="hidden lg:col-span-4 lg:block">
-          <div id={panelId} aria-live="polite" className="rounded-2xl bg-paper p-7 shadow-soft">
-            <p className="font-mono text-[12px] text-cc-coral-deep">
-              {String(active + 1).padStart(2, "0")} / {String(d.parts.length).padStart(2, "0")}
-            </p>
-            <h3 className="mt-2 font-display font-semibold tracking-[-0.02em] text-[1.7rem] leading-tight">
-              {part.k}
-            </h3>
-            <p className="mt-2 text-[1.05rem] leading-relaxed text-cc-forest-soft">{part.v}</p>
-            <p className="mt-6 text-[13px] text-cc-forest-soft">
-              Select a numbered marker on the image, or use Tab to move between them.
-            </p>
-          </div>
-          <ol className="mt-5 space-y-1.5" aria-label="Box components">
-            {d.parts.map((p, i) => (
-              <li key={p.k}>
-                <button
-                  type="button"
-                  aria-pressed={active === i}
-                  aria-controls={panelId}
-                  onClick={() => setActive(i)}
-                  className={cn(
-                    "flex min-h-11 w-full items-center gap-3 rounded-xl px-3 text-left text-[15px] transition-colors",
-                    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cc-lilac-deep",
-                    active === i ? "bg-cc-forest text-cc-cream" : "hover:bg-paper",
-                  )}
-                >
-                  <span className="font-mono text-[12px]">{i + 1}</span>
-                  {p.k}
-                </button>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        {/* Mobile + tablet: every component as numbered text below the image. */}
-        <ol className="grid gap-3 sm:grid-cols-2 lg:hidden" aria-label="Box components">
-          {d.parts.map((p, i) => (
-            <li key={p.k} className="rounded-2xl bg-paper p-5">
-              <p className="font-mono text-[12px] text-cc-coral-deep">
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <h3 className="mt-1 font-display font-semibold tracking-[-0.02em] text-[1.35rem] leading-tight">
-                {p.k}
-              </h3>
-              <p className="mt-1.5 text-[15px] leading-relaxed text-cc-forest-soft">{p.v}</p>
-            </li>
-          ))}
-        </ol>
+        </ul>
       </div>
 
       <div className="mt-16 max-w-read">
