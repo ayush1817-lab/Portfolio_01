@@ -174,8 +174,9 @@ export const saas: Project[] = [
  */
 export type Testimonial = {
   name: string;
-  role: string;
-  org: string;
+  /** Role and organisation are each optional; the card shows whatever is given. */
+  role?: string;
+  org?: string;
   /** How we worked together, e.g. "Managed my work on…". */
   relation?: string;
   quote: string;
@@ -183,7 +184,38 @@ export type Testimonial = {
   tone: "cobalt" | "sun" | "sage" | "lilac";
 };
 
-export const testimonials: Testimonial[] = [];
+export const testimonials: Testimonial[] = [
+  {
+    name: "Karina Murray",
+    role: "CEO",
+    org: "Conscious Connections",
+    quote:
+      "Ayush consistently brought fresh, out-of-the-box ideas to the table. He often approached challenges from perspectives I hadn’t initially considered, which helped us explore new possibilities for the product and experience.",
+    tone: "sage",
+  },
+  {
+    name: "Jinho Ahn",
+    org: "BPM Clinic Limited",
+    quote:
+      "Ayush is a strong problem solver who is always willing to take on a challenge. Whatever problem I gave him, he would explore different approaches and find a way forward. He is also very resourceful with tools and learns quickly when something new is needed.",
+    tone: "cobalt",
+  },
+  {
+    name: "Pavan Thota",
+    role: "Product Manager",
+    org: "OAKS Kidz",
+    quote:
+      "Ayush has a strong product vision and a different way of thinking about how technology can be used. He looks beyond the immediate solution and considers how a product could evolve and create a better experience for users.",
+    tone: "sun",
+  },
+  {
+    name: "Suman Matcha",
+    role: "CEO",
+    quote:
+      "One thing I’ve consistently noticed about Ayush is his curiosity and ability to stay ahead of emerging trends. Whether it’s AI, new tools, or developments in technology, he actively keeps himself updated and looks for ways to apply what he learns.",
+    tone: "lilac",
+  },
+];
 
 export type Blog = {
   id: string;
