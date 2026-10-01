@@ -226,6 +226,26 @@
 }
 
 /* ── keyframes ─────────────────────────────────────────────── */
+/* Small Builds motifs */
+@keyframes voice-bar {
+  0%,
+  100% {
+    transform: scaleY(0.45);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+@keyframes detente-wiggle {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -320,37 +340,6 @@
 @utility mask-x {
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-}
-
-/* Drag-scroll track. */
-@utility shelf-track {
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  &.is-dragging {
-    scroll-behavior: auto;
-  }
-  &.is-dragging * {
-    user-select: none;
-  }
-}
-
-/* Shelf gutter: aligns the first card with the page's content column. */
-@utility shelf-gutter {
-  /* scroll-padding matches padding so snap points align with the gutter. */
-  padding-inline: 1.25rem;
-  scroll-padding-inline: 1.25rem;
-  @media (min-width: 40rem) {
-    padding-inline: 2rem;
-    scroll-padding-inline: 2rem;
-  }
-  @media (min-width: 64rem) {
-    padding-inline: max(2.5rem, calc((100vw - 72rem) / 2 + 2.5rem));
-    scroll-padding-inline: max(2.5rem, calc((100vw - 72rem) / 2 + 2.5rem));
-  }
 }
 
 /* Gradient border via mask trick. */
