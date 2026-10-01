@@ -24,7 +24,7 @@ export const experience = [
   {
     year: "2025 — 2026",
     role: "AI Product Designer",
-    org: "BPM Limited, Dublin",
+    org: "BFM Clinic Ltd, Dublin",
     note: "Designed and shipped automation workflows and internal software tools for clinic operations.",
   },
   {
@@ -202,7 +202,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Jinho Ahn",
     role: "CEO",
-    org: "BPM Limited",
+    org: "BFM Clinic Ltd",
     quote:
       "Ayush is a strong problem solver who is always willing to take on a challenge. Whatever problem I gave him, he would explore different approaches and find a way forward. He is also very resourceful with tools and learns quickly when something new is needed.",
     tone: "cobalt",
