@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BookOpen, Check, Copy, Github, Linkedin, Mail } from "lucide-react";
 import { profile, testimonials } from "@/content/portfolio";
 import { Magnetic, Reveal, SplitText } from "./motion";
+import { ResumeLinks } from "./ResumeLinks";
 
 const socials = [
   { href: profile.linkedin, label: "LinkedIn", Icon: Linkedin },
@@ -129,6 +130,10 @@ export function ConnectBanner() {
                       </Magnetic>
                     ))}
                   </div>
+                </Reveal>
+
+                <Reveal delay={0.5} className="w-full lg:w-auto">
+                  <ResumeLinks tone="dark" className="lg:justify-end" />
                 </Reveal>
               </div>
             </div>

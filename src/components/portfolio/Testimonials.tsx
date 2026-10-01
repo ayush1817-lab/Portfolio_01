@@ -1,4 +1,11 @@
-import { Building2, HeartHandshake, Quote, Stethoscope, type LucideIcon } from "lucide-react";
+import {
+  Building2,
+  Gamepad2,
+  HeartHandshake,
+  Quote,
+  Stethoscope,
+  type LucideIcon,
+} from "lucide-react";
 import { testimonials, type Testimonial } from "@/content/portfolio";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./motion";
@@ -24,9 +31,10 @@ const toneStyle: Record<Testimonial["tone"], { ball: string; ink: string }> = {
   },
 };
 
-const orgIcon = (org: string): LucideIcon => {
+const orgIcon = (org = ""): LucideIcon => {
   const o = org.toLowerCase();
-  if (o.includes("clinic")) return Stethoscope;
+  if (o.includes("oaks")) return Gamepad2;
+  if (o.includes("bpm")) return Stethoscope;
   if (o.includes("conscious")) return HeartHandshake;
   return Building2;
 };
@@ -102,7 +110,7 @@ export function Testimonials() {
                         {t.name}
                       </span>
                       <span className="mt-0.5 block text-[14px] leading-snug text-ink-soft">
-                        {t.role}, {t.org}
+                        {[t.role, t.org].filter(Boolean).join(", ")}
                       </span>
                       {t.relation ? (
                         <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">

@@ -4,6 +4,7 @@ import { useRef } from "react";
 import photoAsset from "@/assets/ayush-photo.jpeg.png";
 import { profile } from "@/content/portfolio";
 import { EASE, Magnetic, SplitText, Tilt } from "./motion";
+import { ResumeLinks } from "./ResumeLinks";
 
 function scrollTo(id: string) {
   return (e: React.MouseEvent) => {
@@ -122,6 +123,7 @@ export function Hero() {
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
             </Magnetic>
+            <ResumeLinks className="col-span-2 sm:col-span-1" />
           </motion.div>
 
           <motion.dl
