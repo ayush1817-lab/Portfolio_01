@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, FileText, Menu, X } from "lucide-react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } from "motion/react";
 import { EASE, Magnetic } from "./motion";
 import { profile } from "@/content/portfolio";
 import { cn } from "@/lib/utils";
+import { ResumeLinks } from "./ResumeLinks";
 
 /** Home page URL for a section, so links also work from other pages. */
 const home = (id: string) => `${import.meta.env.BASE_URL}#${id}`;
@@ -133,6 +134,17 @@ export function TopNav() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <a
+              href={profile.resume}
+              target="_blank"
+              rel="noreferrer noopener"
+              data-cursor="Open"
+              className="focus-glow hidden items-center gap-1.5 rounded-full surface px-4 py-2.5 font-sans text-[13px] font-semibold tracking-tight text-ink transition-colors hover:border-ink/40 sm:inline-flex"
+            >
+              <FileText className="h-3.5 w-3.5" aria-hidden />
+              Resume
+              <span className="sr-only">(PDF, opens in a new tab)</span>
+            </a>
             <Magnetic strength={0.25} className="hidden sm:inline-block">
               <a
                 href={home("connect")}
@@ -196,6 +208,7 @@ export function TopNav() {
               exit={{ opacity: 0 }}
               transition={{ delay: 0.4, duration: 0.6, ease: EASE }}
             >
+              <ResumeLinks />
               <a
                 href={`mailto:${profile.email}`}
                 className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft"

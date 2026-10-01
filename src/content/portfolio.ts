@@ -8,6 +8,12 @@ export const profile = {
   tagline: "I design AI products, workflows, and the SaaS tools I needed but couldn't find.",
   status: "Open to product design roles",
   email: "ayushramawat29@gmail.com",
+  /**
+   * Resume PDF, served from public/resume/. To update it, replace that file on
+   * GitHub with a new PDF of the same name; the site redeploys on its own and
+   * every resume button picks up the new version.
+   */
+  resume: `${import.meta.env.BASE_URL}resume/Ayush-Ramawat-Resume.pdf`,
   linkedin: "https://www.linkedin.com/in/ayush-ramawat-71880927b/",
   medium: "https://medium.com/@ayushramawat29",
   github: "https://github.com/ayush1817-lab",
