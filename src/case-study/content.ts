@@ -4,6 +4,7 @@
  *
  * Accuracy rules (from the implementation spec):
  * - No invented users, outcomes, conversion, time saved or research findings.
+ *   User count and feedback come from the author (12 early users).
  * - 200+, 20, Daily and "1 connected workflow" are product-state facts.
  * - Hunt Mode funnel is 1,963 fetched · 1,928 cached · 35 new · 1 matched.
  * - Screenshots are evidence: crop to focus, never redraw or relabel.
@@ -672,6 +673,108 @@ export const next = {
       v: "Measure relevance and time saved rather than feature clicks alone.",
     },
   ],
+};
+
+/* ────────────────────────────────────────────────────────────────
+ * Recruiter cut — the condensed 8-section story. Copy is drawn only from
+ * the sections above; nothing new is claimed.
+ * ──────────────────────────────────────────────────────────────── */
+
+/** Feedback from early users, as reported by the author. */
+export const insights = {
+  title: "What 12 early users told me",
+  items: [
+    {
+      k: "Automated resume updates",
+      v: "Users liked that OptiApply updates the resume for them, instead of leaving the edits to do elsewhere.",
+      tone: "positive" as const,
+    },
+    {
+      k: "More companies to choose from",
+      v: "Users asked for more options when picking companies, which confirmed the cost of the 20-company limit.",
+      tone: "request" as const,
+    },
+    {
+      k: "Location filters",
+      v: "Users asked for location filters when browsing job boards.",
+      tone: "request" as const,
+    },
+  ],
+};
+
+export const v1 = {
+  lens: "Decision" as Lens,
+  eyebrow: "V1 · Resume Analyzer",
+  title: "Make the mismatch visible.",
+  body: [
+    "The first workflow was deliberately simple: paste a job description, add a resume and see how well the two align. A score alone was not useful enough, so every requirement is explained as matched, partial or needing improvement.",
+  ],
+  frictionTitle: friction.title,
+  loop: friction.loop,
+  close: friction.close[1],
+};
+
+export const v2 = {
+  lens: "Decision" as Lens,
+  eyebrow: "V2 · Optimizer",
+  title: "AI proposes. The candidate approves.",
+  body: [
+    "The Optimizer closes the gap the Analyzer exposed, without making the candidate leave. It first structures the role into must-have skills, key activities and hidden requirements. The harder question was which parts of a resume AI should be allowed to change.",
+  ],
+  decisions: [
+    {
+      k: "Ask for facts. Never invent them.",
+      v: "When an achievement needs stronger evidence, the model identifies the gap and the candidate supplies a real metric, or skips. Skipping is a legitimate path, not a failure state.",
+      pull: truth.pull,
+      shot: "metrics" as ShotId,
+    },
+    {
+      k: "Show every change, and why.",
+      v: "Rather than silently rewriting the resume, each change shows the original, the suggestion and the reasoning, and is applied or skipped one at a time.",
+      shot: "rewrites" as ShotId,
+    },
+    {
+      k: "The candidate signs off.",
+      v: "Export stays disabled until the candidate confirms they have reviewed the AI-generated changes. The system assists; the candidate remains responsible for what represents them.",
+      shot: "verification" as ShotId,
+    },
+  ],
+};
+
+export const v4 = {
+  lens: "Decision" as Lens,
+  eyebrow: "V4 · Hunt Mode",
+  title: hunt.title,
+  body: [
+    "Evaluation and tailoring now lived inside OptiApply, but candidates were still finding roles manually. Hunt Mode moves upstream: describe target keywords, exclusions and companies once, and a daily scan reduces the search space before it costs the candidate attention.",
+  ],
+  headline: hunt.headline,
+  funnel: hunt.funnel,
+  factorsTitle: "Every recommendation shows its reasoning",
+  factors: explainable.factors,
+  factorsNote: explainable.actions.note,
+  constraint: {
+    title: "The trade-off: 20 companies per user",
+    body: "Over 1,000 company sources were discovered and about 200 curated, but each user monitors 20, to keep processing cost and attention manageable. Users told me that limit reduced Hunt Mode's value when they wanted broader discovery.",
+    next: constraint.reconsider.body,
+  },
+};
+
+export const outcome = {
+  lens: "Result" as Lens,
+  eyebrow: "Where the product is today",
+  title: connected.title,
+  flow: connected.flow,
+  facts: [{ value: "12", label: "Early users" }, ...today.facts],
+  factsNote: today.factsNote,
+  insights,
+  unknown: {
+    title: today.unknown.title,
+    body: [
+      "Twelve people are using the product and receiving recommendations, but I don't yet have enough evidence to claim that OptiApply improves job-search outcomes.",
+      today.unknown.body[1],
+    ],
+  },
 };
 
 export const reflection = {

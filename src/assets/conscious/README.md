@@ -1,6 +1,7 @@
 # Conscious Connections: images to provide
 
-Save each image in this folder with the file name below. Any of `.jpg`,
+Slots without an image are hidden on the live page, so nothing shows as
+"to be added". Save each image in this folder with the file name below. Any of `.jpg`,
 `.png`, `.webp` or `.avif` works (e.g. `community-box.png`). It replaces that
 slot's placeholder on the next build. Alt text, captions, ownership labels
 and status lines are already written in `src/case-study/conscious/content.ts`.
@@ -30,8 +31,8 @@ the listed shape: images fill a fixed-shape frame, so extra edges get trimmed.
 
 - `ideas/`: the 12 hand-drawn idea sketches for the ideation rail, cropped
   from the team's Week 7 ideation write-up (pages 35–38).
-- A01a `hero-community-box`, A06 `community-box` and A06b
-  `community-box-side`: photos of the Community Box prototype (pages 68–69).
+- A01a `hero-community-box` and A06 `community-box`: photos of the Community
+  Box prototype (pages 68–69).
 - `box/`: cut-outs of the prototype's seven components (pages 70–72).
 - The homepage card cover (`src/assets/cc-cover.webp`), also a prototype photo.
 

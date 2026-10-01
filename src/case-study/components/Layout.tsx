@@ -26,7 +26,7 @@ export function Section({
       aria-label={label}
       className={cn(
         "relative px-5 sm:px-8 lg:px-10",
-        pause ? "py-24 sm:py-32 lg:py-48" : "py-[4.5rem] sm:py-24 lg:py-32",
+        pause ? "py-16 sm:py-24 lg:py-32" : "py-12 sm:py-20 lg:py-24",
         tone === "tint" && "bg-paper-2",
         tone === "dark" && "bg-ink text-paper",
         tone === "charcoal" && "bg-reel-charcoal text-paper",

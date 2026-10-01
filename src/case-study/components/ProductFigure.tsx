@@ -66,7 +66,8 @@ export function ProductFigure({
     });
   }, [lb, lbId, src, shot]);
 
-  if (!src) return <MissingShot file={shot.file} title={shot.title} className={className} />;
+  // A screenshot that has not been added yet is left out of the live page.
+  if (!src) return null;
 
   const c = crop === null ? FULL : (crop ?? crops[id] ?? FULL);
   const known = Boolean(shot.width && shot.height);
@@ -221,39 +222,5 @@ export function ProductFigure({
         </figcaption>
       ) : null}
     </figure>
-  );
-}
-
-/**
- * Source file not supplied. In development this is a visible, labelled slot;
- * in production nothing renders, so no invented or empty UI is ever shown.
- */
-function MissingShot({
-  file,
-  title,
-  className,
-}: {
-  file: string;
-  title: string;
-  className?: string;
-}) {
-  if (!isDev) return null;
-  return (
-    <div
-      className={cn(
-        "mx-auto w-full max-w-[1200px] rounded-[14px] border-2 border-dashed border-warn/50 bg-warn-soft px-6 py-10 text-center",
-        className,
-      )}
-    >
-      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-warn">
-        Source screenshot missing
-      </p>
-      <p className="mt-2 font-display text-lg font-semibold text-ink">{title}</p>
-      <p className="mt-1 text-sm text-ink-soft">
-        Add the original <code className="font-mono">{file}</code> to{" "}
-        <code className="font-mono">src/assets/optiapply/</code>. It will render here automatically.
-        This slot is hidden in production builds.
-      </p>
-    </div>
   );
 }

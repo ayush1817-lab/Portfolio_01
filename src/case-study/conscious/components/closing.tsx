@@ -15,7 +15,7 @@ export function Reflection() {
   const d = C.reflection;
   return (
     <SectionShell id="reflection" label="Reflection" tone="forest" pause>
-      <ChapterEyebrow n={10} name={d.eyebrow} labels={[d.label]} onDark />
+      <ChapterEyebrow n={8} name={d.eyebrow} labels={[d.label]} onDark />
       <MotionReveal className="mt-6">
         <StoryHeading size="xl" className="max-w-[18ch]">
           {d.title}
@@ -27,7 +27,7 @@ export function Reflection() {
         ))}
       </ReadingColumn>
 
-      <div className="mt-14 grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
+      <div className="mt-10 grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
         <MotionReveal className="rounded-3xl border border-cc-cream/25 p-6 sm:p-8">
           <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-cc-sage">Before</p>
           <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-[clamp(1.4rem,0.9rem+1.4vw,2.4rem)] leading-tight text-cc-cream/80">
@@ -47,7 +47,7 @@ export function Reflection() {
         </MotionReveal>
       </div>
 
-      <div className="mt-16 max-w-read">
+      <div className="mt-10 max-w-read">
         <h3 className="font-display font-semibold tracking-[-0.02em] text-h3">{d.nextTitle}</h3>
         <p className="mt-1 text-[14px] text-cc-sage">{d.nextNote}</p>
         <ul className="mt-5 space-y-2">
