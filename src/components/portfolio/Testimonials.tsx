@@ -34,7 +34,7 @@ const toneStyle: Record<Testimonial["tone"], { ball: string; ink: string }> = {
 const orgIcon = (org = ""): LucideIcon => {
   const o = org.toLowerCase();
   if (o.includes("oaks")) return Gamepad2;
-  if (o.includes("bpm")) return Stethoscope;
+  if (o.includes("bfm") || o.includes("clinic")) return Stethoscope;
   if (o.includes("conscious")) return HeartHandshake;
   return Building2;
 };
