@@ -13,6 +13,7 @@ import {
   SectionShell,
   StoryHeading,
 } from "./primitives";
+import { hasAsset } from "../assets";
 
 /** Cut-out images of the prototype's components, keyed by file stem. */
 const components = Object.fromEntries(
@@ -37,36 +38,40 @@ export function CommunityBoxReveal() {
   return (
     <SectionShell id="community-box" label="Community in a Box" tone="warm" pause>
       <ChapterEyebrow n={4} name={d.eyebrow} labels={[d.label]} />
-      <MotionReveal className="mt-6">
-        <StoryHeading size="xl">{d.title}</StoryHeading>
-        <p className="mt-4 font-display text-pull font-medium tracking-[-0.02em] text-cc-coral-deep">
-          {d.sub}
-        </p>
-      </MotionReveal>
-      <ReadingColumn className="mt-7 text-cc-forest-soft">
-        {d.body.map((p) => (
-          <p key={p}>{p}</p>
-        ))}
-      </ReadingColumn>
-
-      {/* The prototype: front view, with a smaller side view beside it. */}
-      <div className="mt-12 grid max-w-[1000px] gap-4 sm:grid-cols-12 sm:items-end">
-        <Figure assetKey="boxHero" className="sm:col-span-7" />
-        <Figure assetKey="boxSide" caption={false} className="hidden sm:col-span-5 sm:block" />
+      <div className="mt-6 grid gap-10 lg:grid-cols-12 lg:items-center">
+        <div className="lg:col-span-7">
+          <MotionReveal>
+            <StoryHeading size="xl">{d.title}</StoryHeading>
+            <p className="mt-3 font-display text-pull font-medium tracking-[-0.02em] text-cc-coral-deep">
+              {d.sub}
+            </p>
+          </MotionReveal>
+          <ReadingColumn className="mt-6 text-cc-forest-soft">
+            {d.body.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+            <p>{d.more}</p>
+          </ReadingColumn>
+        </div>
+        <Figure assetKey="boxHero" className="mx-auto max-w-[520px] lg:col-span-5 lg:mr-0" />
       </div>
 
-      <div className="mt-16">
+      <div className="mt-12">
         <h3 className="font-display text-h3 font-semibold tracking-[-0.02em]">{d.insideTitle}</h3>
-        <p className="mt-2 text-[15px] text-cc-forest-soft">{d.insideNote}</p>
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-label={d.insideTitle}>
+        <p className="mt-1 text-[15px] text-cc-forest-soft">{d.insideNote}</p>
+        {/* Phones: one swipeable row. Larger screens: a grid. */}
+        <ul
+          className="-mx-5 mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-3 [scrollbar-width:thin] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 xl:grid-cols-7"
+          aria-label={d.insideTitle}
+        >
           {d.components.map((c, i) => (
             <MotionReveal
               as="li"
               key={c.k}
-              delay={(i % 4) * 0.06}
-              className="flex flex-col overflow-hidden rounded-2xl bg-paper"
+              delay={(i % 7) * 0.04}
+              className="flex w-[62vw] max-w-[16rem] shrink-0 snap-start flex-col overflow-hidden rounded-2xl bg-paper sm:w-auto sm:max-w-none"
             >
-              <div className="grid aspect-[4/3] place-items-center bg-cc-cream p-5">
+              <div className="grid aspect-[4/3] place-items-center bg-cc-cream p-3">
                 <img
                   src={components[c.image]}
                   alt={c.alt}
@@ -75,192 +80,118 @@ export function CommunityBoxReveal() {
                   className="max-h-full max-w-full object-contain drop-shadow-sm"
                 />
               </div>
-              <div className="p-5">
-                <h4 className="font-display text-[1.2rem] font-semibold leading-tight tracking-[-0.02em]">
+              <div className="p-4">
+                <h4 className="font-display text-[1.05rem] font-semibold leading-tight tracking-[-0.02em]">
                   {c.k}
                 </h4>
-                <p className="mt-1.5 text-[14px] leading-relaxed text-cc-forest-soft">{c.v}</p>
+                <p className="mt-1 text-[13px] leading-relaxed text-cc-forest-soft">{c.v}</p>
               </div>
             </MotionReveal>
           ))}
         </ul>
       </div>
-
-      <div className="mt-16 max-w-read">
-        <h3 className="font-display font-semibold tracking-[-0.02em] text-h3">{d.moreTitle}</h3>
-        <p className="mt-3 text-read text-cc-forest-soft">{d.more}</p>
-      </div>
     </SectionShell>
   );
 }
 
-/* ─────────────────────── Physical-only critique ─────────────────────── */
+/* ─────────────── A second doorway: critique → website → ecosystem ─────────────── */
 
-export function PhysicalConstraintScene() {
-  const d = C.critique;
+export function SecondDoorway() {
+  const c = C.critique;
+  const w = C.website;
+  const e = C.ecosystem;
   return (
-    <SectionShell id="critique" label="Critique of the physical-only solution">
-      <ChapterEyebrow n={5} name={d.eyebrow} labels={d.labels} />
+    <SectionShell
+      id="second-doorway"
+      label="A second way in: the website and the service ecosystem"
+    >
+      <ChapterEyebrow n={5} name={c.eyebrow} labels={c.labels} />
       <MotionReveal className="mt-6">
-        <StoryHeading>{d.title}</StoryHeading>
-      </MotionReveal>
-      <MotionReveal className="mt-8">
-        <p className="max-w-[30ch] font-display text-pull font-medium tracking-[-0.02em] text-balance text-cc-coral-deep">
-          {d.question}
+        <StoryHeading>{c.title}</StoryHeading>
+        <p className="mt-4 max-w-[34ch] font-display text-pull font-medium tracking-[-0.02em] text-balance text-cc-coral-deep">
+          {c.question}
         </p>
       </MotionReveal>
 
-      {/* Before: one doorway surrounded by barriers. After: a second doorway. */}
-      <div className="mt-14 grid gap-5 lg:grid-cols-12">
-        <div className="rounded-3xl bg-paper p-6 sm:p-8 lg:col-span-8">
-          <div className="flex items-center gap-3">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-cc-coral-soft text-cc-coral-deep">
-              <Package className="h-6 w-6" aria-hidden />
+      <ul
+        className="mt-8 grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-4"
+        aria-label="Barriers to receiving a Community Box"
+      >
+        {c.barriers.map((b) => (
+          <li key={b.k} className="flex gap-2.5 text-[15px] leading-snug">
+            <X className="mt-0.5 h-4 w-4 shrink-0 text-cc-coral-deep" aria-hidden />
+            <span>
+              <span className="font-medium text-cc-forest">{b.k}.</span>{" "}
+              <span className="text-cc-forest-soft">{b.v}</span>
             </span>
-            <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-cc-forest-soft">
-              Before: the box as the only doorway
-            </p>
-          </div>
-          <ul
-            className="mt-6 grid gap-3 sm:grid-cols-2"
-            aria-label="Barriers to receiving a Community Box"
-          >
-            {d.barriers.map((b, i) => (
-              <MotionReveal
-                as="li"
-                key={b.k}
-                delay={i * 0.05}
-                className="flex gap-3 rounded-xl border border-cc-forest/15 p-4"
-              >
-                <X className="mt-0.5 h-4 w-4 shrink-0 text-cc-coral-deep" aria-hidden />
-                <span>
-                  <span className="block font-medium text-cc-forest">{b.k}</span>
-                  <span className="block text-[14px] leading-snug text-cc-forest-soft">{b.v}</span>
-                </span>
-              </MotionReveal>
-            ))}
-          </ul>
-        </div>
-        <MotionReveal
-          delay={0.2}
-          className="flex flex-col justify-between rounded-3xl bg-cc-forest p-6 text-cc-cream sm:p-8 lg:col-span-4"
-        >
-          <div>
-            <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-cc-sage">
-              After: a second doorway
-            </p>
-            <div className="mt-6 flex items-center gap-3">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-cc-cream/10 text-cc-cream">
-                <Package className="h-6 w-6" aria-hidden />
-              </span>
-              <span className="font-mono text-[14px] text-cc-sage">+</span>
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-cc-cream text-cc-forest">
-                <Globe className="h-6 w-6" aria-hidden />
-              </span>
-            </div>
-            <p className="mt-6 font-display font-semibold tracking-[-0.02em] text-[1.5rem] leading-tight">
-              Box or website: either way in.
-            </p>
-          </div>
-          <p className="mt-8 text-[14px] leading-relaxed text-cc-cream/80">
-            The website lets someone reach the service's value without first receiving a physical
-            box.
-          </p>
-        </MotionReveal>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <OwnershipCallout label="DECISION">{c.decision}</OwnershipCallout>
+        <OwnershipCallout label="MY ROLE">{c.myRole}</OwnershipCallout>
       </div>
 
-      <OwnershipCallout label="DECISION" className="mt-14">
-        {d.decision}
-      </OwnershipCallout>
-      <OwnershipCallout label="MY ROLE" className="mt-8">
-        {d.myRole}
-      </OwnershipCallout>
-    </SectionShell>
-  );
-}
-
-/* ─────────────────────── Website entry points ─────────────────────── */
-
-export function WebsiteEntryPoints() {
-  const d = C.website;
-  return (
-    <SectionShell id="website" label="Website as an alternative entry point" tone="lilac">
-      <ChapterEyebrow n={6} name={d.eyebrow} labels={[d.label]} />
-      <MotionReveal className="mt-6">
-        <StoryHeading>{d.title}</StoryHeading>
-      </MotionReveal>
-      <ReadingColumn className="mt-7 text-cc-forest-soft">
-        {d.body.map((p) => (
-          <p key={p}>{p}</p>
-        ))}
-      </ReadingColumn>
-
-      <ol
-        className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-        aria-label="Four routes into the service"
-      >
-        {d.routes.map((r, i) => (
-          <MotionReveal as="li" key={r.k} delay={i * 0.07} className="rounded-2xl bg-paper p-6">
-            <p className="font-mono text-[12px] text-cc-lilac-deep">
-              {String(i + 1).padStart(2, "0")}
-            </p>
-            <h3 className="mt-2 font-display font-semibold tracking-[-0.02em] text-[1.5rem] leading-tight">
-              {r.k}
-            </h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-cc-forest-soft">{r.v}</p>
-          </MotionReveal>
-        ))}
-      </ol>
-
-      <Figure assetKey="academicWebsite" className="mt-14 max-w-[980px]" />
-    </SectionShell>
-  );
-}
-
-/* ─────────────────────── Service ecosystem ─────────────────────── */
-
-export function ServiceEcosystem() {
-  const d = C.ecosystem;
-  return (
-    <SectionShell id="ecosystem" label="Service ecosystem">
-      <ChapterEyebrow n={7} name={d.eyebrow} labels={[d.label]} />
-      <MotionReveal className="mt-6">
-        <StoryHeading>
-          {d.title[0]} <span className="text-cc-sage-deep">{d.title[1]}</span>
-        </StoryHeading>
-      </MotionReveal>
-      <ReadingColumn className="mt-7 text-cc-forest-soft">
-        {d.body.map((p) => (
-          <p key={p}>{p}</p>
-        ))}
-      </ReadingColumn>
-
-      {/* The diagram is a real ordered list, so it reads the same without sight or JS. */}
-      <div className="mt-12">
+      {/* The website: four routes into one service */}
+      <div className="mt-14 rounded-[28px] bg-cc-lilac-soft p-5 sm:p-8">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="grid h-10 w-10 place-items-center rounded-xl bg-paper text-cc-lilac-deep">
+            <Globe className="h-5 w-5" aria-hidden />
+          </span>
+          <OwnershipLabel label={w.label} />
+        </div>
+        <h3 className="mt-4 font-display text-h3 font-semibold tracking-[-0.03em]">{w.title}</h3>
+        <p className="mt-2 max-w-read text-read text-cc-forest-soft">{w.body[0]}</p>
         <ol
-          className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5"
+          className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+          aria-label="Four routes into the service"
+        >
+          {w.routes.map((r, i) => (
+            <li key={r.k} className="rounded-2xl bg-paper p-4">
+              <p className="font-mono text-[12px] text-cc-lilac-deep">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <p className="mt-1 font-display text-[1.2rem] font-semibold leading-tight tracking-[-0.02em]">
+                {r.k}
+              </p>
+              <p className="mt-1 text-[14px] leading-relaxed text-cc-forest-soft">{r.v}</p>
+            </li>
+          ))}
+        </ol>
+        <Figure assetKey="academicWebsite" className="mt-8 max-w-[980px]" />
+      </div>
+
+      {/* The ecosystem: the same journey, many touchpoints */}
+      <div className="mt-14">
+        <div className="flex flex-wrap items-center gap-3">
+          <OwnershipLabel label={e.label} />
+        </div>
+        <h3 className="mt-4 font-display text-h3 font-semibold tracking-[-0.03em] text-balance">
+          {e.title[0]} <span className="text-cc-sage-deep">{e.title[1]}</span>
+        </h3>
+        <ol
+          className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5"
           aria-label="Service journey stages and their touchpoints"
         >
-          {d.stages.map((s, i) => (
-            <MotionReveal
-              as="li"
-              key={s.k}
-              delay={i * 0.08}
+          {e.stages.map((st, i) => (
+            <li
+              key={st.k}
               className={cn(
-                "relative rounded-2xl bg-paper p-5 ring-1 ring-cc-forest/15",
-                i === d.stages.length - 1 && "sm:col-span-2 lg:col-span-1",
+                "relative rounded-2xl bg-paper p-4 ring-1 ring-cc-forest/15",
+                i === e.stages.length - 1 && "sm:col-span-2 lg:col-span-1",
               )}
             >
               <p className="font-mono text-[12px] text-cc-sage-deep">Stage {i + 1}</p>
-              <h3 className="mt-1 font-display font-semibold tracking-[-0.02em] text-[1.35rem] leading-tight">
-                {s.k}
-              </h3>
-              <ul className="mt-3 flex flex-wrap gap-1.5" aria-label={`${s.k} touchpoints`}>
-                {s.touch.map((t) => (
+              <p className="mt-1 font-display text-[1.2rem] font-semibold leading-tight tracking-[-0.02em]">
+                {st.k}
+              </p>
+              <ul className="mt-2 flex flex-wrap gap-1.5" aria-label={`${st.k} touchpoints`}>
+                {st.touch.map((t) => (
                   <li
                     key={t}
                     className={cn(
-                      "rounded-full px-2.5 py-1 text-[13px]",
+                      "rounded-full px-2 py-0.5 text-[12px]",
                       t === "Website" || t === "Community Box" || t === "Buddy Connect"
                         ? "bg-cc-forest text-cc-cream"
                         : "bg-cc-sage-soft text-cc-forest",
@@ -270,33 +201,28 @@ export function ServiceEcosystem() {
                   </li>
                 ))}
               </ul>
-              {i < d.stages.length - 1 ? (
+              {i < e.stages.length - 1 ? (
                 <ArrowRight
                   aria-hidden
-                  className="absolute -right-3 top-6 z-10 hidden h-5 w-5 rounded-full bg-cc-cream text-cc-sage-deep lg:block"
+                  className="absolute -right-3 top-5 z-10 hidden h-5 w-5 rounded-full bg-cc-cream text-cc-sage-deep lg:block"
                 />
               ) : null}
-            </MotionReveal>
+            </li>
           ))}
         </ol>
-        {/* Website as connective layer spanning every stage. */}
-        <div className="mt-3 flex items-center gap-3 rounded-2xl border border-dashed border-cc-forest/35 px-5 py-4">
-          <Globe className="h-5 w-5 shrink-0 text-cc-sage-deep" aria-hidden />
-          <p className="text-[15px] leading-snug text-cc-forest">{d.layer}</p>
-        </div>
-      </div>
-
-      <MotionReveal className="mt-14 max-w-read">
-        <p className="font-display text-pull font-semibold tracking-[-0.02em]">{d.bridge}</p>
-      </MotionReveal>
-
-      <div className="mt-12">
-        <AccessibleDisclosure
-          summary="View the original ecosystem diagram"
-          note="Source diagram from the academic project."
-        >
-          <Figure assetKey="ecosystem" />
-        </AccessibleDisclosure>
+        <p className="mt-6 max-w-read font-display text-pull font-semibold tracking-[-0.02em]">
+          {e.bridge}
+        </p>
+        {hasAsset("ecosystem") ? (
+          <div className="mt-8">
+            <AccessibleDisclosure
+              summary="View the original ecosystem diagram"
+              note="Source diagram from the academic project."
+            >
+              <Figure assetKey="ecosystem" />
+            </AccessibleDisclosure>
+          </div>
+        ) : null}
       </div>
     </SectionShell>
   );
@@ -312,17 +238,17 @@ export function BuddyMatchingLogic() {
 
   return (
     <SectionShell id="buddy-connect" label="Buddy Connect" tone="sage">
-      <ChapterEyebrow n={8} name={d.eyebrow} labels={[d.label]} />
+      <ChapterEyebrow n={6} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
         <StoryHeading>{d.title}</StoryHeading>
       </MotionReveal>
-      <ReadingColumn className="mt-7 text-cc-forest-soft">
+      <ReadingColumn className="mt-6 text-cc-forest-soft">
         {d.body.map((p) => (
           <p key={p}>{p}</p>
         ))}
       </ReadingColumn>
 
-      <div className="mt-12 rounded-[28px] bg-paper p-5 sm:p-8">
+      <div className="mt-8 rounded-[28px] bg-paper p-5 sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="inline-flex items-center rounded-full border-2 border-dashed border-cc-lilac-deep px-3 py-1 font-mono text-[12px] uppercase tracking-[0.12em] text-cc-lilac-deep">
             {d.demoLabel}
@@ -339,7 +265,7 @@ export function BuddyMatchingLogic() {
           {d.demoNote}
         </p>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-12">
+        <div className="mt-6 grid gap-6 lg:grid-cols-12">
           <fieldset className="lg:col-span-7">
             <legend className="font-mono text-[12px] uppercase tracking-[0.14em] text-cc-forest-soft">
               Preferences a person agrees to share
@@ -433,9 +359,9 @@ export function BuddyMatchingLogic() {
         </div>
       </div>
 
-      <Figure assetKey="buddyFlow" className="mt-12 max-w-[980px]" />
+      <Figure assetKey="buddyFlow" className="mt-10 max-w-[980px]" />
 
-      <MotionReveal className="mt-14 max-w-read">
+      <MotionReveal className="mt-10 max-w-read">
         <p className="font-display text-pull font-semibold tracking-[-0.02em] text-balance">
           {d.keyLine}
         </p>
@@ -450,62 +376,60 @@ export function ArchitectureLayers() {
   const d = C.architecture;
   return (
     <SectionShell id="architecture" label="System architecture">
-      <ChapterEyebrow n={9} name={d.eyebrow} labels={[d.label]} />
+      <ChapterEyebrow n={7} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
         <StoryHeading>{d.title}</StoryHeading>
-        <p className="mt-4 font-display text-pull font-medium tracking-[-0.02em] text-cc-sage-deep">
+        <p className="mt-3 font-display text-pull font-medium tracking-[-0.02em] text-cc-sage-deep">
           {d.sub}
         </p>
       </MotionReveal>
-      <OwnershipCallout label="MY ROLE" className="mt-8">
-        {d.myRole}
-      </OwnershipCallout>
-
-      <div className="mt-12">
-        <p className="inline-flex rounded-full border border-cc-forest/30 px-3 py-1 font-mono text-[12px] uppercase tracking-[0.1em] text-cc-forest-soft">
-          Status: {d.status}
-        </p>
-        <ol className="mt-5 space-y-2" aria-label="Proposed architecture layers, top to bottom">
-          {d.layers.map((l, i) => (
-            <MotionReveal
-              as="li"
-              key={l.k}
-              delay={i * 0.06}
-              className={cn(
-                "grid gap-3 rounded-2xl p-5 md:grid-cols-12 md:items-center",
-                l.k === "Privacy + security"
-                  ? "bg-cc-lilac-soft ring-1 ring-cc-lilac-deep/40"
-                  : "bg-paper ring-1 ring-cc-forest/15",
-              )}
-            >
-              <h3 className="font-mono text-[12px] uppercase tracking-[0.14em] text-cc-forest md:col-span-3">
-                {i + 1}. {l.k}
-              </h3>
-              <ul className="flex flex-wrap gap-1.5 md:col-span-9" aria-label={`${l.k} components`}>
-                {l.items.map((it) => (
-                  <li
-                    key={it}
-                    className="rounded-full bg-cc-cream px-3 py-1 text-[14px] text-cc-forest"
-                  >
-                    {it}
-                  </li>
-                ))}
-              </ul>
-            </MotionReveal>
-          ))}
-        </ol>
+      <div className="mt-8 grid gap-6 lg:grid-cols-2">
+        <OwnershipCallout label="MY ROLE">{d.myRole}</OwnershipCallout>
+        <OwnershipCallout label="DECISION">{d.insight}</OwnershipCallout>
       </div>
-
-      <OwnershipCallout label="DECISION" className="mt-14">
-        {d.insight}
-      </OwnershipCallout>
-
-      <div className="mt-12">
+      <p className="mt-8 inline-flex rounded-full border border-cc-forest/30 px-3 py-1 font-mono text-[12px] uppercase tracking-[0.1em] text-cc-forest-soft">
+        Status: {d.status}
+      </p>
+      <div className="mt-6">
         <AccessibleDisclosure
-          summary={d.disclosure}
-          note="The full proposed architecture from the academic project."
+          summary="View the proposed architecture layers"
+          note="Experience, core services, data, privacy and security, and external services."
         >
-          <Figure assetKey="architectureFull" />
+          <ol className="space-y-2" aria-label="Proposed architecture layers, top to bottom">
+            {d.layers.map((l, i) => (
+              <MotionReveal
+                as="li"
+                key={l.k}
+                delay={i * 0.06}
+                className={cn(
+                  "grid gap-3 rounded-2xl p-5 md:grid-cols-12 md:items-center",
+                  l.k === "Privacy + security"
+                    ? "bg-cc-lilac-soft ring-1 ring-cc-lilac-deep/40"
+                    : "bg-paper ring-1 ring-cc-forest/15",
+                )}
+              >
+                <h3 className="font-mono text-[12px] uppercase tracking-[0.14em] text-cc-forest md:col-span-3">
+                  {i + 1}. {l.k}
+                </h3>
+                <ul
+                  className="flex flex-wrap gap-1.5 md:col-span-9"
+                  aria-label={`${l.k} components`}
+                >
+                  {l.items.map((it) => (
+                    <li
+                      key={it}
+                      className="rounded-full bg-cc-cream px-3 py-1 text-[14px] text-cc-forest"
+                    >
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </MotionReveal>
+            ))}
+          </ol>
+          {hasAsset("architectureFull") ? (
+            <Figure assetKey="architectureFull" className="mt-6" />
+          ) : null}
         </AccessibleDisclosure>
       </div>
     </SectionShell>

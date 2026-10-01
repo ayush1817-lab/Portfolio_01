@@ -11,17 +11,15 @@ import {
   ArchitectureLayers,
   BuddyMatchingLogic,
   CommunityBoxReveal,
-  PhysicalConstraintScene,
-  ServiceEcosystem,
-  WebsiteEntryPoints,
+  SecondDoorway,
 } from "./components/system";
 import { NextProjectCTA, Reflection } from "./components/closing";
 
 /**
  * Conscious Connections — recruiter-focused case study.
- * Story arc: access is hard → people need control → privacy risked becoming
- * invisibility → reframe → Community in a Box → single-doorway flaw → website
- * as a second way in → privacy shapes Buddy Connect and the architecture → reflection.
+ * Story arc (recruiter cut): access is hard → privacy risked becoming invisibility →
+ * reframe → 12 ideas → Community in a Box → single-doorway flaw, so the website and
+ * ecosystem become a second way in → Buddy Connect → architecture → reflection.
  */
 export function ConsciousConnectionsCaseStudy() {
   return (
@@ -41,9 +39,7 @@ export function ConsciousConnectionsCaseStudy() {
           <PrivacyTurningPoint />
           <Ideation />
           <CommunityBoxReveal />
-          <PhysicalConstraintScene />
-          <WebsiteEntryPoints />
-          <ServiceEcosystem />
+          <SecondDoorway />
           <BuddyMatchingLogic />
           <ArchitectureLayers />
           <Reflection />

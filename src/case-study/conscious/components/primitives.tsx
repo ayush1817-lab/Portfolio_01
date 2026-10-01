@@ -1,26 +1,10 @@
 import type { ReactNode } from "react";
-import { ChevronDown, Compass, GitFork, ImageIcon, MapPin, User, Users } from "lucide-react";
+import { ChevronDown, Compass, GitFork, MapPin, User, Users } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { EASE } from "@/components/portfolio/motion";
 import { assets, type Asset, type AssetKey, type Ownership } from "../content";
-
-/* ────────────────────────────────────────────────────────────────
- * Asset resolution: any file in src/assets/conscious/ whose name matches
- * a manifest entry replaces that slot's placeholder automatically.
- * ──────────────────────────────────────────────────────────────── */
-const files = import.meta.glob("../../../assets/conscious/*.{png,jpg,jpeg,webp,avif}", {
-  eager: true,
-  import: "default",
-}) as Record<string, string>;
-const byName: Record<string, string> = {};
-const stem = (name: string) => name.replace(/\.[^.]+$/, "");
-for (const [path, url] of Object.entries(files)) byName[stem(path.split("/").pop()!)] = url;
-
-/** Matches on the file stem, so any supported extension works for a slot. */
-function assetSrc(a: Asset): string | undefined {
-  return byName[stem(a.file)];
-}
+import { assetSrc } from "../assets";
 
 /* ────────────────────────────────────────────────────────────────
  * MotionReveal — once-only opacity + 16px lift. Static under reduced motion.
@@ -88,7 +72,7 @@ export function SectionShell({
       aria-label={label}
       className={cn(
         "relative scroll-mt-24 px-5 sm:px-8 lg:px-10",
-        pause ? "py-[clamp(5rem,12vw,11rem)]" : "py-[clamp(4rem,9vw,8.5rem)]",
+        pause ? "py-[clamp(3.5rem,8vw,7.5rem)]" : "py-[clamp(3rem,6vw,6rem)]",
         toneClass[tone],
         className,
       )}
@@ -275,47 +259,6 @@ export function ArtifactCaption({ asset, onDark }: { asset: Asset; onDark?: bool
   );
 }
 
-export function Placeholder({
-  asset,
-  className,
-  compact,
-}: {
-  asset: Asset;
-  className?: string;
-  compact?: boolean;
-}) {
-  return (
-    <div
-      role="img"
-      aria-label={`Placeholder for ${asset.title}. Image to be added.`}
-      className={cn(
-        "relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-[18px] border border-dashed border-cc-sage-deep/45 bg-[repeating-linear-gradient(135deg,var(--color-cc-sage-soft)_0_14px,var(--color-cc-cream)_14px_28px)] p-4 text-center",
-        className,
-      )}
-    >
-      <span className="grid h-10 w-10 place-items-center rounded-full bg-paper text-cc-sage-deep shadow-soft">
-        <ImageIcon className="h-5 w-5" aria-hidden />
-      </span>
-      <span className="mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-cc-sage-deep">
-        {asset.slot} · Image to be added
-      </span>
-      <span
-        className={cn(
-          "mt-1 font-display font-semibold leading-tight tracking-[-0.02em] text-cc-forest",
-          compact ? "text-[1.05rem]" : "text-[1.25rem]",
-        )}
-      >
-        {asset.title}
-      </span>
-      {!compact ? (
-        <span className="mt-1.5 max-w-[26rem] text-[13px] leading-snug text-cc-forest-soft">
-          {asset.brief}
-        </span>
-      ) : null}
-    </div>
-  );
-}
-
 export function Figure({
   assetKey,
   className,
@@ -338,13 +281,15 @@ export function Figure({
 }) {
   const asset = assets[assetKey] as Asset;
   const src = assetSrc(asset);
+  // Slots without an image are left off the live page entirely.
+  if (!src) return null;
   return (
     <figure className={cn("w-full", className)}>
       <div
         className={cn("relative w-full", frameClassName)}
         style={{ aspectRatio: String(asset.aspectRatio) }}
       >
-        {src ? (
+        {
           <img
             src={src}
             alt={asset.alt}
@@ -353,9 +298,7 @@ export function Figure({
             fetchPriority={eager ? "high" : undefined}
             className="absolute inset-0 h-full w-full rounded-[18px] object-cover"
           />
-        ) : (
-          <Placeholder asset={asset} compact={compact} className="absolute inset-0" />
-        )}
+        }
         {children}
       </div>
       {caption ? <ArtifactCaption asset={asset} onDark={onDark} /> : null}
