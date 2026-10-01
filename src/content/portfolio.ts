@@ -168,68 +168,22 @@ export const saas: Project[] = [
   },
 ];
 
-export type CaseStudy = {
-  id: string;
-  title: string;
-  client: string;
-  year: string;
-  summary: string;
-  link: string | null;
-  spineColor: string;
+/**
+ * Feedback from managers, founders and teammates. Quotes are their exact
+ * words, shared with permission. The section stays hidden while empty.
+ */
+export type Testimonial = {
+  name: string;
+  role: string;
+  org: string;
+  /** How we worked together, e.g. "Managed my work on…". */
+  relation?: string;
+  quote: string;
+  /** Avatar colour. */
+  tone: "cobalt" | "sun" | "sage" | "lilac";
 };
 
-export const cases: CaseStudy[] = [
-  {
-    id: "ux-01",
-    title: "Designing trust into a research agent",
-    client: "Atlas",
-    year: "2025",
-    summary:
-      "How we shaped citations, branching, and human-in-the-loop checkpoints to make an autonomous research agent feel safe to trust.",
-    link: null,
-    spineColor: "#3b6fa0",
-  },
-  {
-    id: "ux-02",
-    title: "From workflow soup to one observable canvas",
-    client: "Loop",
-    year: "2024",
-    summary:
-      "Restructured a tangled automation product into a single canvas with traces, retries, and live observability.",
-    link: null,
-    spineColor: "#9a6b3f",
-  },
-  {
-    id: "ux-03",
-    title: "Voice-first onboarding that survives interruptions",
-    client: "Nimbus",
-    year: "2023",
-    summary:
-      "Patterns for voice agents that gracefully resume, escalate, and hand off to a person.",
-    link: null,
-    spineColor: "#4a7c59",
-  },
-  {
-    id: "ux-04",
-    title: "A design system for agent UIs",
-    client: "Internal",
-    year: "2024",
-    summary:
-      "Tokens, primitives, and patterns for chat, plans, traces, and tool calls — reusable across products.",
-    link: null,
-    spineColor: "#6b4a8a",
-  },
-  {
-    id: "ux-05",
-    title: "Pricing an unpredictable product",
-    client: "Mesh",
-    year: "2024",
-    summary:
-      "Designing a usage-based pricing UI when cost varies per request and finance still needs predictability.",
-    link: null,
-    spineColor: "#b5562e",
-  },
-];
+export const testimonials: Testimonial[] = [];
 
 export type Blog = {
   id: string;

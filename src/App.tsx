@@ -4,8 +4,9 @@ import { TopNav } from "@/components/portfolio/TopNav";
 import { Hero } from "@/components/portfolio/Hero";
 import { About } from "@/components/portfolio/About";
 import { Projects } from "@/components/portfolio/Projects";
-import { CaseStudies } from "@/components/portfolio/CaseStudies";
+import { SmallBuilds } from "@/components/portfolio/SmallBuilds";
 import { TechStrip } from "@/components/portfolio/TechStrip";
+import { Testimonials } from "@/components/portfolio/Testimonials";
 import { ConnectBanner } from "@/components/portfolio/ConnectBanner";
 import { Footer } from "@/components/portfolio/Footer";
 import { projects } from "@/content/portfolio";
@@ -20,7 +21,8 @@ export default function App() {
       <TechStrip />
       <About />
       <Projects id="projects" items={projects.slice(0, 3)} />
-      <CaseStudies />
+      <SmallBuilds />
+      <Testimonials />
       <ConnectBanner />
       <Footer />
     </main>

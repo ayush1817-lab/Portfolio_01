@@ -61,7 +61,7 @@ export function CommunityBoxReveal() {
         <p className="mt-1 text-[15px] text-cc-forest-soft">{d.insideNote}</p>
         {/* Phones: one swipeable row. Larger screens: a grid. */}
         <ul
-          className="-mx-5 mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-3 [scrollbar-width:thin] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 xl:grid-cols-7"
+          className="-mx-5 mt-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-3 [scrollbar-width:thin] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 xl:grid-cols-7"
           aria-label={d.insideTitle}
         >
           {d.components.map((c, i) => (
