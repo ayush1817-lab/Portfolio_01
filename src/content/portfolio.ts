@@ -168,6 +168,23 @@ export const saas: Project[] = [
   },
 ];
 
+/**
+ * Feedback from managers, founders and teammates. Quotes are their exact
+ * words, shared with permission. The section stays hidden while empty.
+ */
+export type Testimonial = {
+  name: string;
+  role: string;
+  org: string;
+  /** How we worked together, e.g. "Managed my work on…". */
+  relation?: string;
+  quote: string;
+  /** Avatar colour. */
+  tone: "cobalt" | "sun" | "sage" | "lilac";
+};
+
+export const testimonials: Testimonial[] = [];
+
 export type CaseStudy = {
   id: string;
   title: string;

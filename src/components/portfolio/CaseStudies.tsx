@@ -67,17 +67,17 @@ export function CaseStudies() {
   return (
     <section
       id="ux"
-      aria-label="UX case studies"
+      aria-label="Smaller builds"
       className="relative overflow-hidden py-14 sm:py-24 lg:py-40"
     >
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             index="03"
-            label="Case studies"
-            title="Notes from the"
-            italic="process."
-            caption="Three UX project overviews. Swipe or drag the shelf to browse."
+            label="Smaller builds"
+            title="Smaller"
+            italic="builds."
+            caption="Small projects built alongside the main case studies. Swipe or drag to browse."
           />
           <Reveal delay={0.3} className="hidden lg:block">
             <ShelfControls

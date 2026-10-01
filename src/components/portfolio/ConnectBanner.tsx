@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BookOpen, Check, Copy, Github, Linkedin, Mail } from "lucide-react";
-import { profile } from "@/content/portfolio";
+import { profile, testimonials } from "@/content/portfolio";
 import { Magnetic, Reveal, SplitText } from "./motion";
 
 const socials = [
@@ -48,7 +48,8 @@ export function ConnectBanner() {
           <div className="relative flex flex-col gap-10 p-6 sm:gap-12 sm:p-12 lg:p-20">
             <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em] text-paper/80">
               <span>
-                <span className="text-sun">04</span> &nbsp;·&nbsp; Contact
+                <span className="text-sun">{testimonials.length ? "05" : "04"}</span> &nbsp;·&nbsp;
+                Contact
               </span>
               <span className="relative flex items-center gap-2 rounded-full bg-cobalt-deep px-3 py-1.5">
                 <span className="relative grid h-2 w-2 place-items-center">

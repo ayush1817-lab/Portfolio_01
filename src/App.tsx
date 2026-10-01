@@ -6,6 +6,7 @@ import { About } from "@/components/portfolio/About";
 import { Projects } from "@/components/portfolio/Projects";
 import { CaseStudies } from "@/components/portfolio/CaseStudies";
 import { TechStrip } from "@/components/portfolio/TechStrip";
+import { Testimonials } from "@/components/portfolio/Testimonials";
 import { ConnectBanner } from "@/components/portfolio/ConnectBanner";
 import { Footer } from "@/components/portfolio/Footer";
 import { projects } from "@/content/portfolio";
@@ -21,6 +22,7 @@ export default function App() {
       <About />
       <Projects id="projects" items={projects.slice(0, 3)} />
       <CaseStudies />
+      <Testimonials />
       <ConnectBanner />
       <Footer />
     </main>

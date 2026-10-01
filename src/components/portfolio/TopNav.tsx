@@ -21,7 +21,7 @@ function scrollTo(id: string) {
 const links = [
   { id: "about", label: "About" },
   { id: "projects", label: "Work" },
-  { id: "ux", label: "Case studies" },
+  { id: "ux", label: "Builds" },
   { id: "connect", label: "Contact" },
 ];
 
