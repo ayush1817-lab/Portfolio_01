@@ -195,6 +195,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: "Jinho Ahn",
+    role: "CEO",
     org: "BPM Clinic Limited",
     quote:
       "Ayush is a strong problem solver who is always willing to take on a challenge. Whatever problem I gave him, he would explore different approaches and find a way forward. He is also very resourceful with tools and learns quickly when something new is needed.",
@@ -211,6 +212,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Suman Matcha",
     role: "CEO",
+    org: "OAKS Kidz",
     quote:
       "One thing I’ve consistently noticed about Ayush is his curiosity and ability to stay ahead of emerging trends. Whether it’s AI, new tools, or developments in technology, he actively keeps himself updated and looks for ways to apply what he learns.",
     tone: "lilac",
