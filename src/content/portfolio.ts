@@ -101,7 +101,7 @@ export const projects: Project[] = [
     link: `${import.meta.env.BASE_URL}work/optiapply/`,
     cover: {
       src: optiapplyCover,
-      alt: "OptiApply, from insight to action: the Resume Analysis Summary labelled Analyze, the Hunt Mode profile labelled Discover, and the final resume verification labelled Review.",
+      alt: "OptiApply, from insight to action: the Resume Analysis Summary labelled Analyse, the Hunt Mode profile labelled Discover, and the final resume verification labelled Review.",
       width: 1200,
       height: 1400,
       bg: "#e3ebfd",
@@ -226,8 +226,6 @@ export const saas: Project[] = [
 ];
 
 /**
- * Feedback from managers, founders and teammates. Quotes are their exact
- * words, shared with permission. The section stays hidden while empty.
  */
 export type Testimonial = {
   name: string;
