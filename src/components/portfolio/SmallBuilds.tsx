@@ -1,10 +1,14 @@
 import { ArrowUpRight } from "lucide-react";
 import { buildUrl, cards, section, type BuildSlug } from "@/builds/content";
 import { DetenteMotif, PipelineMotif, VoiceMotif } from "@/builds/components/Visuals";
+import { MobileCard } from "./MobileCard";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./motion";
 
-const motif: Record<BuildSlug, (p: { className?: string }) => React.ReactElement> = {
+const motif: Record<
+  BuildSlug,
+  (p: { className?: string; compact?: boolean }) => React.ReactElement
+> = {
   "3d-pipeline": PipelineMotif,
   detente: DetenteMotif,
   "voice-agent": VoiceMotif,
@@ -16,7 +20,7 @@ const motif: Record<BuildSlug, (p: { className?: string }) => React.ReactElement
  */
 export function SmallBuilds() {
   return (
-    <section id="builds" aria-label="Small builds" className="relative py-14 sm:py-24 lg:py-32">
+    <section id="builds" aria-label="Small builds" className="relative py-12 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <SectionHeading
           index="02"
@@ -26,7 +30,28 @@ export function SmallBuilds() {
           caption={section.body}
         />
 
-        <ul className="mt-8 grid gap-5 sm:mt-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        {/* Phones: the same compact image-led cards as Selected Work. */}
+        <ul className="mt-6 flex flex-col gap-3 md:hidden">
+          {cards.map((c) => {
+            const Motif = motif[c.slug];
+            return (
+              <li key={c.slug}>
+                <MobileCard
+                  href={buildUrl(c.slug)}
+                  index={c.index}
+                  title={c.name}
+                  line={c.headline}
+                  tags={[c.where, c.tags[0]]}
+                  tagsLabel="Type and focus"
+                  linkHint="View the build."
+                  media={<Motif compact />}
+                />
+              </li>
+            );
+          })}
+        </ul>
+
+        <ul className="mt-8 hidden gap-5 sm:mt-14 md:grid md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {cards.map((c, i) => {
             const Motif = motif[c.slug];
             return (

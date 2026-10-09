@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
 import type { Project } from "@/content/portfolio";
+import { MobileCard } from "./MobileCard";
 import { SectionHeading } from "./SectionHeading";
 import { Magnetic, Reveal } from "./motion";
 import { cn } from "@/lib/utils";
@@ -256,85 +257,35 @@ function ProjectCard({
   );
 }
 
-/**
- * Phone card: the cover fills the card, a navy gradient carries the title,
- * one line, role and scope tags, and an arrow. The whole card is one link.
- */
 function MobileProjectCard({ project: p, index: i }: { project: Project; index: number }) {
-  const external = p.link?.startsWith("http");
   const m = p.mobile;
-  const line = m?.line ?? p.subtitle ?? p.blurb;
-  const tags = m ? [m.role, m.scope] : p.tags.slice(0, 2);
-  const Tag = p.link ? "a" : "article";
-
   return (
-    <Tag
-      href={p.link ?? undefined}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer noopener" : undefined}
-      className="focus-glow relative isolate flex min-h-[188px] flex-col justify-between overflow-hidden rounded-[18px] bg-ink p-4 text-paper shadow-soft transition-transform duration-200 active:scale-[0.99] motion-reduce:transition-none motion-reduce:active:scale-100"
-    >
-      {p.cover ? (
-        <img
-          src={p.cover.src}
-          alt=""
-          width={p.cover.width}
-          height={p.cover.height}
-          loading="lazy"
-          decoding="async"
-          draggable={false}
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
-          style={{ objectPosition: m?.focus ?? "50% 40%" }}
-        />
-      ) : null}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(8,18,35,0) 6%, rgba(8,18,35,0.3) 34%, rgba(8,18,35,0.86) 66%, rgba(8,18,35,0.97) 100%)",
-        }}
-      />
-
-      <span
-        aria-hidden
-        className="grid h-7 w-7 place-items-center rounded-full bg-paper font-mono text-label font-medium text-ink"
-      >
-        {String(i + 1).padStart(2, "0")}
-      </span>
-
-      <div className="mt-8">
-        <div className="flex items-end gap-3">
-          <div className="min-w-0 flex-1">
-            <h3 className="font-display text-h4 font-semibold leading-tight tracking-[-0.02em] text-paper">
-              {p.title}
-            </h3>
-            <p className="mt-1 line-clamp-3 text-caption min-[360px]:line-clamp-2 leading-snug text-paper/80">
-              {line}
-            </p>
-            {p.link ? <span className="sr-only">Read the case study.</span> : null}
-          </div>
-          {p.link ? (
-            <span
-              aria-hidden
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-paper text-ink"
-            >
-              <ArrowUpRight className="h-5 w-5" />
-            </span>
-          ) : null}
-        </div>
-        <ul className="mt-2.5 flex flex-wrap gap-1.5" aria-label="Role and scope">
-          {tags.map((t) => (
-            <li
-              key={t}
-              className="rounded-full border border-paper/20 bg-paper/15 px-2 py-1 font-mono text-micro uppercase leading-none tracking-[0.08em] text-paper backdrop-blur-sm"
-            >
-              {t}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Tag>
+    <MobileCard
+      href={p.link}
+      index={String(i + 1).padStart(2, "0")}
+      title={p.title}
+      line={m?.line ?? p.subtitle ?? p.blurb}
+      tags={m ? [m.role, m.scope] : p.tags.slice(0, 2)}
+      tagsLabel="Role and scope"
+      linkHint="Read the case study."
+      media={
+        p.cover ? (
+          <img
+            src={p.cover.src}
+            alt=""
+            width={p.cover.width}
+            height={p.cover.height}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+            className="h-full w-full object-cover"
+            style={{ objectPosition: m?.focus ?? "50% 40%" }}
+          />
+        ) : (
+          <Plate variant={i % 3} />
+        )
+      }
+    />
   );
 }
 
