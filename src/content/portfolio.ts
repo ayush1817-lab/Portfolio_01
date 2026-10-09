@@ -26,13 +26,13 @@ export const experience = [
     year: "2025 — 2026",
     role: "AI Product Designer",
     org: "BFM Clinic Ltd, Dublin",
-    note: "Designed and shipped automation workflows and internal software tools for clinic operations.",
+    note: "Designed internal tools and automation workflows to simplify clinic operations, improve employee time tracking, and reduce manual administrative work.",
   },
   {
     year: "2024 — 2025",
     role: "Product Designer",
     org: "OAKS Kids Pvt Limited, Hyderabad",
-    note: "Designed educational games and workflows, with additional contributions to 3D animation.",
+    note: "Designed interactive learning experiences for educational games, contributing to product interfaces, user flows, and 3D visual development.",
   },
 ];
 

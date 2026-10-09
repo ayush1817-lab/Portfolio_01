@@ -6,6 +6,7 @@ import {
   Stethoscope,
   type LucideIcon,
 } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { testimonials, type Testimonial } from "@/content/portfolio";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./motion";
@@ -73,7 +74,56 @@ function Avatar({ t }: { t: Testimonial }) {
   );
 }
 
+/**
+ * Phones only (the swipeable row, below 640px): advance one card every few
+ * seconds, looping back to the first. Pauses while the row is touched or
+ * focused and for a while afterwards, while off screen or in a hidden tab,
+ * and never runs with reduced motion.
+ */
+function useAutoAdvance(ref: React.RefObject<HTMLUListElement | null>) {
+  useEffect(() => {
+    const row = ref.current;
+    if (!row) return;
+    const phone = window.matchMedia("(max-width: 639px)");
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const EVERY = 4500;
+    const RESUME_AFTER = 8000;
+    let visible = false;
+    let pausedUntil = 0;
+
+    const pause = () => {
+      pausedUntil = Date.now() + RESUME_AFTER;
+    };
+    const tick = () => {
+      if (!phone.matches || calm.matches || !visible || document.hidden) return;
+      if (Date.now() < pausedUntil) return;
+      const cards = Array.from(row.children) as HTMLElement[];
+      if (cards.length < 2) return;
+      const left = row.scrollLeft;
+      const pad = parseFloat(getComputedStyle(row).scrollPaddingLeft) || 0;
+      // Scroll position that snaps each card into place.
+      const stops = cards.map((c) => c.offsetLeft - row.offsetLeft - pad);
+      const next = stops.find((x) => x > left + 8);
+      const atEnd = left + row.clientWidth >= row.scrollWidth - 8;
+      row.scrollTo({ left: next === undefined || atEnd ? 0 : next, behavior: "smooth" });
+    };
+
+    const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting), { threshold: 0.5 });
+    io.observe(row);
+    const events = ["pointerdown", "touchstart", "wheel", "focusin"] as const;
+    events.forEach((ev) => row.addEventListener(ev, pause, { passive: true }));
+    const timer = window.setInterval(tick, EVERY);
+    return () => {
+      window.clearInterval(timer);
+      io.disconnect();
+      events.forEach((ev) => row.removeEventListener(ev, pause));
+    };
+  }, [ref]);
+}
+
 export function Testimonials() {
+  const row = useRef<HTMLUListElement>(null);
+  useAutoAdvance(row);
   if (!testimonials.length) return null;
   return (
     <section
@@ -82,16 +132,13 @@ export function Testimonials() {
       className="relative py-14 sm:py-24 lg:py-32"
     >
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
-        <SectionHeading
-          index="04"
-          label="Kind words"
-          title="What people"
-          italic="say."
-          caption="Feedback from managers, founders and teammates I've worked with."
-        />
+        <SectionHeading index="04" label="Kind words" title="What people" italic="say." />
 
         {/* Phones: one swipeable row. Larger screens: a two-column grid. */}
-        <ul className="-mx-5 mt-8 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:thin] sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:gap-6">
+        <ul
+          ref={row}
+          className="-mx-5 mt-8 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:thin] sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:gap-6"
+        >
           {testimonials.map((t, i) => (
             <li
               key={t.name}

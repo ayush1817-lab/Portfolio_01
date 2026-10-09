@@ -76,8 +76,8 @@ export function ConnectBanner() {
                 </h2>
                 <Reveal delay={0.4}>
                   <p className="mt-8 max-w-lg text-body leading-relaxed text-paper/80">
-                    Whether it's a product design role, a 0 → 1 AI product, or a second opinion on a
-                    tricky flow, my inbox is open.
+                    I'm open to product design roles and always happy to talk about research,
+                    interaction design or AI-driven experiences. Send me a note.
                   </p>
                 </Reveal>
               </div>

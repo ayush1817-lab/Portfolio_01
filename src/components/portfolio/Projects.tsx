@@ -29,7 +29,6 @@ export function Projects({ id, items }: Props) {
             label="Selected work"
             title="Problems I've"
             italic="worked on."
-            caption="What each problem was, the part I played, and what happened next."
           />
           <Reveal delay={0.3}>
             <p className="font-mono text-label uppercase tracking-[0.24em] text-ink-soft">
