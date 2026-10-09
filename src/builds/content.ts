@@ -71,7 +71,7 @@ export const buildUrl = (slug: BuildSlug) => `${import.meta.env.BASE_URL}work/bu
 export const pipeline = {
   heroLine: "Reducing a 7-10 day modelling bottleneck to roughly one day.",
   meta: [
-    { k: "Context", v: "OAKS Kidz · VR gaming team" },
+    { k: "Context", v: "OAKS Kids Pvt Limited · VR gaming team" },
     { k: "Year", v: "2024" },
     { k: "Timeframe", v: "20-day target" },
     { k: "Approach", v: "Human-in-the-loop automation" },
@@ -80,7 +80,7 @@ export const pipeline = {
     eyebrow: "Context",
     title: "One stage kept holding production up.",
     body: [
-      "At OAKS Kidz, the gaming team was creating VR experiences. The production pipeline moved from script to 3D modelling, then texturing, animation and development.",
+      "At OAKS Kids Pvt Limited, the gaming team was creating VR experiences. The production pipeline moved from script to 3D modelling, then texturing, animation and development.",
       "The recurring bottleneck was the 3D modelling stage: artists first had to interpret the script, identify required assets, search for reusable models and decide what had to be created from scratch.",
     ],
     production: [

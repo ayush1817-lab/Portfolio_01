@@ -5,7 +5,8 @@ import ccCover from "@/assets/cc-cover.webp";
 export const profile = {
   name: "Ayush Ramawat",
   role: "Product Designer",
-  tagline: "I design AI products, workflows, and the SaaS tools I needed but couldn't find.",
+  tagline:
+    "I'm a Product Designer based in Dublin, combining human-centred research, interaction design, and prototyping to turn complex problems into usable digital products. I have a particular interest in AI-driven experiences.",
   status: "Open to product design roles",
   email: "ayushramawat29@gmail.com",
   /**
@@ -30,7 +31,7 @@ export const experience = [
   {
     year: "2024 — 2025",
     role: "Product Designer",
-    org: "OAKS, Hyderabad",
+    org: "OAKS Kids Pvt Limited, Hyderabad",
     note: "Designed educational games and workflows, with additional contributions to 3D animation.",
   },
 ];
@@ -43,6 +44,8 @@ export type Project = {
   /** Optional line under the card title. */
   subtitle?: string;
   blurb: string;
+  /** Short facts shown on the Selected Work card (role, team, outcome…). */
+  facts?: { k: string; v: string }[];
   tags: string[];
   year: string;
   link: string | null;
@@ -67,9 +70,16 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "proj-01",
-    title: "Optiapply",
+    title: "OptiApply",
+    subtitle:
+      "Designing a more transparent, human-controlled AI workflow for job searching and resume tailoring",
     blurb:
-      "An AI job-hunting tool that finds jobs relevant to the profile, and handles the complete job hunting process, from find to apply. ",
+      "Started as a resume analyser and grew into a connected workflow for discovering roles, evaluating fit, tailoring resumes and tracking applications, with every consequential decision left to the candidate.",
+    facts: [
+      { k: "Role", v: "Product Designer & builder" },
+      { k: "Scope", v: "UX/UI, AI workflows, prompt design" },
+      { k: "Outcome", v: "Live product · 12 early users" },
+    ],
     tags: ["AI product", "Product Design", "Case study"],
     year: "2026",
     // In-site case study; the live product is linked from inside it.
@@ -87,8 +97,15 @@ export const projects: Project[] = [
   {
     id: "proj-02",
     title: "ReelPick",
-    subtitle: "What if choosing a movie together didn't take 30 minutes?",
-    blurb: "The product that can help in reducing the social cost of making a decision ",
+    subtitle:
+      "Helping groups choose films through private preferences and shared decisions; tested in a four-person closed beta",
+    blurb:
+      "Each person votes privately on their own phone, and the group's likes, not the loudest voice, reveal the winner. The mechanism landed in beta; the install cost didn't, so I retired it.",
+    facts: [
+      { k: "Role", v: "Solo designer & developer" },
+      { k: "Scope", v: "Strategy, UX/UI, mobile, backend" },
+      { k: "Outcome", v: "Four-person closed beta" },
+    ],
     tags: ["UX", "Railway", "Expo", "Supabase", "Case study"],
     year: "2025",
     // In-site case study; the original Medium article is linked from inside it.
@@ -107,8 +124,15 @@ export const projects: Project[] = [
   {
     id: "proj-03",
     title: "Conscious Connections",
+    subtitle:
+      "Designing a privacy-conscious community discovery service for LGBTQ+ people in rural Ireland",
     blurb:
-      "A hybrid physical and digital service concept helping LGBTQ+ women and non-binary people in rural Ireland discover resources, build confidence, and connect with community at their own pace.",
+      "A hybrid physical and digital service concept that helps LGBTQ+ women and non-binary people discover resources, build confidence and connect with community at their own pace.",
+    facts: [
+      { k: "Role", v: "Product Designer · Research Coordinator" },
+      { k: "Team", v: "Four-person student team" },
+      { k: "Outcome", v: "Academic service concept" },
+    ],
     tags: ["Service design", "Research", "Academic concept", "Case study"],
     // No year until confirmed.
     year: "",
@@ -210,7 +234,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Pavan Thota",
     role: "Product Manager",
-    org: "OAKS Kidz",
+    org: "OAKS Kids Pvt Limited",
     quote:
       "Ayush has a strong product vision and a different way of thinking about how technology can be used. He looks beyond the immediate solution and considers how a product could evolve and create a better experience for users.",
     tone: "sun",
@@ -218,7 +242,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Suman Matcha",
     role: "CEO",
-    org: "OAKS Kidz",
+    org: "OAKS Kids Pvt Limited",
     quote:
       "One thing I’ve consistently noticed about Ayush is his curiosity and ability to stay ahead of emerging trends. Whether it’s AI, new tools, or developments in technology, he actively keeps himself updated and looks for ways to apply what he learns.",
     tone: "lilac",

@@ -85,13 +85,15 @@ export function Hero() {
           </h1>
 
           <motion.p
-            className="mt-5 max-w-[18em] font-display text-[1.35rem] font-normal sm:mt-8 lg:max-w-[16em] xl:max-w-[18em] leading-[1.15] tracking-[-0.02em] text-ink/90 sm:text-3xl xl:text-[clamp(1.875rem,0.6rem+1.6vw,2.4rem)]"
+            className="mt-5 max-w-[30em] font-display text-[1.1rem] font-normal leading-[1.3] tracking-[-0.015em] text-ink/90 sm:mt-8 sm:text-[1.4rem] lg:max-w-[26em] xl:max-w-[28em] xl:text-[clamp(1.4rem,0.6rem+0.9vw,1.75rem)]"
             initial={reduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 1.85 }}
           >
-            {profile.role} <span className="font-serif italic highlight">specialising</span> in AI,
-            designing products, workflows, and the SaaS tools I needed but couldn't find.
+            I'm a {profile.role} based in Dublin, combining{" "}
+            <span className="whitespace-nowrap font-serif italic highlight">human-centred</span>{" "}
+            research, interaction design, and prototyping to turn complex problems into usable
+            digital products. I have a particular interest in AI-driven experiences.
           </motion.p>
 
           <motion.div

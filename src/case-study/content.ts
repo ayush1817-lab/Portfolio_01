@@ -324,6 +324,30 @@ export const hero = {
   ],
 };
 
+export const contribution = {
+  title: "I designed and built OptiApply end to end.",
+  intro:
+    "A self-initiated product: I owned the problem, the design and the build, then iterated with early users.",
+  items: [
+    {
+      k: "Product strategy",
+      v: "Spotted the repeated job-search loop and grew the product one exposed limitation at a time: Analyzer, then Optimizer, Tracker and Hunt Mode.",
+    },
+    {
+      k: "UX and UI design",
+      v: "Designed every flow and screen, from the requirement-level diagnosis to the review-and-confirm step that gates export.",
+    },
+    {
+      k: "AI workflows and prompts",
+      v: "Designed the prompts and the workflow around them: structure the role first, explain every rewrite, and ask for real metrics instead of inventing them.",
+    },
+    {
+      k: "Build and iteration",
+      v: "Built and shipped the live product, then used feedback from 12 early users to decide what to change next.",
+    },
+  ],
+};
+
 export const problem = {
   lens: "Problem" as Lens,
   eyebrow: "The starting point",

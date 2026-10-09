@@ -24,11 +24,11 @@ export function Projects({ id, items }: Props) {
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <div className="mb-8 flex flex-col gap-4 sm:mb-16 sm:gap-8 lg:mb-24 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            index="02"
+            index="01"
             label="Selected work"
-            title="Things I've"
-            italic="shipped."
-            caption="Products that started as problems I ran into myself."
+            title="Problems I've"
+            italic="worked on."
+            caption="What each problem was, the part I played, and what happened next."
           />
           <Reveal delay={0.3}>
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-ink-soft">
@@ -74,7 +74,11 @@ function ProjectCard({
   const external = p.link?.startsWith("http");
 
   return (
-    <div className="lg:sticky" style={{ top: `calc(7rem + ${i * 1.25}rem)` }}>
+    // Cards only stack on screens tall enough to show a whole card under the nav.
+    <div
+      className="lg:[@media(min-height:850px)]:sticky"
+      style={{ top: `calc(7rem + ${i * 1.25}rem)` }}
+    >
       <motion.div style={{ scale }} className="origin-top will-change-transform">
         <Reveal y={40} amount={0.15} blur={false}>
           <Tag
@@ -111,19 +115,37 @@ function ProjectCard({
                   <span className="hidden sm:inline">// {p.id}</span>
                 </div>
 
-                <h3 className="mt-4 font-display text-[1.75rem] font-semibold leading-[0.95] tracking-[-0.03em] text-ink sm:mt-8 sm:text-5xl lg:mt-14 lg:text-6xl">
+                <h3 className="mt-4 font-display text-[1.75rem] font-semibold leading-[0.95] tracking-[-0.03em] text-ink sm:mt-8 sm:text-5xl lg:mt-10 lg:text-6xl">
                   {p.title}
                 </h3>
                 {p.subtitle ? (
-                  <p className="mt-2 max-w-md font-display text-[1.1rem] font-medium leading-[1.2] tracking-[-0.02em] text-ink sm:mt-4 sm:text-[1.6rem]">
+                  <p className="mt-3 max-w-lg font-display text-[1.1rem] font-medium leading-[1.25] tracking-[-0.02em] text-ink sm:mt-5 sm:text-[1.45rem]">
                     {p.subtitle}
                   </p>
                 ) : null}
-                <p className="mt-3 line-clamp-3 max-w-md text-[15px] leading-relaxed text-ink-soft sm:mt-6 sm:line-clamp-none sm:text-lg">
+                <p className="mt-3 line-clamp-3 max-w-lg text-[15px] leading-relaxed text-ink-soft sm:mt-5 sm:line-clamp-none sm:text-base lg:text-[1.05rem]">
                   {p.blurb}
                 </p>
 
-                <div className="mt-4 hidden flex-wrap gap-2 sm:mt-8 sm:flex">
+                {p.facts?.length ? (
+                  <dl className="mt-5 grid max-w-lg grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:mt-7 sm:grid-cols-3">
+                    {p.facts.map((f) => (
+                      <div
+                        key={f.k}
+                        className="flex items-baseline justify-between gap-3 bg-paper px-4 py-2.5 sm:flex-col sm:justify-start sm:gap-1 sm:py-3"
+                      >
+                        <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-soft">
+                          {f.k}
+                        </dt>
+                        <dd className="text-right text-[13px] font-medium leading-snug text-ink sm:text-left">
+                          {f.v}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                ) : null}
+
+                <div className="mt-4 hidden flex-wrap gap-2 sm:mt-6 sm:flex">
                   {p.tags.map((t) => (
                     <span
                       key={t}

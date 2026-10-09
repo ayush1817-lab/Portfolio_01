@@ -25,7 +25,7 @@ export function About() {
           {/* ── sticky heading + journey ────────────────────── */}
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
-              <SectionHeading index="01" label="About" title="A designer who" italic="builds." />
+              <SectionHeading index="03" label="About" title="A designer who" italic="builds." />
 
               <Reveal delay={0.3} className="mt-10 lg:mt-12">
                 <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.24em] text-ink-soft">

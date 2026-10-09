@@ -32,6 +32,29 @@ export const hero = {
   },
 };
 
+export const contribution = {
+  title: "I took ReelPick from idea to closed beta on my own.",
+  intro: "A solo project: every product, design and engineering decision was mine.",
+  items: [
+    {
+      k: "Problem framing",
+      v: "Reframed movie night as a social decision problem rather than a discovery one, and set the hypothesis: separate preference from decision.",
+    },
+    {
+      k: "UX and UI design",
+      v: "Designed the room flow end to end: six-letter room codes, private picks and votes, a waiting state that hides choices, and the ranked reveal.",
+    },
+    {
+      k: "Mobile and backend",
+      v: "Built the mobile app and backend, including a nightly TMDB and OMDB sync into PostgreSQL with Redis caching, and a Python recommendation model.",
+    },
+    {
+      k: "Beta and the product call",
+      v: "Ran the four-person closed beta, read the split feedback, and decided to retire the app rather than add features.",
+    },
+  ],
+};
+
 export const problem = {
   lens: "Problem" as Lens,
   eyebrow: "The Friday night problem",

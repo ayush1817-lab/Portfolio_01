@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import heroArt from "@/assets/reelpick/reelpick-hero.webp";
 import journeyArt from "@/assets/reelpick/reelpick-product-journey.webp";
 import { LightboxProvider } from "../components/Lightbox";
-import { Eyebrow, Intro, Pull, Section } from "../components/Layout";
+import { Contribution, Eyebrow, Intro, Pull, Section } from "../components/Layout";
 import { Flow } from "../components/Diagrams";
 import { ArtFigure, JourneyViewer, ScreenCrop } from "./components";
 import * as C from "./content";
@@ -53,6 +53,7 @@ export function ReelPickCaseStudy() {
         <main id="case-study">
           <article>
             <Hero />
+            <Contribution {...C.contribution} accent={LAV} />
             <Problem />
             <Hypothesis />
             <Journey />

@@ -174,3 +174,53 @@ export function Pull({ children, className }: { children: ReactNode; className?:
     </p>
   );
 }
+
+/**
+ * "My contribution": what I personally did on the project, as a short list of
+ * areas. Sits straight after the hero so a reader sees ownership first.
+ */
+export function Contribution({
+  title,
+  intro,
+  items,
+  note,
+  accent = "text-cobalt",
+}: {
+  title: string;
+  intro?: string;
+  items: { k: string; v: string }[];
+  /** Optional line on what was shared or out of scope. */
+  note?: string;
+  /** Colour class for the item numbers and eyebrow. */
+  accent?: string;
+}) {
+  return (
+    <Section id="contribution" label="My contribution" tone="tint">
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <Reveal y={16} blur={false} className="lg:col-span-4">
+          <p className={cn("font-mono text-[11px] uppercase tracking-[0.18em]", accent)}>
+            My contribution
+          </p>
+          <h2 className="mt-4 font-display text-h3 font-semibold tracking-[-0.03em] text-balance">
+            {title}
+          </h2>
+          {intro ? <p className="mt-4 text-read text-ink-soft">{intro}</p> : null}
+        </Reveal>
+        <ol className="grid gap-px overflow-hidden rounded-2xl border border-line-strong bg-line-strong sm:grid-cols-2 lg:col-span-8">
+          {items.map((it, i) => (
+            <li key={it.k} className="bg-paper p-6 sm:p-7">
+              <p className={cn("font-mono text-[12px]", accent)}>
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <p className="mt-3 font-display text-[1.25rem] font-semibold leading-tight tracking-[-0.02em]">
+                {it.k}
+              </p>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{it.v}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+      {note ? <p className="mt-6 text-[14px] text-ink-faint">{note}</p> : null}
+    </Section>
+  );
+}

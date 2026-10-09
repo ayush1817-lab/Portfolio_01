@@ -3,7 +3,7 @@ import { stack } from "@/content/portfolio";
 const palette = ["bg-cobalt", "bg-sun", "bg-cobalt", "bg-cobalt"];
 
 /**
- * One row of tools drifting left to right, straight after the hero.
+ * One row of tools drifting left to right, straight after About.
  * Six copies keep the loop seamless on very wide screens; the -50% → 0
  * animation moves exactly three copies before it repeats.
  */
