@@ -27,7 +27,6 @@ export function SmallBuilds() {
           label={section.label}
           title="Three experiments in where"
           italic="intelligence belongs."
-          caption={section.body}
         />
 
         {/* Phones: the same compact image-led cards as Selected Work. */}
