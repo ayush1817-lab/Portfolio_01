@@ -37,8 +37,11 @@ function useCycle(n: number, ms: number, still: number) {
 
 const pipeIcons = [FileText, ListChecks, Search, Sparkles, UserCheck, Send];
 
-/** Card motif: six nodes light up in order; the review node is a human checkpoint. */
-export function PipelineMotif({ className }: { className?: string }) {
+/**
+ * Card motif: six nodes light up in order; the review node is a human checkpoint.
+ * `compact` keeps only the node row, in the top band, for the phone cards.
+ */
+export function PipelineMotif({ className, compact }: { className?: string; compact?: boolean }) {
   const nodes = pipeline.overview;
   const { ref, i } = useCycle(nodes.length + 1, 750, nodes.length);
   return (
@@ -46,12 +49,18 @@ export function PipelineMotif({ className }: { className?: string }) {
       ref={ref}
       aria-hidden
       className={cn(
-        "relative flex h-full w-full flex-col justify-center bg-cobalt-soft p-5",
+        "relative flex h-full w-full flex-col bg-cobalt-soft",
+        compact ? "justify-start py-4 pl-14 pr-4" : "justify-center p-5",
         className,
       )}
     >
       <div className="relative grid grid-cols-6 gap-1.5">
-        <span className="absolute left-[8%] right-[8%] top-5 h-px bg-cobalt/30" />
+        <span
+          className={cn(
+            "absolute left-[8%] right-[8%] h-px bg-cobalt/30",
+            compact ? "top-[18px]" : "top-5",
+          )}
+        />
         {nodes.map((n, k) => {
           const Icon = pipeIcons[k];
           const on = k < i || i === nodes.length;
@@ -60,7 +69,8 @@ export function PipelineMotif({ className }: { className?: string }) {
             <div key={n.k + k} className="relative flex flex-col items-center gap-1.5">
               <span
                 className={cn(
-                  "relative grid h-10 w-10 place-items-center border transition-colors duration-300",
+                  "relative grid place-items-center border transition-colors duration-300",
+                  compact ? "h-9 w-9" : "h-10 w-10",
                   human ? "rotate-45 rounded-lg" : "rounded-full",
                   on
                     ? human
@@ -71,15 +81,17 @@ export function PipelineMotif({ className }: { className?: string }) {
               >
                 <Icon className={cn("h-4 w-4", human && "-rotate-45")} />
               </span>
-              <span className="text-center font-mono text-micro uppercase tracking-[0.12em] text-ink/70">
-                {n.k}
-              </span>
+              {compact ? null : (
+                <span className="text-center font-mono text-micro uppercase tracking-[0.12em] text-ink/70">
+                  {n.k}
+                </span>
+              )}
             </div>
           );
         })}
       </div>
       {/* asset thumbnails produced by the generate step */}
-      <div className="mt-5 flex items-center justify-center gap-2">
+      <div className={cn("mt-5 items-center justify-center gap-2", compact ? "hidden" : "flex")}>
         {[0, 1, 2, 3].map((k) => (
           <span
             key={k}
@@ -165,10 +177,12 @@ export function Bracelet({ state, className }: { state: DetenteState; className?
   const reduce = useReducedMotion();
   const colour = state === "scroll" ? CALM : state === "recover" ? GREEN : RED;
   const glow = state === "scroll" ? "transparent" : colour;
+  // Unique per instance: the bracelet can appear twice on a page (phone and desktop cards).
+  const band = `detente-band-${useId()}`;
   return (
     <svg viewBox="0 0 320 210" className={cn("w-full", className)} aria-hidden>
       <defs>
-        <linearGradient id="detente-band" x1="0" x2="0" y1="0" y2="1">
+        <linearGradient id={band} x1="0" x2="0" y1="0" y2="1">
           <stop offset="0" stopColor="#efe3cf" />
           <stop offset="0.55" stopColor="#d8c3a1" />
           <stop offset="1" stopColor="#b99c72" />
@@ -204,7 +218,7 @@ export function Bracelet({ state, className }: { state: DetenteState; className?
       <path
         d="M42 104 A118 50 0 0 0 278 104"
         fill="none"
-        stroke="url(#detente-band)"
+        stroke={`url(#${band})`}
         strokeWidth="22"
         strokeLinecap="round"
       />
@@ -265,8 +279,11 @@ const stateIcon: Record<DetenteState, typeof Smartphone> = {
   recover: Check,
 };
 
-/** Card motif: the bracelet cycling through its four states, each labelled. */
-export function DetenteMotif({ className }: { className?: string }) {
+/**
+ * Card motif: the bracelet cycling through its four states, each labelled.
+ * `compact` shows the bracelet alone, top right, for the phone cards.
+ */
+export function DetenteMotif({ className, compact }: { className?: string; compact?: boolean }) {
   const steps = detente.interaction.steps;
   const { ref, i } = useCycle(steps.length, 1600, 1);
   const s = steps[i];
@@ -276,12 +293,18 @@ export function DetenteMotif({ className }: { className?: string }) {
       ref={ref}
       aria-hidden
       className={cn(
-        "relative flex h-full w-full flex-col items-center justify-center bg-[radial-gradient(circle_at_50%_35%,#fbf6ee_0%,#efe6d8_70%)] p-6",
+        "relative flex h-full w-full flex-col bg-[radial-gradient(circle_at_50%_35%,#fbf6ee_0%,#efe6d8_70%)]",
+        compact ? "items-end justify-start px-4 py-2" : "items-center justify-center p-6",
         className,
       )}
     >
-      <Bracelet state={s.id} className="max-w-[300px]" />
-      <span className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-paper px-3 py-1 font-mono text-micro uppercase tracking-[0.14em] text-ink shadow-soft">
+      <Bracelet state={s.id} className={compact ? "max-w-[180px]" : "max-w-[300px]"} />
+      <span
+        className={cn(
+          "mt-2 items-center gap-1.5 rounded-full bg-paper px-3 py-1 font-mono text-micro uppercase tracking-[0.14em] text-ink shadow-soft",
+          compact ? "hidden" : "inline-flex",
+        )}
+      >
         <Icon className="h-3.5 w-3.5" />
         {String(i + 1).padStart(2, "0")} {s.k} · {s.state}
       </span>
@@ -442,15 +465,19 @@ function Waveform({
   );
 }
 
-/** Card motif: waveform → transcript → tool call, with the agent's status cycling. */
-export function VoiceMotif({ className }: { className?: string }) {
+/**
+ * Card motif: waveform → transcript → tool call, with the agent's status cycling.
+ * `compact` keeps the status and waveform, in the top band, for the phone cards.
+ */
+export function VoiceMotif({ className, compact }: { className?: string; compact?: boolean }) {
   const { ref, i, reduce } = useCycle(STATUSES.length, 1100, 3);
   return (
     <div
       ref={ref}
       aria-hidden
       className={cn(
-        "relative flex h-full w-full flex-col justify-center gap-3 bg-ink p-5 text-paper",
+        "relative flex h-full w-full flex-col bg-ink text-paper",
+        compact ? "justify-start gap-2 py-4 pl-14 pr-4" : "justify-center gap-3 p-5",
         className,
       )}
     >
@@ -464,11 +491,17 @@ export function VoiceMotif({ className }: { className?: string }) {
         </span>
       </div>
       <Waveform live={!reduce && i <= 1} />
-      <p className="self-start rounded-2xl rounded-bl-md bg-paper/10 px-3.5 py-2 text-small">
+      <p
+        className={cn(
+          "self-start rounded-2xl rounded-bl-md bg-paper/10 px-3.5 py-2 text-small",
+          compact && "hidden",
+        )}
+      >
         “Do I need a jacket?”
       </p>
       <p
         className={cn(
+          compact && "!hidden",
           "inline-flex items-center gap-1.5 self-start rounded-lg border px-2.5 py-1 font-mono text-label transition-colors duration-300",
           i >= 3 ? "border-sun bg-sun text-ink" : "border-paper/25 text-paper/60",
         )}
