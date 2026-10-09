@@ -59,16 +59,16 @@ function Hero() {
       <div className="mx-auto max-w-page">
         <a
           href={`${BASE}#projects`}
-          className="focus-glow -ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft transition-colors hover:text-cobalt"
+          className="focus-glow -ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 font-mono text-label uppercase tracking-[0.16em] text-ink-soft transition-colors hover:text-cobalt"
         >
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
           All work
         </a>
         <Reveal y={16} blur={false}>
-          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-cobalt">
+          <p className="mt-6 font-mono text-label uppercase tracking-[0.18em] text-cobalt">
             {C.hero.eyebrow}
           </p>
-          <h1 className="mt-4 max-w-[20ch] font-display text-[clamp(2rem,1.1rem+3vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-balance sm:max-w-none">
+          <h1 className="mt-4 max-w-[20ch] font-display text-h1 font-semibold leading-[1.02] tracking-[-0.035em] text-balance sm:max-w-none">
             <span className="block">{C.hero.title[0]}</span>
             <span className="block text-cobalt">{C.hero.title[1]}</span>
           </h1>
@@ -128,10 +128,10 @@ function Hero() {
         <dl className="mt-10 grid gap-5 border-t border-line pt-6 sm:grid-cols-3 lg:mt-12">
           {C.hero.facts.map((f) => (
             <div key={f.k}>
-              <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint">
+              <dt className="font-mono text-label uppercase tracking-[0.16em] text-ink-faint">
                 {f.k}
               </dt>
-              <dd className="mt-2 text-[15px] font-medium leading-snug text-ink">{f.v}</dd>
+              <dd className="mt-2 text-small font-medium leading-snug text-ink">{f.v}</dd>
             </div>
           ))}
         </dl>
@@ -196,7 +196,7 @@ function V2() {
               blur={false}
               className={cn("lg:col-span-5", i % 2 === 1 && "lg:order-2")}
             >
-              <p className="font-mono text-[12px] text-cobalt">
+              <p className="font-mono text-label text-cobalt">
                 Decision {String(i + 1).padStart(2, "0")}
               </p>
               <h3 className="mt-2 font-display text-h3 font-semibold tracking-[-0.03em] text-balance">
@@ -223,7 +223,7 @@ function HuntMode() {
     <Section id="hunt" label="Hunt Mode" tone="tint">
       <Intro n={4} eyebrow={d.eyebrow} lens={d.lens} title={d.title} body={d.body} />
       <Reveal y={12} blur={false} className="mt-10">
-        <p className="font-display text-[clamp(1.75rem,1rem+2.4vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.035em]">
+        <p className="font-display text-h3 font-semibold leading-[1.05] tracking-[-0.035em]">
           <span className="block">{d.headline[0]}</span>
           <span className="block text-cobalt">{d.headline[1]}</span>
         </p>
@@ -236,26 +236,26 @@ function HuntMode() {
 
       <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:items-start">
         <div className="lg:col-span-5">
-          <h3 className="font-display text-[1.5rem] font-semibold leading-tight tracking-[-0.02em]">
+          <h3 className="font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
             {d.factorsTitle}
           </h3>
           <ul className="mt-5 grid gap-px overflow-hidden rounded-xl border border-line-strong bg-line-strong sm:grid-cols-2">
             {d.factors.map((f) => (
               <li key={f.k} className="bg-paper p-4">
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-cobalt">
+                <p className="font-mono text-label uppercase tracking-[0.14em] text-cobalt">
                   {f.k}
                 </p>
-                <p className="mt-1.5 text-[15px] leading-snug text-ink">{f.v}</p>
+                <p className="mt-1.5 text-small leading-snug text-ink">{f.v}</p>
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{d.factorsNote}</p>
+          <p className="mt-4 text-small leading-relaxed text-ink-soft">{d.factorsNote}</p>
           <div className="mt-8 rounded-xl border border-warn/40 bg-warn-soft p-5">
-            <p className="font-display text-[1.2rem] font-semibold leading-tight tracking-[-0.02em]">
+            <p className="font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
               {d.constraint.title}
             </p>
-            <p className="mt-2 text-[15px] leading-relaxed text-ink">{d.constraint.body}</p>
-            <p className="mt-3 text-[15px] leading-relaxed text-ink">
+            <p className="mt-2 text-small leading-relaxed text-ink">{d.constraint.body}</p>
+            <p className="mt-3 text-small leading-relaxed text-ink">
               <span className="font-semibold">What I would reconsider: </span>
               {d.constraint.next}
             </p>
@@ -296,7 +296,7 @@ function Experiment() {
             >
               <p
                 className={cn(
-                  "font-mono text-[11px] uppercase tracking-[0.16em]",
+                  "font-mono text-label uppercase tracking-[0.16em]",
                   ci === 0 ? "text-ink-faint" : "text-cobalt",
                 )}
               >
@@ -309,7 +309,7 @@ function Experiment() {
                     <li
                       key={st}
                       className={cn(
-                        "flex items-center justify-between gap-3 rounded-lg px-4 py-2 text-[1.02rem]",
+                        "flex items-center justify-between gap-3 rounded-lg px-4 py-2 text-body",
                         ci === 0
                           ? "bg-paper text-ink-soft"
                           : human
@@ -319,7 +319,7 @@ function Experiment() {
                     >
                       {st}
                       {ci === 1 && human ? (
-                        <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-paper/80">
+                        <span className="font-mono text-micro uppercase tracking-[0.14em] text-paper/80">
                           human
                         </span>
                       ) : null}
@@ -333,7 +333,7 @@ function Experiment() {
       </div>
 
       <Reveal y={12} blur={false} className="mt-12">
-        <p className="font-display text-[clamp(1.6rem,1rem+2vw,3rem)] font-semibold leading-[1.08] tracking-[-0.03em]">
+        <p className="font-display text-h3 font-semibold leading-[1.08] tracking-[-0.03em]">
           {C.principle.line[0]}{" "}
           <span className="font-serif font-normal italic highlight">{C.principle.line[1]}</span>
         </p>
@@ -351,7 +351,7 @@ function Outcome() {
     <Section id="today" label="Current product and outcomes" tone="tint">
       <Intro n={6} eyebrow={d.eyebrow} lens={d.lens} title={d.title} />
       <Flow nodes={d.flow} label="The connected OptiApply workflow" className="mt-10" />
-      <p className="mt-4 flex items-center gap-2 text-[13px] text-ink-soft">
+      <p className="mt-4 flex items-center gap-2 text-caption text-ink-soft">
         <span aria-hidden className="h-3 w-3 rounded-sm border border-cobalt bg-cobalt-soft" />
         Steps the candidate owns
       </p>
@@ -359,16 +359,16 @@ function Outcome() {
       <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line-strong bg-line-strong sm:grid-cols-3 lg:grid-cols-5">
         {d.facts.map((f) => (
           <div key={f.label} className="flex flex-col bg-paper p-5 sm:p-7">
-            <dt className="order-2 mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft">
+            <dt className="order-2 mt-2 font-mono text-label uppercase tracking-[0.14em] text-ink-soft">
               {f.label}
             </dt>
-            <dd className="order-1 font-display text-[clamp(2rem,3.4vw,3.25rem)] font-semibold leading-none tracking-[-0.04em] text-ink">
+            <dd className="order-1 font-display text-stat font-semibold leading-none tracking-[-0.04em] text-ink">
               {f.value}
             </dd>
           </div>
         ))}
       </dl>
-      <p className="mt-3 text-[13px] text-ink-faint">{d.factsNote}</p>
+      <p className="mt-3 text-caption text-ink-faint">{d.factsNote}</p>
       <div className="mt-12">
         <h3 className="font-display text-h3 font-semibold tracking-[-0.03em]">
           {d.insights.title}
@@ -378,7 +378,7 @@ function Outcome() {
             <li key={it.k} className="rounded-xl border border-line-strong bg-paper p-5">
               <p
                 className={cn(
-                  "inline-flex rounded-full px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.12em]",
+                  "inline-flex rounded-full px-2.5 py-1 font-mono text-label uppercase tracking-[0.12em]",
                   it.tone === "positive"
                     ? "bg-cobalt-soft text-cobalt"
                     : "bg-sun-soft text-sun-deep",
@@ -386,19 +386,17 @@ function Outcome() {
               >
                 {it.tone === "positive" ? "What they like" : "What they asked for"}
               </p>
-              <p className="mt-3 font-display text-[1.25rem] font-semibold leading-tight tracking-[-0.02em]">
+              <p className="mt-3 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
                 {it.k}
               </p>
-              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{it.v}</p>
+              <p className="mt-2 text-small leading-relaxed text-ink-soft">{it.v}</p>
             </li>
           ))}
         </ul>
       </div>
       <Reveal y={12} blur={false} className="mt-12">
         <div className="max-w-read border-l-[3px] border-cobalt pl-6">
-          <p className="font-display text-[1.5rem] font-semibold tracking-[-0.02em]">
-            {d.unknown.title}
-          </p>
+          <p className="font-display text-h4 font-semibold tracking-[-0.02em]">{d.unknown.title}</p>
           <div className="mt-3 space-y-3 text-read text-ink-soft">
             {d.unknown.body.map((p) => (
               <p key={p}>{p}</p>
@@ -420,17 +418,17 @@ function Reflection() {
       <ol className="mt-10 grid gap-8 md:grid-cols-3">
         {C.next.items.map((it, i) => (
           <li key={it.k}>
-            <p className="font-mono text-[12px] text-cobalt">{String(i + 1).padStart(2, "0")}</p>
-            <p className="mt-2 font-display text-[1.3rem] font-semibold leading-tight tracking-[-0.02em]">
+            <p className="font-mono text-label text-cobalt">{String(i + 1).padStart(2, "0")}</p>
+            <p className="mt-2 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
               {it.k}
             </p>
-            <p className="mt-2 text-[1.02rem] leading-relaxed text-ink-soft">{it.v}</p>
+            <p className="mt-2 text-body leading-relaxed text-ink-soft">{it.v}</p>
           </li>
         ))}
       </ol>
       <Reveal y={16} blur={false} className="mt-16">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-cobalt">{d.eyebrow}</p>
-        <blockquote className="mt-6 max-w-[26ch] font-display text-[clamp(1.75rem,1rem+2.6vw,3.75rem)] font-semibold leading-[1.08] tracking-[-0.035em] text-balance">
+        <p className="font-mono text-label uppercase tracking-[0.18em] text-cobalt">{d.eyebrow}</p>
+        <blockquote className="mt-6 max-w-[26ch] font-display text-h2 font-semibold leading-[1.08] tracking-[-0.035em] text-balance">
           <p className="text-ink-faint">{d.closing[0]}</p>
           <p className="mt-4 text-ink">{d.closing[1]}</p>
         </blockquote>
@@ -440,7 +438,7 @@ function Reflection() {
           href={C.meta.liveUrl}
           target="_blank"
           rel="noreferrer noopener"
-          className="focus-glow group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[15px] font-semibold text-paper transition-colors hover:bg-cobalt"
+          className="focus-glow group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-small font-semibold text-paper transition-colors hover:bg-cobalt"
         >
           Explore OptiApply
           <ArrowUpRight
@@ -454,9 +452,9 @@ function Reflection() {
             href={nextProject.link}
             target={nextProject.link.startsWith("http") ? "_blank" : undefined}
             rel={nextProject.link.startsWith("http") ? "noreferrer noopener" : undefined}
-            className="focus-glow group inline-flex items-center gap-3 rounded-full px-2 py-3 text-[15px] text-ink transition-colors hover:text-cobalt"
+            className="focus-glow group inline-flex items-center gap-3 rounded-full px-2 py-3 text-small text-ink transition-colors hover:text-cobalt"
           >
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft">
+            <span className="font-mono text-label uppercase tracking-[0.16em] text-ink-soft">
               Next project
             </span>
             <span className="font-semibold">{nextProject.title}</span>

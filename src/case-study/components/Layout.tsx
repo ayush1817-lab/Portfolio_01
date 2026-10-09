@@ -56,7 +56,7 @@ export function Eyebrow({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] uppercase tracking-[0.18em]",
+        "flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-label uppercase tracking-[0.18em]",
         dark ? "text-paper/70" : "text-ink-soft",
       )}
     >
@@ -68,7 +68,7 @@ export function Eyebrow({
       {lens ? (
         <span
           className={cn(
-            "rounded-full border px-2 py-0.5 text-[10px] tracking-[0.14em]",
+            "rounded-full border px-2 py-0.5 text-micro tracking-[0.14em]",
             dark ? "border-paper/25 text-paper/80" : "border-line-strong text-ink-soft",
           )}
         >
@@ -97,11 +97,7 @@ export function Heading({
     <Tag
       className={cn(
         "mt-5 font-display font-semibold tracking-[-0.03em] text-balance",
-        Tag === "h3"
-          ? "text-h3"
-          : compact
-            ? "text-[clamp(2.1rem,1.2rem+2.4vw,4.25rem)] leading-[1.04]"
-            : "text-h2",
+        Tag === "h3" ? "text-h3" : compact ? "text-h2 leading-[1.04]" : "text-h2",
         className,
       )}
     >
@@ -198,7 +194,7 @@ export function Contribution({
     <Section id="contribution" label="My contribution" tone="tint">
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
         <Reveal y={16} blur={false} className="lg:col-span-4">
-          <p className={cn("font-mono text-[11px] uppercase tracking-[0.18em]", accent)}>
+          <p className={cn("font-mono text-label uppercase tracking-[0.18em]", accent)}>
             My contribution
           </p>
           <h2 className="mt-4 font-display text-h3 font-semibold tracking-[-0.03em] text-balance">
@@ -209,18 +205,16 @@ export function Contribution({
         <ol className="grid gap-px overflow-hidden rounded-2xl border border-line-strong bg-line-strong sm:grid-cols-2 lg:col-span-8">
           {items.map((it, i) => (
             <li key={it.k} className="bg-paper p-6 sm:p-7">
-              <p className={cn("font-mono text-[12px]", accent)}>
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <p className="mt-3 font-display text-[1.25rem] font-semibold leading-tight tracking-[-0.02em]">
+              <p className={cn("font-mono text-label", accent)}>{String(i + 1).padStart(2, "0")}</p>
+              <p className="mt-3 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
                 {it.k}
               </p>
-              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{it.v}</p>
+              <p className="mt-2 text-small leading-relaxed text-ink-soft">{it.v}</p>
             </li>
           ))}
         </ol>
       </div>
-      {note ? <p className="mt-6 text-[14px] text-ink-faint">{note}</p> : null}
+      {note ? <p className="mt-6 text-small text-ink-faint">{note}</p> : null}
     </Section>
   );
 }

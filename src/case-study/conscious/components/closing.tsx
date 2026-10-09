@@ -29,8 +29,8 @@ export function Reflection() {
 
       <div className="mt-10 grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
         <MotionReveal className="rounded-3xl border border-cc-cream/25 p-6 sm:p-8">
-          <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-cc-sage">Before</p>
-          <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-[clamp(1.4rem,0.9rem+1.4vw,2.4rem)] leading-tight text-cc-cream/80">
+          <p className="font-mono text-label uppercase tracking-[0.14em] text-cc-sage">Before</p>
+          <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-h3 leading-tight text-cc-cream/80">
             {d.before}
           </p>
         </MotionReveal>
@@ -38,10 +38,10 @@ export function Reflection() {
           <ArrowRight className="h-6 w-6 rotate-90 text-cc-lilac md:rotate-0" />
         </div>
         <MotionReveal delay={0.15} className="rounded-3xl bg-cc-cream p-6 text-cc-forest sm:p-8">
-          <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-cc-lilac-deep">
+          <p className="font-mono text-label uppercase tracking-[0.14em] text-cc-lilac-deep">
             After
           </p>
-          <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-[clamp(1.4rem,0.9rem+1.4vw,2.4rem)] leading-tight">
+          <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-h3 leading-tight">
             {d.after}
           </p>
         </MotionReveal>
@@ -49,7 +49,7 @@ export function Reflection() {
 
       <div className="mt-10 max-w-read">
         <h3 className="font-display font-semibold tracking-[-0.02em] text-h3">{d.nextTitle}</h3>
-        <p className="mt-1 text-[14px] text-cc-sage">{d.nextNote}</p>
+        <p className="mt-1 text-small text-cc-sage">{d.nextNote}</p>
         <ul className="mt-5 space-y-2">
           {d.next.map((q) => (
             <li key={q} className="flex gap-3 text-read text-cc-cream/90">
@@ -77,7 +77,7 @@ export function NextProjectCTA() {
       <div className="mx-auto flex max-w-page flex-col gap-3 border-t border-cc-forest/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
         <a
           href={`${BASE}#connect`}
-          className="focus-glow group inline-flex min-h-11 items-center gap-2 self-start rounded-full bg-ink px-6 py-3.5 text-[15px] font-semibold text-paper transition-colors hover:bg-cc-sage-deep"
+          className="focus-glow group inline-flex min-h-11 items-center gap-2 self-start rounded-full bg-ink px-6 py-3.5 text-small font-semibold text-paper transition-colors hover:bg-cc-sage-deep"
         >
           Talk to me about this project
           <ArrowUpRight
@@ -88,9 +88,9 @@ export function NextProjectCTA() {
         {next?.link ? (
           <a
             href={next.link}
-            className="focus-glow group inline-flex min-h-11 items-center gap-3 rounded-full px-2 py-3 text-[15px] text-ink transition-colors hover:text-cc-sage-deep"
+            className="focus-glow group inline-flex min-h-11 items-center gap-3 rounded-full px-2 py-3 text-small text-ink transition-colors hover:text-cc-sage-deep"
           >
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft">
+            <span className="font-mono text-label uppercase tracking-[0.16em] text-ink-soft">
               Next project
             </span>
             <span className="font-semibold">{next.title}</span>

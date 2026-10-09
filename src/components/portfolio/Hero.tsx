@@ -62,7 +62,7 @@ export function Hero() {
               draggable={false}
             />
             <motion.div
-              className="inline-flex items-center gap-2.5 rounded-full surface py-1.5 pl-2 pr-4 font-mono text-[10px] uppercase tracking-[0.12em] text-ink/80 sm:text-[11px] sm:tracking-[0.18em]"
+              className="inline-flex items-center gap-2.5 rounded-full surface py-1.5 pl-2 pr-4 font-mono text-micro uppercase tracking-[0.12em] text-ink/80 sm:text-label sm:tracking-[0.18em]"
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: EASE, delay: 1.4 }}
@@ -76,16 +76,16 @@ export function Hero() {
           </div>
 
           <h1 className="font-display font-semibold leading-[0.9] tracking-[-0.04em] text-ink">
-            <span className="block text-[clamp(3.4rem,2rem+6.4vw,9.5rem)]">
+            <span className="block text-display">
               <SplitText text={first} delay={1.45} />
             </span>
-            <span className="block text-[clamp(3.4rem,2rem+6.4vw,9.5rem)]">
+            <span className="block text-display">
               <SplitText text={last} delay={1.55} wordClassName="text-cobalt" />
             </span>
           </h1>
 
           <motion.p
-            className="mt-5 max-w-[30em] font-display text-[1.1rem] font-normal leading-[1.3] tracking-[-0.015em] text-ink/90 sm:mt-8 sm:text-[1.4rem] lg:max-w-[26em] xl:max-w-[28em] xl:text-[clamp(1.4rem,0.6rem+0.9vw,1.75rem)]"
+            className="mt-5 max-w-[30em] font-display text-lead font-normal leading-[1.35] tracking-[-0.015em] text-ink/90 sm:mt-8 lg:max-w-[26em] xl:max-w-[28em]"
             initial={reduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 1.85 }}
@@ -136,12 +136,10 @@ export function Hero() {
           >
             {facts.map((f) => (
               <div key={f.k} className="flex flex-col gap-1">
-                <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+                <dt className="font-mono text-micro uppercase tracking-[0.2em] text-ink-soft">
                   {f.k}
                 </dt>
-                <dd className="font-sans text-[13px] font-medium leading-snug text-ink/90 sm:text-sm">
-                  {f.v}
-                </dd>
+                <dd className="font-sans text-small font-medium leading-snug text-ink/90">{f.v}</dd>
               </div>
             ))}
           </motion.dl>
@@ -165,10 +163,10 @@ export function Hero() {
               />
               <div className="absolute inset-x-4 bottom-4 flex items-end justify-between">
                 <div className="rounded-2xl bg-paper px-4 py-3 shadow-soft">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+                  <p className="font-mono text-micro uppercase tracking-[0.22em] text-ink-soft">
                     Feature profile
                   </p>
-                  <p className="mt-1 max-w-[200px] font-display text-base font-medium leading-tight text-ink">
+                  <p className="mt-1 max-w-[200px] font-display text-body font-medium leading-tight text-ink">
                     Where LLMs meet human-computer interaction.
                   </p>
                 </div>
@@ -201,7 +199,7 @@ export function Hero() {
             {chips.map((c, i) => (
               <motion.span
                 key={c.text}
-                className={`absolute hidden rounded-full surface px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/80 sm:block ${c.cls}`}
+                className={`absolute hidden rounded-full surface px-3 py-1.5 font-mono text-micro uppercase tracking-[0.18em] text-ink/80 sm:block ${c.cls}`}
                 style={{ transform: "translateZ(60px)" }}
                 initial={reduce ? false : { opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: [0, -8, 0] }}
@@ -230,7 +228,7 @@ export function Hero() {
         transition={{ delay: 2.6, duration: 1 }}
         style={{ opacity: fade }}
       >
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ink-soft">
+        <span className="font-mono text-micro uppercase tracking-[0.3em] text-ink-soft">
           Scroll
         </span>
         <span className="relative h-10 w-px overflow-hidden bg-line-strong">

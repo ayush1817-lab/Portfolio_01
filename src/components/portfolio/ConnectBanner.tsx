@@ -47,7 +47,7 @@ export function ConnectBanner() {
           </div>
 
           <div className="relative flex flex-col gap-10 p-6 sm:gap-12 sm:p-12 lg:p-20">
-            <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em] text-paper/80">
+            <div className="flex items-center justify-between font-mono text-micro uppercase tracking-[0.24em] text-paper/80">
               <span>
                 <span className="text-sun">{testimonials.length ? "05" : "04"}</span> &nbsp;·&nbsp;
                 Contact
@@ -64,7 +64,7 @@ export function ConnectBanner() {
 
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
               <div className="lg:col-span-7">
-                <h2 className="font-display text-[3rem] font-semibold leading-[0.92] tracking-[-0.04em] text-paper sm:text-6xl lg:text-[5.5rem]">
+                <h2 className="font-display text-h1 font-semibold leading-[0.92] tracking-[-0.04em] text-paper">
                   <SplitText text="Let's build" inView />
                   <br />
                   <SplitText
@@ -75,7 +75,7 @@ export function ConnectBanner() {
                   />
                 </h2>
                 <Reveal delay={0.4}>
-                  <p className="mt-8 max-w-lg text-base leading-relaxed text-paper/80 sm:text-lg">
+                  <p className="mt-8 max-w-lg text-body leading-relaxed text-paper/80">
                     Whether it's a product design role, a 0 → 1 AI product, or a second opinion on a
                     tricky flow, my inbox is open.
                   </p>
@@ -108,7 +108,7 @@ export function ConnectBanner() {
                       {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                     </button>
                   </div>
-                  <p className="mt-3 select-all break-all text-center font-mono text-[11px] tracking-[0.08em] text-paper/80 sm:hidden">
+                  <p className="mt-3 select-all break-all text-center font-mono text-label tracking-[0.08em] text-paper/80 sm:hidden">
                     {profile.email}
                   </p>
                 </Reveal>
@@ -122,7 +122,7 @@ export function ConnectBanner() {
                           target="_blank"
                           rel="noreferrer noopener"
                           data-cursor="Open"
-                          className="focus-glow flex w-full items-center justify-center gap-2 rounded-full border border-paper/30 px-4 py-3 sm:inline-flex sm:w-auto sm:py-2.5 font-sans text-[13px] font-medium tracking-tight text-paper transition-all duration-300 hover:border-paper hover:bg-paper hover:text-cobalt"
+                          className="focus-glow flex w-full items-center justify-center gap-2 rounded-full border border-paper/30 px-4 py-3 sm:inline-flex sm:w-auto sm:py-2.5 font-sans text-caption font-medium tracking-tight text-paper transition-all duration-300 hover:border-paper hover:bg-paper hover:text-cobalt"
                         >
                           <Icon className="h-3.5 w-3.5" />
                           {label}

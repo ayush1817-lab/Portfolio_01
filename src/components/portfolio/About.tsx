@@ -28,7 +28,7 @@ export function About() {
               <SectionHeading index="03" label="About" title="A designer who" italic="builds." />
 
               <Reveal delay={0.3} className="mt-10 lg:mt-12">
-                <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.24em] text-ink-soft">
+                <p className="mb-5 font-mono text-micro uppercase tracking-[0.24em] text-ink-soft">
                   The path so far
                 </p>
                 {/* compact path for small screens */}
@@ -38,7 +38,7 @@ export function About() {
                     return (
                       <li key={step} className="flex items-center gap-2">
                         <span
-                          className={`rounded-full px-3 py-1.5 font-sans text-[13px] font-medium ${
+                          className={`rounded-full px-3 py-1.5 font-sans text-caption font-medium ${
                             last
                               ? "bg-cobalt/15 text-ink ring-1 ring-cobalt/50"
                               : "surface text-ink/75"
@@ -82,7 +82,7 @@ export function About() {
                         </div>
                         <div className="pb-6">
                           <p
-                            className={`font-display text-xl font-medium tracking-tight ${last ? "text-ink" : "text-ink/70"}`}
+                            className={`font-display text-h4 font-medium tracking-tight ${last ? "text-ink" : "text-ink/70"}`}
                           >
                             {step}
                           </p>
@@ -103,8 +103,8 @@ export function About() {
                   <p
                     className={
                       i === 0
-                        ? "font-display text-xl font-normal leading-snug tracking-[-0.015em] text-ink sm:text-[1.7rem]"
-                        : "text-[15px] leading-relaxed text-ink-soft sm:text-lg"
+                        ? "font-display text-lead font-normal leading-snug tracking-[-0.015em] text-ink"
+                        : "text-body leading-relaxed text-ink-soft"
                     }
                   >
                     {p}
@@ -116,10 +116,10 @@ export function About() {
             <div>
               <Reveal>
                 <div className="mb-6 flex items-center justify-between border-b border-line pb-4">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-soft">
+                  <p className="font-mono text-micro uppercase tracking-[0.24em] text-ink-soft">
                     Experience
                   </p>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-soft">
+                  <p className="font-mono text-micro uppercase tracking-[0.24em] text-ink-soft">
                     {String(experience.length).padStart(2, "0")} roles
                   </p>
                 </div>
@@ -134,18 +134,18 @@ export function About() {
                       />
                       <div className="relative grid grid-cols-1 gap-4 sm:grid-cols-12 sm:gap-6">
                         <div className="sm:col-span-3">
-                          <span className="font-mono text-xs uppercase tracking-[0.2em] text-sun">
+                          <span className="font-mono text-label uppercase tracking-[0.2em] text-sun">
                             {e.year}
                           </span>
                         </div>
                         <div className="sm:col-span-9">
-                          <h3 className="pr-6 font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+                          <h3 className="pr-6 font-display text-h4 font-semibold tracking-tight text-ink">
                             {e.role}
                           </h3>
-                          <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+                          <p className="mt-1 font-mono text-label uppercase tracking-[0.18em] text-ink-soft">
                             {e.org}
                           </p>
-                          <p className="mt-4 text-[15px] leading-relaxed text-ink/75">{e.note}</p>
+                          <p className="mt-4 text-body leading-relaxed text-ink/75">{e.note}</p>
                         </div>
                       </div>
                       <ArrowRight className="absolute right-6 top-6 h-4 w-4 -translate-x-2 text-ink/0 transition-all duration-500 group-hover:translate-x-0 group-hover:text-ink/60" />

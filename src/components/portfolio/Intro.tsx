@@ -39,7 +39,7 @@ export function Intro() {
           <div className="flex flex-col items-center gap-4">
             <div className="overflow-hidden">
               <motion.div
-                className="font-display text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-6xl"
+                className="font-display text-h2 font-semibold tracking-[-0.03em] text-ink"
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "-110%", opacity: 0 }}
@@ -59,7 +59,7 @@ export function Intro() {
               transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
             />
             <motion.span
-              className="font-mono text-[10px] uppercase tracking-[0.3em] text-ink-soft"
+              className="font-mono text-micro uppercase tracking-[0.3em] text-ink-soft"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}

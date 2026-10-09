@@ -71,7 +71,7 @@ export function PipelineMotif({ className }: { className?: string }) {
               >
                 <Icon className={cn("h-4 w-4", human && "-rotate-45")} />
               </span>
-              <span className="text-center font-mono text-[9px] uppercase tracking-[0.12em] text-ink/70">
+              <span className="text-center font-mono text-micro uppercase tracking-[0.12em] text-ink/70">
                 {n.k}
               </span>
             </div>
@@ -95,7 +95,7 @@ export function PipelineMotif({ className }: { className?: string }) {
         ))}
         <span
           className={cn(
-            "ml-1 inline-flex items-center gap-1 rounded-full px-2 py-1 font-mono text-[9px] uppercase tracking-[0.12em] transition-colors duration-300",
+            "ml-1 inline-flex items-center gap-1 rounded-full px-2 py-1 font-mono text-micro uppercase tracking-[0.12em] transition-colors duration-300",
             i >= 5 ? "bg-sun text-ink" : "bg-paper text-ink/50",
           )}
         >
@@ -126,18 +126,18 @@ export function PipelineSteps({ steps }: { steps: Step[] }) {
             s.gate ? "border-sun-deep/50 bg-sun-soft" : "border-line-strong bg-paper",
           )}
         >
-          <span className="flex items-center justify-between font-mono text-[11px] text-ink-soft">
+          <span className="flex items-center justify-between font-mono text-label text-ink-soft">
             {String(k + 1).padStart(2, "0")}
             {s.gate ? (
-              <span className="inline-flex items-center gap-1 rounded-full bg-sun px-2 py-0.5 text-[10px] uppercase tracking-[0.12em] text-ink">
+              <span className="inline-flex items-center gap-1 rounded-full bg-sun px-2 py-0.5 font-mono text-micro uppercase tracking-[0.12em] text-ink">
                 <UserCheck className="h-3 w-3" aria-hidden /> Human checkpoint
               </span>
             ) : null}
           </span>
-          <span className="mt-2 font-display text-[1.1rem] font-semibold leading-tight tracking-[-0.02em]">
+          <span className="mt-2 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
             {s.k}
           </span>
-          <span className="mt-1.5 text-[14px] leading-relaxed text-ink-soft">{s.v}</span>
+          <span className="mt-1.5 text-small leading-relaxed text-ink-soft">{s.v}</span>
         </motion.li>
       ))}
     </ol>
@@ -281,7 +281,7 @@ export function DetenteMotif({ className }: { className?: string }) {
       )}
     >
       <Bracelet state={s.id} className="max-w-[300px]" />
-      <span className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-paper px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink shadow-soft">
+      <span className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-paper px-3 py-1 font-mono text-micro uppercase tracking-[0.14em] text-ink shadow-soft">
         <Icon className="h-3.5 w-3.5" />
         {String(i + 1).padStart(2, "0")} {s.k} · {s.state}
       </span>
@@ -342,12 +342,12 @@ export function DetenteSequence() {
         className="flex flex-col items-center rounded-[1.75rem] bg-[radial-gradient(circle_at_50%_35%,#fbf6ee_0%,#efe6d8_75%)] p-6 sm:p-10 lg:col-span-7"
       >
         <Bracelet state={s.id} className="max-w-[460px]" />
-        <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-paper px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink shadow-soft">
+        <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-paper px-4 py-2 font-mono text-label uppercase tracking-[0.14em] text-ink shadow-soft">
           <Icon className="h-4 w-4" aria-hidden />
           State: {s.state}
         </p>
         <p
-          className="mt-3 max-w-[30rem] text-center text-[15px] leading-relaxed text-ink-soft"
+          className="mt-3 max-w-[30rem] text-center text-small leading-relaxed text-ink-soft"
           aria-live="polite"
         >
           {s.v}
@@ -382,17 +382,17 @@ export function DetenteSequence() {
                   : "border-line-strong bg-paper text-ink hover:border-ink/40",
               )}
             >
-              <span className="font-mono text-[12px] opacity-70">
+              <span className="font-mono text-label opacity-70">
                 {String(k + 1).padStart(2, "0")}
               </span>
               <StepIcon className="h-5 w-5 shrink-0" aria-hidden />
               <span className="min-w-0">
-                <span className="block font-display text-[1.15rem] font-semibold leading-tight">
+                <span className="block font-display text-h4 font-semibold leading-tight">
                   {st.k}
                 </span>
                 <span
                   className={cn(
-                    "block text-[13px] leading-snug",
+                    "block text-caption leading-snug",
                     on ? "text-paper/75" : "text-ink-soft",
                   )}
                 >
@@ -402,7 +402,7 @@ export function DetenteSequence() {
             </button>
           );
         })}
-        <p className="mt-1 text-[13px] text-ink-faint">
+        <p className="mt-1 text-caption text-ink-faint">
           Use the arrow keys or select a step. Colour is always paired with the state name.
         </p>
       </div>
@@ -455,21 +455,21 @@ export function VoiceMotif({ className }: { className?: string }) {
       )}
     >
       <div className="flex items-center justify-between">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-paper/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-sun">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-paper/10 px-2.5 py-1 font-mono text-micro uppercase tracking-[0.14em] text-sun">
           <span className="h-1.5 w-1.5 rounded-full bg-sun" />
           {STATUSES[i]}
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-paper/50">
+        <span className="font-mono text-micro uppercase tracking-[0.14em] text-paper/50">
           local
         </span>
       </div>
       <Waveform live={!reduce && i <= 1} />
-      <p className="self-start rounded-2xl rounded-bl-md bg-paper/10 px-3.5 py-2 text-[14px]">
+      <p className="self-start rounded-2xl rounded-bl-md bg-paper/10 px-3.5 py-2 text-small">
         “Do I need a jacket?”
       </p>
       <p
         className={cn(
-          "inline-flex items-center gap-1.5 self-start rounded-lg border px-2.5 py-1 font-mono text-[11px] transition-colors duration-300",
+          "inline-flex items-center gap-1.5 self-start rounded-lg border px-2.5 py-1 font-mono text-label transition-colors duration-300",
           i >= 3 ? "border-sun bg-sun text-ink" : "border-paper/25 text-paper/60",
         )}
       >
@@ -485,7 +485,7 @@ export function VoiceSession() {
   return (
     <div ref={ref} className="grid gap-4 lg:grid-cols-2">
       <div className="flex flex-col gap-3 rounded-[1.5rem] bg-ink p-5 text-paper sm:p-7">
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-paper/60">
+        <p className="font-mono text-label uppercase tracking-[0.14em] text-paper/60">
           Illustrative · read
         </p>
         <ol className="flex flex-wrap gap-1.5" aria-label="Agent states">
@@ -493,7 +493,7 @@ export function VoiceSession() {
             <li
               key={st}
               className={cn(
-                "rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] transition-colors duration-300",
+                "rounded-full px-2.5 py-1 font-mono text-micro uppercase tracking-[0.12em] transition-colors duration-300",
                 k === i
                   ? "bg-sun text-ink"
                   : k < i
@@ -506,44 +506,44 @@ export function VoiceSession() {
           ))}
         </ol>
         <Waveform live={!reduce && i <= 1} bars={30} />
-        <p className="self-start rounded-2xl rounded-bl-md bg-paper/10 px-4 py-2.5 text-[15px]">
+        <p className="self-start rounded-2xl rounded-bl-md bg-paper/10 px-4 py-2.5 text-small">
           “Do I need a jacket?”
         </p>
-        <p className="self-start rounded-lg border border-sun bg-sun/10 px-3 py-1.5 font-mono text-[12px] text-sun">
+        <p className="self-start rounded-lg border border-sun bg-sun/10 px-3 py-1.5 font-mono text-label text-sun">
           → tool: weather lookup <span className="text-paper/60">(simulated)</span>
         </p>
-        <p className="text-[14px] leading-relaxed text-paper/75">
+        <p className="text-small leading-relaxed text-paper/75">
           The user never said “weather”. The model chose the tool because of how its description
           says when to use it.
         </p>
       </div>
       <div className="flex flex-col gap-3 rounded-[1.5rem] border border-line-strong bg-paper p-5 sm:p-7">
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft">
+        <p className="font-mono text-label uppercase tracking-[0.14em] text-ink-soft">
           Illustrative · write
         </p>
-        <p className="self-start rounded-2xl rounded-bl-md bg-paper-3 px-4 py-2.5 text-[15px]">
+        <p className="self-start rounded-2xl rounded-bl-md bg-paper-3 px-4 py-2.5 text-small">
           “Add that to my notes.”
         </p>
         <div className="rounded-xl border border-sun-deep/50 bg-sun-soft p-4">
-          <p className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-sun-deep">
+          <p className="flex items-center gap-2 font-mono text-label uppercase tracking-[0.14em] text-sun-deep">
             <ShieldCheck className="h-4 w-4" aria-hidden /> Confirmation gate
           </p>
-          <p className="mt-2 text-[15px] text-ink">
+          <p className="mt-2 text-small text-ink">
             The agent asks before writing to the local notes file.
           </p>
           <div className="mt-3 flex gap-2" aria-hidden>
-            <span className="rounded-full bg-ink px-3 py-1 text-[13px] text-paper">
+            <span className="rounded-full bg-ink px-3 py-1 text-caption text-paper">
               Yes, write it
             </span>
-            <span className="rounded-full border border-line-strong px-3 py-1 text-[13px] text-ink">
+            <span className="rounded-full border border-line-strong px-3 py-1 text-caption text-ink">
               Cancel
             </span>
           </div>
         </div>
-        <p className="self-start rounded-lg border border-line-strong px-3 py-1.5 font-mono text-[12px] text-ink">
+        <p className="self-start rounded-lg border border-line-strong px-3 py-1.5 font-mono text-label text-ink">
           → tool: write note <span className="text-ink-soft">(after confirmation)</span>
         </p>
-        <p className="text-[14px] leading-relaxed text-ink-soft">
+        <p className="text-small leading-relaxed text-ink-soft">
           Reading is low risk and runs straight away. Changing something needs a yes first.
         </p>
       </div>
@@ -556,7 +556,7 @@ export function RoutesCompare({ workflow, agent }: { workflow: string[]; agent: 
   return (
     <div className="grid gap-4 md:grid-cols-2">
       <div className="rounded-[1.5rem] border border-line-strong bg-paper-2 p-5 sm:p-7">
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft">
+        <p className="font-mono text-label uppercase tracking-[0.14em] text-ink-soft">
           Workflow tool · the designer sets the route
         </p>
         <ol
@@ -565,7 +565,7 @@ export function RoutesCompare({ workflow, agent }: { workflow: string[]; agent: 
         >
           {workflow.map((w, k) => (
             <li key={w} className="flex items-center gap-2">
-              <span className="rounded-lg border border-line-strong bg-paper px-3 py-2 text-[15px]">
+              <span className="rounded-lg border border-line-strong bg-paper px-3 py-2 text-small">
                 {w}
               </span>
               {k < workflow.length - 1 ? (
@@ -576,7 +576,7 @@ export function RoutesCompare({ workflow, agent }: { workflow: string[]; agent: 
         </ol>
       </div>
       <div className="rounded-[1.5rem] border-2 border-dashed border-cobalt/60 bg-cobalt-soft p-5 sm:p-7">
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-cobalt">
+        <p className="font-mono text-label uppercase tracking-[0.14em] text-cobalt">
           This agent · you set the boundary
         </p>
         <ul
@@ -586,13 +586,13 @@ export function RoutesCompare({ workflow, agent }: { workflow: string[]; agent: 
           {agent.map((a) => (
             <li
               key={a}
-              className="rounded-full bg-paper px-3 py-1.5 text-[15px] text-ink shadow-soft"
+              className="rounded-full bg-paper px-3 py-1.5 text-small text-ink shadow-soft"
             >
               {a}
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-[14px] text-ink-soft">The model picks the route at runtime.</p>
+        <p className="mt-4 text-small text-ink-soft">The model picks the route at runtime.</p>
       </div>
     </div>
   );

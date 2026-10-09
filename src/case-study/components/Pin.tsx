@@ -19,7 +19,7 @@ export function Pin({
       style={style}
       className={cn(
         "inline-grid shrink-0 place-items-center rounded-full border border-ink bg-paper font-mono font-medium text-ink",
-        size === "md" ? "h-[26px] w-[26px] text-[11px]" : "h-5 w-5 text-[10px]",
+        size === "md" ? "h-[26px] w-[26px] text-label" : "h-5 w-5 text-micro",
         className,
       )}
     >

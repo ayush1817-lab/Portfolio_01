@@ -44,22 +44,22 @@ export function SmallBuilds() {
                       <Motif className="transition-transform duration-[260ms] ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
                     </div>
                     <div className="flex flex-1 flex-col p-5 sm:p-6">
-                      <p className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft">
+                      <p className="flex items-center gap-2 font-mono text-label uppercase tracking-[0.16em] text-ink-soft">
                         <span className="text-cobalt">{c.index}</span>
                         <span aria-hidden className="h-px w-5 bg-line-strong" />
                         {c.where} · {c.name}
                       </p>
-                      <h3 className="mt-3 font-display text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.02em] text-ink sm:text-[1.5rem]">
+                      <h3 className="mt-3 font-display text-h4 font-semibold leading-[1.15] tracking-[-0.02em] text-ink">
                         {c.headline}
                       </h3>
-                      <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
+                      <p className="mt-3 text-small leading-relaxed text-ink-soft">
                         {c.description}
                       </p>
                       <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Tags">
                         {c.tags.map((t) => (
                           <li
                             key={t}
-                            className="rounded-full border border-line-strong px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/75"
+                            className="rounded-full border border-line-strong px-2.5 py-0.5 font-mono text-micro uppercase tracking-[0.14em] text-ink/75"
                           >
                             {t}
                           </li>

@@ -55,7 +55,7 @@ function Avatar({ t }: { t: Testimonial }) {
     <span aria-hidden className="relative inline-block h-14 w-14 shrink-0">
       <span
         className={cn(
-          "grid h-full w-full place-items-center rounded-full font-display text-[1.15rem] font-semibold tracking-[-0.02em]",
+          "grid h-full w-full place-items-center rounded-full font-display text-h4 font-semibold tracking-[-0.02em]",
           s.ink,
         )}
         style={{
@@ -100,20 +100,20 @@ export function Testimonials() {
               <Reveal delay={(i % 2) * 0.08} y={24} blur={false} className="h-full">
                 <figure className="flex h-full flex-col rounded-[1.75rem] border border-line bg-paper p-6 shadow-soft sm:p-8">
                   <Quote aria-hidden className="h-7 w-7 text-sun" />
-                  <blockquote className="mt-4 flex-1 font-display text-[1.1rem] font-medium leading-[1.45] tracking-[-0.01em] text-ink sm:text-[1.25rem]">
+                  <blockquote className="mt-4 flex-1 font-display text-h4 font-medium leading-[1.45] tracking-[-0.01em] text-ink">
                     {t.quote}
                   </blockquote>
                   <figcaption className="mt-6 flex items-center gap-4 border-t border-line pt-5">
                     <Avatar t={t} />
                     <span className="min-w-0">
-                      <span className="block font-display text-[1.05rem] font-semibold leading-tight text-ink">
+                      <span className="block font-display text-body font-semibold leading-tight text-ink">
                         {t.name}
                       </span>
-                      <span className="mt-0.5 block text-[14px] leading-snug text-ink-soft">
+                      <span className="mt-0.5 block text-small leading-snug text-ink-soft">
                         {[t.role, t.org].filter(Boolean).join(", ")}
                       </span>
                       {t.relation ? (
-                        <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
+                        <span className="mt-1 block font-mono text-micro uppercase tracking-[0.16em] text-ink-faint">
                           {t.relation}
                         </span>
                       ) : null}

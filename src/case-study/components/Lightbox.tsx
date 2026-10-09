@@ -110,7 +110,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
         {item ? (
           <div className="flex h-full flex-col">
             <div className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6">
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-paper/70">
+              <p className="font-mono text-label uppercase tracking-[0.18em] text-paper/70">
                 {index + 1} / {order.length}
               </p>
               <button
@@ -160,15 +160,15 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
             <div className="mx-auto w-full max-w-3xl px-4 pb-5 pt-4 sm:px-6">
               <p
                 id="lightbox-title"
-                className="font-mono text-[11px] uppercase tracking-[0.18em] text-sun"
+                className="font-mono text-label uppercase tracking-[0.18em] text-sun"
               >
                 {item.title}
               </p>
-              <p className="mt-1.5 text-[15px] leading-relaxed text-paper/90">{item.caption}</p>
+              <p className="mt-1.5 text-small leading-relaxed text-paper/90">{item.caption}</p>
               {item.annotations?.length ? (
                 <ol className="mt-3 grid gap-2 sm:grid-cols-2">
                   {item.annotations.map((a) => (
-                    <li key={a.n} className="flex gap-2.5 text-[13px] leading-snug text-paper/80">
+                    <li key={a.n} className="flex gap-2.5 text-caption leading-snug text-paper/80">
                       <Pin n={a.n} size="sm" />
                       <span className="pt-0.5">{a.label}</span>
                     </li>
