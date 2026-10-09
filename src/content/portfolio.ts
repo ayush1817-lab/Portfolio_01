@@ -46,6 +46,15 @@ export type Project = {
   blurb: string;
   /** Short facts shown on the Selected Work card (role, team, outcome…). */
   facts?: { k: string; v: string }[];
+  /** Compact image-led card on phones (below 768px). */
+  mobile?: {
+    /** One short line; clamped to two lines. */
+    line: string;
+    role: string;
+    scope: string;
+    /** object-position for the cover inside the short card. */
+    focus: string;
+  };
   tags: string[];
   year: string;
   link: string | null;
@@ -80,6 +89,12 @@ export const projects: Project[] = [
       { k: "Scope", v: "UX/UI, AI workflows, prompt design" },
       { k: "Outcome", v: "Live product · 12 early users" },
     ],
+    mobile: {
+      line: "A transparent, human-controlled AI workflow for job search and resume tailoring.",
+      role: "Product Designer",
+      scope: "AI workflows",
+      focus: "50% 42%",
+    },
     tags: ["AI product", "Product Design", "Case study"],
     year: "2026",
     // In-site case study; the live product is linked from inside it.
@@ -106,6 +121,12 @@ export const projects: Project[] = [
       { k: "Scope", v: "Strategy, UX/UI, mobile, backend" },
       { k: "Outcome", v: "Four-person closed beta" },
     ],
+    mobile: {
+      line: "Private picks, shared decisions: group film choice, tested in a closed beta.",
+      role: "Solo designer & dev",
+      scope: "Mobile + backend",
+      focus: "50% 45%",
+    },
     tags: ["UX", "Railway", "Expo", "Supabase", "Case study"],
     year: "2025",
     // In-site case study; the original Medium article is linked from inside it.
@@ -133,6 +154,12 @@ export const projects: Project[] = [
       { k: "Team", v: "Four-person student team" },
       { k: "Outcome", v: "Academic service concept" },
     ],
+    mobile: {
+      line: "Privacy-conscious community discovery for LGBTQ+ people in rural Ireland.",
+      role: "Research Coordinator",
+      scope: "Service design",
+      focus: "50% 40%",
+    },
     tags: ["Service design", "Research", "Academic concept", "Case study"],
     // No year until confirmed.
     year: "",

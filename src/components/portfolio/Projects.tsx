@@ -20,9 +20,9 @@ export function Projects({ id, items }: Props) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   return (
-    <section id={id} aria-label="Selected projects" className="relative py-14 sm:py-24 lg:py-40">
+    <section id={id} aria-label="Selected projects" className="relative py-12 sm:py-24 lg:py-40">
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
-        <div className="mb-8 flex flex-col gap-4 sm:mb-16 sm:gap-8 lg:mb-24 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-6 flex flex-col gap-3 sm:mb-16 sm:gap-8 lg:mb-24 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             index="01"
             label="Selected work"
@@ -37,7 +37,16 @@ export function Projects({ id, items }: Props) {
           </Reveal>
         </div>
 
-        <div ref={ref} className="relative flex flex-col gap-4 sm:gap-6 lg:gap-0">
+        {/* Phones: compact image-led cards, all three in about one screen. */}
+        <ul className="flex flex-col gap-3 md:hidden">
+          {items.map((p, i) => (
+            <li key={p.id}>
+              <MobileProjectCard project={p} index={i} />
+            </li>
+          ))}
+        </ul>
+
+        <div ref={ref} className="relative hidden flex-col gap-4 sm:gap-6 md:flex lg:gap-0">
           {items.map((p, i) => (
             <ProjectCard
               key={p.id}
@@ -244,6 +253,88 @@ function ProjectCard({
         </Reveal>
       </motion.div>
     </div>
+  );
+}
+
+/**
+ * Phone card: the cover fills the card, a navy gradient carries the title,
+ * one line, role and scope tags, and an arrow. The whole card is one link.
+ */
+function MobileProjectCard({ project: p, index: i }: { project: Project; index: number }) {
+  const external = p.link?.startsWith("http");
+  const m = p.mobile;
+  const line = m?.line ?? p.subtitle ?? p.blurb;
+  const tags = m ? [m.role, m.scope] : p.tags.slice(0, 2);
+  const Tag = p.link ? "a" : "article";
+
+  return (
+    <Tag
+      href={p.link ?? undefined}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer noopener" : undefined}
+      className="focus-glow relative isolate flex min-h-[188px] flex-col justify-between overflow-hidden rounded-[18px] bg-ink p-4 text-paper shadow-soft transition-transform duration-200 active:scale-[0.99] motion-reduce:transition-none motion-reduce:active:scale-100"
+    >
+      {p.cover ? (
+        <img
+          src={p.cover.src}
+          alt=""
+          width={p.cover.width}
+          height={p.cover.height}
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          style={{ objectPosition: m?.focus ?? "50% 40%" }}
+        />
+      ) : null}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(8,18,35,0) 6%, rgba(8,18,35,0.3) 34%, rgba(8,18,35,0.86) 66%, rgba(8,18,35,0.97) 100%)",
+        }}
+      />
+
+      <span
+        aria-hidden
+        className="grid h-7 w-7 place-items-center rounded-full bg-paper font-mono text-label font-medium text-ink"
+      >
+        {String(i + 1).padStart(2, "0")}
+      </span>
+
+      <div className="mt-8">
+        <div className="flex items-end gap-3">
+          <div className="min-w-0 flex-1">
+            <h3 className="font-display text-h4 font-semibold leading-tight tracking-[-0.02em] text-paper">
+              {p.title}
+            </h3>
+            <p className="mt-1 line-clamp-3 text-caption min-[360px]:line-clamp-2 leading-snug text-paper/80">
+              {line}
+            </p>
+            {p.link ? <span className="sr-only">Read the case study.</span> : null}
+          </div>
+          {p.link ? (
+            <span
+              aria-hidden
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-paper text-ink"
+            >
+              <ArrowUpRight className="h-5 w-5" />
+            </span>
+          ) : null}
+        </div>
+        <ul className="mt-2.5 flex flex-wrap gap-1.5" aria-label="Role and scope">
+          {tags.map((t) => (
+            <li
+              key={t}
+              className="rounded-full border border-paper/20 bg-paper/15 px-2 py-1 font-mono text-micro uppercase leading-none tracking-[0.08em] text-paper backdrop-blur-sm"
+            >
+              {t}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Tag>
   );
 }
 
