@@ -8,7 +8,7 @@ import * as C from "./content";
 import { LightboxProvider } from "./components/Lightbox";
 import { ProductFigure } from "./components/ProductFigure";
 import { hasShot } from "./assets";
-import { Eyebrow, Intro, Pull, Section } from "./components/Layout";
+import { Contribution, Eyebrow, Intro, Pull, Section } from "./components/Layout";
 import { Flow, StatFunnel } from "./components/Diagrams";
 import type { ShotId } from "./content";
 
@@ -29,6 +29,7 @@ export function OptiApplyCaseStudy() {
         <main id="case-study">
           <article>
             <Hero />
+            <Contribution {...C.contribution} />
             <Problem />
             <V1 />
             <V2 />

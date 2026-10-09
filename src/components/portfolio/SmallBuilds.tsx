@@ -19,7 +19,7 @@ export function SmallBuilds() {
     <section id="builds" aria-label="Small builds" className="relative py-14 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <SectionHeading
-          index="03"
+          index="02"
           label={section.label}
           title="Three experiments in where"
           italic="intelligence belongs."

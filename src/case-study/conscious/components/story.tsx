@@ -168,6 +168,49 @@ export function AtAGlance() {
   );
 }
 
+/* ─────────────────────── My contribution ─────────────────────── */
+
+/** What I did inside the team project; continues the at-a-glance block. */
+export function MyContribution() {
+  const d = C.contribution;
+  return (
+    <SectionShell
+      id="contribution"
+      label="My contribution"
+      tone="paper"
+      className="!pb-[clamp(3.5rem,6vw,5.5rem)] !pt-0"
+    >
+      <div className="grid gap-8 border-t border-cc-forest/15 pt-[clamp(2.5rem,5vw,4rem)] lg:grid-cols-12 lg:gap-12">
+        <MotionReveal className="lg:col-span-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <h2 className="font-mono text-[12px] uppercase tracking-[0.16em] text-cc-forest-soft">
+              My contribution
+            </h2>
+            <OwnershipLabel label="MY ROLE" />
+          </div>
+          <StoryHeading as="h3" size="md" className="mt-4">
+            {d.title}
+          </StoryHeading>
+          <p className="mt-4 text-read text-cc-forest-soft">{d.intro}</p>
+        </MotionReveal>
+        <ol className="grid gap-px overflow-hidden rounded-2xl border border-cc-forest/15 bg-cc-forest/15 sm:grid-cols-2 lg:col-span-8">
+          {d.items.map((it, i) => (
+            <MotionReveal key={it.k} as="li" delay={i * 0.06} className="bg-paper p-6 sm:p-7">
+              <p className="font-mono text-[12px] text-cc-coral-deep">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <p className="mt-3 font-display text-[1.25rem] font-semibold leading-tight tracking-[-0.02em] text-cc-forest">
+                {it.k}
+              </p>
+              <p className="mt-2 text-[15px] leading-relaxed text-cc-forest-soft">{it.v}</p>
+            </MotionReveal>
+          ))}
+        </ol>
+      </div>
+    </SectionShell>
+  );
+}
+
 /* ─────────────────────── Context + research ─────────────────────── */
 
 const RESEARCH_SLOTS = [

@@ -18,10 +18,10 @@ export default function App() {
       <Cursor />
       <TopNav />
       <Hero />
-      <TechStrip />
-      <About />
       <Projects id="projects" items={projects.slice(0, 3)} />
       <SmallBuilds />
+      <About />
+      <TechStrip />
       <Testimonials />
       <ConnectBanner />
       <Footer />

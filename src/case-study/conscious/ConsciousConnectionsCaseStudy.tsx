@@ -4,6 +4,7 @@ import {
   AtAGlance,
   Hero,
   Ideation,
+  MyContribution,
   PrivacyTurningPoint,
   ResearchTensions,
 } from "./components/story";
@@ -17,7 +18,7 @@ import { NextProjectCTA, Reflection } from "./components/closing";
 
 /**
  * Conscious Connections — recruiter-focused case study.
- * Story arc (recruiter cut): access is hard → privacy risked becoming invisibility →
+ * Story arc (recruiter cut): my contribution → access is hard → privacy risked becoming invisibility →
  * reframe → 12 ideas → Community in a Box → single-doorway flaw, so the website and
  * ecosystem become a second way in → Buddy Connect → architecture → reflection.
  */
@@ -35,6 +36,7 @@ export function ConsciousConnectionsCaseStudy() {
         <article>
           <Hero />
           <AtAGlance />
+          <MyContribution />
           <ResearchTensions />
           <PrivacyTurningPoint />
           <Ideation />

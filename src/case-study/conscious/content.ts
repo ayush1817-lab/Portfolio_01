@@ -272,6 +272,30 @@ export const glance = [
   },
 ];
 
+export const contribution = {
+  title: "My part in a four-person team project.",
+  intro:
+    "The research synthesis, the Community Box and the final service were shared team outcomes. These are the parts I led or contributed to directly.",
+  items: [
+    {
+      k: "Research coordination",
+      v: "Coordinated participant communication and interview arrangements, conducted community interviews, and connected participants' lived context to the team's thematic analysis.",
+    },
+    {
+      k: "Reframing privacy",
+      v: "Challenged the repeated emphasis on hiding LGBTQ+ identity, arguing that privacy should give people control over participation, not make invisibility the default.",
+    },
+    {
+      k: "Ideation workshop",
+      v: "Planned and hosted an internal ideation workshop, created the challenges, facilitated the exercises, and helped organise the 12 ideas the team generated.",
+    },
+    {
+      k: "Website and system",
+      v: "Defined the website as a second, complementary way in, and contributed to its backend concept, interaction model and the architecture connecting the service.",
+    },
+  ],
+};
+
 export const research = {
   label: "TEAM" as Ownership,
   eyebrow: "Context + research",
