@@ -35,14 +35,14 @@ export function Footer() {
     <footer className="relative border-t border-line px-5 py-10 sm:px-8 lg:px-10">
       <div className="mx-auto flex max-w-page flex-col gap-8 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-2">
-          <p className="font-display text-lg font-semibold tracking-tight text-ink">
+          <p className="font-display text-h4 font-semibold tracking-tight text-ink">
             {profile.name.split(" ")[0]}
             <span className="font-serif italic highlight">
               {" "}
               {profile.name.split(" ").slice(1).join(" ")}
             </span>
           </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+          <p className="font-mono text-micro uppercase tracking-[0.22em] text-ink-soft">
             © {new Date().getFullYear()} · Designed & built in Dublin
             {time ? (
               <>
@@ -60,7 +60,7 @@ export function Footer() {
               href={l.href}
               target={l.href.startsWith("http") ? "_blank" : undefined}
               rel={l.href.startsWith("http") ? "noreferrer noopener" : undefined}
-              className="focus-glow group relative inline-flex min-w-11 items-center justify-center py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink"
+              className="focus-glow group relative inline-flex min-w-11 items-center justify-center py-3 font-mono text-label uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink"
             >
               {l.label}
               <span className="absolute bottom-2 left-0 h-px w-full origin-left scale-x-0 bg-sun transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />

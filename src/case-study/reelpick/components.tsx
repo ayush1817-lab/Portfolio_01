@@ -147,7 +147,7 @@ export function JourneyViewer({
           />
           <span
             aria-hidden
-            className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-[13px] font-medium text-ink opacity-0 shadow-soft transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+            className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1.5 text-caption font-medium text-ink opacity-0 shadow-soft transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
           >
             <Maximize2 className="h-3.5 w-3.5" /> View full size
           </span>
@@ -157,14 +157,14 @@ export function JourneyViewer({
       {/* small and medium screens: readable, horizontally scrollable */}
       <div className="lg:hidden">
         <div className="mb-3 flex items-center justify-between gap-3">
-          <p className="flex items-center gap-2 text-[14px] font-medium text-ink">
+          <p className="flex items-center gap-2 text-small font-medium text-ink">
             Swipe to see all 7 screens
             <ArrowRight className="h-4 w-4 text-reel-lavender-deep" aria-hidden />
           </p>
           <button
             type="button"
             onClick={() => lb.open(img.id)}
-            className="focus-glow inline-flex min-h-11 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-line-strong px-3 text-[13px] font-medium text-ink"
+            className="focus-glow inline-flex min-h-11 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-line-strong px-3 text-caption font-medium text-ink"
           >
             <Maximize2 className="h-3.5 w-3.5" aria-hidden /> Full size
           </button>
@@ -212,7 +212,7 @@ export function JourneyViewer({
                 type="button"
                 onClick={() => jump(s.x)}
                 className={cn(
-                  "focus-glow inline-flex min-h-11 items-center gap-1.5 rounded-full border px-3 text-[13px]",
+                  "focus-glow inline-flex min-h-11 items-center gap-1.5 rounded-full border px-3 text-caption",
                   s.group
                     ? "border-reel-charcoal bg-reel-charcoal text-paper"
                     : "border-line-strong bg-paper text-ink",
@@ -220,7 +220,7 @@ export function JourneyViewer({
               >
                 <span
                   className={cn(
-                    "font-mono text-[11px]",
+                    "font-mono text-label",
                     s.group ? "text-reel-amber" : "text-ink-soft",
                   )}
                 >
@@ -272,7 +272,7 @@ export function ScreenCrop({ img, crop, label }: { img: Img; crop: Crop; label: 
           />
         </span>
       </button>
-      <figcaption className="mt-2 text-[13px] leading-snug text-ink-soft">{label}</figcaption>
+      <figcaption className="mt-2 text-caption leading-snug text-ink-soft">{label}</figcaption>
     </figure>
   );
 }

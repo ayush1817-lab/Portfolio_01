@@ -61,23 +61,59 @@
   --color-cc-lilac-deep: #5e4a8c; /* 6.6:1 on cream */
   --color-cc-lilac-soft: #efe9f7;
 
-  /* Case-study type scale: measures and sizes grow with the viewport so copy
-     fills wide screens instead of stopping at a fixed column. */
+  /* Layout measures: grow with the viewport so copy fills wide screens. */
   --container-page: 88rem; /* content frame */
   --container-lead: clamp(44rem, 76vw, 84rem); /* headings */
   --container-read: clamp(40rem, 56vw, 62rem); /* body copy */
-  --text-h1: clamp(2.6rem, 6.4vw, 7.5rem);
-  --text-h1--line-height: 0.98;
-  --text-h2: clamp(2.1rem, 1.1rem + 3.7vw, 5.75rem);
+
+  /*
+   * Type scale: the only font sizes the site uses (see DESIGN-SYSTEM.md).
+   * Every page, the home page, case studies and builds, picks from this list
+   * by role, so the same kind of text is the same size everywhere.
+   * Values in comments are at a 390px phone → 1440px desktop.
+   */
+  /* Headings: Bricolage Grotesque (font-display) */
+  --text-display: clamp(
+    3.4rem,
+    2rem + 6.4vw,
+    9.5rem
+  ); /* 54 → 124: home hero name, one climax line */
+  --text-display--line-height: 0.92;
+  --text-h1: clamp(2.5rem, 1.2rem + 4.2vw, 5.5rem); /* 40 → 80: page titles, big statements */
+  --text-h1--line-height: 1;
+  --text-h2: clamp(2.1rem, 1.1rem + 3.4vw, 4.5rem); /* 34 → 67: section titles */
   --text-h2--line-height: 1.02;
-  --text-h3: clamp(1.6rem, 1rem + 1.7vw, 3rem);
+  --text-h3: clamp(1.6rem, 1rem + 1.7vw, 2.75rem); /* 26 → 40: subsections, card titles */
   --text-h3--line-height: 1.08;
-  --text-pull: clamp(1.5rem, 0.9rem + 1.8vw, 2.9rem);
+  --text-h4: clamp(1.2rem, 1.05rem + 0.4vw, 1.5rem); /* 19 → 23: item titles, card subtitles */
+  --text-h4--line-height: 1.25;
+  --text-stat: clamp(2.25rem, 1.5rem + 2.4vw, 4rem); /* 36 → 59: numbers and metrics */
+  --text-stat--line-height: 1;
+  --text-pull: clamp(1.5rem, 0.9rem + 1.8vw, 2.9rem); /* 24 → 40: pull quotes */
   --text-pull--line-height: 1.18;
-  --text-lead: clamp(1.2rem, 0.95rem + 0.6vw, 1.65rem);
-  --text-lead--line-height: 1.55;
-  --text-read: clamp(1.125rem, 0.85rem + 0.5vw, 1.45rem);
+
+  /* Body: Inter Tight (font-sans) */
+  --text-lead: clamp(1.2rem, 0.95rem + 0.6vw, 1.65rem); /* 19 → 24: intro paragraphs */
+  --text-lead--line-height: 1.5;
+  --text-read: clamp(1.125rem, 0.85rem + 0.5vw, 1.45rem); /* 18 → 21: long-form reading */
   --text-read--line-height: 1.65;
+  --text-body: clamp(
+    1rem,
+    0.94rem + 0.25vw,
+    1.125rem
+  ); /* 16 → 18: descriptions in cards and lists */
+  --text-body--line-height: 1.6;
+  --text-small: 0.9375rem; /* 15: secondary text, dense grids */
+  --text-small--line-height: 1.55;
+  --text-caption: 0.8125rem; /* 13: figure captions, footnotes */
+  --text-caption--line-height: 1.5;
+  /* UI controls (buttons, nav) use Tailwind's text-sm: 14 */
+
+  /* Labels: JetBrains Mono (font-mono), always uppercase + tracked */
+  --text-label: 0.6875rem; /* 11: eyebrows, section indexes, field labels */
+  --text-label--line-height: 1.4;
+  --text-micro: 0.625rem; /* 10: tags and chips */
+  --text-micro--line-height: 1.4;
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);

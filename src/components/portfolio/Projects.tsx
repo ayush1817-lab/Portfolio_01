@@ -31,7 +31,7 @@ export function Projects({ id, items }: Props) {
             caption="What each problem was, the part I played, and what happened next."
           />
           <Reveal delay={0.3}>
-            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-ink-soft">
+            <p className="font-mono text-label uppercase tracking-[0.24em] text-ink-soft">
               {String(items.length).padStart(2, "0")} projects · 2025 → 2026
             </p>
           </Reveal>
@@ -102,7 +102,7 @@ function ProjectCard({
             <div className="grid grid-cols-1 lg:min-h-[68vh] lg:grid-cols-12">
               {/* ── text ──────────────────────────────────── */}
               <div className="relative z-10 flex flex-col p-5 sm:p-10 lg:col-span-6 lg:p-14">
-                <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft">
+                <div className="flex items-center justify-between font-mono text-label uppercase tracking-[0.22em] text-ink-soft">
                   <span className="flex items-center gap-3">
                     <span className="text-ink">{String(i + 1).padStart(2, "0")}</span>
                     {p.year ? (
@@ -115,15 +115,15 @@ function ProjectCard({
                   <span className="hidden sm:inline">// {p.id}</span>
                 </div>
 
-                <h3 className="mt-4 font-display text-[1.75rem] font-semibold leading-[0.95] tracking-[-0.03em] text-ink sm:mt-8 sm:text-5xl lg:mt-10 lg:text-6xl">
+                <h3 className="mt-4 font-display text-h3 font-semibold leading-[0.95] tracking-[-0.03em] text-ink sm:mt-8 lg:mt-10">
                   {p.title}
                 </h3>
                 {p.subtitle ? (
-                  <p className="mt-3 max-w-lg font-display text-[1.1rem] font-medium leading-[1.25] tracking-[-0.02em] text-ink sm:mt-5 sm:text-[1.45rem]">
+                  <p className="mt-3 max-w-lg font-display text-h4 font-medium leading-[1.25] tracking-[-0.02em] text-ink sm:mt-5">
                     {p.subtitle}
                   </p>
                 ) : null}
-                <p className="mt-3 line-clamp-3 max-w-lg text-[15px] leading-relaxed text-ink-soft sm:mt-5 sm:line-clamp-none sm:text-base lg:text-[1.05rem]">
+                <p className="mt-3 line-clamp-3 max-w-lg text-body leading-relaxed text-ink-soft sm:mt-5 sm:line-clamp-none">
                   {p.blurb}
                 </p>
 
@@ -134,10 +134,10 @@ function ProjectCard({
                         key={f.k}
                         className="flex items-baseline justify-between gap-3 bg-paper px-4 py-2.5 sm:flex-col sm:justify-start sm:gap-1 sm:py-3"
                       >
-                        <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-soft">
+                        <dt className="font-mono text-micro uppercase tracking-[0.18em] text-ink-soft">
                           {f.k}
                         </dt>
-                        <dd className="text-right text-[13px] font-medium leading-snug text-ink sm:text-left">
+                        <dd className="text-right text-caption font-medium leading-snug text-ink sm:text-left">
                           {f.v}
                         </dd>
                       </div>
@@ -149,7 +149,7 @@ function ProjectCard({
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-line-strong px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/75"
+                      className="rounded-full border border-line-strong px-3 py-1 font-mono text-micro uppercase tracking-[0.18em] text-ink/75"
                     >
                       {t}
                     </span>
@@ -220,10 +220,10 @@ function ProjectCard({
                   />
                 ) : p.coverPlaceholder ? (
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[repeating-linear-gradient(135deg,#e3ece4_0_16px,#f7f2e8_16px_32px)] p-6 text-center">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#3d6450]">
+                    <span className="font-mono text-label uppercase tracking-[0.18em] text-[#3d6450]">
                       Cover image to be added
                     </span>
-                    <span className="max-w-[18rem] font-display text-[1.35rem] font-semibold leading-tight tracking-[-0.02em] text-[#1d3a31]">
+                    <span className="max-w-[18rem] font-display text-h4 font-semibold leading-tight tracking-[-0.02em] text-[#1d3a31]">
                       {p.coverPlaceholder}
                     </span>
                   </div>

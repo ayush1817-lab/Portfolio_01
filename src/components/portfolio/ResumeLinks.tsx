@@ -19,7 +19,7 @@ export function ResumeLinks({
   size?: "sm" | "md";
   className?: string;
 }) {
-  const pill = size === "sm" ? "gap-1.5 px-3.5 py-2.5 text-[13px]" : "gap-2 px-5 py-3.5 text-sm";
+  const pill = size === "sm" ? "gap-1.5 px-3.5 py-2.5 text-caption" : "gap-2 px-5 py-3.5 text-sm";
   const look =
     tone === "dark"
       ? "border border-paper/30 text-paper hover:border-paper hover:bg-paper hover:text-cobalt"

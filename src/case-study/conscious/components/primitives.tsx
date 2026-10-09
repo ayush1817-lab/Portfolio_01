@@ -109,7 +109,7 @@ export function OwnershipLabel({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.12em]",
+        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-label font-medium uppercase tracking-[0.12em]",
         onDark && label !== "INDEPENDENT EXTENSION"
           ? "border-cc-cream/40 bg-transparent text-cc-cream"
           : onDark
@@ -147,7 +147,7 @@ export function ChapterEyebrow({
     <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
       <span
         className={cn(
-          "font-mono text-[12px] uppercase tracking-[0.16em]",
+          "font-mono text-label uppercase tracking-[0.16em]",
           onDark ? "text-cc-sage" : "text-cc-forest-soft",
         )}
       >
@@ -243,13 +243,13 @@ export function ArtifactCaption({ asset, onDark }: { asset: Asset; onDark?: bool
     <figcaption className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2">
       <OwnershipLabel label={asset.ownership} onDark={onDark} />
       <span
-        className={cn("text-[14px] leading-snug", onDark ? "text-cc-cream/85" : "text-cc-forest")}
+        className={cn("text-small leading-snug", onDark ? "text-cc-cream/85" : "text-cc-forest")}
       >
         {asset.caption}
       </span>
       <span
         className={cn(
-          "font-mono text-[11px] uppercase tracking-[0.1em]",
+          "font-mono text-label uppercase tracking-[0.1em]",
           onDark ? "text-cc-sage" : "text-cc-forest-soft",
         )}
       >
@@ -330,7 +330,7 @@ export function AccessibleDisclosure({
     >
       <summary
         className={cn(
-          "flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 text-[1.02rem] font-medium [&::-webkit-details-marker]:hidden",
+          "flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 text-body font-medium [&::-webkit-details-marker]:hidden",
           "focus-visible:outline-2 focus-visible:outline-offset-2",
           onDark ? "focus-visible:outline-cc-lilac" : "focus-visible:outline-cc-lilac-deep",
         )}
@@ -340,7 +340,7 @@ export function AccessibleDisclosure({
           {note ? (
             <span
               className={cn(
-                "mt-0.5 block text-[14px] font-normal",
+                "mt-0.5 block text-small font-normal",
                 onDark ? "text-cc-cream/75" : "text-cc-forest-soft",
               )}
             >

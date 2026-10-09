@@ -17,7 +17,7 @@ export function TechStrip() {
           {items.map((t, i) => (
             <span
               key={`${t}-${i}`}
-              className="flex items-center gap-2.5 whitespace-nowrap rounded-full surface px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink/80 sm:px-5 sm:py-2.5"
+              className="flex items-center gap-2.5 whitespace-nowrap rounded-full surface px-4 py-2 font-mono text-label uppercase tracking-[0.2em] text-ink/80 sm:px-5 sm:py-2.5"
             >
               <span className={`h-1.5 w-1.5 rounded-full ${palette[i % palette.length]}`} />
               {t}

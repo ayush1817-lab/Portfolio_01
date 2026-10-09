@@ -188,7 +188,7 @@ export function ProductFigure({
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <span
               className={cn(
-                "font-mono text-[11px] uppercase tracking-[0.16em]",
+                "font-mono text-label uppercase tracking-[0.16em]",
                 tone === "dark" ? "text-sun" : "text-cobalt",
               )}
             >
@@ -196,7 +196,7 @@ export function ProductFigure({
             </span>
             <span
               className={cn(
-                "text-[15px] leading-relaxed",
+                "text-small leading-relaxed",
                 tone === "dark" ? "text-paper/75" : "text-ink-soft",
               )}
             >
@@ -209,7 +209,7 @@ export function ProductFigure({
                 <li
                   key={a.n}
                   className={cn(
-                    "flex gap-2.5 text-[14px] leading-snug",
+                    "flex gap-2.5 text-small leading-snug",
                     tone === "dark" ? "text-paper/85" : "text-ink",
                   )}
                 >

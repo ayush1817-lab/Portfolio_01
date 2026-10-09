@@ -81,7 +81,7 @@ export function Cursor() {
         transition={{ type: "spring", stiffness: 300, damping: 24 }}
       >
         <motion.span
-          className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-paper"
+          className="font-mono text-micro font-medium uppercase tracking-[0.2em] text-paper"
           animate={{ opacity: big ? 1 : 0, scale: big ? 1 : 0.6 }}
           transition={{ duration: 0.18 }}
         >

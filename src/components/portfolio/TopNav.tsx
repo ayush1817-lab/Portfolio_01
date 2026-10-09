@@ -116,7 +116,7 @@ export function TopNav() {
                   href={home(l.id)}
                   onClick={scrollTo(l.id)}
                   className={cn(
-                    "focus-glow relative rounded-full px-3.5 py-2.5 font-sans text-[13px] font-medium tracking-tight transition-colors",
+                    "focus-glow relative rounded-full px-3.5 py-2.5 font-sans text-caption font-medium tracking-tight transition-colors",
                     isActive ? "text-ink" : "text-ink-soft hover:text-ink",
                   )}
                 >
@@ -139,7 +139,7 @@ export function TopNav() {
               target="_blank"
               rel="noreferrer noopener"
               data-cursor="Open"
-              className="focus-glow hidden items-center gap-1.5 rounded-full surface px-4 py-2.5 font-sans text-[13px] font-semibold tracking-tight text-ink transition-colors hover:border-ink/40 sm:inline-flex"
+              className="focus-glow hidden items-center gap-1.5 rounded-full surface px-4 py-2.5 font-sans text-caption font-semibold tracking-tight text-ink transition-colors hover:border-ink/40 sm:inline-flex"
             >
               <FileText className="h-3.5 w-3.5" aria-hidden />
               Resume
@@ -150,7 +150,7 @@ export function TopNav() {
                 href={home("connect")}
                 onClick={scrollTo("connect")}
                 data-cursor="Say hi"
-                className="focus-glow group inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 font-sans text-[13px] font-semibold tracking-tight text-paper transition-colors hover:bg-sun"
+                className="focus-glow group inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 font-sans text-caption font-semibold tracking-tight text-paper transition-colors hover:bg-sun"
               >
                 Let's talk
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -189,14 +189,14 @@ export function TopNav() {
                       setOpen(false);
                       scrollTo(l.id)(e);
                     }}
-                    className="flex items-center justify-between py-5 font-display text-4xl font-semibold tracking-[-0.03em] text-ink"
+                    className="flex items-center justify-between py-5 font-display text-h2 font-semibold tracking-[-0.03em] text-ink"
                     initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: "100%", opacity: 0 }}
                     transition={{ duration: 0.7, ease: EASE, delay: 0.08 + i * 0.06 }}
                   >
                     {l.label}
-                    <span className="font-mono text-xs text-ink-soft">0{i + 1}</span>
+                    <span className="font-mono text-label text-ink-soft">0{i + 1}</span>
                   </motion.a>
                 </div>
               ))}
@@ -211,11 +211,11 @@ export function TopNav() {
               <ResumeLinks />
               <a
                 href={`mailto:${profile.email}`}
-                className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft"
+                className="font-mono text-label uppercase tracking-[0.2em] text-ink-soft"
               >
                 {profile.email}
               </a>
-              <div className="flex gap-5 font-mono text-[11px] uppercase tracking-[0.2em] text-ink/70">
+              <div className="flex gap-5 font-mono text-label uppercase tracking-[0.2em] text-ink/70">
                 <a href={profile.linkedin} target="_blank" rel="noreferrer noopener">
                   LinkedIn
                 </a>
