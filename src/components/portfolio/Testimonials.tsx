@@ -86,8 +86,8 @@ function useAutoAdvance(ref: React.RefObject<HTMLUListElement | null>) {
     if (!row) return;
     const phone = window.matchMedia("(max-width: 639px)");
     const calm = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const EVERY = 4500;
-    const RESUME_AFTER = 8000;
+    const EVERY = 2500;
+    const RESUME_AFTER = 4500;
     let visible = false;
     let pausedUntil = 0;
 
