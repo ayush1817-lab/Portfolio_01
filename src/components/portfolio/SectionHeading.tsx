@@ -6,6 +6,8 @@ type Props = {
   label: string; // "About"
   title: string; // "A designer who"
   italic?: string; // "builds."
+  /** Start the italic phrase on its own line so it never splits awkwardly. */
+  italicOnNewLine?: boolean;
   caption?: string;
   align?: "left" | "center";
   className?: string;
@@ -20,6 +22,7 @@ export function SectionHeading({
   label,
   title,
   italic,
+  italicOnNewLine,
   caption,
   align = "left",
   className,
@@ -43,7 +46,7 @@ export function SectionHeading({
         <SplitText text={title} inView stagger={0.05} />
         {italic ? (
           <>
-            {" "}
+            {italicOnNewLine ? <br /> : " "}
             <SplitText
               text={italic}
               inView

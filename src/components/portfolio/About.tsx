@@ -4,12 +4,13 @@ import { experience } from "@/content/portfolio";
 import { SectionHeading } from "./SectionHeading";
 import { EASE, Reveal } from "./motion";
 
-const journey = ["Mathematics", "Animation", "HCI", "Product design"];
+const journey = ["Mathematics", "3D animation", "HCI", "Product design"];
 
 const paragraphs = [
-  "I'm Ayush, a master's student in Human-Computer Interaction at University College Dublin. I design and build AI products, with a particular interest in how people understand, guide, and stay in control of automated systems.",
-  "My path into product design started with mathematics, moved through animation, and led me to HCI. That background shapes how I approach a product: thinking through its logic, paying attention to interaction, and making ideas tangible through working prototypes.",
-  "Many of my projects begin with something I've struggled with myself. My job search led to OptiApply; my design work led to FontPaste. I build, put ideas into use, and learn where the experience needs to change.",
+  "I'm Ayush, a Product Designer based in Dublin, currently pursuing my MSc in Human-Computer Interaction at UCD.",
+  "My journey from mathematics to 3D animation and product design has shaped how I think, combining logical problem-solving with creativity and an understanding of how people interact with technology.",
+  "I enjoy exploring problems, questioning assumptions, and turning ideas into working experiences. From educational games and internal business tools to my own digital products, I've learned that building, testing, and sometimes getting things wrong are all part of designing something useful.",
+  "I'm particularly interested in AI, automation, and creating experiences that make complex technology feel simple and human.",
 ];
 
 export function About() {
@@ -25,7 +26,13 @@ export function About() {
           {/* ── sticky heading + journey ────────────────────── */}
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
-              <SectionHeading index="03" label="About" title="A designer who" italic="builds." />
+              <SectionHeading
+                index="03"
+                label="About"
+                title="A designer who likes to"
+                italic="figure things out."
+                italicOnNewLine
+              />
 
               <Reveal delay={0.3} className="mt-10 lg:mt-12">
                 <p className="mb-5 font-mono text-micro uppercase tracking-[0.24em] text-ink-soft">
