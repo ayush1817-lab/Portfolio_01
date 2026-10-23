@@ -1,4 +1,6 @@
 import { TopNav } from "@/components/portfolio/TopNav";
+import { ChapterBar } from "../components/Layout";
+import { chapters } from "./content";
 import { Footer } from "@/components/portfolio/Footer";
 import {
   AtAGlance,
@@ -24,7 +26,7 @@ import { NextProjectCTA, Reflection } from "./components/closing";
  */
 export function ConsciousConnectionsCaseStudy() {
   return (
-    <div className="min-h-screen bg-cc-cream font-sans text-cc-forest antialiased">
+    <div className="case-scale min-h-screen bg-cc-cream font-sans text-cc-forest antialiased">
       <a
         href="#case-study"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-cc-forest focus:px-4 focus:py-3 focus:text-cc-cream"
@@ -32,6 +34,7 @@ export function ConsciousConnectionsCaseStudy() {
         Skip to case study
       </a>
       <TopNav />
+      <ChapterBar name="Conscious Connections" chapters={chapters} />
       <main id="case-study">
         <article>
           <Hero />

@@ -291,3 +291,36 @@ export const practice = {
   ],
   closing: "ReelPick didn't become a successful app. It made me a better product designer.",
 };
+
+/** "In 60 seconds": the project at a glance. Drawn only from the sections below. */
+export const summary = {
+  title: contribution.title,
+  intro: contribution.intro,
+  cells: [
+    {
+      k: "Problem",
+      v: "Groups browse for ages, then defer to one person. The friction was social, not informational.",
+    },
+    {
+      k: "Key decision",
+      v: "Separate preference from decision: everyone picks privately, and the group's likes reveal the winner.",
+    },
+    {
+      k: "Result",
+      v: "A four-person beta liked the mechanism but not installing an app for it, so I retired it.",
+    },
+  ],
+  items: contribution.items,
+};
+
+/** Chapter bar entries, in page order. Ids match the section ids. */
+export const chapters = [
+  { id: "problem", label: "Problem" },
+  { id: "hypothesis", label: "Hypothesis" },
+  { id: "journey", label: "Journey" },
+  { id: "decisions", label: "Decisions" },
+  { id: "engineering", label: "Engineering" },
+  { id: "verdict", label: "Beta verdict" },
+  { id: "decision", label: "The call" },
+  { id: "practice", label: "Practice" },
+];
