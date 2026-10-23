@@ -28,6 +28,24 @@ top of a token.
 | `text-label`   | Mono           | 11px            | Eyebrows, section indexes, field labels: uppercase + tracked                  |
 | `text-micro`   | Mono           | 10px            | Tags and chips: uppercase + tracked                                           |
 
+### Case-study scale
+
+Case studies are long reads, so they opt in to a tighter version of the same
+roles by adding `case-scale` to the page root. Nothing else changes: a section
+title is still `text-h2`, it just steps down inside a case study. This keeps
+more of the story on each screen and cuts scrolling, on phones most of all.
+
+| Token inside `case-scale` | Phone → desktop |
+| ------------------------- | --------------- |
+| `text-h1` (page title)    | 26 → 56px       |
+| `text-h2`                 | 22 → 44px       |
+| `text-h3`                 | 19 → 28px       |
+| `text-stat`               | 26 → 44px       |
+| `text-pull`               | 18 → 28px       |
+| `text-read`               | 15 → 18px       |
+
+All other tokens keep their site-wide sizes.
+
 Line heights come with each token; override with `leading-*` only for display
 type that needs to sit tighter.
 

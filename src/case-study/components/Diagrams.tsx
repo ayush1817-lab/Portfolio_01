@@ -21,7 +21,9 @@ function useStagger() {
 type Node = { k: string; v: string; warn?: boolean; human?: boolean };
 
 /**
- * A left-to-right process. Wraps to a vertical list below `md`.
+ * A left-to-right process. Below `md` it becomes a compact two-column grid
+ * (three on small tablets), read left to right, so a six-step flow takes a
+ * few rows instead of a full phone screen.
  * `warn` nodes mark friction; `human` nodes mark the candidate's decisions.
  */
 export function Flow({
@@ -29,6 +31,7 @@ export function Flow({
   label,
   dark,
   vertical,
+  grid,
   className,
 }: {
   nodes: Node[];
@@ -36,15 +39,18 @@ export function Flow({
   dark?: boolean;
   /** Always stack top-to-bottom (for narrow sidebars). */
   vertical?: boolean;
+  /** Stay a grid on wide screens too (for a half-width column). */
+  grid?: boolean;
   className?: string;
 }) {
   const s = useStagger();
+  const arrows = !vertical && !grid;
   return (
     <ol
       aria-label={label}
       className={cn(
-        "flex flex-col gap-2",
-        !vertical && "md:flex-row md:items-stretch md:gap-0",
+        vertical ? "flex flex-col gap-2" : "grid grid-cols-2 gap-2 sm:grid-cols-3",
+        arrows && "md:flex md:flex-row md:items-stretch md:gap-0",
         className,
       )}
     >
@@ -53,8 +59,8 @@ export function Flow({
           <motion.li
             {...s(i)}
             className={cn(
-              "flex flex-1 flex-col justify-center rounded-xl border px-4 py-3.5",
-              !vertical && "md:min-w-0",
+              "flex flex-1 flex-col justify-center rounded-xl border px-3 py-2.5 sm:px-4 sm:py-3.5",
+              arrows && "md:min-w-0",
               node.warn
                 ? "border-warn/60 bg-warn-soft"
                 : node.human
@@ -87,23 +93,19 @@ export function Flow({
               {node.v}
             </span>
           </motion.li>
-          {i < nodes.length - 1 ? (
+          {i < nodes.length - 1 && (vertical || arrows) ? (
             <li
               aria-hidden
-              className={cn("flex items-center justify-center", !vertical && "md:px-1.5")}
+              className={cn(
+                "items-center justify-center",
+                vertical ? "flex" : "hidden md:flex md:px-1.5",
+              )}
             >
-              <ArrowDown
-                className={cn(
-                  "h-4 w-4",
-                  !vertical && "md:hidden",
-                  dark ? "text-paper/50" : "text-ink/40",
-                )}
-              />
-              {!vertical ? (
-                <ArrowRight
-                  className={cn("hidden h-4 w-4 md:block", dark ? "text-paper/50" : "text-ink/40")}
-                />
-              ) : null}
+              {vertical ? (
+                <ArrowDown className={cn("h-4 w-4", dark ? "text-paper/50" : "text-ink/40")} />
+              ) : (
+                <ArrowRight className={cn("h-4 w-4", dark ? "text-paper/50" : "text-ink/40")} />
+              )}
             </li>
           ) : null}
         </Fragment>
@@ -182,7 +184,7 @@ export function StatFunnel({
     <ol
       aria-label={label}
       className={cn(
-        "grid gap-9 md:gap-5",
+        "grid grid-cols-2 gap-x-4 gap-y-6 md:gap-5",
         stages.length === 3 ? "md:grid-cols-3" : "md:grid-cols-4",
         className,
       )}
@@ -191,7 +193,7 @@ export function StatFunnel({
         const fill = st.human ? "bg-cobalt" : i === 0 ? "bg-ink" : "bg-ink/60";
         return (
           <motion.li key={`${st.label}-${i}`} {...s(i)} className="flex flex-col">
-            <div aria-hidden className="mb-5 hidden h-44 items-end md:flex">
+            <div aria-hidden className="mb-4 hidden h-24 items-end md:flex">
               <div className={cn("w-full rounded-md", fill)} style={{ height: `${size[i]}%` }} />
             </div>
             <p
@@ -209,7 +211,7 @@ export function StatFunnel({
               <div className={cn("h-full rounded-full", fill)} style={{ width: `${size[i]}%` }} />
             </div>
             {st.note ? (
-              <p className="mt-3 text-small leading-snug text-ink-soft">{st.note}</p>
+              <p className="mt-2 text-small leading-snug text-ink-soft">{st.note}</p>
             ) : null}
           </motion.li>
         );

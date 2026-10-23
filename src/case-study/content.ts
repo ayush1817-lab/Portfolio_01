@@ -808,3 +808,35 @@ export const reflection = {
     "I ended up asking which parts of job searching should AI handle and which decisions should remain human?",
   ],
 };
+
+/** "In 60 seconds": the project at a glance. Drawn only from the sections below. */
+export const summary = {
+  title: contribution.title,
+  intro: contribution.intro,
+  cells: [
+    {
+      k: "Problem",
+      v: "Candidates repeat the same find, assess, tailor, apply and track loop dozens of times.",
+    },
+    {
+      k: "Key decision",
+      v: "AI proposes, the candidate approves. Nothing is exported until they sign off.",
+    },
+    {
+      k: "Result",
+      v: "A live product with 12 early users. Hunt Mode narrowed 1,963 postings to 1 match.",
+    },
+  ],
+  items: contribution.items,
+};
+
+/** Chapter bar entries, in page order. Ids match the section ids. */
+export const chapters = [
+  { id: "problem", label: "Problem" },
+  { id: "analyzer", label: "Analyzer" },
+  { id: "optimizer", label: "Optimizer" },
+  { id: "hunt", label: "Hunt Mode" },
+  { id: "experiment", label: "Experiment" },
+  { id: "today", label: "Outcome" },
+  { id: "reflection", label: "Reflection" },
+];

@@ -1,5 +1,5 @@
-import { useEffect, type CSSProperties } from "react";
-import { Maximize2 } from "lucide-react";
+import { useEffect, useState, type CSSProperties } from "react";
+import { Maximize2, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { assetUrl, isDev } from "../assets";
 import { crops, shots, type Crop, type ShotId } from "../content";
@@ -31,9 +31,13 @@ type Props = {
 
 /**
  * A real product screenshot in a thin browser frame. Crops are CSS-only, so
- * the lightbox always shows the untouched original. Annotation pins sit in
- * the gutters outside the image with a thin leader line; the same notes are
- * always listed underneath, so pins are never the only way to read them.
+ * the lightbox always shows the untouched original.
+ *
+ * Wide screens: numbered pins sit in the gutters with a leader line; click or
+ * hover a pin to read its note. Phones: the frame shows a short crop from the
+ * top with a "Tap to expand" label, and the lightbox shows the full screen.
+ * The same notes are always listed under a "notes on this screen" toggle, so
+ * pins are never the only way to read them.
  */
 export function ProductFigure({
   id,
@@ -51,6 +55,8 @@ export function ProductFigure({
   const src = assetUrl(shot.file);
   const lb = useLightbox();
   const lbId = instance ?? id;
+  const [openPin, setOpenPin] = useState<number | null>(null);
+  const [hoverPin, setHoverPin] = useState<number | null>(null);
 
   useEffect(() => {
     if (!src) return;
@@ -98,12 +104,14 @@ export function ProductFigure({
       }
     : { width: "100%", height: "auto" };
 
+  const dark = tone === "dark";
+
   return (
     <figure
       className={cn("@container mx-auto w-full", className)}
       style={{ maxWidth: hasPins ? width + 96 : width }}
     >
-      <div className={cn(hasPins && "lg:px-12")}>
+      <div className={cn("relative", hasPins && "lg:px-12")}>
         <button
           type="button"
           data-lightbox-id={lbId}
@@ -122,8 +130,9 @@ export function ProductFigure({
               <span className="h-2 w-2 rounded-full bg-ink/15" />
               <span className="h-2 w-2 rounded-full bg-ink/15" />
             </span>
+            {/* phones: a short crop from the top; the lightbox has the full screen */}
             <span
-              className="relative block overflow-hidden bg-paper"
+              className="relative block w-full overflow-hidden bg-paper max-sm:max-h-40"
               style={aspect ? { aspectRatio: String(aspect) } : undefined}
             >
               <img
@@ -137,87 +146,134 @@ export function ProductFigure({
                 draggable={false}
                 style={imgStyle}
               />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-paper to-transparent sm:hidden"
+              />
             </span>
           </span>
 
-          {/* expand affordance */}
+          {/* expand affordance: always visible on phones, on hover elsewhere */}
           <span
             aria-hidden
-            className="absolute right-3 top-10 grid h-8 w-8 place-items-center rounded-full border border-line bg-paper text-ink opacity-0 shadow-soft transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+            className="absolute bottom-2.5 right-2.5 rounded-full border border-line bg-paper px-2.5 py-1 font-mono text-micro uppercase tracking-[0.12em] text-ink shadow-soft sm:hidden"
+          >
+            Tap to expand
+          </span>
+          <span
+            aria-hidden
+            className="absolute right-3 top-10 hidden h-8 w-8 place-items-center rounded-full border border-line bg-paper text-ink opacity-0 shadow-soft transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 sm:grid"
           >
             <Maximize2 className="h-3.5 w-3.5" />
           </span>
+        </button>
 
-          {/* desktop pins in the gutters, leader line to the target */}
-          {hasPins ? (
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 top-7 hidden lg:block"
-            >
-              {pins.map((a) => {
-                const left = a.side ? a.side === "left" : a.px < 50;
-                return (
-                  <span key={a.n} className="absolute inset-x-0" style={{ top: `${a.py}%` }}>
-                    <span
-                      className="absolute h-px -translate-y-1/2 bg-ink/70"
-                      style={
-                        left
-                          ? { left: "-1.75rem", width: `calc(${a.px}% + 1.75rem)` }
-                          : { right: "-1.75rem", width: `calc(${100 - a.px}% + 1.75rem)` }
-                      }
-                    />
-                    <span
-                      className="absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink bg-sun"
-                      style={{ left: `${a.px}%` }}
-                    />
+        {/* wide screens: pins in the gutters, leader line to the target */}
+        {hasPins ? (
+          <div className="pointer-events-none absolute bottom-0 top-7 hidden lg:left-12 lg:right-12 lg:block">
+            {pins.map((a) => {
+              const left = a.side ? a.side === "left" : a.px < 50;
+              const open = openPin === a.n || hoverPin === a.n;
+              return (
+                <span key={a.n} className="absolute inset-x-0" style={{ top: `${a.py}%` }}>
+                  <span
+                    aria-hidden
+                    className="absolute h-px -translate-y-1/2 bg-ink/70"
+                    style={
+                      left
+                        ? { left: "-1.75rem", width: `calc(${a.px}% + 1.75rem)` }
+                        : { right: "-1.75rem", width: `calc(${100 - a.px}% + 1.75rem)` }
+                    }
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink bg-sun"
+                    style={{ left: `${a.px}%` }}
+                  />
+                  <button
+                    type="button"
+                    aria-label={`Note ${a.n}: ${a.label}`}
+                    aria-expanded={openPin === a.n}
+                    onClick={() => setOpenPin(openPin === a.n ? null : a.n)}
+                    onMouseEnter={() => setHoverPin(a.n)}
+                    onMouseLeave={() => setHoverPin(null)}
+                    onKeyDown={(e) => e.key === "Escape" && setOpenPin(null)}
+                    className="pointer-events-auto absolute -translate-y-1/2 cursor-pointer rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cobalt"
+                    style={left ? { left: "-3rem" } : { right: "-3rem" }}
+                  >
                     <Pin
                       n={a.n}
-                      className="absolute -translate-y-1/2"
-                      style={left ? { left: "-3rem" } : { right: "-3rem" }}
+                      className={cn(
+                        "transition-colors",
+                        open ? "bg-ink text-paper" : "hover:bg-sun",
+                      )}
                     />
-                  </span>
-                );
-              })}
-            </span>
-          ) : null}
-        </button>
+                  </button>
+                  {open ? (
+                    <span
+                      aria-hidden
+                      className="absolute z-20 w-60 -translate-y-1/2 rounded-xl bg-ink px-3.5 py-2.5 text-small leading-snug text-paper shadow-soft"
+                      style={left ? { left: "0.5rem" } : { right: "0.5rem" }}
+                    >
+                      {a.label}
+                    </span>
+                  ) : null}
+                </span>
+              );
+            })}
+          </div>
+        ) : null}
       </div>
 
       {!bare ? (
-        <figcaption className={cn("mt-5", hasPins && "lg:px-12")}>
+        <figcaption className={cn("mt-3", hasPins && "lg:px-12")}>
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <span
               className={cn(
                 "font-mono text-label uppercase tracking-[0.16em]",
-                tone === "dark" ? "text-sun" : "text-cobalt",
+                dark ? "text-sun" : "text-cobalt",
               )}
             >
               {shot.title}
             </span>
             <span
-              className={cn(
-                "text-small leading-relaxed",
-                tone === "dark" ? "text-paper/75" : "text-ink-soft",
-              )}
+              className={cn("text-small leading-relaxed", dark ? "text-paper/75" : "text-ink-soft")}
             >
               {shot.caption}
             </span>
           </div>
           {notes.length ? (
-            <ol className="mt-4 grid gap-x-8 gap-y-2.5 @xl:grid-cols-2 @4xl:grid-cols-3">
-              {notes.map((a) => (
-                <li
-                  key={a.n}
+            <details className="group mt-2">
+              <summary
+                className={cn(
+                  "flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 border-t text-small font-medium [&::-webkit-details-marker]:hidden",
+                  dark ? "border-paper/15 text-paper" : "border-line text-ink",
+                )}
+              >
+                {notes.length} notes on this screen
+                <Plus
+                  aria-hidden
                   className={cn(
-                    "flex gap-2.5 text-small leading-snug",
-                    tone === "dark" ? "text-paper/85" : "text-ink",
+                    "h-4 w-4 transition-transform group-open:rotate-45",
+                    dark ? "text-paper/70" : "text-ink-soft",
                   )}
-                >
-                  <Pin n={a.n} size="sm" />
-                  <span className="pt-px">{a.label}</span>
-                </li>
-              ))}
-            </ol>
+                />
+              </summary>
+              <ol className="mt-1 grid gap-x-8 gap-y-2.5 pb-2 @xl:grid-cols-2 @4xl:grid-cols-3">
+                {notes.map((a) => (
+                  <li
+                    key={a.n}
+                    className={cn(
+                      "flex gap-2.5 text-small leading-snug",
+                      dark ? "text-paper/85" : "text-ink",
+                    )}
+                  >
+                    <Pin n={a.n} size="sm" />
+                    <span className="pt-px">{a.label}</span>
+                  </li>
+                ))}
+              </ol>
+            </details>
           ) : null}
         </figcaption>
       ) : null}
