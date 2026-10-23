@@ -213,6 +213,26 @@
   --sidebar-ring: oklch(0.49 0.22 264);
 }
 
+/*
+ * Case-study scale. Long-form case studies opt in with `case-scale` on their
+ * root. It keeps the same roles (text-h1, text-h2…) but steps them down, so a
+ * reader sees more of the story per screen. Values: 390px phone → 1440px.
+ */
+.case-scale {
+  --text-h1: clamp(1.625rem, 0.9rem + 3vw, 3.5rem); /* 26 → 56: page title */
+  --text-h1--line-height: 1.05;
+  --text-h2: clamp(1.375rem, 0.8rem + 2.2vw, 3rem); /* 22 → 44: section titles */
+  --text-h2--line-height: 1.08;
+  --text-h3: clamp(1.1875rem, 0.95rem + 0.95vw, 1.75rem); /* 19 → 28: subsections */
+  --text-h3--line-height: 1.15;
+  --text-stat: clamp(1.625rem, 1rem + 2.2vw, 2.75rem); /* 26 → 44: numbers */
+  --text-stat--line-height: 1;
+  --text-pull: clamp(1.125rem, 0.85rem + 1.1vw, 1.75rem); /* 18 → 28: pull quotes */
+  --text-pull--line-height: 1.25;
+  --text-read: clamp(0.9375rem, 0.8rem + 0.55vw, 1.125rem); /* 15 → 18: reading copy */
+  --text-read--line-height: 1.6;
+}
+
 @layer base {
   * {
     border-color: var(--color-line);
