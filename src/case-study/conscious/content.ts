@@ -687,3 +687,15 @@ export const reflection = {
     "Is Buddy Connect consent clear?",
   ],
 };
+
+/** Chapter bar entries, in page order. Ids match the section ids. */
+export const chapters = [
+  { id: "research", label: "Research" },
+  { id: "turning-point", label: "Turning point" },
+  { id: "ideation", label: "Ideation" },
+  { id: "community-box", label: "Community Box" },
+  { id: "second-doorway", label: "Second way in" },
+  { id: "buddy-connect", label: "Buddy Connect" },
+  { id: "architecture", label: "Architecture" },
+  { id: "reflection", label: "Reflection" },
+];

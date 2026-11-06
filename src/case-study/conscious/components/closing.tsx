@@ -15,39 +15,43 @@ export function Reflection() {
   const d = C.reflection;
   return (
     <SectionShell id="reflection" label="Reflection" tone="forest" pause>
-      <ChapterEyebrow n={8} name={d.eyebrow} labels={[d.label]} onDark />
-      <MotionReveal className="mt-6">
-        <StoryHeading size="xl" className="max-w-[18ch]">
-          {d.title}
-        </StoryHeading>
-      </MotionReveal>
-      <ReadingColumn className="mt-8 text-cc-cream/90">
-        {d.body.map((p) => (
-          <p key={p}>{p}</p>
-        ))}
-      </ReadingColumn>
-
-      <div className="mt-10 grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
-        <MotionReveal className="rounded-3xl border border-cc-cream/25 p-6 sm:p-8">
-          <p className="font-mono text-label uppercase tracking-[0.14em] text-cc-sage">Before</p>
-          <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-h3 leading-tight text-cc-cream/80">
-            {d.before}
-          </p>
-        </MotionReveal>
-        <div className="flex items-center justify-center" aria-hidden>
-          <ArrowRight className="h-6 w-6 rotate-90 text-cc-lilac md:rotate-0" />
+      <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
+        <div className="lg:col-span-7">
+          <ChapterEyebrow n={8} name={d.eyebrow} labels={[d.label]} onDark />
+          <MotionReveal className="mt-6">
+            <StoryHeading size="xl" className="max-w-[18ch]">
+              {d.title}
+            </StoryHeading>
+          </MotionReveal>
+          <ReadingColumn className="mt-8 text-cc-cream/90">
+            {d.body.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </ReadingColumn>
         </div>
-        <MotionReveal delay={0.15} className="rounded-3xl bg-cc-cream p-6 text-cc-forest sm:p-8">
-          <p className="font-mono text-label uppercase tracking-[0.14em] text-cc-lilac-deep">
-            After
-          </p>
-          <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-h3 leading-tight">
-            {d.after}
-          </p>
-        </MotionReveal>
+        {/* the reframe, before and after, beside the reflection */}
+        <div className="grid gap-3 lg:col-span-5 lg:pt-10">
+          <MotionReveal className="rounded-3xl border border-cc-cream/25 p-5 sm:p-7">
+            <p className="font-mono text-label uppercase tracking-[0.14em] text-cc-sage">Before</p>
+            <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-h3 leading-tight text-cc-cream/80">
+              {d.before}
+            </p>
+          </MotionReveal>
+          <div className="flex items-center justify-center" aria-hidden>
+            <ArrowRight className="h-6 w-6 rotate-90 text-cc-lilac" />
+          </div>
+          <MotionReveal delay={0.15} className="rounded-3xl bg-cc-cream p-5 text-cc-forest sm:p-7">
+            <p className="font-mono text-label uppercase tracking-[0.14em] text-cc-lilac-deep">
+              After
+            </p>
+            <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-h3 leading-tight">
+              {d.after}
+            </p>
+          </MotionReveal>
+        </div>
       </div>
 
-      <div className="mt-10 max-w-read">
+      <div className="mt-8 max-w-read">
         <h3 className="font-display font-semibold tracking-[-0.02em] text-h3">{d.nextTitle}</h3>
         <p className="mt-1 text-small text-cc-sage">{d.nextNote}</p>
         <ul className="mt-5 space-y-2">

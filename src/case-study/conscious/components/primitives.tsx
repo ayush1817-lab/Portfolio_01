@@ -71,8 +71,8 @@ export function SectionShell({
       id={id}
       aria-label={label}
       className={cn(
-        "relative scroll-mt-24 px-5 sm:px-8 lg:px-10",
-        pause ? "py-[clamp(3.5rem,8vw,7.5rem)]" : "py-[clamp(3rem,6vw,6rem)]",
+        "relative scroll-mt-20 px-5 sm:px-8 lg:px-10",
+        pause ? "py-12 sm:py-16 lg:py-20" : "py-10 sm:py-14 lg:py-18",
         toneClass[tone],
         className,
       )}
@@ -201,7 +201,7 @@ export function ReadingColumn({
   children: ReactNode;
   className?: string;
 }) {
-  return <div className={cn("max-w-read space-y-5 text-read", className)}>{children}</div>;
+  return <div className={cn("max-w-read space-y-4 text-read", className)}>{children}</div>;
 }
 
 /** A first-person ownership callout (MY ROLE, DECISION…). */
@@ -285,8 +285,9 @@ export function Figure({
   if (!src) return null;
   return (
     <figure className={cn("w-full", className)}>
+      {/* phones: photos without overlays get a shorter frame, cropped to fit */}
       <div
-        className={cn("relative w-full", frameClassName)}
+        className={cn("relative w-full", !children && "max-sm:max-h-56", frameClassName)}
         style={{ aspectRatio: String(asset.aspectRatio) }}
       >
         {

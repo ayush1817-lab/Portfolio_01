@@ -39,7 +39,7 @@ const sketches = Object.fromEntries(
 
 export function ProjectMeta() {
   return (
-    <dl className="grid gap-x-8 gap-y-6 border-t border-cc-forest/20 pt-8 sm:grid-cols-2 lg:grid-cols-4">
+    <dl className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-cc-forest/20 pt-5 lg:grid-cols-4">
       {C.hero.meta.map((m) => (
         <div key={m.k}>
           <dt className="font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft">
@@ -69,7 +69,7 @@ export function Hero() {
         <span className="block font-mono text-label uppercase tracking-[0.2em] text-cc-sage-deep">
           {d.title}
         </span>
-        <span className="mt-3 block max-w-lead font-display text-h1 font-semibold leading-[1.02] tracking-[-0.035em] text-balance">
+        <span className="mt-3 block max-w-lead font-display text-h1 font-semibold tracking-[-0.035em] text-balance">
           {d.headline}
         </span>
       </h1>
@@ -79,7 +79,7 @@ export function Hero() {
   return (
     <header
       id="top"
-      className="bg-cc-cream px-5 pb-12 pt-24 text-cc-forest sm:px-8 sm:pt-32 lg:px-10 lg:pb-16"
+      className="bg-cc-cream px-5 pb-10 pt-24 text-cc-forest sm:px-8 sm:pt-28 lg:px-10 lg:pb-14 lg:pt-32"
     >
       <div className="mx-auto max-w-page">
         <a
@@ -94,7 +94,7 @@ export function Hero() {
           <>
             <div className="mt-6">{copy}</div>
             {/* Composition: Community Box, desktop website, Buddy Connect on mobile */}
-            <MotionReveal delay={0.1} className="mt-10 lg:mt-12">
+            <MotionReveal delay={0.1} className="mt-8 lg:mt-8">
               <div className="grid grid-cols-6 gap-4 lg:grid-cols-12 lg:gap-6">
                 <Figure
                   assetKey="heroBox"
@@ -133,7 +133,7 @@ export function Hero() {
           </div>
         )}
 
-        <div className="mt-10 lg:mt-12">
+        <div className="mt-8 lg:mt-8">
           <ProjectMeta />
         </div>
       </div>
@@ -143,18 +143,13 @@ export function Hero() {
 
 export function AtAGlance() {
   return (
-    <SectionShell
-      id="glance"
-      label="Project at a glance"
-      tone="paper"
-      className="!py-[clamp(3.5rem,6vw,5.5rem)]"
-    >
+    <SectionShell id="glance" label="Project at a glance" tone="paper" className="!pb-6 sm:!pb-8">
       <h2 className="font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft">
         Project at a glance
       </h2>
       <dl className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-cc-forest/15 bg-cc-forest/15 md:grid-cols-3">
         {C.glance.map((g, i) => (
-          <MotionReveal key={g.k} delay={i * 0.06} className="bg-paper p-6 sm:p-8">
+          <MotionReveal key={g.k} delay={i * 0.06} className="bg-paper p-4 sm:p-6">
             <dt className="font-mono text-label uppercase tracking-[0.16em] text-cc-sage-deep">
               {g.k}
             </dt>
@@ -174,13 +169,8 @@ export function AtAGlance() {
 export function MyContribution() {
   const d = C.contribution;
   return (
-    <SectionShell
-      id="contribution"
-      label="My contribution"
-      tone="paper"
-      className="!pb-[clamp(3.5rem,6vw,5.5rem)] !pt-0"
-    >
-      <div className="grid gap-8 border-t border-cc-forest/15 pt-[clamp(2.5rem,5vw,4rem)] lg:grid-cols-12 lg:gap-12">
+    <SectionShell id="contribution" label="My contribution" tone="paper" className="!pt-0">
+      <div className="grid gap-6 border-t border-cc-forest/15 pt-6 sm:pt-8 lg:grid-cols-12 lg:gap-12">
         <MotionReveal className="lg:col-span-4">
           <div className="flex flex-wrap items-center gap-3">
             <h2 className="font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft">
@@ -191,18 +181,21 @@ export function MyContribution() {
           <StoryHeading as="h3" size="md" className="mt-4">
             {d.title}
           </StoryHeading>
-          <p className="mt-4 text-read text-cc-forest-soft">{d.intro}</p>
+          <p className="mt-3 text-read text-cc-forest-soft">{d.intro}</p>
         </MotionReveal>
-        <ol className="grid gap-px overflow-hidden rounded-2xl border border-cc-forest/15 bg-cc-forest/15 sm:grid-cols-2 lg:col-span-8">
+        {/* phones: area titles only, in two columns; descriptions from sm up */}
+        <ol className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-cc-forest/15 bg-cc-forest/15 lg:col-span-8">
           {d.items.map((it, i) => (
-            <MotionReveal key={it.k} as="li" delay={i * 0.06} className="bg-paper p-6 sm:p-7">
-              <p className="font-mono text-label text-cc-coral-deep">
+            <MotionReveal key={it.k} as="li" delay={i * 0.06} className="bg-paper p-3.5 sm:p-6">
+              <p className="hidden font-mono text-label text-cc-coral-deep sm:block">
                 {String(i + 1).padStart(2, "0")}
               </p>
-              <p className="mt-3 font-display text-h4 font-semibold leading-tight tracking-[-0.02em] text-cc-forest">
+              <p className="font-display text-h4 font-semibold leading-tight tracking-[-0.02em] text-cc-forest sm:mt-3">
                 {it.k}
               </p>
-              <p className="mt-2 text-small leading-relaxed text-cc-forest-soft">{it.v}</p>
+              <p className="mt-2 hidden text-small leading-relaxed text-cc-forest-soft sm:block">
+                {it.v}
+              </p>
             </MotionReveal>
           ))}
         </ol>
@@ -234,9 +227,9 @@ export function ResearchTensions() {
         ))}
       </ReadingColumn>
 
-      <Figure assetKey="context" className="mt-10" />
+      <Figure assetKey="context" className="mt-8" />
 
-      <h3 className="mt-10 font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft">
+      <h3 className="mt-8 font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft">
         {d.tensionsTitle}
       </h3>
       <ol className="mt-4 grid gap-3 md:grid-cols-3">
@@ -253,11 +246,11 @@ export function ResearchTensions() {
         ))}
       </ol>
 
-      <OwnershipCallout label="MY ROLE" className="mt-10">
+      <OwnershipCallout label="MY ROLE" className="mt-8">
         {d.myRole}
       </OwnershipCallout>
 
-      <div className="mt-10">
+      <div className="mt-8">
         <h3 className="font-display text-h4 font-semibold tracking-[-0.02em]">
           {d.readinessTitle}
         </h3>
@@ -277,7 +270,7 @@ export function ResearchTensions() {
       </div>
 
       {RESEARCH_SLOTS.some(hasAsset) ? (
-        <div className="mt-10">
+        <div className="mt-8">
           <AccessibleDisclosure summary={d.disclosure} note={d.disclosureNote}>
             <div className="grid gap-6 sm:grid-cols-2">
               <Figure assetKey="researchGuide" compact />
@@ -376,29 +369,33 @@ export function PrivacyTurningPoint() {
   const d = C.turningPoint;
   return (
     <SectionShell id="turning-point" label="The privacy turning point" tone="forest" pause>
-      <ChapterEyebrow n={2} name={d.eyebrow} labels={[d.label]} onDark />
-      <MotionReveal className="mt-6">
-        <StoryHeading>{d.title}</StoryHeading>
-      </MotionReveal>
-      <ReadingColumn className="mt-6 text-cc-cream/85">
-        {d.body.map((p) => (
-          <p key={p}>{p}</p>
-        ))}
-      </ReadingColumn>
+      <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
+        <div className="lg:col-span-6">
+          <ChapterEyebrow n={2} name={d.eyebrow} labels={[d.label]} onDark />
+          <MotionReveal className="mt-6">
+            <StoryHeading>{d.title}</StoryHeading>
+          </MotionReveal>
+          <ReadingColumn className="mt-6 text-cc-cream/85">
+            {d.body.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </ReadingColumn>
+        </div>
+        <div className="lg:col-span-6 lg:pt-10">
+          <MotionReveal>
+            <p className="max-w-[24ch] font-display text-h2 font-semibold tracking-[-0.035em] text-balance text-cc-cream">
+              {d.question}
+            </p>
+          </MotionReveal>
+          <OwnershipCallout label="MY ROLE" onDark className="mt-8">
+            {d.myRole}
+          </OwnershipCallout>
+        </div>
+      </div>
 
-      <Figure assetKey="earlyConcepts" className="mt-12 max-w-[980px]" onDark />
+      <Figure assetKey="earlyConcepts" className="mt-8 max-w-[980px]" onDark />
 
-      <MotionReveal className="mt-12">
-        <p className="max-w-[24ch] font-display text-h2 font-semibold leading-[1.06] tracking-[-0.035em] text-balance text-cc-cream">
-          {d.question}
-        </p>
-      </MotionReveal>
-
-      <OwnershipCallout label="MY ROLE" onDark className="mt-8">
-        {d.myRole}
-      </OwnershipCallout>
-
-      <div className="mt-10 grid gap-4 md:grid-cols-2" aria-label="How the logic changed">
+      <div className="mt-8 grid gap-4 md:grid-cols-2" aria-label="How the logic changed">
         <Chain title={d.initial.title} steps={d.initial.steps} variant="initial" />
         <Chain title={d.reframed.title} steps={d.reframed.steps} variant="reframed" />
       </div>
@@ -407,7 +404,7 @@ export function PrivacyTurningPoint() {
         from safety to control, confidence and participation.
       </p>
 
-      <OwnershipCallout label="DECISION" onDark className="mt-10">
+      <OwnershipCallout label="DECISION" onDark className="mt-8">
         {d.decision}
       </OwnershipCallout>
     </SectionShell>
@@ -568,15 +565,15 @@ export function Ideation() {
       <OwnershipCallout label="MY ROLE" className="mt-6">
         {d.myRole}
       </OwnershipCallout>
-      <div className="mt-10">
+      <div className="mt-8">
         <DesignPrinciples />
       </div>
-      <div className="mt-10">
+      <div className="mt-8">
         <IdeationRail />
       </div>
       <p className="mt-6 max-w-read text-read text-cc-forest">{d.boxNote}</p>
-      <Figure assetKey="ideationBoard" className="mt-10 max-w-[980px]" />
-      <OwnershipCallout label="DECISION" className="mt-10">
+      <Figure assetKey="ideationBoard" className="mt-8 max-w-[980px]" />
+      <OwnershipCallout label="DECISION" className="mt-8">
         {d.decision}
       </OwnershipCallout>
     </SectionShell>

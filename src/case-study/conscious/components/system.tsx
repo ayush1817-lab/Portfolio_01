@@ -56,7 +56,7 @@ export function CommunityBoxReveal() {
         <Figure assetKey="boxHero" className="mx-auto max-w-[520px] lg:col-span-5 lg:mr-0" />
       </div>
 
-      <div className="mt-12">
+      <div className="mt-8">
         <h3 className="font-display text-h3 font-semibold tracking-[-0.02em]">{d.insideTitle}</h3>
         <p className="mt-1 text-small text-cc-forest-soft">{d.insideNote}</p>
         {/* Phones: one swipeable row. Larger screens: a grid. */}
@@ -128,13 +128,13 @@ export function SecondDoorway() {
         ))}
       </ul>
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-2">
+      <div className="mt-8 grid gap-6 lg:grid-cols-2">
         <OwnershipCallout label="DECISION">{c.decision}</OwnershipCallout>
         <OwnershipCallout label="MY ROLE">{c.myRole}</OwnershipCallout>
       </div>
 
       {/* The website: four routes into one service */}
-      <div className="mt-14 rounded-[28px] bg-cc-lilac-soft p-5 sm:p-8">
+      <div className="mt-8 rounded-[28px] bg-cc-lilac-soft p-5 sm:p-8">
         <div className="flex flex-wrap items-center gap-3">
           <span className="grid h-10 w-10 place-items-center rounded-xl bg-paper text-cc-lilac-deep">
             <Globe className="h-5 w-5" aria-hidden />
@@ -144,7 +144,7 @@ export function SecondDoorway() {
         <h3 className="mt-4 font-display text-h3 font-semibold tracking-[-0.03em]">{w.title}</h3>
         <p className="mt-2 max-w-read text-read text-cc-forest-soft">{w.body[0]}</p>
         <ol
-          className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4"
           aria-label="Four routes into the service"
         >
           {w.routes.map((r, i) => (
@@ -163,7 +163,7 @@ export function SecondDoorway() {
       </div>
 
       {/* The ecosystem: the same journey, many touchpoints */}
-      <div className="mt-14">
+      <div className="mt-8">
         <div className="flex flex-wrap items-center gap-3">
           <OwnershipLabel label={e.label} />
         </div>
@@ -171,7 +171,7 @@ export function SecondDoorway() {
           {e.title[0]} <span className="text-cc-sage-deep">{e.title[1]}</span>
         </h3>
         <ol
-          className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5"
+          className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-5"
           aria-label="Service journey stages and their touchpoints"
         >
           {e.stages.map((st, i) => (
@@ -179,7 +179,7 @@ export function SecondDoorway() {
               key={st.k}
               className={cn(
                 "relative rounded-2xl bg-paper p-4 ring-1 ring-cc-forest/15",
-                i === e.stages.length - 1 && "sm:col-span-2 lg:col-span-1",
+                i === e.stages.length - 1 && "col-span-2 lg:col-span-1",
               )}
             >
               <p className="font-mono text-label text-cc-sage-deep">Stage {i + 1}</p>
@@ -356,9 +356,9 @@ export function BuddyMatchingLogic() {
         </div>
       </div>
 
-      <Figure assetKey="buddyFlow" className="mt-10 max-w-[980px]" />
+      <Figure assetKey="buddyFlow" className="mt-8 max-w-[980px]" />
 
-      <MotionReveal className="mt-10 max-w-read">
+      <MotionReveal className="mt-8 max-w-read">
         <p className="font-display text-pull font-semibold tracking-[-0.02em] text-balance">
           {d.keyLine}
         </p>
