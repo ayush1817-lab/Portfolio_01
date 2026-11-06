@@ -50,9 +50,9 @@ export function About() {
             </svg>
             <span
               aria-hidden
-              className="pointer-events-none absolute -left-4 top-[45%] z-0 h-24 w-24 rounded-2xl border-2 border-cobalt max-sm:hidden"
+              className="pointer-events-none absolute left-0 top-0 z-0 aspect-square w-full max-w-[32rem] -translate-x-4 translate-y-4 rounded-full border-2 border-cobalt max-sm:max-w-[20rem]"
             />
-            <div className="relative z-10 aspect-[4/5] shadow-frame max-h-[38rem] overflow-hidden rounded-3xl border border-line bg-paper-3 max-sm:max-w-[20rem]">
+            <div className="relative z-10 aspect-square w-full max-w-[32rem] overflow-hidden rounded-full border border-line bg-paper-3 shadow-frame max-sm:max-w-[20rem]">
               <img
                 src={photoAsset}
                 alt="Portrait of Ayush Ramawat"
