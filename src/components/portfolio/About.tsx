@@ -2,6 +2,7 @@ import photoAsset from "@/assets/ayush-photo.jpeg.png";
 import { experience, stack } from "@/content/portfolio";
 import { SectionHeading } from "./SectionHeading";
 import { ResumeLinks } from "./ResumeLinks";
+import { InView, PathGlyph, PathLine } from "./art";
 
 const journey = ["Mathematics", "3D animation", "HCI", "Product design"];
 
@@ -28,8 +29,30 @@ export function About() {
       <div className="mx-auto grid max-w-page grid-cols-1 gap-x-8 gap-y-12 px-5 sm:px-8 lg:grid-cols-12 lg:px-10">
         {/* ── portrait and facts ──────────────────────────── */}
         <div className="lg:col-span-5">
-          <figure className="lg:sticky lg:top-28">
-            <div className="aspect-[4/5] max-h-[38rem] overflow-hidden rounded-3xl border border-line bg-paper-3 max-sm:max-w-[20rem]">
+          <figure className="relative lg:sticky lg:top-28">
+            {/* a sun behind the portrait and a registration square in front */}
+            <svg
+              aria-hidden
+              viewBox="0 0 100 100"
+              className="pointer-events-none absolute -right-6 -top-8 z-0 h-32 w-32 sm:h-40 sm:w-40 max-sm:right-auto max-sm:left-56"
+            >
+              <circle cx="50" cy="50" r="38" className="fill-sun" />
+              <circle
+                cx="50"
+                cy="50"
+                r="48"
+                fill="none"
+                className="stroke-cobalt"
+                strokeOpacity="0.4"
+                strokeWidth="1"
+                strokeDasharray="2 5"
+              />
+            </svg>
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -left-4 top-[45%] z-0 h-24 w-24 rounded-2xl border-2 border-cobalt max-sm:hidden"
+            />
+            <div className="relative z-10 aspect-[4/5] shadow-frame max-h-[38rem] overflow-hidden rounded-3xl border border-line bg-paper-3 max-sm:max-w-[20rem]">
               <img
                 src={photoAsset}
                 alt="Portrait of Ayush Ramawat"
@@ -67,24 +90,28 @@ export function About() {
 
           <div>
             <h3 className="text-label text-ink-soft">The path so far</h3>
-            <ol className="mt-4 grid grid-cols-2 border-t border-line sm:grid-cols-4">
-              {journey.map((step, i) => {
-                const last = i === journey.length - 1;
-                return (
-                  <li
-                    key={step}
-                    className="border-b border-line py-4 pr-4 sm:border-b-0 sm:border-l sm:py-5 sm:pl-4 sm:first:border-l-0 sm:first:pl-0"
-                  >
-                    <span className="block text-small tabular-nums text-ink-faint">{i + 1}</span>
-                    <span
-                      className={`mt-1 block font-display text-h4 font-semibold tracking-[-0.02em] ${last ? "text-cobalt" : "text-ink"}`}
-                    >
-                      {step}
-                    </span>
-                  </li>
-                );
-              })}
-            </ol>
+            <div className="relative mt-5">
+              {/* the dashed line that runs through the four steps */}
+              <PathLine className="inset-x-8 top-6 hidden h-10 sm:block sm:top-8" />
+              <ol className="relative grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4">
+                {journey.map((step, i) => {
+                  const last = i === journey.length - 1;
+                  return (
+                    <InView as="li" key={step} i={i} className="flex flex-col items-start gap-3">
+                      <PathGlyph step={step} i={i} current={last} />
+                      <span>
+                        <span className="block text-small tabular-nums text-ink-soft">{i + 1}</span>
+                        <span
+                          className={`block font-display text-h4 font-semibold tracking-[-0.02em] ${last ? "text-cobalt" : "text-ink"}`}
+                        >
+                          {step}
+                        </span>
+                      </span>
+                    </InView>
+                  );
+                })}
+              </ol>
+            </div>
           </div>
 
           <div>

@@ -2,6 +2,7 @@ import { Pause, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { testimonials, type Testimonial } from "@/content/portfolio";
 import { SectionHeading } from "./SectionHeading";
+import { DotGrid, QuoteMark } from "./art";
 import { cn } from "@/lib/utils";
 
 /** Initials on a flat tint from the palette. */
@@ -91,8 +92,12 @@ export function Testimonials() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-title"
-      className="relative bg-paper-2 py-16 sm:py-24 lg:py-30"
+      className="relative isolate overflow-x-clip bg-paper-2 py-16 sm:py-24 lg:py-30"
     >
+      <DotGrid
+        className="bottom-0 left-0 -z-10 h-80 w-[36rem] text-cobalt/25"
+        fade="to-bottom-right"
+      />
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <SectionHeading
           id="testimonials-title"
@@ -136,9 +141,10 @@ export function Testimonials() {
                   className={cn(
                     "flex h-full flex-col",
                     "max-lg:rounded-3xl max-lg:border max-lg:border-line max-lg:bg-paper max-lg:p-6",
-                    lead && "lg:rounded-3xl lg:bg-paper lg:p-12",
+                    lead && "relative lg:rounded-3xl lg:bg-paper lg:p-12",
                   )}
                 >
+                  {lead ? <QuoteMark className="-top-6 right-8 hidden h-20 w-28 lg:block" /> : null}
                   <blockquote
                     className={cn(
                       "flex-1 text-ink",

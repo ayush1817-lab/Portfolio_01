@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import { profile } from "@/content/portfolio";
+import { Scribble } from "./art";
 
 function useDublinTime() {
   const [time, setTime] = useState("");
@@ -35,6 +36,7 @@ export function Footer() {
         <p className="max-w-[20ch] font-display text-h2 font-semibold tracking-[-0.03em] text-ink [text-wrap:balance]">
           Designed and built in Dublin by {profile.name}.
         </p>
+        <Scribble className="-mt-8 max-w-md" />
 
         <div className="flex flex-col gap-6 border-t border-line pt-6 md:flex-row md:items-center md:justify-between">
           <nav aria-label="Elsewhere" className="flex flex-wrap items-center gap-x-6 gap-y-1">

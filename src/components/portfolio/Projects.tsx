@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/content/portfolio";
 import { MobileCard } from "./MobileCard";
 import { SectionHeading } from "./SectionHeading";
+import { DotGrid, InView } from "./art";
 
 type Props = {
   id: string;
@@ -18,8 +19,30 @@ export function Projects({ id, items }: Props) {
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className="relative bg-paper-2 py-16 sm:py-24 lg:py-30"
+      className="relative isolate overflow-x-clip bg-paper-2 py-16 sm:py-24 lg:py-30"
     >
+      <DotGrid
+        className="right-0 top-0 -z-10 h-96 w-[42rem] text-cobalt/30"
+        fade="to-bottom-left"
+      />
+      {/* a quarter sun at the band's corner */}
+      <svg
+        aria-hidden
+        viewBox="0 0 200 200"
+        className="pointer-events-none absolute -bottom-16 -left-16 -z-10 h-64 w-64 text-sun"
+      >
+        <circle cx="100" cy="100" r="70" fill="currentColor" />
+        <circle
+          cx="100"
+          cy="100"
+          r="96"
+          fill="none"
+          className="stroke-cobalt"
+          strokeOpacity="0.3"
+          strokeWidth="1.2"
+          strokeDasharray="3 7"
+        />
+      </svg>
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <SectionHeading id={`${id}-title`} title="Problems I've worked on" />
 
@@ -33,10 +56,10 @@ export function Projects({ id, items }: Props) {
         </ul>
 
         <ul className="mt-12 hidden grid-cols-3 gap-6 md:grid lg:gap-8">
-          {items.map((p) => (
-            <li key={p.id} className="min-w-0">
+          {items.map((p, i) => (
+            <InView as="li" key={p.id} i={i} className="min-w-0">
               <ProjectTile project={p} />
-            </li>
+            </InView>
           ))}
         </ul>
       </div>
@@ -53,7 +76,7 @@ function ProjectTile({ project: p }: { project: Project }) {
       href={p.link ?? undefined}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer noopener" : undefined}
-      className="focus-glow group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-paper transition-colors duration-200 hover:border-line-strong"
+      className="focus-glow group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-paper transition-[transform,border-color,box-shadow] duration-300 ease-[var(--ease-expo)] hover:-translate-y-1.5 hover:border-line-strong hover:shadow-soft motion-reduce:hover:translate-y-0"
     >
       {p.cover ? (
         <div className="relative aspect-[4/3] overflow-hidden" style={{ background: p.cover.bg }}>
@@ -94,7 +117,10 @@ function ProjectTile({ project: p }: { project: Project }) {
         {p.link ? (
           <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-ink transition-colors duration-200 group-hover:text-cobalt">
             {external ? "Open the project" : "Read the case study"}
-            <ArrowUpRight className="h-4 w-4" aria-hidden />
+            <ArrowUpRight
+              className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              aria-hidden
+            />
           </span>
         ) : null}
       </div>

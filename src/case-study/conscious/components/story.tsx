@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
 import { Breadcrumb } from "../../components/Layout";
+import { DotGrid } from "@/components/portfolio/art";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { EASE } from "@/components/portfolio/motion";
@@ -71,8 +72,12 @@ export function Hero() {
   return (
     <header
       id="top"
-      className="bg-cc-cream px-5 pb-10 pt-24 text-cc-forest sm:px-8 sm:pt-28 lg:px-10 lg:pb-14 lg:pt-32"
+      className="relative isolate overflow-hidden bg-cc-cream px-5 pb-10 pt-24 text-cc-forest sm:px-8 sm:pt-28 lg:px-10 lg:pb-14 lg:pt-32"
     >
+      <DotGrid
+        className="right-0 top-0 -z-10 h-[32rem] w-[48rem] text-cc-sage-deep/25"
+        fade="to-bottom-left"
+      />
       <div className="mx-auto max-w-page">
         <Breadcrumb name="Conscious Connections" className="text-cc-forest-soft" />
 

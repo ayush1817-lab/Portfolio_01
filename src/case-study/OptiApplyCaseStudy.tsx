@@ -5,6 +5,7 @@ import { Footer } from "@/components/portfolio/Footer";
 import { Reveal } from "@/components/portfolio/motion";
 import { projects } from "@/content/portfolio";
 import { cn } from "@/lib/utils";
+import { DotGrid } from "@/components/portfolio/art";
 import * as C from "./content";
 import { LightboxProvider } from "./components/Lightbox";
 import { ProductFigure } from "./components/ProductFigure";
@@ -65,7 +66,11 @@ function Hero() {
   const front: ShotId = hasShot("huntDigest") ? "huntDigest" : "huntProfile";
 
   return (
-    <header className="relative overflow-hidden px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:px-10 lg:pb-14 lg:pt-32">
+    <header className="relative isolate overflow-hidden px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:px-10 lg:pb-14 lg:pt-32">
+      <DotGrid
+        className="right-0 top-0 -z-10 h-[32rem] w-[48rem] text-cobalt/25"
+        fade="to-bottom-left"
+      />
       <div className="mx-auto max-w-page">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
           <Reveal y={16} blur={false} className="lg:col-span-6">

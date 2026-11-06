@@ -4,6 +4,7 @@ import { buildUrl, cards, type BuildSlug } from "@/builds/content";
 import { DetenteMotif, MotifHold, PipelineMotif, VoiceMotif } from "@/builds/components/Visuals";
 import { MobileCard } from "./MobileCard";
 import { SectionHeading } from "./SectionHeading";
+import { InView } from "./art";
 
 const motif: Record<
   BuildSlug,
@@ -78,10 +79,10 @@ export function SmallBuilds() {
           <div className="mt-5 md:hidden">{toggle}</div>
 
           <ol className="mt-14 hidden border-t border-line md:block lg:mt-16">
-            {cards.map((c) => {
+            {cards.map((c, i) => {
               const Motif = motif[c.slug];
               return (
-                <li key={c.slug} className="border-b border-line">
+                <InView as="li" key={c.slug} i={i} className="border-b border-line">
                   <a
                     href={buildUrl(c.slug)}
                     className="focus-glow group grid grid-cols-12 items-center gap-8 py-8 lg:py-10"
@@ -118,7 +119,7 @@ export function SmallBuilds() {
                       </span>
                     </div>
                   </a>
-                </li>
+                </InView>
               );
             })}
           </ol>
