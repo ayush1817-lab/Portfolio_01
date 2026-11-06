@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import * as C from "../content";
 import {
   AccessibleDisclosure,
-  ChapterEyebrow,
   Figure,
   MotionReveal,
   OwnershipCallout,
@@ -37,7 +36,6 @@ export function CommunityBoxReveal() {
   const d = C.box;
   return (
     <SectionShell id="community-box" label="Community in a Box" tone="warm" pause>
-      <ChapterEyebrow n={4} name={d.eyebrow} labels={[d.label]} />
       <div className="mt-6 grid gap-10 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-7">
           <MotionReveal>
@@ -105,7 +103,6 @@ export function SecondDoorway() {
       id="second-doorway"
       label="A second way in: the website and the service ecosystem"
     >
-      <ChapterEyebrow n={5} name={c.eyebrow} labels={c.labels} />
       <MotionReveal className="mt-6">
         <StoryHeading>{c.title}</StoryHeading>
         <p className="mt-4 max-w-[34ch] font-display text-pull font-medium tracking-[-0.02em] text-balance text-cc-coral-deep">
@@ -234,7 +231,6 @@ export function BuddyMatchingLogic() {
 
   return (
     <SectionShell id="buddy-connect" label="Buddy Connect" tone="sage">
-      <ChapterEyebrow n={6} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
         <StoryHeading>{d.title}</StoryHeading>
       </MotionReveal>
@@ -363,7 +359,6 @@ export function ArchitectureLayers() {
   const d = C.architecture;
   return (
     <SectionShell id="architecture" label="System architecture">
-      <ChapterEyebrow n={7} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
         <StoryHeading>{d.title}</StoryHeading>
         <p className="mt-3 font-display text-pull font-medium text-cc-sage-deep">{d.sub}</p>

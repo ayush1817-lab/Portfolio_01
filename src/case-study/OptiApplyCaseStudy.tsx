@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { TopNav } from "@/components/portfolio/TopNav";
 import { Footer } from "@/components/portfolio/Footer";
 import { Reveal } from "@/components/portfolio/motion";
@@ -10,8 +10,8 @@ import { LightboxProvider } from "./components/Lightbox";
 import { ProductFigure } from "./components/ProductFigure";
 import { hasShot } from "./assets";
 import {
+  Breadcrumb,
   ChapterBar,
-  Eyebrow,
   Heading,
   Intro,
   Prose,
@@ -66,19 +66,11 @@ function Hero() {
 
   return (
     <header className="relative overflow-hidden px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:px-10 lg:pb-14 lg:pt-32">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 grid-fade" />
       <div className="mx-auto max-w-page">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
           <Reveal y={16} blur={false} className="lg:col-span-6">
-            <a
-              href={`${BASE}#projects`}
-              className="focus-glow -ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 text-label text-ink-soft transition-colors hover:text-cobalt"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-              All work
-            </a>
-            <p className="mt-4 text-label text-cobalt">{C.hero.eyebrow}</p>
-            <h1 className="mt-3 font-display text-h1 font-semibold text-balance">
+            <Breadcrumb name="OptiApply" className="text-ink-soft" />
+            <h1 className="mt-4 font-display text-h1 font-semibold text-balance">
               <span className="block">{C.hero.title[0]}</span>
               <span className="block text-cobalt">{C.hero.title[1]}</span>
             </h1>
@@ -101,7 +93,7 @@ function Hero() {
         <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-line pt-5 sm:grid-cols-3 lg:mt-12">
           {C.hero.facts.map((f) => (
             <div key={f.k}>
-              <dt className="text-label text-ink-faint">{f.k}</dt>
+              <dt className="text-label text-ink-soft">{f.k}</dt>
               <dd className="mt-1.5 text-small font-medium leading-snug text-ink">{f.v}</dd>
             </div>
           ))}
@@ -251,9 +243,6 @@ function HuntMode() {
     <Section id="hunt" label="Hunt Mode" tone="tint">
       <Reveal y={16} blur={false} className="grid gap-5 lg:grid-cols-12 lg:items-end lg:gap-14">
         <div className="lg:col-span-7">
-          <Eyebrow n={4} lens={d.lens}>
-            {d.eyebrow}
-          </Eyebrow>
           <Heading>{d.title}</Heading>
         </div>
         <Prose className="text-ink-soft lg:col-span-5">
@@ -318,9 +307,6 @@ function Experiment() {
     <Section id="experiment" label="The automation experiment">
       <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-14">
         <Reveal y={16} blur={false} className="lg:col-span-5">
-          <Eyebrow n={5} lens={d.lens}>
-            {d.eyebrow}
-          </Eyebrow>
           <h2 className="mt-4 font-display text-h2 font-semibold tracking-[-0.035em] text-balance">
             {d.title[0]} <span className="text-ink-faint">{d.title[1]}</span>
           </h2>
@@ -341,7 +327,7 @@ function Experiment() {
                   ci === 0 ? "border-line-strong bg-paper-2" : "border-cobalt bg-paper",
                 )}
               >
-                <p className={cn(" text-label", ci === 0 ? "text-ink-faint" : "text-cobalt")}>
+                <p className={cn("text-label", ci === 0 ? "text-ink-soft" : "text-cobalt")}>
                   {col.title}
                 </p>
                 <ol className="mt-3 space-y-1.5 sm:mt-4 sm:space-y-2">
@@ -406,7 +392,7 @@ function Outcome() {
               </div>
             ))}
           </dl>
-          <p className="mt-3 text-caption text-ink-faint">{d.factsNote}</p>
+          <p className="mt-3 text-caption text-ink-soft">{d.factsNote}</p>
         </div>
       </div>
       <div className="mt-10">
@@ -467,8 +453,7 @@ function Reflection() {
         ))}
       </ol>
       <Reveal y={16} blur={false} className="mt-12">
-        <p className="text-label text-cobalt">{d.eyebrow}</p>
-        <blockquote className="mt-4 max-w-[30ch] font-display text-h2 font-semibold tracking-[-0.035em] text-balance">
+        <blockquote className="max-w-[30ch] font-display text-h2 font-semibold tracking-[-0.035em] text-balance">
           <p className="text-ink-faint">{d.closing[0]}</p>
           <p className="mt-3 text-ink">{d.closing[1]}</p>
         </blockquote>

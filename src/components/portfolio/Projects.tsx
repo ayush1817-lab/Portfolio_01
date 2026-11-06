@@ -2,7 +2,6 @@ import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/content/portfolio";
 import { MobileCard } from "./MobileCard";
 import { SectionHeading } from "./SectionHeading";
-import { cn } from "@/lib/utils";
 
 type Props = {
   id: string;
@@ -10,15 +9,16 @@ type Props = {
 };
 
 /**
- * Selected work as a bento: the first case study is the lead tile (two rows
- * tall, cover filling the rest of the tile), the other two stack beside it.
+ * Selected work: three equal tiles in one row on wide screens, each a cover
+ * crop, the title, one line and the three facts. The hero index above already
+ * lists them; this row adds the pictures and the facts, and stays one screen.
  */
 export function Projects({ id, items }: Props) {
   return (
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className="relative bg-paper-2 py-16 sm:py-24 lg:py-36"
+      className="relative bg-paper-2 py-16 sm:py-24 lg:py-30"
     >
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
         <SectionHeading id={`${id}-title`} title="Problems I've worked on" />
@@ -32,13 +32,10 @@ export function Projects({ id, items }: Props) {
           ))}
         </ul>
 
-        <ul className="mt-14 hidden gap-8 md:grid lg:mt-16 lg:grid-cols-12 lg:grid-rows-[auto_auto]">
-          {items.map((p, i) => (
-            <li
-              key={p.id}
-              className={cn("min-w-0", i === 0 ? "lg:col-span-7 lg:row-span-2" : "lg:col-span-5")}
-            >
-              <ProjectTile project={p} lead={i === 0} />
+        <ul className="mt-12 hidden grid-cols-3 gap-6 md:grid lg:gap-8">
+          {items.map((p) => (
+            <li key={p.id} className="min-w-0">
+              <ProjectTile project={p} />
             </li>
           ))}
         </ul>
@@ -47,7 +44,7 @@ export function Projects({ id, items }: Props) {
   );
 }
 
-function ProjectTile({ project: p, lead }: { project: Project; lead: boolean }) {
+function ProjectTile({ project: p }: { project: Project }) {
   const Tag = p.link ? "a" : "article";
   const external = p.link?.startsWith("http");
 
@@ -58,73 +55,49 @@ function ProjectTile({ project: p, lead }: { project: Project; lead: boolean }) 
       rel={external ? "noreferrer noopener" : undefined}
       className="focus-glow group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-paper transition-colors duration-200 hover:border-line-strong"
     >
-      {/* the lead tile puts its text first and lets the cover fill the rest */}
-      <div className={cn("flex flex-col p-7 lg:p-9", lead ? "order-1" : "order-2")}>
-        <h3 className="font-display text-h3 font-semibold tracking-[-0.03em] text-ink">
-          {p.title}
-        </h3>
-        {p.subtitle ? <p className="mt-3 max-w-[48ch] text-body text-ink">{p.subtitle}</p> : null}
-        {lead ? <p className="mt-3 max-w-[60ch] text-body text-ink-soft">{p.blurb}</p> : null}
-
-        {p.facts?.length ? (
-          <dl
-            className={cn(
-              "mt-6 grid gap-x-6 gap-y-3 border-t border-line pt-5",
-              lead ? "sm:grid-cols-3" : "grid-cols-1",
-            )}
-          >
-            {p.facts.map((f) => (
-              <div key={f.k} className={cn(!lead && "flex items-baseline justify-between gap-4")}>
-                <dt className="text-label text-ink-soft">{f.k}</dt>
-                <dd className={cn("text-small text-ink", lead ? "mt-1" : "text-right")}>{f.v}</dd>
-              </div>
-            ))}
-          </dl>
-        ) : null}
-
-        <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Tags">
-          {p.tags.map((t) => (
-            <li
-              key={t}
-              className="rounded-full border border-line px-2.5 py-1 text-micro text-ink-soft"
-            >
-              {t}
-            </li>
-          ))}
-        </ul>
-
-        {p.link ? (
-          <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-ink transition-colors duration-200 group-hover:text-cobalt">
-            {external ? "Open the project" : "Read the case study"}
-            <ArrowUpRight className="h-4 w-4" aria-hidden />
-          </span>
-        ) : null}
-      </div>
-
       {p.cover ? (
-        <div
-          className={cn(
-            "relative overflow-hidden",
-            lead ? "order-2 min-h-[22rem] flex-1" : "order-1 aspect-[16/10]",
-          )}
-          style={{ background: p.cover.bg }}
-        >
+        <div className="relative aspect-[4/3] overflow-hidden" style={{ background: p.cover.bg }}>
           <img
             src={p.cover.src}
             alt={p.cover.alt}
             width={p.cover.width}
             height={p.cover.height}
             decoding="async"
-            loading={lead ? "eager" : "lazy"}
-            fetchPriority={lead ? "high" : undefined}
+            loading="lazy"
             draggable={false}
-            className={cn(
-              "absolute inset-0 h-full w-full",
-              lead ? "object-contain object-bottom" : "object-cover object-center",
-            )}
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: p.mobile?.focus ?? "50% 30%" }}
           />
         </div>
       ) : null}
+
+      <div className="flex flex-1 flex-col p-6 lg:p-7">
+        <h3 className="font-display text-h4 font-semibold tracking-[-0.02em] text-ink">
+          {p.title}
+        </h3>
+        <p className="mt-2 text-small text-ink-soft">{p.mobile?.line ?? p.subtitle}</p>
+
+        {p.facts?.length ? (
+          <dl className="mt-5 border-t border-line">
+            {p.facts.map((f) => (
+              <div
+                key={f.k}
+                className="flex items-baseline justify-between gap-4 border-b border-line py-2"
+              >
+                <dt className="shrink-0 text-label text-ink-soft">{f.k}</dt>
+                <dd className="text-right text-label text-ink">{f.v}</dd>
+              </div>
+            ))}
+          </dl>
+        ) : null}
+
+        {p.link ? (
+          <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-ink transition-colors duration-200 group-hover:text-cobalt">
+            {external ? "Open the project" : "Read the case study"}
+            <ArrowUpRight className="h-4 w-4" aria-hidden />
+          </span>
+        ) : null}
+      </div>
     </Tag>
   );
 }

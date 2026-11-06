@@ -95,6 +95,16 @@ const ownershipStyle: Record<Ownership, { cls: string; icon: typeof User }> = {
   CONTEXT: { cls: "border-cc-forest-soft bg-paper text-cc-forest-soft", icon: MapPin },
 };
 
+/** How each label reads on the page: sentence case, never tracked capitals. */
+const ownershipText: Record<Ownership, string> = {
+  "MY ROLE": "My role",
+  TEAM: "Team",
+  DECISION: "Decision",
+  "TEAM + MY ROLE": "Team, with my role",
+  "INDEPENDENT EXTENSION": "Independent extension",
+  CONTEXT: "Context",
+};
+
 export function OwnershipLabel({
   label,
   onDark,
@@ -119,45 +129,8 @@ export function OwnershipLabel({
       )}
     >
       <Icon className="h-3.5 w-3.5" aria-hidden />
-      {label === "TEAM + MY ROLE" ? (
-        <>
-          TEAM <span aria-hidden>+</span>
-          <span className="sr-only">plus</span> MY ROLE
-        </>
-      ) : (
-        label
-      )}
+      {ownershipText[label]}
     </span>
-  );
-}
-
-/** Eyebrow row: chapter number, section name and ownership labels. */
-export function ChapterEyebrow({
-  n,
-  name,
-  labels,
-  onDark,
-}: {
-  n: number;
-  name: string;
-  labels?: Ownership[];
-  onDark?: boolean;
-}) {
-  return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-      <span className={cn(" text-label", onDark ? "text-cc-sage" : "text-cc-forest-soft")}>
-        <span className={onDark ? "text-cc-lilac" : "text-cc-sage-deep"}>
-          {String(n).padStart(2, "0")}
-        </span>
-        <span aria-hidden className="mx-2">
-          /
-        </span>
-        {name}
-      </span>
-      {labels?.map((l) => (
-        <OwnershipLabel key={l} label={l} onDark={onDark} />
-      ))}
-    </div>
   );
 }
 
@@ -242,7 +215,7 @@ export function ArtifactCaption({ asset, onDark }: { asset: Asset; onDark?: bool
       >
         {asset.caption}
       </span>
-      <span className={cn(" text-label", onDark ? "text-cc-sage" : "text-cc-forest-soft")}>
+      <span className={cn("text-label", onDark ? "text-cc-sage" : "text-cc-forest-soft")}>
         Status: {asset.status}
       </span>
     </figcaption>

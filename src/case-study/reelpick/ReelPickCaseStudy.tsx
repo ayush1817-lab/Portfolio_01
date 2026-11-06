@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight, Check, X } from "lucide-react";
+import { ArrowUpRight, Check, X } from "lucide-react";
 import { TopNav } from "@/components/portfolio/TopNav";
 import { Footer } from "@/components/portfolio/Footer";
 import { Reveal } from "@/components/portfolio/motion";
@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import heroArt from "@/assets/reelpick/reelpick-hero.webp";
 import journeyArt from "@/assets/reelpick/reelpick-product-journey.webp";
 import { LightboxProvider } from "../components/Lightbox";
-import { ChapterBar, Eyebrow, Intro, Pull, Section, Summary } from "../components/Layout";
+import { Breadcrumb, ChapterBar, Intro, Pull, Section, Summary } from "../components/Layout";
 import { Flow } from "../components/Diagrams";
 import { ArtFigure, JourneyViewer, ScreenCrop } from "./components";
 import * as C from "./content";
@@ -81,15 +81,8 @@ function Hero() {
       <div className="mx-auto max-w-page">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
           <Reveal y={16} blur={false} className="lg:col-span-6">
-            <a
-              href={`${BASE}#projects`}
-              className="focus-glow -ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 text-label text-ink-soft transition-colors hover:text-ink"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-              All work
-            </a>
-            <p className={cn("mt-4 text-label", LAV)}>{d.eyebrow}</p>
-            <h1 className="mt-3 font-display font-semibold tracking-[-0.04em]">
+            <Breadcrumb name="ReelPick" />
+            <h1 className="mt-4 font-display font-semibold tracking-[-0.04em]">
               <span className="block text-h4 tracking-[-0.01em] text-ink-soft">{d.name}</span>
               <span className="mt-2 block text-h1 text-balance">
                 {d.title[0]} <span className={LAV}>{d.title[1]}</span>
@@ -110,7 +103,7 @@ function Hero() {
         <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-line-strong pt-5 sm:grid-cols-3 lg:mt-12">
           {d.facts.map((f) => (
             <div key={f.k}>
-              <dt className="text-label text-ink-faint">{f.k}</dt>
+              <dt className="text-label text-ink-soft">{f.k}</dt>
               <dd className="mt-1.5 text-small font-medium leading-snug text-ink">{f.v}</dd>
             </div>
           ))}
@@ -245,7 +238,7 @@ function Mechanism() {
   return (
     <Section id="mechanism" label="How the room decides" tone="charcoal">
       <Reveal y={16} blur={false}>
-        <p className={cn(" text-label", AMB)}>The core flow</p>
+        <p className={cn("text-label", AMB)}>The core flow</p>
         <h2 className="mt-4 font-display text-h2 font-semibold tracking-[-0.03em]">{d.title}</h2>
       </Reveal>
       <Flow nodes={d.flow} label="How a ReelPick room reaches a winner" dark className="mt-8" />
@@ -281,7 +274,7 @@ function Decisions() {
         <ol className="grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:col-span-6">
           {d.items.map((it, i) => (
             <li key={it.k} className="border-t border-line-strong pt-3">
-              <p className={cn(" text-label", LAV)}>{String(i + 1).padStart(2, "0")}</p>
+              <p className={cn("text-label", LAV)}>{String(i + 1).padStart(2, "0")}</p>
               <p className="mt-1 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
                 {it.k}
               </p>
@@ -322,7 +315,7 @@ function Engineering() {
 
       <div className="mt-10 grid gap-6 rounded-2xl border border-line-strong bg-paper p-5 sm:p-7 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-5">
-          <p className={cn(" text-label", LAV)}>{d.second.title}</p>
+          <p className={cn("text-label", LAV)}>{d.second.title}</p>
           <p className="mt-2 text-small leading-relaxed text-ink-soft sm:text-body">
             {d.second.body}
           </p>
@@ -342,9 +335,6 @@ function Verdict() {
   return (
     <Section id="verdict" label="The beta verdict">
       <Reveal y={16} blur={false}>
-        <Eyebrow n={6} lens={d.lens} accent={LAV}>
-          {d.eyebrow}
-        </Eyebrow>
         <h2 className="mt-4 font-display text-h2 font-semibold tracking-[-0.04em]">
           <span className="block">{d.title[0]}</span>
           <span className="block text-ink-faint">{d.title[1]}</span>
@@ -392,8 +382,7 @@ function Decision() {
     >
       <div className="mx-auto max-w-page">
         <Reveal y={20} blur={false}>
-          <p className={cn(" text-label", AMB)}>07 · {d.eyebrow}</p>
-          <h2 className="mt-4 font-display text-h1 font-semibold tracking-[-0.045em]">
+          <h2 className="font-display text-h1 font-semibold tracking-[-0.045em]">
             <span className="block">{d.title[0]}</span>
             <span className={cn("block", AMB)}>{d.title[1]}</span>
           </h2>
@@ -414,11 +403,11 @@ function Practice() {
   const d = C.practice;
   return (
     <Section id="practice" label="What changed in my practice">
-      <p className={cn(" text-label", LAV)}>{d.eyebrow}</p>
+      <p className={cn("text-label", LAV)}>{d.eyebrow}</p>
       <ol className="mt-6 grid gap-6 md:grid-cols-3 md:gap-8">
         {d.items.map((it, i) => (
           <li key={it.k}>
-            <p className={cn(" text-label", LAV)}>{String(i + 1).padStart(2, "0")}</p>
+            <p className={cn("text-label", LAV)}>{String(i + 1).padStart(2, "0")}</p>
             <p className="mt-3 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
               {it.k}
             </p>
@@ -455,7 +444,7 @@ function Practice() {
           </a>
         ) : null}
       </div>
-      <p className="mt-8 text-caption text-ink-faint">
+      <p className="mt-8 text-caption text-ink-soft">
         Source: Ayush Ramawat, “ReelPick Product Idea Case Study,” Medium, 18 July 2026.
       </p>
     </Section>

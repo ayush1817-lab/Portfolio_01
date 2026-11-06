@@ -44,7 +44,6 @@ export function BuildHero({
   const c = cards.find((x) => x.slug === slug)!;
   return (
     <header className="relative overflow-hidden px-5 pb-12 pt-24 sm:px-8 sm:pt-32 lg:px-10 lg:pb-16">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 grid-fade" />
       <div className="mx-auto max-w-page">
         <a
           href={`${BASE}#builds`}
@@ -55,11 +54,7 @@ export function BuildHero({
         </a>
         <div className="mt-6 grid gap-10 lg:grid-cols-12 lg:items-center">
           <Reveal y={16} blur={false} className="lg:col-span-7">
-            <p className="text-label text-cobalt">
-              Small build {c.index} · Intelligence inside {articleFor(c.where)}{" "}
-              {c.where.toLowerCase()}
-            </p>
-            <h1 className="mt-4">
+            <h1>
               <span className="block font-display text-h4 font-semibold text-ink-soft">
                 {c.name}
               </span>
@@ -91,7 +86,7 @@ export function BuildHero({
         <dl className="mt-10 grid gap-5 border-t border-line pt-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
           {meta.map((m) => (
             <div key={m.k}>
-              <dt className="text-label text-ink-faint">{m.k}</dt>
+              <dt className="text-label text-ink-soft">{m.k}</dt>
               <dd className="mt-1.5 text-small font-medium leading-snug text-ink">{m.v}</dd>
             </div>
           ))}
@@ -100,8 +95,6 @@ export function BuildHero({
     </header>
   );
 }
-
-const articleFor = (w: string) => (w === "Workflow" ? "a" : "an");
 
 /** One step of the story: eyebrow, heading, short copy, then any visual. */
 export function BuildStoryBlock({
@@ -122,7 +115,7 @@ export function BuildStoryBlock({
   return (
     <Section id={id} label={eyebrow} tone={tone}>
       <Reveal y={16} blur={false}>
-        <p className={cn(" text-label", tone === "dark" ? "text-sun" : "text-cobalt")}>{eyebrow}</p>
+        <p className={cn("text-label", tone === "dark" ? "text-sun" : "text-cobalt")}>{eyebrow}</p>
         <h2 className="mt-4 max-w-lead font-display text-h2 font-semibold text-balance">{title}</h2>
       </Reveal>
       {body?.length ? (
@@ -168,7 +161,7 @@ export function MetricCallout({
     <div className="grid gap-4 lg:grid-cols-12">
       <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line-strong bg-line-strong sm:grid-cols-[1fr_auto_1fr] lg:col-span-7">
         <div className="bg-paper p-6 sm:p-8">
-          <dt className="text-label text-ink-faint">Before</dt>
+          <dt className="text-label text-ink-soft">Before</dt>
           <dd className="mt-2 font-display text-stat font-semibold leading-none text-ink-faint">
             {before.value}
           </dd>

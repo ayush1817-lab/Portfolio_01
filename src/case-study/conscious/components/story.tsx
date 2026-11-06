@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
+import { Breadcrumb } from "../../components/Layout";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { EASE } from "@/components/portfolio/motion";
 import * as C from "../content";
 import {
   AccessibleDisclosure,
-  ChapterEyebrow,
   Figure,
   MotionReveal,
   OwnershipCallout,
@@ -57,12 +57,10 @@ export function Hero() {
   const full = hasAsset("heroDesktop");
   const copy = (
     <MotionReveal>
-      <div className="flex flex-wrap items-center gap-3">
-        <OwnershipLabel label={d.label} />
-        <span className="text-label text-cc-forest-soft">Academic concept · Service design</span>
-      </div>
-      <h1 className="mt-5">
-        <span className="block text-label text-cc-sage-deep">{d.title}</span>
+      <h1>
+        <span className="block font-display text-h4 font-semibold tracking-[-0.01em] text-cc-forest-soft">
+          {d.title}
+        </span>
         <span className="mt-3 block max-w-lead font-display text-h1 font-semibold tracking-[-0.035em] text-balance">
           {d.headline}
         </span>
@@ -76,17 +74,11 @@ export function Hero() {
       className="bg-cc-cream px-5 pb-10 pt-24 text-cc-forest sm:px-8 sm:pt-28 lg:px-10 lg:pb-14 lg:pt-32"
     >
       <div className="mx-auto max-w-page">
-        <a
-          href={`${BASE}#projects`}
-          className="-ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 text-label text-cc-forest-soft transition-colors hover:text-cc-forest focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cc-lilac-deep"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-          All work
-        </a>
+        <Breadcrumb name="Conscious Connections" className="text-cc-forest-soft" />
 
         {full ? (
           <>
-            <div className="mt-6">{copy}</div>
+            <div className="mt-4">{copy}</div>
             {/* Composition: Community Box, desktop website, Buddy Connect on mobile */}
             <MotionReveal delay={0.1} className="mt-8 lg:mt-8">
               <div className="grid grid-cols-6 gap-4 lg:grid-cols-12 lg:gap-6">
@@ -138,10 +130,14 @@ export function Hero() {
 export function AtAGlance() {
   return (
     <SectionShell id="glance" label="Project at a glance" tone="paper" className="!pb-6 sm:!pb-8">
-      <h2 className="text-label text-cc-forest-soft">Project at a glance</h2>
-      <dl className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-cc-forest/15 bg-cc-forest/15 md:grid-cols-3">
+      <h2 className="sr-only">Project at a glance</h2>
+      <dl className="grid border-t border-cc-forest/20 md:grid-cols-3 md:gap-x-8">
         {C.glance.map((g, i) => (
-          <MotionReveal key={g.k} delay={i * 0.06} className="bg-paper p-4 sm:p-6">
+          <MotionReveal
+            key={g.k}
+            delay={i * 0.06}
+            className="border-b border-cc-forest/15 py-5 md:border-b-0"
+          >
             <dt className="text-label text-cc-sage-deep">{g.k}</dt>
             <dd className="mt-3 font-display font-semibold tracking-[-0.02em] text-h4 leading-[1.3] text-cc-forest">
               {g.v}
@@ -162,22 +158,21 @@ export function MyContribution() {
     <SectionShell id="contribution" label="My contribution" tone="paper" className="!pt-0">
       <div className="grid gap-6 border-t border-cc-forest/15 pt-6 sm:pt-8 lg:grid-cols-12 lg:gap-12">
         <MotionReveal className="lg:col-span-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <h2 className="text-label text-cc-forest-soft">My contribution</h2>
-            <OwnershipLabel label="MY ROLE" />
-          </div>
-          <StoryHeading as="h3" size="md" className="mt-4">
+          <StoryHeading as="h2" size="md">
             {d.title}
           </StoryHeading>
           <p className="mt-3 text-read text-cc-forest-soft">{d.intro}</p>
         </MotionReveal>
         {/* phones: area titles only, in two columns; descriptions from sm up */}
-        <ol className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-cc-forest/15 bg-cc-forest/15 lg:col-span-8">
+        <ol className="grid grid-cols-2 gap-x-6 border-t border-cc-forest/20 lg:col-span-8">
           {d.items.map((it, i) => (
-            <MotionReveal key={it.k} as="li" delay={i * 0.06} className="bg-paper p-3.5 sm:p-6">
-              <p className="hidden text-label text-cc-coral-deep sm:block">
-                {String(i + 1).padStart(2, "0")}
-              </p>
+            <MotionReveal
+              key={it.k}
+              as="li"
+              delay={i * 0.06}
+              className="border-b border-cc-forest/15 py-4 sm:py-5"
+            >
+              <p className="hidden text-small tabular-nums text-cc-coral-deep sm:block">{i + 1}</p>
               <p className="font-display text-h4 font-semibold leading-tight tracking-[-0.02em] text-cc-forest sm:mt-3">
                 {it.k}
               </p>
@@ -205,7 +200,6 @@ export function ResearchTensions() {
   const d = C.research;
   return (
     <SectionShell id="research" label="Context and research">
-      <ChapterEyebrow n={1} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
         <StoryHeading>{d.title}</StoryHeading>
       </MotionReveal>
@@ -303,7 +297,7 @@ function Chain({
         reframed ? "bg-cc-cream text-cc-forest" : "border border-cc-cream/25 text-cc-cream",
       )}
     >
-      <h3 className={cn(" text-label", reframed ? "text-cc-lilac-deep" : "text-cc-sage")}>
+      <h3 className={cn("text-label", reframed ? "text-cc-lilac-deep" : "text-cc-sage")}>
         {title}
       </h3>
       <motion.ol
@@ -350,7 +344,6 @@ export function PrivacyTurningPoint() {
     <SectionShell id="turning-point" label="The privacy turning point" tone="forest" pause>
       <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-6">
-          <ChapterEyebrow n={2} name={d.eyebrow} labels={[d.label]} onDark />
           <MotionReveal className="mt-6">
             <StoryHeading>{d.title}</StoryHeading>
           </MotionReveal>
@@ -533,7 +526,6 @@ export function Ideation() {
   const d = C.ideation;
   return (
     <SectionShell id="ideation" label="Design principles and ideation" tone="sage">
-      <ChapterEyebrow n={3} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
         <StoryHeading>{d.title}</StoryHeading>
       </MotionReveal>
