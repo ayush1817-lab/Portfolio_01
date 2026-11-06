@@ -48,22 +48,22 @@ export function BuildHero({
       <div className="mx-auto max-w-page">
         <a
           href={`${BASE}#builds`}
-          className="focus-glow -ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 font-mono text-label uppercase tracking-[0.16em] text-ink-soft transition-colors hover:text-cobalt"
+          className="focus-glow -ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 text-label text-ink-soft transition-colors hover:text-cobalt"
         >
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
           All builds
         </a>
         <div className="mt-6 grid gap-10 lg:grid-cols-12 lg:items-center">
           <Reveal y={16} blur={false} className="lg:col-span-7">
-            <p className="font-mono text-label uppercase tracking-[0.18em] text-cobalt">
+            <p className="text-label text-cobalt">
               Small build {c.index} · Intelligence inside {articleFor(c.where)}{" "}
               {c.where.toLowerCase()}
             </p>
             <h1 className="mt-4">
-              <span className="block font-display text-h4 font-semibold tracking-[-0.01em] text-ink-soft">
+              <span className="block font-display text-h4 font-semibold text-ink-soft">
                 {c.name}
               </span>
-              <span className="mt-2 block max-w-[20ch] font-display text-h1 font-semibold leading-[1.02] tracking-[-0.035em] text-balance">
+              <span className="mt-2 block max-w-[20ch] font-display text-h1 font-semibold leading-[1.02] text-balance">
                 {heroLine}
               </span>
             </h1>
@@ -72,7 +72,7 @@ export function BuildHero({
               {c.tags.map((t) => (
                 <li
                   key={t}
-                  className="rounded-full border border-line-strong px-2.5 py-0.5 font-mono text-micro uppercase tracking-[0.14em] text-ink/75"
+                  className="rounded-full border border-line-strong px-2.5 py-0.5 text-micro text-ink/75"
                 >
                   {t}
                 </li>
@@ -91,9 +91,7 @@ export function BuildHero({
         <dl className="mt-10 grid gap-5 border-t border-line pt-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
           {meta.map((m) => (
             <div key={m.k}>
-              <dt className="font-mono text-label uppercase tracking-[0.16em] text-ink-faint">
-                {m.k}
-              </dt>
+              <dt className="text-label text-ink-faint">{m.k}</dt>
               <dd className="mt-1.5 text-small font-medium leading-snug text-ink">{m.v}</dd>
             </div>
           ))}
@@ -124,17 +122,8 @@ export function BuildStoryBlock({
   return (
     <Section id={id} label={eyebrow} tone={tone}>
       <Reveal y={16} blur={false}>
-        <p
-          className={cn(
-            "font-mono text-label uppercase tracking-[0.18em]",
-            tone === "dark" ? "text-sun" : "text-cobalt",
-          )}
-        >
-          {eyebrow}
-        </p>
-        <h2 className="mt-4 max-w-lead font-display text-h2 font-semibold tracking-[-0.035em] text-balance">
-          {title}
-        </h2>
+        <p className={cn(" text-label", tone === "dark" ? "text-sun" : "text-cobalt")}>{eyebrow}</p>
+        <h2 className="mt-4 max-w-lead font-display text-h2 font-semibold text-balance">{title}</h2>
       </Reveal>
       {body?.length ? (
         <Prose className={cn("mt-6", tone === "dark" ? "text-paper/85" : "text-ink-soft")}>
@@ -154,10 +143,8 @@ export function Statement({ line, sub }: { line: string; sub?: string }) {
     <section aria-label="Design principle" className="bg-sun px-5 py-14 sm:px-8 sm:py-20 lg:px-10">
       <div className="mx-auto max-w-page">
         <Reveal y={16} blur={false}>
-          <p className="font-mono text-label uppercase tracking-[0.18em] text-ink/70">
-            The principle
-          </p>
-          <p className="mt-4 max-w-[22ch] font-display text-h1 font-semibold leading-[1] tracking-[-0.04em] text-ink text-balance">
+          <p className="text-label text-ink/70">The principle</p>
+          <p className="mt-4 max-w-[22ch] font-display text-h1 font-semibold leading-[1] text-ink text-balance">
             {line}
           </p>
           {sub ? <p className="mt-5 max-w-read text-read text-ink/80">{sub}</p> : null}
@@ -181,10 +168,8 @@ export function MetricCallout({
     <div className="grid gap-4 lg:grid-cols-12">
       <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line-strong bg-line-strong sm:grid-cols-[1fr_auto_1fr] lg:col-span-7">
         <div className="bg-paper p-6 sm:p-8">
-          <dt className="font-mono text-label uppercase tracking-[0.16em] text-ink-faint">
-            Before
-          </dt>
-          <dd className="mt-2 font-display text-stat font-semibold leading-none tracking-[-0.04em] text-ink-faint">
+          <dt className="text-label text-ink-faint">Before</dt>
+          <dd className="mt-2 font-display text-stat font-semibold leading-none text-ink-faint">
             {before.value}
           </dd>
           <dd className="mt-2 text-small leading-snug text-ink-soft">{before.label}</dd>
@@ -193,8 +178,8 @@ export function MetricCallout({
           <ArrowRight className="h-5 w-5 text-cobalt" />
         </div>
         <div className="bg-paper p-6 sm:p-8">
-          <dt className="font-mono text-label uppercase tracking-[0.16em] text-cobalt">After</dt>
-          <dd className="mt-2 font-display text-stat font-semibold leading-none tracking-[-0.04em] text-ink">
+          <dt className="text-label text-cobalt">After</dt>
+          <dd className="mt-2 font-display text-stat font-semibold leading-none text-ink">
             {after.value}
           </dd>
           <dd className="mt-2 text-small leading-snug text-ink-soft">{after.label}</dd>
@@ -202,7 +187,7 @@ export function MetricCallout({
       </dl>
       {note ? (
         <div className="rounded-xl border border-warn/40 bg-warn-soft p-6 lg:col-span-5">
-          <p className="font-display text-h4 font-semibold tracking-[-0.02em]">{note.title}</p>
+          <p className="font-display text-h4 font-semibold">{note.title}</p>
           <p className="mt-2 text-small leading-relaxed text-ink">{note.body}</p>
         </div>
       ) : null}
@@ -223,7 +208,7 @@ export function ReflectionBlock({
   return (
     <Section label={title} tone={tone}>
       <Reveal y={16} blur={false}>
-        <h2 className="font-display text-h3 font-semibold tracking-[-0.03em]">{title}</h2>
+        <h2 className="font-display text-h3 font-semibold">{title}</h2>
       </Reveal>
       <ol className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {items.map((it, k) => (
@@ -231,14 +216,12 @@ export function ReflectionBlock({
             key={typeof it === "string" ? it : it.k}
             className="rounded-xl border border-line-strong bg-paper p-5"
           >
-            <p className="font-mono text-label text-cobalt">{String(k + 1).padStart(2, "0")}</p>
+            <p className="text-label text-cobalt">{String(k + 1).padStart(2, "0")}</p>
             {typeof it === "string" ? (
               <p className="mt-2 text-body leading-relaxed text-ink">{it}</p>
             ) : (
               <>
-                <p className="mt-2 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
-                  {it.k}
-                </p>
+                <p className="mt-2 font-display text-h4 font-semibold leading-tight">{it.k}</p>
                 <p className="mt-1.5 text-small leading-relaxed text-ink-soft">{it.v}</p>
               </>
             )}
@@ -281,9 +264,7 @@ export function NextBuildNavigation({ slug }: { slug: BuildSlug }) {
           href={buildUrl(next.slug)}
           className="focus-glow group inline-flex min-h-11 items-center gap-3 rounded-full px-2 py-3 text-small text-ink transition-colors hover:text-cobalt"
         >
-          <span className="font-mono text-label uppercase tracking-[0.16em] text-ink-soft">
-            Next build
-          </span>
+          <span className="text-label text-ink-soft">Next build</span>
           <span className="font-semibold">{next.name}</span>
           <ArrowUpRight className="h-4 w-4" aria-hidden />
         </a>

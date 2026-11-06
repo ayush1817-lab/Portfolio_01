@@ -42,9 +42,7 @@ export function ProjectMeta() {
     <dl className="grid gap-x-8 gap-y-6 border-t border-cc-forest/20 pt-8 sm:grid-cols-2 lg:grid-cols-4">
       {C.hero.meta.map((m) => (
         <div key={m.k}>
-          <dt className="font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft">
-            {m.k}
-          </dt>
+          <dt className="text-label text-cc-forest-soft">{m.k}</dt>
           <dd className="mt-2 text-small font-medium leading-snug text-cc-forest">{m.v}</dd>
         </div>
       ))}
@@ -61,14 +59,10 @@ export function Hero() {
     <MotionReveal>
       <div className="flex flex-wrap items-center gap-3">
         <OwnershipLabel label={d.label} />
-        <span className="font-mono text-label uppercase tracking-[0.14em] text-cc-forest-soft">
-          Academic concept · Service design
-        </span>
+        <span className="text-label text-cc-forest-soft">Academic concept · Service design</span>
       </div>
       <h1 className="mt-5">
-        <span className="block font-mono text-label uppercase tracking-[0.2em] text-cc-sage-deep">
-          {d.title}
-        </span>
+        <span className="block text-label text-cc-sage-deep">{d.title}</span>
         <span className="mt-3 block max-w-lead font-display text-h1 font-semibold leading-[1.02] tracking-[-0.035em] text-balance">
           {d.headline}
         </span>
@@ -84,7 +78,7 @@ export function Hero() {
       <div className="mx-auto max-w-page">
         <a
           href={`${BASE}#projects`}
-          className="-ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft transition-colors hover:text-cc-forest focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cc-lilac-deep"
+          className="-ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 text-label text-cc-forest-soft transition-colors hover:text-cc-forest focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cc-lilac-deep"
         >
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
           All work
@@ -149,15 +143,11 @@ export function AtAGlance() {
       tone="paper"
       className="!py-[clamp(3.5rem,6vw,5.5rem)]"
     >
-      <h2 className="font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft">
-        Project at a glance
-      </h2>
+      <h2 className="text-label text-cc-forest-soft">Project at a glance</h2>
       <dl className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-cc-forest/15 bg-cc-forest/15 md:grid-cols-3">
         {C.glance.map((g, i) => (
           <MotionReveal key={g.k} delay={i * 0.06} className="bg-paper p-6 sm:p-8">
-            <dt className="font-mono text-label uppercase tracking-[0.16em] text-cc-sage-deep">
-              {g.k}
-            </dt>
+            <dt className="text-label text-cc-sage-deep">{g.k}</dt>
             <dd className="mt-3 font-display font-semibold tracking-[-0.02em] text-h4 leading-[1.3] text-cc-forest">
               {g.v}
             </dd>
@@ -183,9 +173,7 @@ export function MyContribution() {
       <div className="grid gap-8 border-t border-cc-forest/15 pt-[clamp(2.5rem,5vw,4rem)] lg:grid-cols-12 lg:gap-12">
         <MotionReveal className="lg:col-span-4">
           <div className="flex flex-wrap items-center gap-3">
-            <h2 className="font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft">
-              My contribution
-            </h2>
+            <h2 className="text-label text-cc-forest-soft">My contribution</h2>
             <OwnershipLabel label="MY ROLE" />
           </div>
           <StoryHeading as="h3" size="md" className="mt-4">
@@ -196,9 +184,7 @@ export function MyContribution() {
         <ol className="grid gap-px overflow-hidden rounded-2xl border border-cc-forest/15 bg-cc-forest/15 sm:grid-cols-2 lg:col-span-8">
           {d.items.map((it, i) => (
             <MotionReveal key={it.k} as="li" delay={i * 0.06} className="bg-paper p-6 sm:p-7">
-              <p className="font-mono text-label text-cc-coral-deep">
-                {String(i + 1).padStart(2, "0")}
-              </p>
+              <p className="text-label text-cc-coral-deep">{String(i + 1).padStart(2, "0")}</p>
               <p className="mt-3 font-display text-h4 font-semibold leading-tight tracking-[-0.02em] text-cc-forest">
                 {it.k}
               </p>
@@ -236,15 +222,11 @@ export function ResearchTensions() {
 
       <Figure assetKey="context" className="mt-10" />
 
-      <h3 className="mt-10 font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft">
-        {d.tensionsTitle}
-      </h3>
+      <h3 className="mt-10 text-label text-cc-forest-soft">{d.tensionsTitle}</h3>
       <ol className="mt-4 grid gap-3 md:grid-cols-3">
         {d.tensions.map((t, i) => (
           <MotionReveal as="li" key={t.want} delay={i * 0.08} className="rounded-2xl bg-paper p-5">
-            <p className="font-mono text-label text-cc-sage-deep">
-              {String(i + 1).padStart(2, "0")}
-            </p>
+            <p className="text-label text-cc-sage-deep">{String(i + 1).padStart(2, "0")}</p>
             <p className="mt-2 font-display text-h4 font-semibold leading-tight tracking-[-0.02em] text-cc-forest">
               {t.want}
             </p>
@@ -269,7 +251,7 @@ export function ResearchTensions() {
               delay={i * 0.05}
               className="flex items-center gap-2 rounded-full border border-cc-forest/20 bg-paper px-3.5 py-1.5 text-small"
             >
-              <span className="font-mono text-label text-cc-sage-deep">{i + 1}</span>
+              <span className="text-label text-cc-sage-deep">{i + 1}</span>
               {q}
             </MotionReveal>
           ))}
@@ -326,12 +308,7 @@ function Chain({
         reframed ? "bg-cc-cream text-cc-forest" : "border border-cc-cream/25 text-cc-cream",
       )}
     >
-      <h3
-        className={cn(
-          "font-mono text-label uppercase tracking-[0.16em]",
-          reframed ? "text-cc-lilac-deep" : "text-cc-sage",
-        )}
-      >
+      <h3 className={cn(" text-label", reframed ? "text-cc-lilac-deep" : "text-cc-sage")}>
         {title}
       </h3>
       <motion.ol
@@ -420,9 +397,7 @@ export function DesignPrinciples() {
   const d = C.principles;
   return (
     <div>
-      <h3 className="font-mono text-label uppercase tracking-[0.16em] text-cc-forest-soft">
-        {d.title}
-      </h3>
+      <h3 className="text-label text-cc-forest-soft">{d.title}</h3>
       <ol className="mt-4 grid gap-3 md:grid-cols-3">
         {d.items.map((p, i) => (
           <MotionReveal
@@ -431,9 +406,7 @@ export function DesignPrinciples() {
             delay={i * 0.08}
             className="rounded-2xl border border-cc-forest/15 bg-paper p-5"
           >
-            <p className="font-mono text-label text-cc-sage-deep">
-              {String(i + 1).padStart(2, "0")}
-            </p>
+            <p className="text-label text-cc-sage-deep">{String(i + 1).padStart(2, "0")}</p>
             <h3 className="mt-2 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
               {p.k}
             </h3>
@@ -520,10 +493,10 @@ export function IdeationRail() {
               height={451}
               loading="lazy"
               decoding="async"
-              className="aspect-[709/451] w-full bg-[#ebf5f2] object-cover"
+              className="aspect-[709/451] w-full bg-cc-sketch object-cover"
             />
             <div className="flex flex-1 flex-col p-5">
-              <span className="font-mono text-label text-cc-sage-deep">
+              <span className="text-label text-cc-sage-deep">
                 Idea {String(i + 1).padStart(2, "0")}
               </span>
               <h4 className="mt-2 font-display text-h4 font-semibold leading-tight tracking-[-0.02em] text-cc-forest">

@@ -80,15 +80,13 @@ function Hero() {
       <div className="mx-auto max-w-page">
         <a
           href={`${BASE}#projects`}
-          className="focus-glow -ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 font-mono text-label uppercase tracking-[0.16em] text-ink-soft transition-colors hover:text-ink"
+          className="focus-glow -ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 text-label text-ink-soft transition-colors hover:text-ink"
         >
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
           All work
         </a>
         <Reveal y={16} blur={false}>
-          <p className={cn("mt-8 font-mono text-label uppercase tracking-[0.18em]", LAV)}>
-            {d.eyebrow}
-          </p>
+          <p className={cn("mt-8 text-label", LAV)}>{d.eyebrow}</p>
           <h1 className="mt-5 font-display font-semibold tracking-[-0.04em]">
             <span className="block text-h4 tracking-[-0.01em] text-ink-soft">{d.name}</span>
             <span className="mt-3 block text-h1 text-balance">
@@ -110,9 +108,7 @@ function Hero() {
         <dl className="mt-12 grid gap-6 border-t border-line-strong pt-8 sm:grid-cols-3 lg:mt-16">
           {d.facts.map((f) => (
             <div key={f.k}>
-              <dt className="font-mono text-label uppercase tracking-[0.16em] text-ink-faint">
-                {f.k}
-              </dt>
+              <dt className="text-label text-ink-soft">{f.k}</dt>
               <dd className="mt-2 text-small font-medium leading-snug text-ink">{f.v}</dd>
             </div>
           ))}
@@ -156,7 +152,7 @@ function Hypothesis() {
       <ol className="mt-14 grid gap-5 md:grid-cols-3">
         {d.principles.map((p, i) => (
           <li key={p.k} className="rounded-2xl border border-line-strong bg-paper p-7">
-            <p className={cn("font-mono text-label", LAV)}>{String(i + 1).padStart(2, "0")}</p>
+            <p className={cn(" text-label", LAV)}>{String(i + 1).padStart(2, "0")}</p>
             <p className="mt-4 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
               {p.k}
             </p>
@@ -195,14 +191,14 @@ function Journey() {
                 s.group ? "border-reel-charcoal" : "border-line-strong",
               )}
             >
-              <p className="flex items-center gap-2 font-mono text-label uppercase tracking-[0.14em]">
+              <p className="flex items-center gap-2 text-label">
                 <span className={s.group ? "text-ink" : "text-ink-faint"}>{s.n}</span>
                 <span className={s.group ? "text-ink" : "text-ink-soft"}>{s.k}</span>
               </p>
               <p className="mt-1.5 text-small leading-snug text-ink-soft">{s.v}</p>
               <p
                 className={cn(
-                  "mt-2 inline-block rounded-full px-2 py-0.5 font-mono text-micro uppercase tracking-[0.12em]",
+                  "mt-2 inline-block rounded-full px-2 py-0.5 text-micro",
                   s.group
                     ? "bg-reel-charcoal text-reel-amber"
                     : "bg-paper text-ink-soft ring-1 ring-line-strong",
@@ -223,7 +219,7 @@ function Mechanism() {
   return (
     <Section id="mechanism" label="How the room decides" tone="charcoal">
       <Reveal y={16} blur={false}>
-        <p className={cn("font-mono text-label uppercase tracking-[0.18em]", AMB)}>The core flow</p>
+        <p className={cn(" text-label", AMB)}>The core flow</p>
         <h2 className="mt-5 font-display text-h2 font-semibold leading-[1.02] tracking-[-0.03em]">
           {d.title}
         </h2>
@@ -288,9 +284,7 @@ function Engineering() {
 
       <div className="mt-16 grid gap-8 rounded-2xl border border-line-strong bg-paper p-7 sm:p-9 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-5">
-          <p className={cn("font-mono text-label uppercase tracking-[0.16em]", LAV)}>
-            {d.second.title}
-          </p>
+          <p className={cn(" text-label", LAV)}>{d.second.title}</p>
           <p className="mt-3 text-body leading-relaxed text-ink-soft">{d.second.body}</p>
         </div>
         <div className="lg:col-span-7">
@@ -358,9 +352,7 @@ function Decision() {
     >
       <div className="mx-auto max-w-page">
         <Reveal y={20} blur={false}>
-          <p className={cn("font-mono text-label uppercase tracking-[0.18em]", AMB)}>
-            07 · {d.eyebrow}
-          </p>
+          <p className={cn(" text-label", AMB)}>07 · {d.eyebrow}</p>
           <h2 className="mt-8 font-display text-display font-semibold leading-[0.95] tracking-[-0.045em]">
             <span className="block">{d.title[0]}</span>
             <span className={cn("block", AMB)}>{d.title[1]}</span>
@@ -382,11 +374,11 @@ function Practice() {
   const d = C.practice;
   return (
     <Section id="practice" label="What changed in my practice" pause>
-      <p className={cn("font-mono text-label uppercase tracking-[0.18em]", LAV)}>{d.eyebrow}</p>
+      <p className={cn(" text-label", LAV)}>{d.eyebrow}</p>
       <ol className="mt-10 grid gap-10 md:grid-cols-3">
         {d.items.map((it, i) => (
           <li key={it.k}>
-            <p className={cn("font-mono text-label", LAV)}>{String(i + 1).padStart(2, "0")}</p>
+            <p className={cn(" text-label", LAV)}>{String(i + 1).padStart(2, "0")}</p>
             <p className="mt-3 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
               {it.k}
             </p>
@@ -417,9 +409,7 @@ function Practice() {
             href={nextProject.link}
             className="focus-glow group inline-flex min-h-11 items-center gap-3 rounded-full px-2 py-3 text-small text-ink transition-colors hover:text-reel-lavender-deep"
           >
-            <span className="font-mono text-label uppercase tracking-[0.16em] text-ink-soft">
-              Next project
-            </span>
+            <span className="text-label text-ink-soft">Next project</span>
             <span className="font-semibold">{nextProject.title}</span>
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </a>

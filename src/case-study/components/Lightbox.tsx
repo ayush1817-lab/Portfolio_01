@@ -110,7 +110,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
         {item ? (
           <div className="flex h-full flex-col">
             <div className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6">
-              <p className="font-mono text-label uppercase tracking-[0.18em] text-paper/70">
+              <p className="text-label text-paper/70">
                 {index + 1} / {order.length}
               </p>
               <button
@@ -158,10 +158,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
             </div>
 
             <div className="mx-auto w-full max-w-3xl px-4 pb-5 pt-4 sm:px-6">
-              <p
-                id="lightbox-title"
-                className="font-mono text-label uppercase tracking-[0.18em] text-sun"
-              >
+              <p id="lightbox-title" className="text-label text-sun">
                 {item.title}
               </p>
               <p className="mt-1.5 text-small leading-relaxed text-paper/90">{item.caption}</p>

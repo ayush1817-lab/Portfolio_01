@@ -156,7 +156,7 @@ export function ProductFigure({
           {/* expand affordance: always visible on phones, on hover elsewhere */}
           <span
             aria-hidden
-            className="absolute bottom-2.5 right-2.5 rounded-full border border-line bg-paper px-2.5 py-1 font-mono text-micro uppercase tracking-[0.12em] text-ink shadow-soft sm:hidden"
+            className="absolute bottom-2.5 right-2.5 rounded-full border border-line bg-paper px-2.5 py-1 text-micro text-ink shadow-soft sm:hidden"
           >
             Tap to expand
           </span>
@@ -228,12 +228,7 @@ export function ProductFigure({
       {!bare ? (
         <figcaption className={cn("mt-3", hasPins && "lg:px-12")}>
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span
-              className={cn(
-                "font-mono text-label uppercase tracking-[0.16em]",
-                dark ? "text-sun" : "text-cobalt",
-              )}
-            >
+            <span className={cn(" text-label", dark ? "text-sun" : "text-cobalt")}>
               {shot.title}
             </span>
             <span

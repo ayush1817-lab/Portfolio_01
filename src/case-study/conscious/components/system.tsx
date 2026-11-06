@@ -149,9 +149,7 @@ export function SecondDoorway() {
         >
           {w.routes.map((r, i) => (
             <li key={r.k} className="rounded-2xl bg-paper p-4">
-              <p className="font-mono text-label text-cc-lilac-deep">
-                {String(i + 1).padStart(2, "0")}
-              </p>
+              <p className="text-label text-cc-lilac-deep">{String(i + 1).padStart(2, "0")}</p>
               <p className="mt-1 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
                 {r.k}
               </p>
@@ -182,7 +180,7 @@ export function SecondDoorway() {
                 i === e.stages.length - 1 && "sm:col-span-2 lg:col-span-1",
               )}
             >
-              <p className="font-mono text-label text-cc-sage-deep">Stage {i + 1}</p>
+              <p className="text-label text-cc-sage-deep">Stage {i + 1}</p>
               <p className="mt-1 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
                 {st.k}
               </p>
@@ -210,9 +208,7 @@ export function SecondDoorway() {
             </li>
           ))}
         </ol>
-        <p className="mt-6 max-w-read font-display text-pull font-semibold tracking-[-0.02em]">
-          {e.bridge}
-        </p>
+        <p className="mt-6 max-w-read font-display text-pull font-semibold">{e.bridge}</p>
         {hasAsset("ecosystem") ? (
           <div className="mt-8">
             <AccessibleDisclosure
@@ -250,7 +246,7 @@ export function BuddyMatchingLogic() {
 
       <div className="mt-8 rounded-[28px] bg-paper p-5 sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="inline-flex items-center rounded-full border-2 border-dashed border-cc-lilac-deep px-3 py-1 font-mono text-label uppercase tracking-[0.12em] text-cc-lilac-deep">
+          <p className="inline-flex items-center rounded-full border-2 border-dashed border-cc-lilac-deep px-3 py-1 text-label text-cc-lilac-deep">
             {d.demoLabel}
           </p>
           <button
@@ -267,7 +263,7 @@ export function BuddyMatchingLogic() {
 
         <div className="mt-6 grid gap-6 lg:grid-cols-12">
           <fieldset className="lg:col-span-7">
-            <legend className="font-mono text-label uppercase tracking-[0.14em] text-cc-forest-soft">
+            <legend className="text-label text-cc-forest-soft">
               Preferences a person agrees to share
             </legend>
             <ol className="mt-4 space-y-2">
@@ -308,7 +304,7 @@ export function BuddyMatchingLogic() {
                         {p.v}
                       </span>
                     </span>
-                    <span className="font-mono text-label uppercase tracking-[0.1em] text-cc-forest-soft">
+                    <span className="text-label text-cc-forest-soft">
                       {on[i] ? "Shared" : "Not shared"}
                     </span>
                   </button>
@@ -319,9 +315,7 @@ export function BuddyMatchingLogic() {
 
           <div className="lg:col-span-5" aria-live="polite">
             <div className="rounded-2xl bg-cc-forest p-6 text-cc-cream">
-              <p className="font-mono text-label uppercase tracking-[0.14em] text-cc-sage">
-                What the comparison can use
-              </p>
+              <p className="text-label text-cc-sage">What the comparison can use</p>
               {shared.length ? (
                 <ul className="mt-4 space-y-2">
                   {shared.map((p) => (
@@ -338,9 +332,7 @@ export function BuddyMatchingLogic() {
               )}
               {withheld.length ? (
                 <>
-                  <p className="mt-6 font-mono text-label uppercase tracking-[0.14em] text-cc-lilac">
-                    Never enters the comparison
-                  </p>
+                  <p className="mt-6 text-label text-cc-lilac">Never enters the comparison</p>
                   <ul className="mt-3 space-y-2">
                     {withheld.map((p) => (
                       <li key={p.k} className="flex items-center gap-2 text-small text-cc-cream/85">
@@ -359,9 +351,7 @@ export function BuddyMatchingLogic() {
       <Figure assetKey="buddyFlow" className="mt-10 max-w-[980px]" />
 
       <MotionReveal className="mt-10 max-w-read">
-        <p className="font-display text-pull font-semibold tracking-[-0.02em] text-balance">
-          {d.keyLine}
-        </p>
+        <p className="font-display text-pull font-semibold text-balance">{d.keyLine}</p>
       </MotionReveal>
     </SectionShell>
   );
@@ -376,15 +366,13 @@ export function ArchitectureLayers() {
       <ChapterEyebrow n={7} name={d.eyebrow} labels={[d.label]} />
       <MotionReveal className="mt-6">
         <StoryHeading>{d.title}</StoryHeading>
-        <p className="mt-3 font-display text-pull font-medium tracking-[-0.02em] text-cc-sage-deep">
-          {d.sub}
-        </p>
+        <p className="mt-3 font-display text-pull font-medium text-cc-sage-deep">{d.sub}</p>
       </MotionReveal>
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
         <OwnershipCallout label="MY ROLE">{d.myRole}</OwnershipCallout>
         <OwnershipCallout label="DECISION">{d.insight}</OwnershipCallout>
       </div>
-      <p className="mt-8 inline-flex rounded-full border border-cc-forest/30 px-3 py-1 font-mono text-label uppercase tracking-[0.1em] text-cc-forest-soft">
+      <p className="mt-8 inline-flex rounded-full border border-cc-forest/30 px-3 py-1 text-label text-cc-forest-soft">
         Status: {d.status}
       </p>
       <div className="mt-6">
@@ -405,7 +393,7 @@ export function ArchitectureLayers() {
                     : "bg-paper ring-1 ring-cc-forest/15",
                 )}
               >
-                <h3 className="font-mono text-label uppercase tracking-[0.14em] text-cc-forest md:col-span-3">
+                <h3 className="text-label text-cc-forest md:col-span-3">
                   {i + 1}. {l.k}
                 </h3>
                 <ul

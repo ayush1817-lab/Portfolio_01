@@ -31,23 +31,19 @@ export function MobileCard({ href, index, title, line, tags, tagsLabel, linkHint
       href={href ?? undefined}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer noopener" : undefined}
-      className="focus-glow relative isolate flex min-h-[188px] flex-col justify-between overflow-hidden rounded-[18px] bg-ink p-4 text-paper shadow-soft transition-transform duration-200 active:scale-[0.99] motion-reduce:transition-none motion-reduce:active:scale-100"
+      className="focus-glow relative isolate flex min-h-[188px] flex-col justify-between overflow-hidden rounded-[18px] bg-ink p-4 text-paper shadow-soft transition-transform duration-150 active:translate-y-px motion-reduce:transition-none"
     >
       <div aria-hidden className="absolute inset-0 -z-20">
         {media}
       </div>
       <div
         aria-hidden
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(8,18,35,0) 6%, rgba(8,18,35,0.3) 34%, rgba(8,18,35,0.86) 66%, rgba(8,18,35,0.97) 100%)",
-        }}
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-ink/0 from-[6%] via-ink/60 via-[50%] to-ink/95"
       />
 
       <span
         aria-hidden
-        className="grid h-7 w-7 place-items-center rounded-full bg-paper font-mono text-label font-medium text-ink"
+        className="grid h-7 w-7 place-items-center rounded-full bg-paper text-label font-semibold tabular-nums text-ink"
       >
         {index}
       </span>
@@ -76,7 +72,7 @@ export function MobileCard({ href, index, title, line, tags, tagsLabel, linkHint
           {tags.map((t) => (
             <li
               key={t}
-              className="rounded-full border border-paper/20 bg-paper/15 px-2 py-1 font-mono text-micro uppercase leading-none tracking-[0.08em] text-paper backdrop-blur-sm"
+              className="rounded-full border border-paper/25 bg-ink/40 px-2 py-1 text-micro leading-none text-paper"
             >
               {t}
             </li>

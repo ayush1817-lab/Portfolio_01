@@ -19,20 +19,20 @@ export function ResumeLinks({
   size?: "sm" | "md";
   className?: string;
 }) {
-  const pill = size === "sm" ? "gap-1.5 px-3.5 py-2.5 text-caption" : "gap-2 px-5 py-3.5 text-sm";
+  const pill = size === "sm" ? "gap-1.5 px-3.5 py-2.5 text-caption" : "gap-2 px-5 text-sm";
   const look =
     tone === "dark"
-      ? "border border-paper/30 text-paper hover:border-paper hover:bg-paper hover:text-cobalt"
-      : "surface text-ink hover:border-ink/40";
+      ? "border border-paper/40 text-paper hover:border-paper hover:bg-paper hover:text-cobalt"
+      : "border border-line-strong text-ink hover:border-ink";
   return (
     <div className={cn("flex items-stretch gap-2", className)}>
       <a
         href={profile.resume}
         target="_blank"
         rel="noreferrer noopener"
-        data-cursor="Open"
         className={cn(
-          "focus-glow inline-flex flex-1 items-center justify-center rounded-full font-sans font-semibold tracking-tight transition-colors duration-300 sm:flex-none",
+          tone === "dark" ? "focus-on-accent" : "focus-glow",
+          "inline-flex min-h-11 flex-1 items-center justify-center rounded-full font-sans font-semibold tracking-tight transition-colors duration-200 sm:flex-none",
           pill,
           look,
         )}
@@ -44,11 +44,11 @@ export function ResumeLinks({
       <a
         href={profile.resume}
         download={FILE_NAME}
-        data-cursor="Save"
         aria-label="Download resume (PDF)"
         title="Download resume (PDF)"
         className={cn(
-          "focus-glow inline-grid shrink-0 place-items-center rounded-full transition-colors duration-300",
+          tone === "dark" ? "focus-on-accent" : "focus-glow",
+          "inline-grid shrink-0 place-items-center rounded-full transition-colors duration-200",
           size === "sm" ? "h-10 w-10" : "min-h-11 w-11",
           look,
         )}

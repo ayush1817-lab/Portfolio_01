@@ -72,7 +72,7 @@ export function Flow({
           >
             <span
               className={cn(
-                "font-mono text-label font-medium uppercase tracking-[0.14em]",
+                " text-label font-medium",
                 node.warn
                   ? "text-warn"
                   : node.human
@@ -152,12 +152,10 @@ export function EvolutionTimeline({
               )}
             />
           </span>
-          <p className="font-mono text-label uppercase tracking-[0.16em] text-cobalt">
+          <p className="text-label text-cobalt">
             {st.tag} · {st.k}
           </p>
-          <p className="mt-2 font-display text-h4 font-semibold leading-tight tracking-[-0.02em] text-ink">
-            {st.q}
-          </p>
+          <p className="mt-2 font-display text-h4 font-semibold leading-tight text-ink">{st.q}</p>
           <p className="mt-3 text-small leading-relaxed text-ink-soft">{st.v}</p>
         </motion.li>
       ))}
@@ -198,15 +196,13 @@ export function StatFunnel({
             </div>
             <p
               className={cn(
-                "font-display text-stat font-semibold leading-none tracking-[-0.04em]",
+                "font-display text-stat font-semibold leading-none",
                 st.human ? "text-cobalt" : "text-ink",
               )}
             >
               {st.value}
             </p>
-            <p className="mt-2 font-mono text-label uppercase tracking-[0.16em] text-ink">
-              {st.label}
-            </p>
+            <p className="mt-2 text-label text-ink">{st.label}</p>
             <div aria-hidden className="mt-3 h-2 w-full rounded-full bg-paper-3 md:hidden">
               <div className={cn("h-full rounded-full", fill)} style={{ width: `${size[i]}%` }} />
             </div>
@@ -228,13 +224,11 @@ export function PrincipleBand({ line, sub }: { line: string[]; sub: string }) {
       className="bg-sun px-5 py-20 sm:px-8 sm:py-28 lg:px-10 lg:py-36"
     >
       <div className="mx-auto max-w-page">
-        <p className="font-mono text-label uppercase tracking-[0.18em] text-ink/70">
-          The principle
-        </p>
+        <p className="text-label text-ink/70">The principle</p>
         <p className="mt-5 font-display text-h1 font-semibold leading-[0.98] tracking-[-0.04em] text-ink">
           {line[0]}
           <br />
-          <span className="font-serif font-normal italic tracking-[-0.01em]">{line[1]}</span>
+          <span className="font-medium">{line[1]}</span>
         </p>
         <p className="mt-6 max-w-read text-read text-ink/80">{sub}</p>
       </div>

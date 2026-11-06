@@ -56,7 +56,7 @@ export function Eyebrow({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-label uppercase tracking-[0.18em]",
+        "flex flex-wrap items-center gap-x-3 gap-y-2 text-label",
         dark ? "text-paper/70" : "text-ink-soft",
       )}
     >
@@ -68,7 +68,7 @@ export function Eyebrow({
       {lens ? (
         <span
           className={cn(
-            "rounded-full border px-2 py-0.5 text-micro tracking-[0.14em]",
+            "rounded-full border px-2 py-0.5 text-micro",
             dark ? "border-paper/25 text-paper/80" : "border-line-strong text-ink-soft",
           )}
         >
@@ -194,9 +194,7 @@ export function Contribution({
     <Section id="contribution" label="My contribution" tone="tint">
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
         <Reveal y={16} blur={false} className="lg:col-span-4">
-          <p className={cn("font-mono text-label uppercase tracking-[0.18em]", accent)}>
-            My contribution
-          </p>
+          <p className={cn(" text-label", accent)}>My contribution</p>
           <h2 className="mt-4 font-display text-h3 font-semibold tracking-[-0.03em] text-balance">
             {title}
           </h2>
@@ -205,7 +203,7 @@ export function Contribution({
         <ol className="grid gap-px overflow-hidden rounded-2xl border border-line-strong bg-line-strong sm:grid-cols-2 lg:col-span-8">
           {items.map((it, i) => (
             <li key={it.k} className="bg-paper p-6 sm:p-7">
-              <p className={cn("font-mono text-label", accent)}>{String(i + 1).padStart(2, "0")}</p>
+              <p className={cn(" text-label", accent)}>{String(i + 1).padStart(2, "0")}</p>
               <p className="mt-3 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
                 {it.k}
               </p>
@@ -263,9 +261,7 @@ export function Summary({
     <Section id="summary" label="The project in 60 seconds" tone="tint">
       <div className="grid gap-6 lg:grid-cols-12 lg:gap-12">
         <Reveal y={16} blur={false} className="lg:col-span-4">
-          <p className={cn("font-mono text-label uppercase tracking-[0.18em]", accent)}>
-            In 60 seconds
-          </p>
+          <p className={cn(" text-label", accent)}>In 60 seconds</p>
           <h2 className="mt-3 font-display text-h3 font-semibold tracking-[-0.03em] text-balance">
             {title}
           </h2>
@@ -274,25 +270,21 @@ export function Summary({
         <dl className="grid gap-px overflow-hidden rounded-2xl border border-line-strong bg-line-strong sm:grid-cols-3 lg:col-span-8">
           {cells.map((c) => (
             <div key={c.k} className="bg-paper px-4 py-3.5 sm:p-5">
-              <dt className="font-mono text-label uppercase tracking-[0.16em] text-ink-faint">
-                {c.k}
-              </dt>
+              <dt className="text-label text-ink-faint">{c.k}</dt>
               <dd className="mt-1.5 text-small leading-snug text-ink sm:text-body">{c.v}</dd>
             </div>
           ))}
         </dl>
       </div>
       <div className="mt-8 border-t border-line pt-6">
-        <p className="font-mono text-label uppercase tracking-[0.18em] text-ink-faint">
-          My contribution
-        </p>
+        <p className="text-label text-ink-faint">My contribution</p>
         <ol className="mt-4 grid grid-cols-2 gap-2 sm:gap-x-8 sm:gap-y-6 lg:grid-cols-4">
           {items.map((it, i) => (
             <li
               key={it.k}
               className="rounded-xl border border-line-strong bg-paper p-3 sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0"
             >
-              <p className={cn("hidden font-mono text-label sm:block", accent)}>
+              <p className={cn("hidden text-label sm:block", accent)}>
                 {String(i + 1).padStart(2, "0")}
               </p>
               <p className="font-display text-h4 font-semibold leading-tight tracking-[-0.02em] sm:mt-2">
@@ -382,10 +374,8 @@ export function ChapterBar({
             : "translate-y-3 sm:translate-y-4",
       )}
     >
-      <div className="mx-auto flex max-w-page items-center gap-1 rounded-full border border-line bg-paper/90 p-1 shadow-soft backdrop-blur-md">
-        <span className="hidden shrink-0 pl-4 pr-2 font-mono text-label uppercase tracking-[0.16em] text-ink-faint md:block">
-          {name}
-        </span>
+      <div className="mx-auto flex max-w-page items-center gap-1 rounded-full border border-line bg-paper p-1 shadow-soft">
+        <span className="hidden shrink-0 pl-4 pr-2 text-label text-ink-faint md:block">{name}</span>
         <div
           ref={rowRef}
           className="flex min-w-0 flex-1 gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -404,9 +394,7 @@ export function ChapterBar({
                   on ? "bg-ink text-paper" : "text-ink-soft hover:bg-ink/5 hover:text-ink",
                 )}
               >
-                <span
-                  className={cn("font-mono text-micro", on ? "text-paper/60" : "text-ink-faint")}
-                >
+                <span className={cn(" text-micro", on ? "text-paper/60" : "text-ink-faint")}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {c.label}

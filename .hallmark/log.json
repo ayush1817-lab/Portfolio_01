@@ -1,0 +1,32 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "page",
+  "shape": "Bento Grid",
+  "theme": "brand",
+  "axes": "light/grotesk-sans/cool",
+  "hero": "Index",
+  "nav": "edge-aligned",
+  "footer": "statement",
+  "imagery": "user",
+  "photos": [],
+  "entry": "rise",
+  "fingerprint": "index-hero/bento/rows/pinned-about/quote-lead/band/statement",
+  "sections": [
+   "Hero (work index + preview)",
+   "Bento (case studies)",
+   "Rows (builds)",
+   "Split (about)",
+   "Quotes",
+   "Band (contact)",
+   "Footer statement"
+  ],
+  "signature": "the work index with a live preview",
+  "waived": [
+   "44c"
+  ],
+  "prompt": "product designer portfolio, hire",
+  "date": "2026-11-06"
+ }
+]
