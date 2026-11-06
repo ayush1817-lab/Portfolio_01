@@ -1,13 +1,7 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/content/portfolio";
 import * as C from "../content";
-import {
-  ChapterEyebrow,
-  MotionReveal,
-  ReadingColumn,
-  SectionShell,
-  StoryHeading,
-} from "./primitives";
+import { MotionReveal, ReadingColumn, SectionShell, StoryHeading } from "./primitives";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -17,7 +11,6 @@ export function Reflection() {
     <SectionShell id="reflection" label="Reflection" tone="forest" pause>
       <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-7">
-          <ChapterEyebrow n={8} name={d.eyebrow} labels={[d.label]} onDark />
           <MotionReveal className="mt-6">
             <StoryHeading size="xl" className="max-w-[18ch]">
               {d.title}

@@ -49,7 +49,10 @@ export function Flow({
     <ol
       aria-label={label}
       className={cn(
-        vertical ? "flex flex-col gap-2" : "grid grid-cols-2 gap-2 sm:grid-cols-3",
+        vertical
+          ? "flex flex-col gap-2"
+          : "grid grid-cols-1 border-t md:grid-cols-3 md:gap-2 md:border-t-0",
+        !vertical && (dark ? "border-paper/20" : "border-line-strong"),
         arrows && "md:flex md:flex-row md:items-stretch md:gap-0",
         className,
       )}
@@ -60,6 +63,10 @@ export function Flow({
             {...s(i)}
             className={cn(
               "flex flex-1 flex-col justify-center rounded-xl border px-3 py-2.5 sm:px-4 sm:py-3.5",
+              // phones: one hairline row per step, no box
+              !vertical &&
+                "max-md:flex-row max-md:items-baseline max-md:justify-start max-md:gap-3 max-md:rounded-none max-md:border-x-0 max-md:border-t-0 max-md:bg-transparent max-md:px-0 max-md:py-2.5",
+              !vertical && (dark ? "max-md:border-b-paper/15" : "max-md:border-b-line"),
               arrows && "md:min-w-0",
               node.warn
                 ? "border-warn/60 bg-warn-soft"
@@ -72,7 +79,7 @@ export function Flow({
           >
             <span
               className={cn(
-                " text-label font-medium",
+                "text-label font-medium max-md:w-24 max-md:shrink-0",
                 node.warn
                   ? "text-warn"
                   : node.human
@@ -86,7 +93,7 @@ export function Flow({
             </span>
             <span
               className={cn(
-                "mt-1 text-small leading-snug",
+                "mt-1 text-small leading-snug max-md:mt-0",
                 node.warn || node.human ? "text-ink" : dark ? "text-paper/80" : "text-ink-soft",
               )}
             >

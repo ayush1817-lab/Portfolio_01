@@ -218,7 +218,7 @@ export function JourneyViewer({
                     : "border-line-strong bg-paper text-ink",
                 )}
               >
-                <span className={cn(" text-label", s.group ? "text-reel-amber" : "text-ink-soft")}>
+                <span className={cn("text-label", s.group ? "text-reel-amber" : "text-ink-soft")}>
                   {s.n}
                 </span>
                 {s.k}

@@ -121,15 +121,6 @@ export function ProductFigure({
         >
           <span className="sr-only">Open full-size screenshot: {shot.title}</span>
           <span className="block overflow-hidden rounded-[14px] border border-line-strong bg-paper shadow-frame">
-            {/* browser chrome */}
-            <span
-              aria-hidden
-              className="flex h-7 items-center gap-1.5 border-b border-line bg-paper-2 px-3"
-            >
-              <span className="h-2 w-2 rounded-full bg-ink/15" />
-              <span className="h-2 w-2 rounded-full bg-ink/15" />
-              <span className="h-2 w-2 rounded-full bg-ink/15" />
-            </span>
             {/* phones: a short crop from the top; the lightbox has the full screen */}
             <span
               className="relative block w-full overflow-hidden bg-paper max-sm:max-h-40"
@@ -162,7 +153,7 @@ export function ProductFigure({
           </span>
           <span
             aria-hidden
-            className="absolute right-3 top-10 hidden h-8 w-8 place-items-center rounded-full border border-line bg-paper text-ink opacity-0 shadow-soft transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 sm:grid"
+            className="absolute right-3 top-3 hidden h-8 w-8 place-items-center rounded-full border border-line bg-paper text-ink opacity-0 shadow-soft transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 sm:grid"
           >
             <Maximize2 className="h-3.5 w-3.5" />
           </span>
@@ -170,7 +161,7 @@ export function ProductFigure({
 
         {/* wide screens: pins in the gutters, leader line to the target */}
         {hasPins ? (
-          <div className="pointer-events-none absolute bottom-0 top-7 hidden lg:left-12 lg:right-12 lg:block">
+          <div className="pointer-events-none absolute bottom-0 top-0 hidden lg:left-12 lg:right-12 lg:block">
             {pins.map((a) => {
               const left = a.side ? a.side === "left" : a.px < 50;
               const open = openPin === a.n || hoverPin === a.n;
@@ -228,7 +219,7 @@ export function ProductFigure({
       {!bare ? (
         <figcaption className={cn("mt-3", hasPins && "lg:px-12")}>
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className={cn(" text-label", dark ? "text-sun" : "text-cobalt")}>
+            <span className={cn("text-label", dark ? "text-sun" : "text-cobalt")}>
               {shot.title}
             </span>
             <span

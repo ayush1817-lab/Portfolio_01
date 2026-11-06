@@ -429,7 +429,7 @@ export function DetenteSequence() {
             </button>
           );
         })}
-        <p className="mt-1 text-caption text-ink-faint">
+        <p className="mt-1 text-caption text-ink-soft">
           Use the arrow keys or select a step. Colour is always paired with the state name.
         </p>
       </div>

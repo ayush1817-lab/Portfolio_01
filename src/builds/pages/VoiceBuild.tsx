@@ -78,7 +78,7 @@ export function VoiceBuild() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 text-small text-ink-faint">
+        <p className="mt-6 text-small text-ink-soft">
           A working prototype and an AI interaction-design experiment, not a production assistant.
         </p>
       </BuildStoryBlock>
