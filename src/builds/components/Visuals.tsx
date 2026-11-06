@@ -1,4 +1,12 @@
-import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type KeyboardEvent,
+} from "react";
 import {
   ArrowRight,
   Box,
@@ -19,11 +27,15 @@ import { cn } from "@/lib/utils";
 import { EASE } from "@/components/portfolio/motion";
 import { detente, pipeline, type DetenteState, type Step } from "../content";
 
-/** Cycles 0..n-1 while visible; holds `still` under reduced motion. */
+/** Set to true to hold every motif on its still frame (a visible pause control). */
+export const MotifHold = createContext(false);
+
+/** Cycles 0..n-1 while visible; holds `still` under reduced motion or a pause. */
 function useCycle(n: number, ms: number, still: number) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.4 });
-  const reduce = useReducedMotion();
+  const held = useContext(MotifHold);
+  const reduce = useReducedMotion() || held;
   const [i, setI] = useState(0);
   useEffect(() => {
     if (reduce || !inView) return;
@@ -81,11 +93,7 @@ export function PipelineMotif({ className, compact }: { className?: string; comp
               >
                 <Icon className={cn("h-4 w-4", human && "-rotate-45")} />
               </span>
-              {compact ? null : (
-                <span className="text-center font-mono text-micro uppercase tracking-[0.12em] text-ink/70">
-                  {n.k}
-                </span>
-              )}
+              {compact ? null : <span className="text-center text-micro text-ink/70">{n.k}</span>}
             </div>
           );
         })}
@@ -96,7 +104,7 @@ export function PipelineMotif({ className, compact }: { className?: string; comp
           <span
             key={k}
             className={cn(
-              "grid h-9 w-9 place-items-center rounded-lg border bg-paper transition-all duration-300",
+              "grid h-9 w-9 place-items-center rounded-lg border bg-paper transition-[color,border-color,opacity] duration-300",
               i >= 4
                 ? "border-cobalt/40 text-cobalt opacity-100"
                 : "border-line text-ink/30 opacity-60",
@@ -107,7 +115,7 @@ export function PipelineMotif({ className, compact }: { className?: string; comp
         ))}
         <span
           className={cn(
-            "ml-1 inline-flex items-center gap-1 rounded-full px-2 py-1 font-mono text-micro uppercase tracking-[0.12em] transition-colors duration-300",
+            "ml-1 inline-flex items-center gap-1 rounded-full px-2 py-1 text-micro transition-colors duration-300",
             i >= 5 ? "bg-sun text-ink" : "bg-paper text-ink/50",
           )}
         >
@@ -138,17 +146,15 @@ export function PipelineSteps({ steps }: { steps: Step[] }) {
             s.gate ? "border-sun-deep/50 bg-sun-soft" : "border-line-strong bg-paper",
           )}
         >
-          <span className="flex items-center justify-between font-mono text-label text-ink-soft">
+          <span className="flex items-center justify-between text-label text-ink-soft">
             {String(k + 1).padStart(2, "0")}
             {s.gate ? (
-              <span className="inline-flex items-center gap-1 rounded-full bg-sun px-2 py-0.5 font-mono text-micro uppercase tracking-[0.12em] text-ink">
+              <span className="inline-flex items-center gap-1 rounded-full bg-sun px-2 py-0.5 text-micro text-ink">
                 <UserCheck className="h-3 w-3" aria-hidden /> Human checkpoint
               </span>
             ) : null}
           </span>
-          <span className="mt-2 font-display text-h4 font-semibold leading-tight tracking-[-0.02em]">
-            {s.k}
-          </span>
+          <span className="mt-2 font-display text-h4 font-semibold leading-tight">{s.k}</span>
           <span className="mt-1.5 text-small leading-relaxed text-ink-soft">{s.v}</span>
         </motion.li>
       ))}
@@ -293,7 +299,7 @@ export function DetenteMotif({ className, compact }: { className?: string; compa
       ref={ref}
       aria-hidden
       className={cn(
-        "relative flex h-full w-full flex-col bg-[radial-gradient(circle_at_50%_35%,#fbf6ee_0%,#efe6d8_70%)]",
+        "relative flex h-full w-full flex-col bg-[radial-gradient(circle_at_50%_35%,var(--color-detente-light)_0%,var(--color-detente-deep)_70%)]",
         compact ? "items-end justify-start px-4 py-2" : "items-center justify-center p-6",
         className,
       )}
@@ -301,7 +307,7 @@ export function DetenteMotif({ className, compact }: { className?: string; compa
       <Bracelet state={s.id} className={compact ? "max-w-[180px]" : "max-w-[300px]"} />
       <span
         className={cn(
-          "mt-2 items-center gap-1.5 rounded-full bg-paper px-3 py-1 font-mono text-micro uppercase tracking-[0.14em] text-ink shadow-soft",
+          "mt-2 items-center gap-1.5 rounded-full bg-paper px-3 py-1 text-micro text-ink shadow-soft",
           compact ? "hidden" : "inline-flex",
         )}
       >
@@ -362,10 +368,10 @@ export function DetenteSequence() {
         role="tabpanel"
         id={`${id}-panel`}
         aria-labelledby={`${id}-tab-${active}`}
-        className="flex flex-col items-center rounded-[1.75rem] bg-[radial-gradient(circle_at_50%_35%,#fbf6ee_0%,#efe6d8_75%)] p-6 sm:p-10 lg:col-span-7"
+        className="flex flex-col items-center rounded-[1.75rem] bg-[radial-gradient(circle_at_50%_35%,var(--color-detente-light)_0%,var(--color-detente-deep)_75%)] p-6 sm:p-10 lg:col-span-7"
       >
         <Bracelet state={s.id} className="max-w-[460px]" />
-        <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-paper px-4 py-2 font-mono text-label uppercase tracking-[0.14em] text-ink shadow-soft">
+        <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-paper px-4 py-2 text-label text-ink shadow-soft">
           <Icon className="h-4 w-4" aria-hidden />
           State: {s.state}
         </p>
@@ -405,9 +411,7 @@ export function DetenteSequence() {
                   : "border-line-strong bg-paper text-ink hover:border-ink/40",
               )}
             >
-              <span className="font-mono text-label opacity-70">
-                {String(k + 1).padStart(2, "0")}
-              </span>
+              <span className="text-label opacity-70">{String(k + 1).padStart(2, "0")}</span>
               <StepIcon className="h-5 w-5 shrink-0" aria-hidden />
               <span className="min-w-0">
                 <span className="block font-display text-h4 font-semibold leading-tight">
@@ -482,13 +486,11 @@ export function VoiceMotif({ className, compact }: { className?: string; compact
       )}
     >
       <div className="flex items-center justify-between">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-paper/10 px-2.5 py-1 font-mono text-micro uppercase tracking-[0.14em] text-sun">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-paper/10 px-2.5 py-1 text-micro text-sun">
           <span className="h-1.5 w-1.5 rounded-full bg-sun" />
           {STATUSES[i]}
         </span>
-        <span className="font-mono text-micro uppercase tracking-[0.14em] text-paper/50">
-          local
-        </span>
+        <span className="text-micro text-paper/50">local</span>
       </div>
       <Waveform live={!reduce && i <= 1} />
       <p
@@ -502,7 +504,7 @@ export function VoiceMotif({ className, compact }: { className?: string; compact
       <p
         className={cn(
           compact && "!hidden",
-          "inline-flex items-center gap-1.5 self-start rounded-lg border px-2.5 py-1 font-mono text-label transition-colors duration-300",
+          "inline-flex items-center gap-1.5 self-start rounded-lg border px-2.5 py-1 text-label transition-colors duration-300",
           i >= 3 ? "border-sun bg-sun text-ink" : "border-paper/25 text-paper/60",
         )}
       >
@@ -518,15 +520,13 @@ export function VoiceSession() {
   return (
     <div ref={ref} className="grid gap-4 lg:grid-cols-2">
       <div className="flex flex-col gap-3 rounded-[1.5rem] bg-ink p-5 text-paper sm:p-7">
-        <p className="font-mono text-label uppercase tracking-[0.14em] text-paper/60">
-          Illustrative · read
-        </p>
+        <p className="text-label text-paper/60">Illustrative · read</p>
         <ol className="flex flex-wrap gap-1.5" aria-label="Agent states">
           {STATUSES.map((st, k) => (
             <li
               key={st}
               className={cn(
-                "rounded-full px-2.5 py-1 font-mono text-micro uppercase tracking-[0.12em] transition-colors duration-300",
+                "rounded-full px-2.5 py-1 text-micro transition-colors duration-300",
                 k === i
                   ? "bg-sun text-ink"
                   : k < i
@@ -542,7 +542,7 @@ export function VoiceSession() {
         <p className="self-start rounded-2xl rounded-bl-md bg-paper/10 px-4 py-2.5 text-small">
           “Do I need a jacket?”
         </p>
-        <p className="self-start rounded-lg border border-sun bg-sun/10 px-3 py-1.5 font-mono text-label text-sun">
+        <p className="self-start rounded-lg border border-sun bg-sun/10 px-3 py-1.5 text-label text-sun">
           → tool: weather lookup <span className="text-paper/60">(simulated)</span>
         </p>
         <p className="text-small leading-relaxed text-paper/75">
@@ -551,14 +551,12 @@ export function VoiceSession() {
         </p>
       </div>
       <div className="flex flex-col gap-3 rounded-[1.5rem] border border-line-strong bg-paper p-5 sm:p-7">
-        <p className="font-mono text-label uppercase tracking-[0.14em] text-ink-soft">
-          Illustrative · write
-        </p>
+        <p className="text-label text-ink-soft">Illustrative · write</p>
         <p className="self-start rounded-2xl rounded-bl-md bg-paper-3 px-4 py-2.5 text-small">
           “Add that to my notes.”
         </p>
         <div className="rounded-xl border border-sun-deep/50 bg-sun-soft p-4">
-          <p className="flex items-center gap-2 font-mono text-label uppercase tracking-[0.14em] text-sun-deep">
+          <p className="flex items-center gap-2 text-label text-sun-deep">
             <ShieldCheck className="h-4 w-4" aria-hidden /> Confirmation gate
           </p>
           <p className="mt-2 text-small text-ink">
@@ -573,7 +571,7 @@ export function VoiceSession() {
             </span>
           </div>
         </div>
-        <p className="self-start rounded-lg border border-line-strong px-3 py-1.5 font-mono text-label text-ink">
+        <p className="self-start rounded-lg border border-line-strong px-3 py-1.5 text-label text-ink">
           → tool: write note <span className="text-ink-soft">(after confirmation)</span>
         </p>
         <p className="text-small leading-relaxed text-ink-soft">
@@ -589,9 +587,7 @@ export function RoutesCompare({ workflow, agent }: { workflow: string[]; agent: 
   return (
     <div className="grid gap-4 md:grid-cols-2">
       <div className="rounded-[1.5rem] border border-line-strong bg-paper-2 p-5 sm:p-7">
-        <p className="font-mono text-label uppercase tracking-[0.14em] text-ink-soft">
-          Workflow tool · the designer sets the route
-        </p>
+        <p className="text-label text-ink-soft">Workflow tool · the designer sets the route</p>
         <ol
           className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center"
           aria-label="A fixed route"
@@ -609,9 +605,7 @@ export function RoutesCompare({ workflow, agent }: { workflow: string[]; agent: 
         </ol>
       </div>
       <div className="rounded-[1.5rem] border-2 border-dashed border-cobalt/60 bg-cobalt-soft p-5 sm:p-7">
-        <p className="font-mono text-label uppercase tracking-[0.14em] text-cobalt">
-          This agent · you set the boundary
-        </p>
+        <p className="text-label text-cobalt">This agent · you set the boundary</p>
         <ul
           className="mt-4 flex flex-wrap gap-2"
           aria-label="Capabilities the model can choose from"

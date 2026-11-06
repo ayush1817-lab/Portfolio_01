@@ -1,43 +1,15 @@
-import {
-  Building2,
-  Gamepad2,
-  HeartHandshake,
-  Quote,
-  Stethoscope,
-  type LucideIcon,
-} from "lucide-react";
-import { useEffect, useRef } from "react";
+import { Pause, Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { testimonials, type Testimonial } from "@/content/portfolio";
 import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./motion";
 import { cn } from "@/lib/utils";
 
-/** Soft, lit-from-above gradients so each avatar reads as a small 3D bead. */
-const toneStyle: Record<Testimonial["tone"], { ball: string; ink: string }> = {
-  cobalt: {
-    ball: "radial-gradient(circle at 32% 26%, #8fb0ff 0%, #2f5fe6 42%, #1638a6 100%)",
-    ink: "text-paper",
-  },
-  sun: {
-    ball: "radial-gradient(circle at 32% 26%, #fff1b8 0%, #ffc93c 45%, #d99a00 100%)",
-    ink: "text-ink",
-  },
-  sage: {
-    ball: "radial-gradient(circle at 32% 26%, #d5ecdc 0%, #6fa585 45%, #3d6450 100%)",
-    ink: "text-paper",
-  },
-  lilac: {
-    ball: "radial-gradient(circle at 32% 26%, #efe6ff 0%, #a994d8 45%, #5e4a8c 100%)",
-    ink: "text-paper",
-  },
-};
-
-const orgIcon = (org = ""): LucideIcon => {
-  const o = org.toLowerCase();
-  if (o.includes("oaks")) return Gamepad2;
-  if (o.includes("bfm") || o.includes("clinic")) return Stethoscope;
-  if (o.includes("conscious")) return HeartHandshake;
-  return Building2;
+/** Initials on a flat tint from the palette. */
+const toneClass: Record<Testimonial["tone"], string> = {
+  cobalt: "bg-cobalt-soft text-cobalt-deep",
+  sun: "bg-sun-soft text-sun-deep",
+  sage: "bg-cc-sage-soft text-cc-sage-deep",
+  lilac: "bg-cc-lilac-soft text-cc-lilac-deep",
 };
 
 const initials = (name: string) =>
@@ -48,28 +20,16 @@ const initials = (name: string) =>
     .map((w) => w[0]!.toUpperCase())
     .join("");
 
-/** Code-drawn avatar: initials on a shaded bead, with an organisation badge. No photos. */
 function Avatar({ t }: { t: Testimonial }) {
-  const s = toneStyle[t.tone];
-  const Icon = orgIcon(t.org);
   return (
-    <span aria-hidden className="relative inline-block h-14 w-14 shrink-0">
-      <span
-        className={cn(
-          "grid h-full w-full place-items-center rounded-full font-display text-h4 font-semibold tracking-[-0.02em]",
-          s.ink,
-        )}
-        style={{
-          background: s.ball,
-          boxShadow:
-            "inset -4px -6px 10px rgba(15,20,36,0.22), inset 3px 4px 8px rgba(255,255,255,0.35), 0 8px 18px -8px rgba(15,20,36,0.45)",
-        }}
-      >
-        {initials(t.name)}
-      </span>
-      <span className="absolute -bottom-1 -right-1 grid h-6 w-6 place-items-center rounded-full bg-paper text-ink shadow-soft ring-1 ring-line">
-        <Icon className="h-3.5 w-3.5" />
-      </span>
+    <span
+      aria-hidden
+      className={cn(
+        "grid h-11 w-11 shrink-0 place-items-center rounded-full text-small font-semibold",
+        toneClass[t.tone],
+      )}
+    >
+      {initials(t.name)}
     </span>
   );
 }
@@ -80,8 +40,9 @@ function Avatar({ t }: { t: Testimonial }) {
  * focused and for a while afterwards, while off screen or in a hidden tab,
  * and never runs with reduced motion.
  */
-function useAutoAdvance(ref: React.RefObject<HTMLUListElement | null>) {
+function useAutoAdvance(ref: React.RefObject<HTMLUListElement | null>, held: boolean) {
   useEffect(() => {
+    if (held) return;
     const row = ref.current;
     if (!row) return;
     const phone = window.matchMedia("(max-width: 639px)");
@@ -118,58 +79,94 @@ function useAutoAdvance(ref: React.RefObject<HTMLUListElement | null>) {
       io.disconnect();
       events.forEach((ev) => row.removeEventListener(ev, pause));
     };
-  }, [ref]);
+  }, [ref, held]);
 }
 
 export function Testimonials() {
   const row = useRef<HTMLUListElement>(null);
-  useAutoAdvance(row);
+  const [held, setHeld] = useState(false);
+  useAutoAdvance(row, held);
   if (!testimonials.length) return null;
   return (
     <section
       id="testimonials"
-      aria-label="What people say"
-      className="relative py-14 sm:py-24 lg:py-32"
+      aria-labelledby="testimonials-title"
+      className="relative bg-paper-2 py-16 sm:py-24 lg:py-30"
     >
       <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
-        <SectionHeading index="04" label="Kind words" title="What people" italic="say." />
+        <SectionHeading
+          id="testimonials-title"
+          title="What people say"
+          aside={
+            <button
+              type="button"
+              onClick={() => setHeld((v) => !v)}
+              aria-pressed={held}
+              className="focus-glow inline-flex min-h-11 items-center gap-2 rounded-full border border-line-strong px-4 text-sm font-semibold text-ink transition-colors duration-200 hover:border-ink active:translate-y-px sm:hidden motion-reduce:hidden"
+            >
+              {held ? (
+                <Play className="h-4 w-4" aria-hidden />
+              ) : (
+                <Pause className="h-4 w-4" aria-hidden />
+              )}
+              {held ? "Play" : "Pause"}
+            </button>
+          }
+        />
 
-        {/* Phones: one swipeable row. Larger screens: a two-column grid. */}
+        {/* Phones: one swipeable row that advances on its own. Larger screens:
+            the first quote set large, the other three stacked beside it. */}
         <ul
           ref={row}
-          className="-mx-5 mt-8 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:thin] sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:gap-6"
+          className="-mx-5 mt-8 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:thin] sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-8 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-16 lg:grid-cols-12"
         >
-          {testimonials.map((t, i) => (
-            <li
-              key={t.name}
-              className="w-[82vw] max-w-[26rem] shrink-0 snap-start sm:w-auto sm:max-w-none"
-            >
-              <Reveal delay={(i % 2) * 0.08} y={24} blur={false} className="h-full">
-                <figure className="flex h-full flex-col rounded-[1.75rem] border border-line bg-paper p-6 shadow-soft sm:p-8">
-                  <Quote aria-hidden className="h-7 w-7 text-sun" />
-                  <blockquote className="mt-4 flex-1 font-display text-h4 font-medium leading-[1.45] tracking-[-0.01em] text-ink">
-                    {t.quote}
+          {testimonials.map((t, i) => {
+            const lead = i === 0;
+            return (
+              <li
+                key={t.name}
+                className={cn(
+                  "w-[82vw] max-w-[26rem] shrink-0 snap-start sm:w-auto sm:max-w-none",
+                  lead
+                    ? "sm:col-span-2 lg:col-span-7 lg:row-span-3"
+                    : "lg:col-span-5 lg:border-t lg:border-line lg:pt-6 lg:[&:nth-child(2)]:border-t-0 lg:[&:nth-child(2)]:pt-0",
+                )}
+              >
+                <figure
+                  className={cn(
+                    "flex h-full flex-col",
+                    "max-lg:rounded-3xl max-lg:border max-lg:border-line max-lg:bg-paper max-lg:p-6",
+                    lead && "lg:rounded-3xl lg:bg-paper lg:p-12",
+                  )}
+                >
+                  <blockquote
+                    className={cn(
+                      "flex-1 text-ink",
+                      lead
+                        ? "font-display text-h4 font-medium tracking-[-0.01em] lg:text-pull"
+                        : "text-body",
+                    )}
+                  >
+                    <p>“{t.quote}”</p>
                   </blockquote>
-                  <figcaption className="mt-6 flex items-center gap-4 border-t border-line pt-5">
+                  <figcaption className="mt-6 flex items-center gap-3">
                     <Avatar t={t} />
                     <span className="min-w-0">
-                      <span className="block font-display text-body font-semibold leading-tight text-ink">
+                      <span className="block text-body font-semibold leading-tight text-ink">
                         {t.name}
                       </span>
-                      <span className="mt-0.5 block text-small leading-snug text-ink-soft">
+                      <span className="mt-0.5 block text-small text-ink-soft">
                         {[t.role, t.org].filter(Boolean).join(", ")}
                       </span>
                       {t.relation ? (
-                        <span className="mt-1 block font-mono text-micro uppercase tracking-[0.16em] text-ink-faint">
-                          {t.relation}
-                        </span>
+                        <span className="mt-1 block text-label text-ink-soft">{t.relation}</span>
                       ) : null}
                     </span>
                   </figcaption>
                 </figure>
-              </Reveal>
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>

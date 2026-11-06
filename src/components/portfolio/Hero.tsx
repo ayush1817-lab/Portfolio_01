@@ -1,10 +1,9 @@
+import { useState, type ReactNode } from "react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-import photoAsset from "@/assets/ayush-photo.jpeg.png";
-import { profile } from "@/content/portfolio";
-import { EASE, Magnetic, SplitText, Tilt } from "./motion";
-import { ResumeLinks } from "./ResumeLinks";
+import { profile, projects } from "@/content/portfolio";
+import { buildUrl, cards, type BuildSlug } from "@/builds/content";
+import { DetenteMotif, MotifHold, PipelineMotif, VoiceMotif } from "@/builds/components/Visuals";
+import { cn } from "@/lib/utils";
 
 function scrollTo(id: string) {
   return (e: React.MouseEvent) => {
@@ -13,228 +12,170 @@ function scrollTo(id: string) {
   };
 }
 
-const facts = [
-  { k: "Based in", v: "Dublin, IE" },
-  { k: "Studying", v: "MSc HCI · UCD" },
-  { k: "Focus", v: "AI product design" },
+const motif: Record<BuildSlug, (p: { className?: string }) => React.ReactElement> = {
+  "3d-pipeline": PipelineMotif,
+  detente: DetenteMotif,
+  "voice-agent": VoiceMotif,
+};
+
+type Entry = {
+  key: string;
+  name: string;
+  kind: string;
+  year: string;
+  href: string;
+  line: string;
+  preview: ReactNode;
+};
+
+/** Every piece of work on the site, in one list: three case studies, then three builds. */
+const entries: Entry[] = [
+  ...projects.slice(0, 3).map((p) => ({
+    key: p.id,
+    name: p.title,
+    kind: "Case study",
+    year: p.year,
+    href: p.link ?? "#projects",
+    line: p.mobile?.line ?? p.blurb,
+    preview: p.cover ? (
+      <img
+        src={p.cover.src}
+        alt={p.cover.alt}
+        width={p.cover.width}
+        height={p.cover.height}
+        decoding="async"
+        draggable={false}
+        className="h-full w-full object-cover object-top"
+      />
+    ) : null,
+  })),
+  ...cards.map((c) => {
+    const Motif = motif[c.slug];
+    return {
+      key: c.slug,
+      name: c.name,
+      kind: `Build, ${c.where.toLowerCase()}`,
+      year: "",
+      href: buildUrl(c.slug),
+      line: c.headline,
+      preview: <Motif />,
+    };
+  }),
 ];
 
-const chips = [
-  { text: "// product designer", cls: "-left-6 top-10 lg:-left-16" },
-  { text: "// ai products", cls: "-right-4 top-1/3 lg:-right-14" },
-  { text: "// hci researcher", cls: "-left-4 top-[56%] lg:-left-14" },
-];
-
+/**
+ * Hero, Index posture: the name and one line, then the work itself as the
+ * lead. Hovering or focusing a row shows that project in the preview frame.
+ */
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yText = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -120]);
-  const yPhoto = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -60]);
-  const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
-  const [first, ...rest] = profile.name.split(" ");
-  const last = rest.join(" ");
+  const [active, setActive] = useState(0);
+  const current = entries[active];
 
   return (
     <section
-      ref={ref}
       id="hero"
-      aria-label="Introduction"
-      className="relative isolate flex items-center overflow-hidden pt-24 pb-10 sm:min-h-[100svh] sm:pt-28 sm:pb-16 lg:pt-32"
+      aria-labelledby="hero-title"
+      className="relative pt-24 pb-14 sm:pt-28 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:pt-28 lg:pb-16"
     >
-      {/* ── backdrop: blueprint grid + two crisp shapes ─────── */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 grid-fade" />
-        <div className="absolute -right-[12vmax] top-[8%] h-[42vmax] w-[42vmax] rounded-full bg-sun-soft" />
-        <div className="absolute -left-[14vmax] bottom-[-18vmax] h-[36vmax] w-[36vmax] rounded-full border border-cobalt/15" />
-      </div>
-
-      <div className="mx-auto grid w-full max-w-page grid-cols-1 items-center gap-12 px-5 sm:gap-14 sm:px-8 lg:grid-cols-12 lg:gap-8 lg:px-10">
-        {/* ── copy ──────────────────────────────────────────── */}
-        <motion.div style={{ y: yText, opacity: fade }} className="relative z-10 lg:col-span-7">
-          <div className="mb-6 flex items-center gap-3 sm:mb-8">
-            {/* Phones get a small portrait here instead of the large card below. */}
-            <img
-              src={photoAsset}
-              alt="Portrait of Ayush Ramawat"
-              className="h-14 w-14 shrink-0 rounded-full object-cover grayscale-[35%] ring-1 ring-line sm:hidden"
-              draggable={false}
-            />
-            <motion.div
-              className="inline-flex items-center gap-2.5 rounded-full surface py-1.5 pl-2 pr-4 font-mono text-micro uppercase tracking-[0.12em] text-ink/80 sm:text-label sm:tracking-[0.18em]"
-              initial={reduce ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: EASE, delay: 1.4 }}
+      <div className="mx-auto grid w-full max-w-page grid-cols-1 gap-x-8 gap-y-10 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-x-16 lg:px-10">
+        {/* ── name, one line, actions ─────────────────────── */}
+        <div className="lg:col-span-7">
+          <h1
+            id="hero-title"
+            className="rise font-display text-h1 font-semibold tracking-[-0.035em] text-ink [overflow-wrap:break-word] [min-width:0]"
+          >
+            {profile.name}
+          </h1>
+          <p
+            className="rise mt-5 max-w-[34ch] text-lead text-ink-soft [text-wrap:pretty]"
+            style={{ "--i": 1 } as React.CSSProperties}
+          >
+            Product designer in Dublin, turning research and prototypes into usable AI products.
+          </p>
+          <div
+            className="rise mt-8 flex flex-wrap items-center gap-3"
+            style={{ "--i": 2 } as React.CSSProperties}
+          >
+            <a
+              href="#projects"
+              onClick={scrollTo("projects")}
+              className="focus-glow inline-flex min-h-12 items-center gap-2 whitespace-nowrap rounded-full bg-ink px-6 text-sm font-semibold text-paper transition-colors duration-200 hover:bg-cobalt active:translate-y-px"
             >
-              <span className="relative grid h-4 w-4 place-items-center">
-                <span className="absolute h-2 w-2 rounded-full bg-cobalt animate-ping-soft" />
-                <span className="relative h-2 w-2 rounded-full bg-cobalt" />
-              </span>
-              {profile.status}
-            </motion.div>
+              See the work
+              <ArrowDown className="h-4 w-4" aria-hidden />
+            </a>
+            <a
+              href="#connect"
+              onClick={scrollTo("connect")}
+              className="focus-glow inline-flex min-h-12 items-center gap-2 whitespace-nowrap rounded-full border border-line-strong px-6 text-sm font-semibold text-ink transition-colors duration-200 hover:border-ink active:translate-y-px"
+            >
+              Get in touch
+            </a>
           </div>
 
-          <h1 className="font-display font-semibold leading-[0.9] tracking-[-0.04em] text-ink">
-            <span className="block text-display">
-              <SplitText text={first} delay={1.45} />
-            </span>
-            <span className="block text-display">
-              <SplitText text={last} delay={1.55} wordClassName="text-cobalt" />
-            </span>
-          </h1>
-
-          <motion.p
-            className="mt-5 max-w-[30em] font-display text-lead font-normal leading-[1.35] tracking-[-0.015em] text-ink/90 sm:mt-8 lg:max-w-[26em] xl:max-w-[28em]"
-            initial={reduce ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: EASE, delay: 1.85 }}
-          >
-            I'm a {profile.role} based in Dublin, combining{" "}
-            <span className="whitespace-nowrap font-serif italic highlight">human-centred</span>{" "}
-            research, interaction design, and prototyping to turn complex problems into usable
-            digital products. I have a particular interest in AI-driven experiences.
-          </motion.p>
-
-          <motion.div
-            className="mt-6 grid grid-cols-2 gap-3 sm:mt-10 sm:flex sm:flex-row sm:flex-wrap sm:items-center"
-            initial={reduce ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: EASE, delay: 2.05 }}
-          >
-            <Magnetic className="w-full sm:w-auto">
-              <a
-                href="#projects"
-                onClick={scrollTo("projects")}
-                data-cursor="View"
-                className="focus-glow group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-ink px-4 py-3.5 sm:inline-flex sm:w-auto sm:px-6 font-sans text-sm font-semibold tracking-tight text-paper shadow-lift transition-transform"
+          {/* ── the work index ─────────────────────────────── */}
+          <ol aria-label="All work" className="mt-12 border-t border-line lg:mt-14">
+            {entries.map((e, i) => (
+              <li
+                key={e.key}
+                className="rise border-b border-line"
+                style={{ "--i": 3 + i } as React.CSSProperties}
               >
-                <span className="absolute inset-0 bg-cobalt opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <span className="relative">See the work</span>
-                <ArrowDown className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
-              </a>
-            </Magnetic>
-            <Magnetic className="w-full sm:w-auto">
-              <a
-                href="#connect"
-                onClick={scrollTo("connect")}
-                data-cursor="Say hi"
-                className="focus-glow group flex w-full items-center justify-center gap-2 rounded-full surface px-4 py-3.5 sm:inline-flex sm:w-auto sm:px-6 font-sans text-sm font-semibold tracking-tight text-ink transition-colors duration-300 hover:border-ink/40"
-              >
-                Get in touch
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-            </Magnetic>
-            <ResumeLinks className="col-span-2 sm:col-span-1" />
-          </motion.div>
-
-          <motion.dl
-            className="mt-7 grid max-w-lg grid-cols-3 gap-3 border-t border-line pt-5 sm:mt-12 sm:gap-4 sm:pt-6 xl:max-w-xl"
-            initial={reduce ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 2.3 }}
-          >
-            {facts.map((f) => (
-              <div key={f.k} className="flex flex-col gap-1">
-                <dt className="font-mono text-micro uppercase tracking-[0.2em] text-ink-soft">
-                  {f.k}
-                </dt>
-                <dd className="font-sans text-small font-medium leading-snug text-ink/90">{f.v}</dd>
-              </div>
+                <a
+                  href={e.href}
+                  onMouseEnter={() => setActive(i)}
+                  onFocus={() => setActive(i)}
+                  className={cn(
+                    "focus-glow group grid grid-cols-[2.25rem_minmax(0,1fr)_auto] items-baseline gap-x-3 py-3.5 transition-colors duration-200 sm:grid-cols-[2.5rem_minmax(0,1fr)_10rem_3.5rem] sm:py-4",
+                    i === active ? "text-ink" : "text-ink-soft hover:text-ink",
+                  )}
+                >
+                  <span className="text-small tabular-nums text-ink-faint">{i + 1}</span>
+                  <span className="font-display text-h4 font-semibold tracking-[-0.02em]">
+                    {e.name}
+                  </span>
+                  <span className="text-small max-sm:hidden">{e.kind}</span>
+                  <span className="flex items-center justify-end gap-2 text-small tabular-nums">
+                    <span className="max-sm:hidden">{e.year}</span>
+                    <ArrowUpRight
+                      aria-hidden
+                      className={cn(
+                        "h-4 w-4 shrink-0 transition-opacity duration-200",
+                        i === active ? "opacity-100" : "opacity-0 group-hover:opacity-100",
+                      )}
+                    />
+                  </span>
+                </a>
+              </li>
             ))}
-          </motion.dl>
-        </motion.div>
+          </ol>
+        </div>
 
-        {/* ── portrait ──────────────────────────────────────── */}
-        <motion.div
-          style={{ y: yPhoto }}
-          className="relative mx-auto hidden w-full max-w-[380px] sm:block lg:col-span-5 lg:max-w-none lg:pr-8"
-          initial={reduce ? false : { opacity: 0, scale: 0.92, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.4, ease: EASE, delay: 1.5 }}
-        >
-          <Tilt className="relative" max={6}>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-line bg-paper-3 shadow-soft">
-              <img
-                src={photoAsset}
-                alt="Portrait of Ayush Ramawat"
-                className="h-full w-full scale-[1.12] object-cover object-center grayscale-[35%] transition-transform duration-[1.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.18]"
-                draggable={false}
-              />
-              <div className="absolute inset-x-4 bottom-4 flex items-end justify-between">
-                <div className="rounded-2xl bg-paper px-4 py-3 shadow-soft">
-                  <p className="font-mono text-micro uppercase tracking-[0.22em] text-ink-soft">
-                    Feature profile
-                  </p>
-                  <p className="mt-1 max-w-[200px] font-display text-body font-medium leading-tight text-ink">
-                    Where LLMs meet human-computer interaction.
-                  </p>
+        {/* ── preview of the row in focus ────────────────── */}
+        <figure className="relative hidden lg:col-span-5 lg:block lg:pt-6">
+          <div className="relative aspect-[6/7] overflow-hidden rounded-3xl border border-line bg-paper-3">
+            {/* Build motifs hold their still frame here; they animate in the Builds section. */}
+            <MotifHold.Provider value={true}>
+              {entries.map((e, i) => (
+                <div
+                  key={e.key}
+                  aria-hidden={i !== active}
+                  className={cn(
+                    "absolute inset-0 transition-opacity duration-300",
+                    i === active ? "opacity-100" : "opacity-0",
+                  )}
+                >
+                  {e.preview}
                 </div>
-              </div>
-            </div>
-
-            {/* rotating badge */}
-            <div
-              className="absolute -bottom-8 -right-2 h-28 w-28 sm:-right-8 sm:h-32 sm:w-32"
-              style={{ transform: "translateZ(40px)" }}
-            >
-              <div className="absolute inset-0 rounded-full bg-sun shadow-soft" />
-              <svg
-                viewBox="0 0 100 100"
-                className="absolute inset-0 h-full w-full animate-spin-slow"
-              >
-                <defs>
-                  <path id="badge-circle" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0" />
-                </defs>
-                <text className="fill-ink/80 font-mono text-[8.5px] uppercase tracking-[0.28em]">
-                  <textPath href="#badge-circle">ai products · product design · hci ·</textPath>
-                </text>
-              </svg>
-              <div className="absolute inset-0 grid place-items-center">
-                <ArrowUpRight className="h-5 w-5 text-ink" />
-              </div>
-            </div>
-
-            {/* floating mono chips */}
-            {chips.map((c, i) => (
-              <motion.span
-                key={c.text}
-                className={`absolute hidden rounded-full surface px-3 py-1.5 font-mono text-micro uppercase tracking-[0.18em] text-ink/80 sm:block ${c.cls}`}
-                style={{ transform: "translateZ(60px)" }}
-                initial={reduce ? false : { opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: [0, -8, 0] }}
-                transition={{
-                  opacity: { delay: 2.2 + i * 0.15, duration: 0.6 },
-                  y: {
-                    delay: 2.2 + i * 0.15,
-                    duration: 6 + i,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  },
-                }}
-              >
-                {c.text}
-              </motion.span>
-            ))}
-          </Tilt>
-        </motion.div>
+              ))}
+            </MotifHold.Provider>
+          </div>
+          <figcaption className="mt-4 flex items-baseline justify-between gap-6" aria-live="polite">
+            <span className="max-w-[40ch] text-body text-ink">{current.line}</span>
+            <span className="shrink-0 text-small text-ink-soft">{current.kind}</span>
+          </figcaption>
+        </figure>
       </div>
-
-      {/* ── scroll cue ────────────────────────────────────── */}
-      <motion.div
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 lg:flex"
-        initial={reduce ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.6, duration: 1 }}
-        style={{ opacity: fade }}
-      >
-        <span className="font-mono text-micro uppercase tracking-[0.3em] text-ink-soft">
-          Scroll
-        </span>
-        <span className="relative h-10 w-px overflow-hidden bg-line-strong">
-          <span className="absolute inset-0 bg-ink animate-scroll-cue" />
-        </span>
-      </motion.div>
     </section>
   );
 }

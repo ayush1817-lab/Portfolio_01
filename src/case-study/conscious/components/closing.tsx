@@ -32,7 +32,7 @@ export function Reflection() {
         {/* the reframe, before and after, beside the reflection */}
         <div className="grid gap-3 lg:col-span-5 lg:pt-10">
           <MotionReveal className="rounded-3xl border border-cc-cream/25 p-5 sm:p-7">
-            <p className="font-mono text-label uppercase tracking-[0.14em] text-cc-sage">Before</p>
+            <p className="text-label text-cc-sage">Before</p>
             <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-h3 leading-tight text-cc-cream/80">
               {d.before}
             </p>
@@ -41,9 +41,7 @@ export function Reflection() {
             <ArrowRight className="h-6 w-6 rotate-90 text-cc-lilac" />
           </div>
           <MotionReveal delay={0.15} className="rounded-3xl bg-cc-cream p-5 text-cc-forest sm:p-7">
-            <p className="font-mono text-label uppercase tracking-[0.14em] text-cc-lilac-deep">
-              After
-            </p>
+            <p className="text-label text-cc-lilac-deep">After</p>
             <p className="mt-3 font-display font-semibold tracking-[-0.02em] text-h3 leading-tight">
               {d.after}
             </p>
@@ -94,9 +92,7 @@ export function NextProjectCTA() {
             href={next.link}
             className="focus-glow group inline-flex min-h-11 items-center gap-3 rounded-full px-2 py-3 text-small text-ink transition-colors hover:text-cc-sage-deep"
           >
-            <span className="font-mono text-label uppercase tracking-[0.16em] text-ink-soft">
-              Next project
-            </span>
+            <span className="text-label text-ink-soft">Next project</span>
             <span className="font-semibold">{next.title}</span>
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </a>

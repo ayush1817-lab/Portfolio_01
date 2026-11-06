@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, FileText, Menu, X } from "lucide-react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } from "motion/react";
-import { EASE, Magnetic } from "./motion";
+import { EASE } from "./motion";
 import { profile } from "@/content/portfolio";
 import { cn } from "@/lib/utils";
 import { ResumeLinks } from "./ResumeLinks";
@@ -78,32 +78,22 @@ export function TopNav() {
       />
 
       <motion.header
-        className="fixed inset-x-0 top-0 z-[65] px-4 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-6 sm:pt-5 lg:px-8"
+        className={cn(
+          "fixed inset-x-0 top-0 z-[65] border-b pt-[env(safe-area-inset-top)] transition-colors duration-200",
+          scrolled || open ? "border-line bg-paper" : "border-transparent bg-transparent",
+        )}
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1 }}
         transition={{ duration: 0.6, ease: EASE, delay: hidden ? 0 : 0.05 }}
       >
-        <div
-          className={cn(
-            "mx-auto flex max-w-page items-center justify-between gap-3 rounded-full px-2 py-2 transition-all duration-500",
-            scrolled
-              ? "border border-line bg-paper/90 shadow-soft backdrop-blur-md"
-              : "border border-transparent",
-          )}
-        >
+        <div className="mx-auto flex h-16 max-w-page items-center justify-between gap-3 px-5 sm:px-8 lg:h-20 lg:px-10">
           <a
             href={home("hero")}
             onClick={scrollTo("hero")}
-            data-cursor="Top"
-            className="focus-glow group flex shrink-0 items-center gap-2.5 rounded-full py-2.5 pl-3 pr-3"
+            className="focus-glow -ml-1 flex min-h-11 shrink-0 items-center rounded-full px-1"
           >
-            <span className="relative grid h-2 w-2 place-items-center">
-              <span className="absolute inset-0 rounded-full bg-cobalt animate-ping-soft" />
-              <span className="relative h-2 w-2 rounded-full bg-cobalt" />
-            </span>
-            <span className="font-display text-sm font-semibold tracking-tight text-ink">
-              Ayush
-              <span className="text-ink-soft transition-colors group-hover:text-ink"> Ramawat</span>
+            <span className="font-display text-body font-semibold tracking-[-0.02em] text-ink">
+              {profile.name}
             </span>
           </a>
 
@@ -115,19 +105,20 @@ export function TopNav() {
                   key={l.id}
                   href={home(l.id)}
                   onClick={scrollTo(l.id)}
+                  aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "focus-glow relative rounded-full px-3.5 py-2.5 font-sans text-caption font-medium tracking-tight transition-colors",
+                    "focus-glow relative inline-flex min-h-11 items-center rounded-full px-3.5 text-sm font-medium transition-colors duration-200",
                     isActive ? "text-ink" : "text-ink-soft hover:text-ink",
                   )}
                 >
-                  {isActive ? (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full bg-ink/8"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  ) : null}
-                  <span className="relative">{l.label}</span>
+                  {l.label}
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "absolute inset-x-3.5 bottom-1.5 h-0.5 origin-left rounded-full bg-cobalt transition-transform duration-200",
+                      isActive ? "scale-x-100" : "scale-x-0",
+                    )}
+                  />
                 </a>
               );
             })}
@@ -138,30 +129,26 @@ export function TopNav() {
               href={profile.resume}
               target="_blank"
               rel="noreferrer noopener"
-              data-cursor="Open"
-              className="focus-glow hidden items-center gap-1.5 rounded-full surface px-4 py-2.5 font-sans text-caption font-semibold tracking-tight text-ink transition-colors hover:border-ink/40 sm:inline-flex"
+              className="focus-glow hidden min-h-11 items-center gap-1.5 whitespace-nowrap rounded-full border border-line-strong px-4 text-sm font-semibold text-ink transition-colors duration-200 hover:border-ink sm:inline-flex"
             >
               <FileText className="h-3.5 w-3.5" aria-hidden />
               Resume
               <span className="sr-only">(PDF, opens in a new tab)</span>
             </a>
-            <Magnetic strength={0.25} className="hidden sm:inline-block">
-              <a
-                href={home("connect")}
-                onClick={scrollTo("connect")}
-                data-cursor="Say hi"
-                className="focus-glow group inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 font-sans text-caption font-semibold tracking-tight text-paper transition-colors hover:bg-sun"
-              >
-                Let's talk
-                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-            </Magnetic>
+            <a
+              href={home("connect")}
+              onClick={scrollTo("connect")}
+              className="focus-glow hidden min-h-11 items-center gap-1.5 whitespace-nowrap rounded-full bg-ink px-4 text-sm font-semibold text-paper transition-colors duration-200 hover:bg-cobalt active:translate-y-px sm:inline-flex"
+            >
+              Let’s talk
+              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+            </a>
             <button
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="focus-glow grid h-10 w-10 place-items-center rounded-full surface text-ink md:hidden"
+              className="focus-glow grid h-11 w-11 place-items-center rounded-full border border-line-strong text-ink md:hidden"
             >
               {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
@@ -174,7 +161,7 @@ export function TopNav() {
         {open ? (
           <motion.div
             key="menu"
-            className="fixed inset-0 z-[64] flex flex-col bg-paper px-6 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-28 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-[64] flex flex-col bg-paper px-6 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-28 md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -189,14 +176,13 @@ export function TopNav() {
                       setOpen(false);
                       scrollTo(l.id)(e);
                     }}
-                    className="flex items-center justify-between py-5 font-display text-h2 font-semibold tracking-[-0.03em] text-ink"
+                    className="focus-glow flex items-center justify-between py-5 font-display text-h2 font-semibold tracking-[-0.03em] text-ink"
                     initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: "100%", opacity: 0 }}
                     transition={{ duration: 0.7, ease: EASE, delay: 0.08 + i * 0.06 }}
                   >
                     {l.label}
-                    <span className="font-mono text-label text-ink-soft">0{i + 1}</span>
                   </motion.a>
                 </div>
               ))}
@@ -209,13 +195,10 @@ export function TopNav() {
               transition={{ delay: 0.4, duration: 0.6, ease: EASE }}
             >
               <ResumeLinks />
-              <a
-                href={`mailto:${profile.email}`}
-                className="font-mono text-label uppercase tracking-[0.2em] text-ink-soft"
-              >
+              <a href={`mailto:${profile.email}`} className="focus-glow text-body text-ink-soft">
                 {profile.email}
               </a>
-              <div className="flex gap-5 font-mono text-label uppercase tracking-[0.2em] text-ink/70">
+              <div className="flex gap-5 text-body font-medium text-ink">
                 <a href={profile.linkedin} target="_blank" rel="noreferrer noopener">
                   LinkedIn
                 </a>

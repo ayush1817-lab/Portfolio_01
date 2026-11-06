@@ -1,10 +1,15 @@
-import { motion, useReducedMotion } from "motion/react";
-import { ArrowRight } from "lucide-react";
-import { experience } from "@/content/portfolio";
+import photoAsset from "@/assets/ayush-photo.jpeg.png";
+import { experience, stack } from "@/content/portfolio";
 import { SectionHeading } from "./SectionHeading";
-import { EASE, Reveal } from "./motion";
+import { ResumeLinks } from "./ResumeLinks";
 
 const journey = ["Mathematics", "3D animation", "HCI", "Product design"];
+
+const facts = [
+  { k: "Based in", v: "Dublin, IE" },
+  { k: "Studying", v: "MSc HCI, UCD" },
+  { k: "Focus", v: "AI product design" },
+];
 
 const paragraphs = [
   "I'm Ayush, a Product Designer based in Dublin, currently pursuing my MSc in Human-Computer Interaction at UCD.",
@@ -13,154 +18,113 @@ const paragraphs = [
   "I'm particularly interested in AI, automation, and creating experiences that make complex technology feel simple and human.",
 ];
 
+/**
+ * About: the portrait holds still on the left while the bio, the path,
+ * experience and tools read down the right. Hairlines part the lists.
+ */
 export function About() {
-  const reduce = useReducedMotion();
   return (
-    <section
-      id="about"
-      aria-label="About"
-      className="relative overflow-x-clip py-14 sm:py-24 lg:py-40"
-    >
-      <div className="mx-auto max-w-page px-5 sm:px-8 lg:px-10">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-10">
-          {/* ── sticky heading + journey ────────────────────── */}
-          <div className="lg:col-span-5">
-            <div className="lg:sticky lg:top-32">
-              <SectionHeading
-                index="03"
-                label="About"
-                title="A designer who likes to"
-                italic="figure things out."
-                italicOnNewLine
+    <section id="about" aria-labelledby="about-title" className="relative py-16 sm:py-24 lg:py-36">
+      <div className="mx-auto grid max-w-page grid-cols-1 gap-x-8 gap-y-12 px-5 sm:px-8 lg:grid-cols-12 lg:px-10">
+        {/* ── portrait and facts ──────────────────────────── */}
+        <div className="lg:col-span-5">
+          <figure className="lg:sticky lg:top-28">
+            <div className="aspect-[4/5] max-h-[38rem] overflow-hidden rounded-3xl border border-line bg-paper-3 max-sm:max-w-[20rem]">
+              <img
+                src={photoAsset}
+                alt="Portrait of Ayush Ramawat"
+                className="h-full w-full object-cover object-center grayscale-[35%]"
+                draggable={false}
+                loading="lazy"
+                decoding="async"
               />
+            </div>
+            <figcaption>
+              <dl className="mt-6 grid grid-cols-3 border-t border-line pt-4">
+                {facts.map((f, i) => (
+                  <div key={f.k} className={i ? "border-l border-line pl-4" : "pr-4"}>
+                    <dt className="text-label text-ink-soft">{f.k}</dt>
+                    <dd className="mt-1 text-small font-medium text-ink">{f.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </figcaption>
+          </figure>
+        </div>
 
-              <Reveal delay={0.3} className="mt-10 lg:mt-12">
-                <p className="mb-5 font-mono text-micro uppercase tracking-[0.24em] text-ink-soft">
-                  The path so far
+        {/* ── bio, path, experience, tools ────────────────── */}
+        <div className="flex min-w-0 flex-col gap-14 lg:col-span-7">
+          <div>
+            <SectionHeading id="about-title" title="A designer who likes to figure things out" />
+            <div className="mt-8 flex max-w-[62ch] flex-col gap-5">
+              {paragraphs.map((p, i) => (
+                <p key={i} className={i === 0 ? "text-lead text-ink" : "text-body text-ink-soft"}>
+                  {p}
                 </p>
-                {/* compact path for small screens */}
-                <ol className="flex flex-wrap items-center gap-x-2 gap-y-2 lg:hidden">
-                  {journey.map((step, i) => {
-                    const last = i === journey.length - 1;
-                    return (
-                      <li key={step} className="flex items-center gap-2">
-                        <span
-                          className={`rounded-full px-3 py-1.5 font-sans text-caption font-medium ${
-                            last
-                              ? "bg-cobalt/15 text-ink ring-1 ring-cobalt/50"
-                              : "surface text-ink/75"
-                          }`}
-                        >
-                          {step}
-                        </span>
-                        {!last ? (
-                          <ArrowRight aria-hidden className="h-3 w-3 text-ink-soft" />
-                        ) : null}
-                      </li>
-                    );
-                  })}
-                </ol>
-                <ol className="relative hidden flex-col gap-0 lg:flex">
-                  {journey.map((step, i) => {
-                    const last = i === journey.length - 1;
-                    return (
-                      <li key={step} className="relative flex items-stretch gap-4">
-                        <div className="flex w-5 flex-col items-center">
-                          <span
-                            className={`relative mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full ${
-                              last
-                                ? "bg-cobalt shadow-lift"
-                                : "border border-line-strong bg-paper-3"
-                            }`}
-                          >
-                            {last ? (
-                              <span className="absolute inset-0 rounded-full bg-cobalt animate-ping-soft" />
-                            ) : null}
-                          </span>
-                          {!last ? (
-                            <motion.span
-                              className="my-1 w-px flex-1 origin-top bg-gradient-to-b from-line-strong to-cobalt/60"
-                              initial={reduce ? false : { scaleY: 0 }}
-                              whileInView={{ scaleY: 1 }}
-                              viewport={{ once: true, amount: 0.8 }}
-                              transition={{ duration: 0.9, ease: EASE, delay: 0.15 * i }}
-                            />
-                          ) : null}
-                        </div>
-                        <div className="pb-6">
-                          <p
-                            className={`font-display text-h4 font-medium tracking-tight ${last ? "text-ink" : "text-ink/70"}`}
-                          >
-                            {step}
-                          </p>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ol>
-              </Reveal>
+              ))}
             </div>
           </div>
 
-          {/* ── bio + experience ─────────────────────────────── */}
-          <div className="flex flex-col gap-12 lg:col-span-7 lg:gap-16 lg:pt-3">
-            <div className="flex flex-col gap-6">
-              {paragraphs.map((p, i) => (
-                <Reveal key={i} delay={0.1 * i}>
-                  <p
-                    className={
-                      i === 0
-                        ? "font-display text-lead font-normal leading-snug tracking-[-0.015em] text-ink"
-                        : "text-body leading-relaxed text-ink-soft"
-                    }
+          <div>
+            <h3 className="text-label text-ink-soft">The path so far</h3>
+            <ol className="mt-4 grid grid-cols-2 border-t border-line sm:grid-cols-4">
+              {journey.map((step, i) => {
+                const last = i === journey.length - 1;
+                return (
+                  <li
+                    key={step}
+                    className="border-b border-line py-4 pr-4 sm:border-b-0 sm:border-l sm:py-5 sm:pl-4 sm:first:border-l-0 sm:first:pl-0"
                   >
-                    {p}
-                  </p>
-                </Reveal>
-              ))}
-            </div>
+                    <span className="block text-small tabular-nums text-ink-faint">{i + 1}</span>
+                    <span
+                      className={`mt-1 block font-display text-h4 font-semibold tracking-[-0.02em] ${last ? "text-cobalt" : "text-ink"}`}
+                    >
+                      {step}
+                    </span>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
 
+          <div>
+            <h3 className="text-label text-ink-soft">Experience</h3>
+            <ul className="mt-4 border-t border-line">
+              {experience.map((e) => (
+                <li
+                  key={e.year}
+                  className="grid grid-cols-1 gap-x-8 gap-y-2 border-b border-line py-6 sm:grid-cols-[9rem_minmax(0,1fr)]"
+                >
+                  <span className="text-small tabular-nums text-ink-soft">
+                    {e.year.replace(/\s*—\s*/, " to ")}
+                  </span>
+                  <div>
+                    <p className="font-display text-h4 font-semibold tracking-[-0.02em] text-ink">
+                      {e.role}
+                    </p>
+                    <p className="mt-1 text-small text-ink-soft">{e.org}</p>
+                    <p className="mt-3 max-w-[60ch] text-body text-ink-soft">{e.note}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
             <div>
-              <Reveal>
-                <div className="mb-6 flex items-center justify-between border-b border-line pb-4">
-                  <p className="font-mono text-micro uppercase tracking-[0.24em] text-ink-soft">
-                    Experience
-                  </p>
-                  <p className="font-mono text-micro uppercase tracking-[0.24em] text-ink-soft">
-                    {String(experience.length).padStart(2, "0")} roles
-                  </p>
-                </div>
-              </Reveal>
-              <ul className="flex flex-col gap-4">
-                {experience.map((e, i) => (
-                  <Reveal key={e.year} delay={0.12 * i} y={20}>
-                    <li className="group relative overflow-hidden rounded-3xl surface p-5 transition-all duration-500 hover:-translate-y-0.5 hover:border-ink/25 sm:p-7">
-                      <div
-                        aria-hidden
-                        className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-cobalt/20 opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-100"
-                      />
-                      <div className="relative grid grid-cols-1 gap-4 sm:grid-cols-12 sm:gap-6">
-                        <div className="sm:col-span-3">
-                          <span className="font-mono text-label uppercase tracking-[0.2em] text-sun">
-                            {e.year}
-                          </span>
-                        </div>
-                        <div className="sm:col-span-9">
-                          <h3 className="pr-6 font-display text-h4 font-semibold tracking-tight text-ink">
-                            {e.role}
-                          </h3>
-                          <p className="mt-1 font-mono text-label uppercase tracking-[0.18em] text-ink-soft">
-                            {e.org}
-                          </p>
-                          <p className="mt-4 text-body leading-relaxed text-ink/75">{e.note}</p>
-                        </div>
-                      </div>
-                      <ArrowRight className="absolute right-6 top-6 h-4 w-4 -translate-x-2 text-ink/0 transition-all duration-500 group-hover:translate-x-0 group-hover:text-ink/60" />
-                    </li>
-                  </Reveal>
+              <h3 className="text-label text-ink-soft">Tools I work with</h3>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {stack.map((t) => (
+                  <li
+                    key={t}
+                    className="rounded-full border border-line px-3.5 py-1.5 text-small text-ink"
+                  >
+                    {t}
+                  </li>
                 ))}
               </ul>
             </div>
+            <ResumeLinks />
           </div>
         </div>
       </div>

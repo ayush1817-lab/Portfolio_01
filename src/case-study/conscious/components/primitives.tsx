@@ -109,7 +109,7 @@ export function OwnershipLabel({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-label font-medium uppercase tracking-[0.12em]",
+        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-label font-medium",
         onDark && label !== "INDEPENDENT EXTENSION"
           ? "border-cc-cream/40 bg-transparent text-cc-cream"
           : onDark
@@ -145,12 +145,7 @@ export function ChapterEyebrow({
 }) {
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-      <span
-        className={cn(
-          "font-mono text-label uppercase tracking-[0.16em]",
-          onDark ? "text-cc-sage" : "text-cc-forest-soft",
-        )}
-      >
+      <span className={cn(" text-label", onDark ? "text-cc-sage" : "text-cc-forest-soft")}>
         <span className={onDark ? "text-cc-lilac" : "text-cc-sage-deep"}>
           {String(n).padStart(2, "0")}
         </span>
@@ -247,12 +242,7 @@ export function ArtifactCaption({ asset, onDark }: { asset: Asset; onDark?: bool
       >
         {asset.caption}
       </span>
-      <span
-        className={cn(
-          "font-mono text-label uppercase tracking-[0.1em]",
-          onDark ? "text-cc-sage" : "text-cc-forest-soft",
-        )}
-      >
+      <span className={cn(" text-label", onDark ? "text-cc-sage" : "text-cc-forest-soft")}>
         Status: {asset.status}
       </span>
     </figcaption>
