@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BookOpen, Check, Copy, Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/content/portfolio";
 import { ResumeLinks } from "./ResumeLinks";
+import { DotGrid, SunRise } from "./art";
 
 const socials = [
   { href: profile.linkedin, label: "LinkedIn", Icon: Linkedin },
@@ -35,8 +36,10 @@ export function ConnectBanner() {
     <section
       id="connect"
       aria-labelledby="connect-title"
-      className="relative bg-cobalt py-20 text-paper sm:py-28 lg:py-44"
+      className="relative isolate overflow-hidden bg-cobalt py-20 text-paper sm:py-28 lg:py-44"
     >
+      <DotGrid className="inset-0 -z-10 text-paper/20" fade="radial" gap={26} />
+      <SunRise className="-right-24 -top-28 -z-10 w-[40rem] max-w-none rotate-180 max-lg:-right-48 max-lg:-top-24 max-lg:w-[30rem] max-sm:-right-40 max-sm:w-[24rem]" />
       <div className="mx-auto grid max-w-page grid-cols-1 gap-x-8 gap-y-12 px-5 sm:px-8 lg:grid-cols-12 lg:items-end lg:px-10">
         <div className="lg:col-span-7">
           <h2

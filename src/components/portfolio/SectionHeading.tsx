@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { InView, Stroke } from "./art";
 
 type Props = {
   title: string;
@@ -23,15 +24,16 @@ export function SectionHeading({ title, lead, aside, id, className }: Props) {
         className,
       )}
     >
-      <div className="min-w-0">
+      <InView className="min-w-0">
         <h2
           id={id}
           className="max-w-[22ch] font-display text-h2 font-semibold tracking-[-0.03em] text-ink [overflow-wrap:break-word] [text-wrap:balance]"
         >
           {title}
         </h2>
+        <Stroke className="mt-2 -ml-1" />
         {lead ? <p className="mt-5 max-w-[52ch] text-lead text-ink-soft">{lead}</p> : null}
-      </div>
+      </InView>
       {aside ? <div className="shrink-0">{aside}</div> : null}
     </div>
   );
